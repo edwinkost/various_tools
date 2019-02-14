@@ -3,8 +3,8 @@
 import os
 import sys
 
-user_name    = "edwinswt"
-#~ user_name = sys.argv[1]
+#~ user_name = "edwinswt"
+user_name    = sys.argv[1]
 
 source_folder = "/oldscratch-shared/" + user_name + "/"
 target_folder = "/scratch-shared/" + source_folder + "/"
