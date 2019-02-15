@@ -28,16 +28,15 @@ cd /scratch-shared/edwinkle/delft3d-svn/delft3d_repository_tag-7545/src/
 
 ./autogen.sh
 
-# do we need this???
-cd third_party_open/kdtree2
-./autogen.sh
-cd -
+#~ # do we need this???
+#~ cd third_party_open/kdtree2
+#~ ./autogen.sh
+#~ cd -
 
 MPICXX=mpiicpc MPICC=mpiicc MPIFC=mpiifort MPIF77=mpiifort CC=mpiicc CXX=mpiicpc FC=mpiifort F77=mpiifort CFLAGS='-O3' CXXFLAGS='-O3' FFLAGS='-O3' FCFLAGS='-O3' ./configure --prefix='/home/edwinkle/opt/delf3d-test/' --with-netcdf --with-mpi
 
-# make ds-install
-# - using some cores to speed up
-make -j 4 ds-install
+make ds-install
 
-cd /scratch-shared/edwinkle/try_to_compile
-
+# go back to the script folder
+#~ cd /scratch-shared/edwinkle/try_to_compile
+cd ~/github/edwinkost/various_tools/compiling_delft3d
