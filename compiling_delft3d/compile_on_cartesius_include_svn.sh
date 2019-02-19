@@ -14,7 +14,7 @@ OWN_SRC_FOLDER="/scratch-shared/edwinkle/delft3d_source_files_from_marcio/versio
 # - source code folder (relative to MY_WORKING_FOLDER), where our own delft3d source version will be integrated to the one from the (deltares) delft3d svn site  
 SOURCE_FOLDER="delft3d_source/"
 # - target folder where delft3d will be installed
-TARGET_INST_FOLDER="/home/edwinkle/opt/delf3d-test-with-scripts/"
+TARGET_INST_FOLDER="'/home/edwinkle/opt/delf3d-test-with-scripts/'"
 
 
 # get the current directory
@@ -35,7 +35,7 @@ svn --username ${SVN_USER_NAME} checkout ${SVN_SRC_SITE} ${SOURCE_FOLDER}
 
 # add and replace with the ones from our own delft3d source version (e.g. from Marcio) 
 cd ${OWN_SRC_FOLDER}
-rsync --recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress * ${MY_WORKING_FOLDER}/${SOURCE_FOLDER}
+rsync --recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress * ${MY_WORKING_FOLDER}/${SOURCE_FOLDER}/src/
 cd -
 
 
