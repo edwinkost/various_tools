@@ -36,11 +36,10 @@ svn --username ${SVN_USER_NAME} checkout ${SVN_SRC_SITE} ${SOURCE_FOLDER}
 # add and replace with the ones from our own delft3d source version (e.g. from Marcio) 
 cd ${OWN_SRC_FOLDER}
 rsync --recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress * ${MY_WORKING_FOLDER}/${SOURCE_FOLDER}/src/
-cd -
 
 
-# go back to the main source code folder
-cd ${MY_WORKING_FOLDER}/${SOURCE_FOLDER}
+# go to the main source code folder
+cd ${MY_WORKING_FOLDER}/${SOURCE_FOLDER}/src/
 
 #~ # (try to) make sure that we have correct permissions to the source code files - NOT NEEDED
 #~ # chmod -R 755 .
