@@ -66,10 +66,12 @@ export MPIF77=mpiifort
 
 
 # cleaning up previous installation/build files
+chmod 755 clean.sh
 ./clean.sh
 
 
 # prepare installation/build files
+chmod 755 autogen.sh
 ./autogen.sh
 
 #~ # do we need this???
