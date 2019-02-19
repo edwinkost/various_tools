@@ -14,7 +14,7 @@ OWN_SRC_FOLDER="/scratch-shared/edwinkle/delft3d_source_files_from_marcio/versio
 # - source code folder (relative to MY_WORKING_FOLDER), where our own delft3d source version will be integrated to the one from the (deltares) delft3d svn site  
 SOURCE_FOLDER="delft3d_source/"
 # - target folder where delft3d will be installed
-TARGET_INST_FOLDER="'/home/edwinkle/opt/delf3d-test-with-scripts/'"
+TARGET_INST_FOLDER="/home/edwinkle/opt/delf3d-test-with-scripts/"
 
 
 # get the current directory
