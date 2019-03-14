@@ -24,8 +24,6 @@ variables = [
 
 "channelStorage_monthAvg",
 
-"temperature_monthAvg",
-
 "discharge_monthAvg",
 
 "precipitation_monthTot",
@@ -42,7 +40,6 @@ variables = [
 "totalPotentialEvaporation_monthTot",
 
 "referencePotET_monthTot",
-
 "temperature_monthAvg"
 
 ]
