@@ -5,6 +5,8 @@ import sys
 
 directory = sys.argv[1]
 os.chdir(directory)
+print(directory)
+
 
 variables = [
 
@@ -28,9 +30,23 @@ variables = [
 
 "precipitation_monthTot",
 "totalEvaporation_monthTot",
-"totalRunoff_monthTot"
+"totalRunoff_monthTot",
+
+"baseflow_monthTot",
+"gwRecharge_monthTot",
+"surfaceWaterInf_monthTot",
+
+"totalGroundwaterAbstraction",
+"fossilGroundwaterAbstraction_monthTot",
+
+"totalPotentialEvaporation_monthTot",
+
+"referencePotET_monthTot",
+
+"temperature_monthAvg"
 
 ]
+
 
 
 cmd = ""
