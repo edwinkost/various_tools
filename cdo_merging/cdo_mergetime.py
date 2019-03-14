@@ -36,7 +36,7 @@ variables = [
 "gwRecharge_monthTot",
 "surfaceWaterInf_monthTot",
 
-"totalGroundwaterAbstraction",
+"totalGroundwaterAbstraction_monthTot",
 "fossilGroundwaterAbstraction_monthTot",
 
 "totalPotentialEvaporation_monthTot",
@@ -51,7 +51,7 @@ variables = [
 
 cmd = ""
 for variable in variables:
-    cmd += "cdo -L -z zip -f nc4 -mergetime ../begin_from_1958/global/netcdf/" + str(variable) + "_output_*.nc " + str(variable)  + " & "
+    cmd += "cdo -L -z zip -f nc4 -mergetime ../begin_from_1958/global/netcdf/" + str(variable) + "_output_*.nc " + str(variable) + "_output_1958-01-31_to_2015-12-31.zip.nc " + " & "
 cmd += "wait"
 print(cmd)
 os.system(cmd)
