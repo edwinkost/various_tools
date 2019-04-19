@@ -1,7 +1,7 @@
 set -x
 
 MAIN_SOURCE_FOLDER=/scratch-shared/edwinhs/pcrglobwb2_output_gmd_paper_rerun_201902XX/05min/non-natural_kinematic-wave/
-TARGET_FOLDER=$MAIN_SOURCE_FOLDER}/merged_1958_to_2015/discharge_dailyTot/
+TARGET_FOLDER=${MAIN_SOURCE_FOLDER}/merged_1958_to_2015/discharge_dailyTot/
 
 mkdir -p ${TARGET_FOLDER}
 
