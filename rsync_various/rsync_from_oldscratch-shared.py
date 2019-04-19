@@ -4,10 +4,10 @@ import os
 import sys
 
 #~ user_name = "edwinswt"
-user_name    = sys.argv[1]
+user_name    = str(sys.argv[1])
 
 source_folder = "/oldscratch-shared/" + user_name + "/"
-target_folder = "/scratch-shared/" + + user_name + "/" + source_folder + "/"
+target_folder = "/scratch-shared/" + user_name + "/" + source_folder + "/"
 
 # prepare target_folder
 cmd = 'mkdir -p ' + target_folder
