@@ -20,7 +20,9 @@ END_YEAR=1960
 SOURCE_FOLDER=${MAIN_SOURCE_FOLDER}/*${STA_YEAR}/
 for YEAR in {1958..1960}
 do 
+	# for each year merging monthly files to a single annual file
 	cdo -L -f nc4 -mergetime ${SOURCE_FOLDER}/global/netcdf/discharge_dailyTot_output_${YEAR}*.nc ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
+	# sellonlatbox to crop netcdf files 
 	cdo -L -f nc4 -sellonlatbox,${LON_LAT_BOX_COORDINATE} ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc ${LON_LAT_BOX_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
 	unset YEAR
 done
