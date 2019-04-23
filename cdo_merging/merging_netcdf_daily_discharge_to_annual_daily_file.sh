@@ -17,7 +17,7 @@ mkdir -p ${LON_LAT_BOX_FOLDER}
 STA_YEAR=1958
 END_YEAR=1960
 SOURCE_FOLDER=${MAIN_SOURCE_FOLDER}/*${STA_YEAR}/
-for YEAR in {${STA_YEAR}..${END_YEAR}}
+#~ for YEAR in {${STA_YEAR}..${END_YEAR}}
 for YEAR in {1958..1960}
 do 
 	cdo -L -f nc4 -mergetime ${SOURCE_FOLDER}/global/netcdf/discharge_dailyTot_output_${YEAR}*.nc ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
