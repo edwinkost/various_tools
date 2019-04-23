@@ -3,7 +3,7 @@ set -x
 
 MAIN_SOURCE_FOLDER=/scratch-shared/edwinhs/pcrglobwb2_output_gmd_paper_rerun_201902XX/05min/non-natural_kinematic-wave/
 
-MAIN_TARGET_FOLDER=/project/0/dfguu/users/edwinhs/pcrglobwb2_output_gmd_paper_rerun_201902XX/05min/non-natural_kinematic-wave/
+MAIN_TARGET_FOLDER=/projects/0/dfguu/users/edwinhs/pcrglobwb2_output_gmd_paper_rerun_201902XX/05min/non-natural_kinematic-wave/
 TARGET_FOLDER=${MAIN_TARGET_FOLDER}/merged_1958_to_2015/discharge_dailyTot/
 
 LON_LAT_BOX_FOLDER=${TARGET_FOLDER}/longitudes_55_to_115_latitudes_0_to_50
