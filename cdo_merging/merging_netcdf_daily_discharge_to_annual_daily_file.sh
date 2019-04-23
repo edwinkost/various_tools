@@ -18,8 +18,7 @@ mkdir -p ${LON_LAT_BOX_FOLDER}
 STA_YEAR=1958
 END_YEAR=1960
 SOURCE_FOLDER=${MAIN_SOURCE_FOLDER}/*${STA_YEAR}/
-for YEAR in {$STA_YEAR..$END_YEAR}
-#~ for YEAR in {1958..1960}
+for YEAR in {1958..1960}
 do 
 	cdo -L -f nc4 -mergetime ${SOURCE_FOLDER}/global/netcdf/discharge_dailyTot_output_${YEAR}*.nc ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
 	cdo -L -f nc4 -sellonlatbox,${LON_LAT_BOX_COORDINATE} ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc ${LON_LAT_BOX_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
@@ -31,7 +30,7 @@ unset END_YEAR
 STA_YEAR=1961
 END_YEAR=1977
 SOURCE_FOLDER=${MAIN_SOURCE_FOLDER}/*${STA_YEAR}/
-for YEAR in {${STA_YEAR}..${END_YEAR}}
+for YEAR in {1961..1977}
 do 
 	cdo -L -f nc4 -mergetime ${SOURCE_FOLDER}/global/netcdf/discharge_dailyTot_output_${YEAR}*.nc ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
 	cdo -L -f nc4 -sellonlatbox,${LON_LAT_BOX_COORDINATE} ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc ${LON_LAT_BOX_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
@@ -43,7 +42,7 @@ unset END_YEAR
 STA_YEAR=1978
 END_YEAR=1997
 SOURCE_FOLDER=${MAIN_SOURCE_FOLDER}/*${STA_YEAR}/
-for YEAR in {${STA_YEAR}..${END_YEAR}}
+for YEAR in {1978..1997}
 do 
 	cdo -L -f nc4 -mergetime ${SOURCE_FOLDER}/global/netcdf/discharge_dailyTot_output_${YEAR}*.nc ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
 	cdo -L -f nc4 -sellonlatbox,${LON_LAT_BOX_COORDINATE} ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc ${LON_LAT_BOX_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
@@ -55,7 +54,7 @@ unset END_YEAR
 STA_YEAR=1998
 END_YEAR=2013
 SOURCE_FOLDER=${MAIN_SOURCE_FOLDER}/*${STA_YEAR}/
-for YEAR in {${STA_YEAR}..${END_YEAR}}
+for YEAR in {1998..2013}
 do 
 	cdo -L -f nc4 -mergetime ${SOURCE_FOLDER}/global/netcdf/discharge_dailyTot_output_${YEAR}*.nc ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
 	cdo -L -f nc4 -sellonlatbox,${LON_LAT_BOX_COORDINATE} ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc ${LON_LAT_BOX_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
@@ -67,7 +66,7 @@ unset END_YEAR
 STA_YEAR=2014
 END_YEAR=2015
 SOURCE_FOLDER=${MAIN_SOURCE_FOLDER}/*${STA_YEAR}/
-for YEAR in {${STA_YEAR}..${END_YEAR}}
+for YEAR in {2014..2015}
 do 
 	cdo -L -f nc4 -mergetime ${SOURCE_FOLDER}/global/netcdf/discharge_dailyTot_output_${YEAR}*.nc ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
 	cdo -L -f nc4 -sellonlatbox,${LON_LAT_BOX_COORDINATE} ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc ${LON_LAT_BOX_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
@@ -77,3 +76,4 @@ unset STA_YEAR
 unset END_YEAR
 
 set +x
+
