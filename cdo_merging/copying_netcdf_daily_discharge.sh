@@ -1,18 +1,25 @@
-PS: It is IMPOSSIBLE to do this as it is limited by memory. 
 
 set -x
 
 MAIN_SOURCE_FOLDER=/scratch-shared/edwinhs/pcrglobwb2_output_gmd_paper_rerun_201902XX/05min/non-natural_kinematic-wave/
 TARGET_FOLDER=${MAIN_SOURCE_FOLDER}/merged_1958_to_2015/discharge_dailyTot/
 
+LONLATBOX=north_five
+# cdo sellonlatbox,lon1,lon2,lat1,lat2 infile.nc outfile.nc.
+
 mkdir -p ${TARGET_FOLDER}
+
+
 
 STA_YEAR=1958
 END_YEAR=1960
 SOURCE_FOLDER=${MAIN_SOURCE_FOLDER}/begin_from_1958/
-cdo -L -f nc4 -cat ${SOURCE_FOLDER}/global/netcdf/discharge_dailyTot_output_*.nc ${TARGET_FOLDER}/temp.nc
-cdo -L -f nc4 -selyear,${STA_YEAR}/${END_YEAR} ${TARGET_FOLDER}/temp.nc ${TARGET_FOLDER}/discharge_dailyTot_output_${STA_YEAR}-01-01_to_${END_YEAR}-12-31.nc
-rm ${TARGET_FOLDER}/temp.nc
+for YEAR in {${STA_YEAR}..${END_YEAR}{
+do 
+	cdo -L -f nc4 -cat ${SOURCE_FOLDER}/global/netcdf/discharge_dailyTot_output_${YEAR}*.nc ${TARGET_FOLDER}/discharge_dailyTot_output_${YEAR}-01-01_to_${YEAR}-12-31.nc
+	unset YEAR
+
+done
 unset STA_YEAR
 unset END_YEAR
 
