@@ -53,3 +53,12 @@ make -j 6
 make check -j 6
 make install
 
+Install Jasper using
+./configure –prefix=/opt/cdo-install  CFLAGS=-fPIC
+‘make’, ‘make check’ and ‘make install’
+Install grib using
+./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install
+‘make’, ‘make check’ and ‘make install’
+Install cdo using
+./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install –with-hdf5=/opt/cdo-install  –with-grib_api=/opt/cdo-install
+‘make’, ‘make check’ and ‘make install’
