@@ -53,12 +53,19 @@ make -j 6
 make check -j 6
 make install
 
-Install Jasper using
-./configure –prefix=/opt/cdo-install  CFLAGS=-fPIC
-‘make’, ‘make check’ and ‘make install’
-Install grib using
-./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install
-‘make’, ‘make check’ and ‘make install’
-Install cdo using
-./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install –with-hdf5=/opt/cdo-install  –with-grib_api=/opt/cdo-install
-‘make’, ‘make check’ and ‘make install’
+#~ # download and install Jasper using ./configure –prefix=/opt/cdo-install  CFLAGS=-fPIC ; ‘make’, ‘make check’ and ‘make install’
+#~ # NOT NEEDED
+
+#~ # download and install grib using ./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install ; ‘make’, ‘make check’ and ‘make install’
+
+# WE SHOULD ALSO INCLUDE UDUNITS2?
+
+# download and install cdo using ./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install –with-hdf5=/opt/cdo-install  –with-grib_api=/opt/cdo-install ; ‘make’, ‘make check’ and ‘make install’
+cd ${SOURCE_FOLDER}
+wget https://code.mpimet.mpg.de/attachments/download/19299/cdo-1.9.6.tar.gz
+tar -xvf cdo-1.9.6.tar.gz
+cd cdo-1.9.6
+./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER}
+make -j 6
+make check -j 6
+make install
