@@ -38,7 +38,7 @@ for i_year in range(0, len(start_years)):
 
         cmd = "python merge_netcdf.py " + \
               input_folder + " " + \
-              outp_folder + " " + \ 
+              outp_folder + " " + \
               "outAnnuaTotNC " + \
               str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
               fossilGroundwaterAbstraction NETCDF4 True 1 Global
