@@ -13,7 +13,7 @@ start_years.sort()
 final_year  = int(sys.argv[3])
 
 print(start_years)
-pietje
+#~ pietje
 
 
 outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction_test/watch_2/"
@@ -29,7 +29,7 @@ for i_year in range(0, len(start_years)):
     
     # - input sub folder
     inp_sub_folder = "begin_from_" + str(start_years[i_year]) 
-    #~ if i_year > 0: inp_sub_folder = "continue_from_" + str(start_years[i_year])
+    if i_year > 0: inp_sub_folder = "continue_from_" + str(start_years[i_year])
     
     input_folder = main_folder + "/" + inp_sub_folder + "/"
     
