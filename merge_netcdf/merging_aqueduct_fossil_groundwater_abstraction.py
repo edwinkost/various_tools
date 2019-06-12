@@ -13,7 +13,7 @@ start_years = [1958, 1976, 1985]
 final_year = 2001
 
 outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction_test/watch/"
-cmd = "mkdir -p" + outp_folder
+cmd = "mkdir -p " + outp_folder
 print(cmd)
 os.system(cmd)
 os.chdir(outp_folder)
