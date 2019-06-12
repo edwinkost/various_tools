@@ -9,7 +9,7 @@ final_year = 2001
 
 main_folder = sys.argv[1]
 start_years = list(set(sys.argv[2].split(",")))
-final_year  = int(sys.argv[2])
+final_year  = int(sys.argv[3])
 
 outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction_test/watch/"
 cmd = "mkdir -p " + outp_folder
