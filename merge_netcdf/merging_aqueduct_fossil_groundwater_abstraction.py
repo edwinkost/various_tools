@@ -3,9 +3,9 @@
 import os
 import sys
 
-directory = sys.argv[1]
-os.chdir(directory)
-print(directory)
+#~ directory = sys.argv[1]
+#~ os.chdir(directory)
+#~ print(directory)
 
 
 main_folder = "/projects/0/aqueduct/users/edwinsut/pcrglobwb_runs_2016_oct_nov/pcrglobwb_4_land_covers_edwin_parameter_set_watch_kinematicwave/no_correction/non-natural/"
