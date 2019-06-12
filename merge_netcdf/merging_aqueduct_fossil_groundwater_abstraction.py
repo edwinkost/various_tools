@@ -3,14 +3,11 @@
 import os
 import sys
 
-#~ directory = sys.argv[1]
-#~ os.chdir(directory)
-#~ print(directory)
-
-
 main_folder = "/projects/0/aqueduct/users/edwinsut/pcrglobwb_runs_2016_oct_nov/pcrglobwb_4_land_covers_edwin_parameter_set_watch_kinematicwave/no_correction/non-natural/"
 start_years = [1958, 1976, 1985] 
 final_year = 2001
+
+main_folder
 
 outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction_test/watch/"
 cmd = "mkdir -p " + outp_folder
@@ -30,7 +27,7 @@ for i_year in range(0, len(start_years)):
     input_folder = main_folder + "/" + inp_sub_folder + "/"
     
     sta_year = start_years[i_year]
-    if i_year == len(start_years):
+    if i_year == (len(start_years)-1):
         end_year = final_year
     else:
         end_year = start_years[i_year+1] - 1
