@@ -37,8 +37,8 @@ for i_year in range(0, len(start_years)):
         #~ example: python merge_netcdf.py /projects/0/aqueduct/users/edwinsut/pcrglobwb_runs_2016_oct_nov/pcrglobwb_4_land_covers_edwin_parameter_set_watch_kinematicwave/no_correction/non-natural/begin_from_1958/ /scratch-shared/edwin/test_merging/ outAnnuaTotNC 1958-12-31 1958-12-31 fossilGroundwaterAbstraction NETCDF4 True 1 Global
 
         cmd = "python merge_netcdf.py " + \
-               input_folder + " " + \
-               outp_folder + " " + \ 
+              input_folder + " " + \
+              outp_folder + " " + \ 
               "outAnnuaTotNC " + \
               str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
               fossilGroundwaterAbstraction NETCDF4 True 1 Global
