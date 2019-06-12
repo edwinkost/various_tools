@@ -3,11 +3,13 @@
 import os
 import sys
 
-main_folder = "/projects/0/aqueduct/users/edwinsut/pcrglobwb_runs_2016_oct_nov/pcrglobwb_4_land_covers_edwin_parameter_set_watch_kinematicwave/no_correction/non-natural/"
-start_years = [1958, 1976, 1985] 
-final_year = 2001
+main_folder = sys.argv[1]
+start_years = int(list(set(sys.argv[2].split(","))))
+final_year  = int(sys.argv[2])
 
-main_folder
+#~ main_folder = "/projects/0/aqueduct/users/edwinsut/pcrglobwb_runs_2016_oct_nov/pcrglobwb_4_land_covers_edwin_parameter_set_watch_kinematicwave/no_correction/non-natural/"
+#~ start_years = [1958, 1976, 1985] 
+#~ final_year = 2001
 
 outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction_test/watch/"
 cmd = "mkdir -p " + outp_folder
