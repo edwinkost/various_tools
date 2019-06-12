@@ -14,7 +14,9 @@ final_year  = int(sys.argv[3])
 
 print(start_years)
 
-outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction_test/watch_2/"
+outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction/historical/1958-2001_watch/"
+outp_folder = str(sys.argv[4])
+
 cmd = "rm -rf " + outp_folder
 print(cmd)
 os.system(cmd)
