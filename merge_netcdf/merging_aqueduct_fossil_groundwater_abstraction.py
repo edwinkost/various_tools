@@ -11,6 +11,8 @@ main_folder = sys.argv[1]
 start_years = list(set(sys.argv[2].split(",")))
 final_year  = int(sys.argv[3])
 
+print(start_years)
+
 outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction_test/watch_2/"
 cmd = "mkdir -p " + outp_folder
 print(cmd)
