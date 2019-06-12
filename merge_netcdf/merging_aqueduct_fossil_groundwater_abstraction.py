@@ -17,9 +17,9 @@ print(start_years)
 outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction/historical/1958-2001_watch/"
 outp_folder = str(sys.argv[4])
 
-cmd = "rm -rf " + outp_folder
-print(cmd)
-os.system(cmd)
+#~ cmd = "rm -rf " + outp_folder
+#~ print(cmd)
+#~ os.system(cmd)
 cmd = "mkdir -p " + outp_folder
 print(cmd)
 os.system(cmd)
