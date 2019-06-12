@@ -28,11 +28,11 @@ for i_year in range(0, len(start_years)):
     
     input_folder = main_folder + "/" + inp_sub_folder + "/"
     
-    sta_year = start_years[i_year]
+    sta_year = int(start_years[i_year])
     if i_year == (len(start_years)-1):
         end_year = final_year
     else:
-        end_year = start_years[i_year+1] - 1
+        end_year = int(start_years[i_year+1]) - 1
     
     for year in range(sta_year, end_year + 1):
     
