@@ -16,6 +16,9 @@ outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction_tes
 cmd = "mkdir -p " + outp_folder
 print(cmd)
 os.system(cmd)
+cmd = "cp merge_netcdf.py " + outp_folder
+print(cmd)
+os.system(cmd)
 os.chdir(outp_folder)
 
 for i_year in range(0, len(start_years)):
