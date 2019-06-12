@@ -9,7 +9,7 @@ final_year = 2001
 
 main_folder = sys.argv[1]
 start_years = map(int, list(set(sys.argv[2].split(","))))
-#~ start_years = start_years.sort()
+start_years.sort()
 final_year  = int(sys.argv[3])
 
 print(start_years)
