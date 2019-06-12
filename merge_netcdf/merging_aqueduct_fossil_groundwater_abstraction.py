@@ -22,13 +22,9 @@ os.chdir(outp_folder)
 
 for i_year in range(0, len(start_years)):
     
-    print i_year
-    
-    pietje
-    
     # - input sub folder
-    inp_sub_folder = "continue_from_" + str(start_years[i_year])
-    if i_year == 0: inp_sub_folder = "begin_from_" + str(start_years[i_year]) 
+    inp_sub_folder = "begin_from_" + str(start_years[i_year]) 
+    if i_year > 0: inp_sub_folder = "continue_from_" + str(start_years[i_year])
     
     input_folder = main_folder + "/" + inp_sub_folder + "/"
     
