@@ -13,10 +13,11 @@ start_years.sort()
 final_year  = int(sys.argv[3])
 
 print(start_years)
-#~ pietje
-
 
 outp_folder = "/scratch-shared/edwin/aqueduct_fossil_groundwater_abstraction_test/watch_2/"
+cmd = "rm -rf " + outp_folder
+print(cmd)
+os.system(cmd)
 cmd = "mkdir -p " + outp_folder
 print(cmd)
 os.system(cmd)
