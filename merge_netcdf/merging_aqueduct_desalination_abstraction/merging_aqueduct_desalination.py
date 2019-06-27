@@ -69,7 +69,7 @@ for i_year in range(0, len(start_years)):
               outp_folder + " " + \
               "outAnnuaAvgNC " + \
               str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
-              "fracDesalinatedWaterAllocation_annuaAvg_output.nc NETCDF4 True 1 Global"
+              "fracDesalinatedWaterAllocation NETCDF4 True 1 Global"
         print(cmd)
         os.system(cmd)
 
