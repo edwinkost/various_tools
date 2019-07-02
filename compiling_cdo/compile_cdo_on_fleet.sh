@@ -21,8 +21,8 @@ wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4/zlib-1.2.8.tar.gz
 tar -xvf zlib-1.2.8.tar.gz
 cd zlib-1.2.8
 ./configure --prefix=${TARGET_FOLDER}
-make
-make check
+make -j 6
+make check -j 6
 make install
 
 # download and install HDF5 using ./configure –with-zlib=/opt/cdo-install –prefix=/opt/cdo-install CFLAGS=-fPIC ; ‘make’, ‘make check’ and ‘make install’
@@ -31,8 +31,8 @@ wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hd
 tar -xvf hdf5-1.10.5
 cd hdf5-1.10.5
 ./configure --with-zlib=${TARGET_FOLDER} --prefix=${TARGET_FOLDER} CFLAGS=-fPIC 
-make
-make check
+make -j 6
+make check -j 6
 make install
 
 # to enable dap, install libcurl from http://curl.haxx.se/download.html. install it from source using –prefix=/opt/cdo-install/
