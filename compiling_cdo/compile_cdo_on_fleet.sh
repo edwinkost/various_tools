@@ -115,7 +115,6 @@ cd ${SOURCE_FOLDER}
 wget https://code.mpimet.mpg.de/attachments/download/19299/cdo-1.9.6.tar.gz
 tar -xvf cdo-1.9.6.tar.gz
 cd cdo-1.9.6
-#~ ./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC CFLAGS="-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H" --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-grib_api=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER} --with-proj=${TARGET_FOLDER} CC=gcc CFLAGS="-g -O2" CXX=g++ CXXFLAGS="-g -O2" 
 ./configure --prefix=${TARGET_FOLDER} CFLAGS="-fPIC -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H -g -O2" --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-grib_api=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER} --with-proj=${TARGET_FOLDER} CC=gcc CXX=g++ CXXFLAGS="-g -O2 -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H" 
 make -j 6
 make check -j 6
