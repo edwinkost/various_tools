@@ -2,6 +2,9 @@
 set -x
 
 # get and install miniconda, set the directory to /home/sutan101/opt/miniconda3
+rm -r /home/sutan101/opt/miniconda3
+mkdir -p /home/sutan101/opt/miniconda3
+cd /home/sutan101/opt/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 
@@ -16,5 +19,6 @@ PCRASTER=/opt/pcraster/pcraster-4.2.1
 export PATH=$PCRASTER/bin:$PATH
 export PYTHONPATH=$PCRASTER/python:$PYTHONPATH
 
+cd -
 set +x
 
