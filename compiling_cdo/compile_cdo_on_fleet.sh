@@ -1,7 +1,8 @@
-# source http://www.studytrails.com/blog/install-climate-data-operator-cdo-with-netcdf-grib2-and-hdf5-support/
 
 #~ # on fleet, do not forget to activate g++
 #~ scl enable devtoolset-8 bash
+
+# source http://www.studytrails.com/blog/install-climate-data-operator-cdo-with-netcdf-grib2-and-hdf5-support/
 
 set -x
 
@@ -55,16 +56,16 @@ make -j 6
 make check -j 6
 make install
 
-#~ # download and install Jasper using ./configure –prefix=/opt/cdo-install  CFLAGS=-fPIC ; ‘make’, ‘make check’ and ‘make install’
-#~ cd ${SOURCE_FOLDER}
-#~ wget https://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.29.tar.gz
-#~ tar -xvf jasper-1.900.29.tar.gz
-#~ cd jasper-1.900.29
-#~ ./configure --prefix=${TARGET_FOLDER}  CFLAGS=-fPIC
-#~ make -j 6
-#~ make check -j 6
-#~ make install
-#~ 
+# download and install Jasper using ./configure –prefix=/opt/cdo-install  CFLAGS=-fPIC ; ‘make’, ‘make check’ and ‘make install’
+cd ${SOURCE_FOLDER}
+wget https://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.29.tar.gz
+tar -xvf jasper-1.900.29.tar.gz
+cd jasper-1.900.29
+./configure --prefix=${TARGET_FOLDER}  CFLAGS=-fPIC
+make -j 6
+make check -j 6
+make install
+
 #~ # download and install grib using ./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install ; ‘make’, ‘make check’ and ‘make install’
 #~ cd ${SOURCE_FOLDER}
 #~ wget https://confluence.ecmwf.int/download/attachments/3473437/grib_api-1.28.0-Source.tar.gz
@@ -74,8 +75,20 @@ make install
 #~ make -j 6
 #~ make check -j 6
 #~ make install
+#~ #
+#~ # jasper STILL does NOT WORK
 
-# WE SHOULD ALSO INCLUDE UDUNITS2
+# download and install grib using ./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install ; ‘make’, ‘make check’ and ‘make install’
+cd ${SOURCE_FOLDER}
+wget https://confluence.ecmwf.int/download/attachments/3473437/grib_api-1.28.0-Source.tar.gz
+tar -xvf grib_api-1.28.0-Source.tar.gz
+cd grib_api-1.28.0-Source
+./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC  --with-netcdf=${TARGET_FOLDER} --disable-jpeg
+make -j 6
+make check -j 6
+make install
+
+# we should also include UDUNITS2
 cd ${SOURCE_FOLDER}
 wget ftp://ftp.unidata.ucar.edu/pub/udunits/udunits-2.2.26.tar.gz
 tar -xvf udunits-2.2.26.tar.gz
@@ -85,26 +98,29 @@ make -j 6
 make check -j 6
 make install
 
-#~ # TODO: We should also include PROJ4, e.g. https://download.osgeo.org/proj/proj-6.1.1.tar.gz
-#~ cd ${SOURCE_FOLDER}
-#~ wget https://download.osgeo.org/proj/proj-6.1.1.tar.gz
-#~ tar -xvf proj-6.1.1.tar.gz
-#~ cd proj-6.1.1
-#~ ./configure --prefix=${TARGET_FOLDER}
-#~ make -j 6
-#~ make check -j 6
-#~ make install
+# we should also include PROJ4, e.g. https://download.osgeo.org/proj/proj-6.1.1.tar.gz
+cd ${SOURCE_FOLDER}
+wget https://download.osgeo.org/proj/proj-6.1.1.tar.gz
+tar -xvf proj-6.1.1.tar.gz
+cd proj-6.1.1
+./configure --prefix=${TARGET_FOLDER}
+make -j 6
+make check -j 6
+make install
 
 # download and install cdo using ./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install –with-hdf5=/opt/cdo-install  –with-grib_api=/opt/cdo-install ; ‘make’, ‘make check’ and ‘make install’
 cd ${SOURCE_FOLDER}
 wget https://code.mpimet.mpg.de/attachments/download/19299/cdo-1.9.6.tar.gz
 tar -xvf cdo-1.9.6.tar.gz
 cd cdo-1.9.6
-#~ ./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-jasper=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-grib_api=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER}
-./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER} CC=gcc CFLAGS="-g -O2" CXX=g++ CXXFLAGS="-g -O2" 
+./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-grib_api=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER} --with-proj=${TARGET_FOLDER} CC=gcc CFLAGS="-g -O2" CXX=g++ CXXFLAGS="-g -O2"
 make -j 6
 make check -j 6
 make install
 
 
 set +x
+
+# TODO: 
+# 1. Please check whether we also need to include szlib?
+# 2. Please check whether we also need jasper?
