@@ -85,15 +85,26 @@ make -j 6
 make check -j 6
 make install
 
+#~ # TODO: We should also include PROJ4, e.g. https://download.osgeo.org/proj/proj-6.1.1.tar.gz
+#~ cd ${SOURCE_FOLDER}
+#~ wget https://download.osgeo.org/proj/proj-6.1.1.tar.gz
+#~ tar -xvf proj-6.1.1.tar.gz
+#~ cd proj-6.1.1
+#~ ./configure --prefix=${TARGET_FOLDER}
+#~ make -j 6
+#~ make check -j 6
+#~ make install
+
 # download and install cdo using ./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install –with-hdf5=/opt/cdo-install  –with-grib_api=/opt/cdo-install ; ‘make’, ‘make check’ and ‘make install’
 cd ${SOURCE_FOLDER}
 wget https://code.mpimet.mpg.de/attachments/download/19299/cdo-1.9.6.tar.gz
 tar -xvf cdo-1.9.6.tar.gz
 cd cdo-1.9.6
 #~ ./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-jasper=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-grib_api=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER}
-./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER}
+./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER} CC=gcc CFLAGS="-g -O2" CXX=g++ CXXFLAGS="-g -O2" 
 make -j 6
 make check -j 6
 make install
+
 
 set +x
