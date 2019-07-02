@@ -2,6 +2,7 @@
 set -x
 
 # get and install miniconda, set the directory to /home/sutan101/opt/miniconda3
+rm -rf /home/sutan101/opt/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 
