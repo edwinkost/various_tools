@@ -1,9 +1,9 @@
 # source http://www.studytrails.com/blog/install-climate-data-operator-cdo-with-netcdf-grib2-and-hdf5-support/
 
-set -x
+#~ # do not forget to activate g++
+#~ scl enable devtoolset-8 bash
 
-# activate g++
-scl enable devtoolset-8 bash
+set -x
 
 TARGET_FOLDER="/home/sutan101/opt/cdo/cdo-1.9.6/"
 rm -rf ${TARGET_FOLDER}
