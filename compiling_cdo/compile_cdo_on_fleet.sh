@@ -76,13 +76,14 @@ make install
 #~ make check -j 6
 #~ make install
 #~ #
-#~ # jasper STILL does NOT WORK
+#~ # TODO: jasper STILL does NOT WORK
 
 # download and install grib using ./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install ; ‘make’, ‘make check’ and ‘make install’
 cd ${SOURCE_FOLDER}
 wget https://confluence.ecmwf.int/download/attachments/3473437/grib_api-1.28.0-Source.tar.gz
 tar -xvf grib_api-1.28.0-Source.tar.gz
 cd grib_api-1.28.0-Source
+#~ ./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC  --with-netcdf=${TARGET_FOLDER} --with-jasper=${TARGET_FOLDER}
 ./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC  --with-netcdf=${TARGET_FOLDER} --disable-jpeg
 make -j 6
 make check -j 6
@@ -103,6 +104,7 @@ cd ${SOURCE_FOLDER}
 wget https://download.osgeo.org/proj/proj-6.1.1.tar.gz
 tar -xvf proj-6.1.1.tar.gz
 cd proj-6.1.1
+make clean
 ./configure --prefix=${TARGET_FOLDER}
 make -j 6
 make check -j 6
@@ -113,11 +115,15 @@ cd ${SOURCE_FOLDER}
 wget https://code.mpimet.mpg.de/attachments/download/19299/cdo-1.9.6.tar.gz
 tar -xvf cdo-1.9.6.tar.gz
 cd cdo-1.9.6
-./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-grib_api=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER} --with-proj=${TARGET_FOLDER} CC=gcc CFLAGS="-g -O2" CXX=g++ CXXFLAGS="-g -O2"
+#~ ./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC CFLAGS="-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H" --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-grib_api=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER} --with-proj=${TARGET_FOLDER} CC=gcc CFLAGS="-g -O2" CXX=g++ CXXFLAGS="-g -O2" 
+./configure --prefix=${TARGET_FOLDER} CFLAGS="-fPIC -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H -g -O2" --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-grib_api=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER} --with-proj=${TARGET_FOLDER} CC=gcc CXX=g++ CXXFLAGS="-g -O2 -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H" 
 make -j 6
 make check -j 6
 make install
 
+# final check 
+export PATH=${TARGET_FOLDER}/bin:$PATH
+cdo -V
 
 set +x
 
