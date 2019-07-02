@@ -55,25 +55,25 @@ make -j 6
 make check -j 6
 make install
 
-# download and install Jasper using ./configure –prefix=/opt/cdo-install  CFLAGS=-fPIC ; ‘make’, ‘make check’ and ‘make install’
-cd ${SOURCE_FOLDER}
-wget https://www.ece.uvic.ca/~frodo/jasper/software/jasper-2.0.14.tar.gz
-tar -xvf jasper-2.0.14.tar.gz
-cd jasper-2.0.14
-./configure --prefix=${TARGET_FOLDER}  CFLAGS=-fPIC
-make -j 6
-make check -j 6
-make install
-
-# download and install grib using ./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install ; ‘make’, ‘make check’ and ‘make install’
-cd ${SOURCE_FOLDER}
-wget https://confluence.ecmwf.int/download/attachments/3473437/grib_api-1.28.0-Source.tar.gz
-tar -xvf grib_api-1.28.0-Source.tar.gz
-cd grib_api-1.28.0-Source
-./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC  --with-netcdf=${TARGET_FOLDER} --with-jasper=${TARGET_FOLDER}
-make -j 6
-make check -j 6
-make install
+#~ # download and install Jasper using ./configure –prefix=/opt/cdo-install  CFLAGS=-fPIC ; ‘make’, ‘make check’ and ‘make install’
+#~ cd ${SOURCE_FOLDER}
+#~ wget https://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.29.tar.gz
+#~ tar -xvf jasper-1.900.29.tar.gz
+#~ cd jasper-1.900.29
+#~ ./configure --prefix=${TARGET_FOLDER}  CFLAGS=-fPIC
+#~ make -j 6
+#~ make check -j 6
+#~ make install
+#~ 
+#~ # download and install grib using ./configure –prefix=/opt/cdo-install CFLAGS=-fPIC  –with-netcdf=/opt/cdo-install –with-jasper=/opt/cdo-install ; ‘make’, ‘make check’ and ‘make install’
+#~ cd ${SOURCE_FOLDER}
+#~ wget https://confluence.ecmwf.int/download/attachments/3473437/grib_api-1.28.0-Source.tar.gz
+#~ tar -xvf grib_api-1.28.0-Source.tar.gz
+#~ cd grib_api-1.28.0-Source
+#~ ./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC  --with-netcdf=${TARGET_FOLDER} --with-jasper=${TARGET_FOLDER}
+#~ make -j 6
+#~ make check -j 6
+#~ make install
 
 # WE SHOULD ALSO INCLUDE UDUNITS2
 cd ${SOURCE_FOLDER}
@@ -90,8 +90,8 @@ cd ${SOURCE_FOLDER}
 wget https://code.mpimet.mpg.de/attachments/download/19299/cdo-1.9.6.tar.gz
 tar -xvf cdo-1.9.6.tar.gz
 cd cdo-1.9.6
-./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER}
-./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-jasper=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-grib_api=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER}
+#~ ./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-jasper=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-grib_api=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER}
+./configure --prefix=${TARGET_FOLDER} CFLAGS=-fPIC --with-netcdf=${TARGET_FOLDER} --with-hdf5=${TARGET_FOLDER} --with-udunits2=${TARGET_FOLDER}
 make -j 6
 make check -j 6
 make install
