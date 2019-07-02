@@ -1,6 +1,6 @@
 # source http://www.studytrails.com/blog/install-climate-data-operator-cdo-with-netcdf-grib2-and-hdf5-support/
 
-#~ # do not forget to activate g++
+#~ # on fleet, do not forget to activate g++
 #~ scl enable devtoolset-8 bash
 
 set -x
@@ -28,7 +28,7 @@ make install
 # download and install HDF5 using ./configure –with-zlib=/opt/cdo-install –prefix=/opt/cdo-install CFLAGS=-fPIC ; ‘make’, ‘make check’ and ‘make install’
 cd ${SOURCE_FOLDER}
 wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.5/src/hdf5-1.10.5.tar.gz
-tar -xvf hdf5-1.10.5
+tar -xvf hdf5-1.10.5.tar.gz
 cd hdf5-1.10.5
 ./configure --with-zlib=${TARGET_FOLDER} --prefix=${TARGET_FOLDER} CFLAGS=-fPIC 
 make -j 6
