@@ -1,0 +1,23 @@
+# first load pcraster 4.2.1 as compiled by Oliver, including some libraries
+source /quanta1/home/hydrowld/opt/pcraster/pcraster-4.2.1/load_pcraster-4.2.1.sh
+pcrcalc
+
+# use Anaconda
+cd /quanta1/home/hydrowld/etc/anaconda3
+bash Anaconda3-2019.03-Linux-x86_64.sh 
+
+# load the path
+export PATH=/quanta1/home/hydrowld/opt/anaconda3/bin/:$PATH
+python -c "import pcraster"
+
+# update anaconda
+conda update --prefix /quanta1/home/hydrowld/opt/anaconda3 anaconda
+
+# install some python packages ; do NOT install gdal (having conflicts with pcraster)
+conda install netcdf4 six
+
+# test pcraster
+python -c "import pcraster"
+python -c "import netCDF4"
+
+# NOTE: As gdal is not installed, we will have to load it from another source, e.g. /home/hydrowld/anaconda2/bin/gdal_translate etc
