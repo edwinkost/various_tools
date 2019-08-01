@@ -4,6 +4,8 @@
 import os
 import sys
 
+import pcraster as pcr
+
 # utility modules:
 import virtualOS as vos
 import outputNetcdf as out_nc
