@@ -90,7 +90,7 @@ class OutputNetcdf():
         return longitudes, latitudes, cellSizeInArcMin  
 
 
-    def createNetCDF(self, ncFileName, varName, varUnits, date, longName=None):
+    def createNetCDF(self, ncFileName, varName, varUnits, date, longName = None):
 
         rootgrp = nc.Dataset(ncFileName,'w',format= self.format)
 

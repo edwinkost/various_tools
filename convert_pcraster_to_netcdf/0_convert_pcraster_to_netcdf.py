@@ -44,6 +44,7 @@ def main():
     output_netcdf.createNetCDF(ncFileName = output_netcdf_file, \
                                varName    = variable_name, \
                                varUnits   = variable_unit, \
+                               date       = None
                                )                                    
     # - write to the netcdf file
     output_netcdf.data2NetCDF(ncFileName   = output_netcdf_file, \ 
