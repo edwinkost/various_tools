@@ -47,17 +47,11 @@ def main():
                                date       = None
                                )                                    
     # - write to the netcdf file
-    output_netcdf.data2NetCDF(ncFileName   = output_netcdf_file, \ 
+    output_netcdf.data2NetCDF(ncFileName   = output_netcdf_file, \
                               shortVarName = pcr.pcr2numpy(input_pcr_map, vos.MV), 
                               timeStamp    = None, 
                               posCnt       = None
-    
-    
-    
-    ncFileName = output_netcdf_file, \
-                               varName    = variable_name, \
-                               varUnits   = variable_unit, \
-                               )                                    
+                              )
                                         
 
 if __name__ == '__main__':
