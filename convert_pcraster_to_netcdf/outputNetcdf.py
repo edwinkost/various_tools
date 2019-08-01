@@ -146,7 +146,7 @@ class OutputNetcdf():
 
     def data2NetCDF(self, ncFileName, shortVarName, varField, timeStamp, posCnt = None):
 
-        nc.Dataset(ncFileName,'a')
+        rootgrp = nc.Dataset(ncFileName,'a')
         
         # flip variable if necessary
         if self.netcdf_y_orientation_from_top_bottom: varField = np.flipud(varField)
