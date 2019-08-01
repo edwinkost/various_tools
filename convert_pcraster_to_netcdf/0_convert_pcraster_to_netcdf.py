@@ -52,6 +52,8 @@ def main():
                               timeStamp    = None, 
                               posCnt       = None
                               )
+    
+    print("Done!")                          
                                         
 
 if __name__ == '__main__':

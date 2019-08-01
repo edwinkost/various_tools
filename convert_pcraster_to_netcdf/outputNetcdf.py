@@ -27,7 +27,7 @@ class OutputNetcdf():
         self.zlib   = netcdf_zlib 
 
         # netcdf latitude orientation
-        self.netcdf_y_orientation_from_top_bottom = netcdf_y_orientation_from_top_bottom:
+        self.netcdf_y_orientation_from_top_bottom = netcdf_y_orientation_from_top_bottom
 
         # longitudes and latitudes
         self.longitudes, self.latitudes, self.cellSizeInArcMin = self.set_latlon_based_on_cloneMapFileName(inputMapFileName, \
