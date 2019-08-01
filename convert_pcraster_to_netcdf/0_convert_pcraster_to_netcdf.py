@@ -50,7 +50,8 @@ def main():
                                )                                    
     # - write to the netcdf file
     output_netcdf.data2NetCDF(ncFileName   = output_netcdf_file, \
-                              shortVarName = pcr.pcr2numpy(input_pcr_map, vos.MV), 
+                              shortVarName = variable_name, 
+                              varField     = pcr.pcr2numpy(input_pcr_map, vos.MV), 
                               timeStamp    = None, 
                               posCnt       = None
                               )
