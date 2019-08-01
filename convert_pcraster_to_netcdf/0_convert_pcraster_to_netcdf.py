@@ -25,11 +25,14 @@ def main():
 
     # input and output file names based on the command line arguments
     input_pcr_map_file = str(sys.argv[1])
-    output_netcdf_file = str(sys.argv[2])
+    output_netcdf_file = input_pcr_map_file + ".nc"
+    if len(sys.argv) > 2: output_netcdf_file = str(sys.argv[2])
     
     # set also the variable name and unit
-    variable_name = sys.argv[3]
-    variable_unit = sys.argv[4]
+    variable_unit = "unknown"
+    if len(sys.argv) > 3: variable_unit = sys.argv[3]
+    variable_name = os.path.basename(input_pcr_map_file)
+    if len(sys.argv) > 4: variable_name = sys.argv[4]
 
     # read the pcraster map
     input_pcr_map = pcr.readmap(input_pcr_map_file)
