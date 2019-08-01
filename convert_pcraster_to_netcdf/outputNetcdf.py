@@ -142,23 +142,22 @@ class OutputNetcdf():
         rootgrp.sync()
         rootgrp.close()
 
-    def data2NetCDF(self, ncFileName, shortVarName, varField, timeStamp, posCnt = None, closeFile = False):
+    def data2NetCDF(self, ncFileName, shortVarName, varField, timeStamp, posCnt = None):
 
-        if ncFileName in filecache.keys():
-            #~ print "Cached: ", ncFileName
-            rootgrp = filecache[ncFileName]
+        nc.Dataset(ncFileName,'a')
+        
+        # flip variable if necessary
+        if self.netcdf_y_orientation_from_top_bottom: varField = np.flipud(varField)
+
+        if timeStamp != None:
+            date_time = rootgrp.variables['time']
+            if posCnt == None: posCnt = len(date_time)
+            date_time[posCnt] = nc.date2num(timeStamp,date_time.units,date_time.calendar)
+            rootgrp.variables[shortVarName][posCnt,:,:] = varField
         else:
-            #~ print "New: ", ncFileName
-            rootgrp = nc.Dataset(ncFileName,'a')
-            filecache[ncFileName] = rootgrp
-
-        date_time = rootgrp.variables['time']
-        if posCnt == None: posCnt = len(date_time)
-        date_time[posCnt] = nc.date2num(timeStamp,date_time.units,date_time.calendar)
-
-        rootgrp.variables[shortVarName][posCnt,:,:] = varField
-
+            rootgrp.variables[shortVarName][:,:] = varField
+        
         rootgrp.sync()
-        if closeFile == True: rootgrp.close()
+        rootgrp.close()
 
 
