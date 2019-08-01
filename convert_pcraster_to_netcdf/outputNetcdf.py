@@ -32,28 +32,30 @@ class OutputNetcdf():
         # longitudes and latitudes
         self.longitudes, self.latitudes, self.cellSizeInArcMin = self.set_latlon_based_on_cloneMapFileName(inputMapFileName, \
                                                                                                            self.netcdf_y_orientation_from_top_bottom)
-        
         # necdf global attributes
         self.attributeDictionary = {}
         if netcdf_attribute_description == None:
             # default netCDF attributes
-            self.attributeDictionary['institution']  = ""
-            self.attributeDictionary['title'      ]  = inputMapFileName
-            self.attributeDictionary['source'     ]  = inputMapFileName
-            self.attributeDictionary['history'    ]  = "This netcdf file was converted from a pcraster file '" + inputMapFileName + "' on " + current_time + "."
-            self.attributeDictionary['references' ]  = ""
-            self.attributeDictionary['references' ] += "Burek et al., 2013. Evaporation Pre-Processor for the LISFLOOD Water Balance and Flood Simulation Model. JRC Technical Reports. doi: 10.2788/26000 "
-            self.attributeDictionary['comment'    ]  = "" 
+            self.attributeDictionary['institution'] = ""
+            self.attributeDictionary['title'      ] = inputMapFileName
+            self.attributeDictionary['source'     ] = inputMapFileName
+            self.attributeDictionary['references' ] = inputMapFileName
+            self.attributeDictionary['history'    ] = ""
+            self.attributeDictionary['comment'    ] = "" 
         else:
             # using a specific defined set of netCDF attributes
             self.attributeDictionary['institution'] = netcdf_attribute_dict['institution']
             self.attributeDictionary['title'      ] = netcdf_attribute_dict['title'      ]
             self.attributeDictionary['source'     ] = netcdf_attribute_dict['source'     ]
-            self.attributeDictionary['history'    ] = netcdf_attribute_dict['history'    ]
             self.attributeDictionary['references' ] = netcdf_attribute_dict['references' ]
+            self.attributeDictionary['history'    ] = netcdf_attribute_dict['history'    ]
             self.attributeDictionary['comment'    ] = netcdf_attribute_dict['comment'    ]
             self.attributeDictionary['description'] = netcdf_attribute_dict['description']
         
+        # add a history
+        current_time = str(datetime.datetime.now())
+        self.attributeDictionary['history'    ]  = "This netcdf file was converted from a pcraster file '" + inputMapFileName + "' on " + current_time + "."
+
         # extra netcdf attribute ('description')
         if netcdf_attribute_description != None: self.attributeDictionary['description']  = netcdf_attribute_description
 
