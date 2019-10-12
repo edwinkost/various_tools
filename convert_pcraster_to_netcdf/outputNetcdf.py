@@ -84,7 +84,7 @@ class OutputNetcdf():
         
         # cell centres coordinates
         longitudes = np.arange(x_min + deltaLon/2., x_max, deltaLon)
-        latitudes  = np.arange(y_max - deltaLat/2., y_min,-deltaLat)[::-1]
+        latitudes  = np.arange(y_max - deltaLat/2., y_min,-deltaLat)
 
         if netcdf_y_orientation_from_top_bottom == False:
             latitudes  = latitudes[::-1]
@@ -149,7 +149,7 @@ class OutputNetcdf():
         rootgrp = nc.Dataset(ncFileName,'a')
         
         # flip variable if necessary
-        if self.netcdf_y_orientation_from_top_bottom: varField = np.flipud(varField)
+        if self.netcdf_y_orientation_from_top_bottom == False: varField = np.flipud(varField)
 
         if timeStamp != None:
             date_time = rootgrp.variables['time']
