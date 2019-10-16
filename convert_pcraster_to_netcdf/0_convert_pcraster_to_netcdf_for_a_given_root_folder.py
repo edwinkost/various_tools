@@ -16,8 +16,8 @@ def main():
     path = "/scratch/depfg/sutan101/pcrglobwb2_input_release/develop_complete_set_for_4tu_opendap/pcrglobwb2_input/"
     
     for root, dirs, files in os.walk(path):
-    for name in files:
-        print(name)
+        for file_name in files:
+            print(file_name)
     
     print("Done!")                          
                                         
