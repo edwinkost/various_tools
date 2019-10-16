@@ -17,8 +17,9 @@ def main():
     
     for root, dirs, files in os.walk(path):
         for file_name in files:
+            print(os.path.join(root, name))
             print(file_name)
-    
+            
     print("Done!")                          
                                         
 
