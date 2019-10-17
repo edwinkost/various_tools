@@ -13,18 +13,28 @@ import outputNetcdf as out_nc
 
 def main():
     
-    path = "/scratch/depfg/sutan101/pcrglobwb2_input_release/develop_complete_set_for_4tu_opendap/pcrglobwb2_input/"
+    source_path = "/scratch/depfg/sutan101/pcrglobwb2_input_release/develop_complete_set_for_4tu_opendap/pcrglobwb2_input/"
     
-    for root, dirs, files in os.walk(path):
+    target_path = "/scratch/depfg/sutan101/pcrglobwb2_input_release/develop_complete_set_for_4tu_opendap_netcdf_files_only/pcrglobwb2_input/"
+    
+    # about os.walk, see https://www.tutorialspoint.com/python/os_walk.htm
+
+    for roots, dirs, files in os.walk(source_path):
+
+        for dir in dirs:
+            pass
+
         for file_name in files:
             
-            # print the full path
-            print(os.path.join(root, file_name))
+            # for netcdf files
             
-            # print file_name only
-            print file_name
+            # print the full path of source
+            source_file_name = os.path.join(roots, file_name)
+            print(source_file_name)
             
-    # about os.walk, see https://www.tutorialspoint.com/python/os_walk.htm
+            # target file_name
+            target_file_name = source_file_name.replace(source_path, target_path)
+            print(target_file_name)
     
     print("Done!")                          
                                         
