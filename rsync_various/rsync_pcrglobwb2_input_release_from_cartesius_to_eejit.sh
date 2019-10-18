@@ -14,11 +14,12 @@ TARGET="eejit_hydrowld_via_speedy:/quanta1/home/hydrowld/data/hydroworld/pcrglob
 
 
 # the following options should make symlinks broken
-#~ OPTIONS="--recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress"
+# - NOTE: All links (e.g. "latest_release" and "develop") should be skipped and updated mannually.
+OPTIONS="--recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress"
 
 
 #~ # the following options should also include copying real files and folders of symlinks
-#~ # - NOTE: All links should be skipped and updated mannually
+#~ # - NOTE: All links should be skipped and updated mannually.
 #~ OPTIONS="--recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress --copy-links"
 
 
