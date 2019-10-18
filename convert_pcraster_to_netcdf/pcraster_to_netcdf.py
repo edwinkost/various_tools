@@ -13,6 +13,7 @@ import outputNetcdf as out_nc
 def convert_pcraster_to_netcdf(\
                                input_pcr_map_file,\
                                output_netcdf_file,\
+                               variable_name = None\,
                                netcdf_global_attributes = None,\
                                netcdf_y_orientation_from_top_bottom = False,\
                                variable_unit = "unknown",\
@@ -23,6 +24,8 @@ def convert_pcraster_to_netcdf(\
     
     # read the pcraster map
     input_pcr_map = pcr.readmap(input_pcr_map_file)
+    
+    if variable_name is None: variable_name = os.path.basename(input_pcr_map_file)
     
     # converting it to a netcdf file
     # - initiate an object to write a netcdf file
