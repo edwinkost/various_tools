@@ -37,6 +37,10 @@ def main():
             target_file_name = source_file_name.replace(source_path, target_path)
             if target_file_name.endswith(".nc4"): target_file_name = target_file_name[:-1]
 
+            # make sure that the output directory ready
+            target_directory = os.path.dirname(source_file_name).replace(source_path, target_path)
+            if os.path.exists(target_directory): == False: os.makedirs(target_directory)
+            
             if target_file_name.endswith(".nc"):
                 # for netcdf files, just copy
                 if os.path.exists(target_file_name) == False: shutil.copy(source_file_name, target_file_name)
