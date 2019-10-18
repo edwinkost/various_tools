@@ -21,12 +21,11 @@ def main():
 
     for roots, dirs, files in os.walk(source_path):
 
+        # preparing directory
         for dir in dirs:
             pass
 
         for file_name in files:
-            
-            # for netcdf files
             
             # print the full path of source
             source_file_name = os.path.join(roots, file_name)
@@ -36,6 +35,12 @@ def main():
             target_file_name = source_file_name.replace(source_path, target_path)
             print(target_file_name)
     
+            # for netcdf files, just copy and add some general attributes
+            
+            
+            # for non-netcdf files, convert them to netcdf 
+            
+
     print("Done!")                          
                                         
 

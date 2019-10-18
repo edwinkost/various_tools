@@ -2,8 +2,8 @@
 
 set -x
 
-# NOTE: It is recommended for NOT USING hydrowld account of cartesius. 
-
+# source folder
+# - NOTE: It is recommended for NOT USING hydrowld account of cartesius. 
 SOURCE="/projects/0/dfguu/data/hydroworld/pcrglobwb2_input_release/"
 
 # - to hydrowld home
@@ -13,14 +13,16 @@ TARGET="eejit_hydrowld_via_speedy:/quanta1/home/hydrowld/data/hydroworld/pcrglob
 #~ TARGET="eejit_hydrowld_via_speedy:/scratch/depfg/hydrowld/data/hydroworld/"
 
 
-# the following options should also include copying real files and folders of symlinks
-OPTIONS="--recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress --copy-links"
-
 # the following options should make symlinks broken
 #~ OPTIONS="--recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress"
 
 
-# go to the source folder
+#~ # the following options should also include copying real files and folders of symlinks
+#~ # - NOTE: All links should be skipped and updated mannually
+#~ OPTIONS="--recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress --copy-links"
+
+
+# go to the source folder - not necessary
 cd ${SOURCE}
 
 # rsync command
