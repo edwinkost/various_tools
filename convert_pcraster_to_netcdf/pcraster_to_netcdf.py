@@ -13,7 +13,7 @@ import outputNetcdf as out_nc
 def convert_pcraster_to_netcdf(\
                                input_pcr_map_file,\
                                output_netcdf_file,\
-                               variable_name = None\,
+                               variable_name = None,\
                                netcdf_global_attributes = None,\
                                netcdf_y_orientation_from_top_bottom = False,\
                                variable_unit = "unknown",\
