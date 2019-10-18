@@ -36,7 +36,7 @@ def main():
             # get target file_name
             target_file_name = source_file_name.replace(source_path, target_path)
             if target_file_name.endswith(".nc4"): target_file_name = target_file_name[:-1]
-            if target_file_name.endswith(".map"): target_file_name = target_file_name[:-3] + ".map"
+            if target_file_name.endswith(".map"): target_file_name = target_file_name[:-4] + ".nc"
             print(target_file_name)
 
             if target_file_name.endswith(".nc"):
