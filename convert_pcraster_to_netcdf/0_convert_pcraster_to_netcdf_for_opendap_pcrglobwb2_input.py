@@ -17,13 +17,13 @@ def main():
 
     for roots, dirs, files in os.walk(source_path):
 
-        #~ # preparing directories
-        #~ for directory in dirs:
-            #~ source_directory = os.path.join(roots, directory)
-            #~ target_directory = source_directory.replace(source_path, target_path)
-            #~ if os.path.exists(target_directory): shutil.rmtree(target_directory)
-            #~ os.makedirs(target_directory)
-            #~ print(target_directory)
+        # preparing directories
+        for directory in dirs:
+            source_directory = os.path.join(roots, directory)
+            target_directory = source_directory.replace(source_path, target_path)
+            if os.path.exists(target_directory): shutil.rmtree(target_directory)
+            os.makedirs(target_directory)
+            print(target_directory)
 
         print(" ")
 
@@ -35,26 +35,26 @@ def main():
             
             # get target file_name
             target_file_name = source_file_name.replace(source_path, target_path)
+            # - rename ".nc4" to "nc" (the standard extension of netcdf file is ".nc")
             if target_file_name.endswith(".nc4"): target_file_name = target_file_name[:-1]
 
-            # make sure that the output directory ready
+            # make sure that the output directory is ready
             target_directory = os.path.dirname(source_file_name).replace(source_path, target_path)
             if os.path.exists(target_directory) == False: os.makedirs(target_directory)
             
             if target_file_name.endswith(".nc"):
                 # for netcdf files, just copy
-                if os.path.exists(target_file_name) == False: shutil.copy(source_file_name, target_file_name)
+                shutil.copy(source_file_name, target_file_name)
             
             elif target_file_name.endswith(".map"):  
                 # for pcraster map files, convert them to netcdf 
                 target_file_name = target_file_name[:-4] + ".nc"
-                if os.path.exists(target_file_name) == False: 
-                    pcr2nc.convert_pcraster_to_netcdf(input_pcr_map_file = source_file_name,\
-                                                      output_netcdf_file = target_file_name)
+                pcr2nc.convert_pcraster_to_netcdf(input_pcr_map_file = source_file_name,\
+                                                  output_netcdf_file = target_file_name)
             
             else:
                 # for other files, just copy
-                if os.path.exists(target_file_name) == False: shutil.copy(source_file_name, target_file_name)
+                shutil.copy(source_file_name, target_file_name)
 
             print(target_file_name)
 
