@@ -13,7 +13,7 @@ TARGET="/scratch/depfg/sutan101/data/era5/from_ewatercyle_copied_on_20191018/ERA
 
 
 # the following options should make symlinks broken
-# - NOTE: All links (e.g. "latest_release" and "develop") should be skipped and updated mannually.
+# - NOTE: All links should be skipped and updated mannually.
 OPTIONS="--recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress"
 
 
