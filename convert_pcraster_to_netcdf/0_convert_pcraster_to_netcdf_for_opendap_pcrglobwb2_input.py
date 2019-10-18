@@ -17,13 +17,13 @@ def main():
 
     for roots, dirs, files in os.walk(source_path):
 
-        # preparing directories
-        for directory in dirs:
-            source_directory = os.path.join(roots, directory)
-            target_directory = source_directory.replace(source_path, target_path)
-            if os.path.exists(target_directory): shutil.rmtree(target_directory)
-            os.makedirs(target_directory)
-            print(target_directory)
+        #~ # preparing directories
+        #~ for directory in dirs:
+            #~ source_directory = os.path.join(roots, directory)
+            #~ target_directory = source_directory.replace(source_path, target_path)
+            #~ if os.path.exists(target_directory): shutil.rmtree(target_directory)
+            #~ os.makedirs(target_directory)
+            #~ print(target_directory)
 
         print(" ")
 
@@ -39,17 +39,18 @@ def main():
 
             if target_file_name.endswith(".nc"):
                 # for netcdf files, just copy
-                shutil.copy(source_file_name, target_file_name)
+                if os.path.exists(target_file_name) == False: shutil.copy(source_file_name, target_file_name)
             
             elif target_file_name.endswith(".map"):  
                 # for pcraster map files, convert them to netcdf 
                 target_file_name = target_file_name[:-4] + ".nc"
-                pcr2nc.convert_pcraster_to_netcdf(input_pcr_map_file = source_file_name,\
-                                                  output_netcdf_file = target_file_name)
+                if os.path.exists(target_file_name) == False: 
+                    pcr2nc.convert_pcraster_to_netcdf(input_pcr_map_file = source_file_name,\
+                                                      output_netcdf_file = target_file_name)
             
             else:
                 # for other files, just copy
-                shutil.copy(source_file_name, target_file_name)
+                if os.path.exists(target_file_name) == False: shutil.copy(source_file_name, target_file_name)
 
             print(target_file_name)
 
