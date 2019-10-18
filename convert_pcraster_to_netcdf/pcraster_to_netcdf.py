@@ -10,30 +10,17 @@ import pcraster as pcr
 import virtualOS as vos
 import outputNetcdf as out_nc
 
-
-def main():
+def convert_pcraster_to_netcdf(\
+                               input_pcr_map_file,\
+                               output_netcdf_file,\
+                               netcdf_global_attributes = None,\
+                               netcdf_y_orientation_from_top_bottom = False,\
+                               variable_unit = "unknown",\
+                               netcdf_format = "NETCDF4"
+                               netcdf_zlib_option = False
+                               time_input = None,\
+                               ):
     
-    # some options (default)
-    netcdf_global_attributes = None
-    netcdf_format = "NETCDF4"
-    netcdf_zlib_option = False
-    netcdf_y_orientation_from_top_bottom = False
-
-    # for this version, we still do not use time dimension
-    date_input = None
-    time_input = None
-
-    # input and output file names based on the command line arguments
-    input_pcr_map_file = str(sys.argv[1])
-    output_netcdf_file = input_pcr_map_file + ".nc"
-    if len(sys.argv) > 2: output_netcdf_file = str(sys.argv[2])
-    
-    # set also the variable name and unit
-    variable_unit = "unknown"
-    if len(sys.argv) > 3: variable_unit = sys.argv[3]
-    variable_name = os.path.basename(input_pcr_map_file)
-    if len(sys.argv) > 4: variable_name = sys.argv[4]
-
     # read the pcraster map
     input_pcr_map = pcr.readmap(input_pcr_map_file)
     
@@ -61,6 +48,3 @@ def main():
     
     print("Done!")                          
                                         
-
-if __name__ == '__main__':
-    sys.exit(main())
