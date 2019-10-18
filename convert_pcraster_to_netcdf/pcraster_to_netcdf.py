@@ -23,6 +23,7 @@ def convert_pcraster_to_netcdf(\
                                ):
     
     # read the pcraster map
+    pcr.setclone(input_pcr_map_file)
     input_pcr_map = pcr.readmap(input_pcr_map_file)
     
     if variable_name is None: variable_name = os.path.basename(input_pcr_map_file)
