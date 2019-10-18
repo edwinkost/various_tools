@@ -15,7 +15,7 @@ def convert_pcraster_to_netcdf(\
                                output_netcdf_file,\
                                variable_name = None,\
                                netcdf_global_attributes = None,\
-                               netcdf_y_orientation_from_top_bottom = False,\
+                               netcdf_y_orientation_from_top_bottom = True,\
                                variable_unit = "unknown",\
                                netcdf_format = "NETCDF4",\
                                netcdf_zlib_option = False,\
