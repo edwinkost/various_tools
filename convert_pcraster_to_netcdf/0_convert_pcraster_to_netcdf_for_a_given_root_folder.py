@@ -36,8 +36,6 @@ def main():
             # get target file_name
             target_file_name = source_file_name.replace(source_path, target_path)
             if target_file_name.endswith(".nc4"): target_file_name = target_file_name[:-1]
-            if target_file_name.endswith(".map"): target_file_name = target_file_name[:-4] + ".nc"
-            print(target_file_name)
 
             if target_file_name.endswith(".nc"):
                 # for netcdf files, just copy
@@ -45,12 +43,16 @@ def main():
             
             elif target_file_name.endswith(".map"):  
                 # for pcraster map files, convert them to netcdf 
+                target_file_name = target_file_name[:-4] + ".nc"
                 pcr2nc(input_pcr_map_file = source_file_name,
                        output_netcdf_file = target_file_name)
             
             else:
                 # for other files, just copy
                 shutil.copy(source_file_name, target_file_name)
+
+            print(target_file_name)
+
 
             print(" ")
 
