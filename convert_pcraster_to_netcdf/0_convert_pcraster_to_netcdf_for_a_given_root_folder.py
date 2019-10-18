@@ -44,8 +44,8 @@ def main():
             elif target_file_name.endswith(".map"):  
                 # for pcraster map files, convert them to netcdf 
                 target_file_name = target_file_name[:-4] + ".nc"
-                pcr2nc(input_pcr_map_file = source_file_name,\
-                       output_netcdf_file = target_file_name)
+                pcr2nc.convert_pcraster_to_netcdf(input_pcr_map_file = source_file_name,\
+                                                  output_netcdf_file = target_file_name)
             
             else:
                 # for other files, just copy
