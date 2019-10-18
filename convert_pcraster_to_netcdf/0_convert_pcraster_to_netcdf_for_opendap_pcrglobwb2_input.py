@@ -39,7 +39,7 @@ def main():
 
             # make sure that the output directory ready
             target_directory = os.path.dirname(source_file_name).replace(source_path, target_path)
-            if os.path.exists(target_directory): == False: os.makedirs(target_directory)
+            if os.path.exists(target_directory) == False: os.makedirs(target_directory)
             
             if target_file_name.endswith(".nc"):
                 # for netcdf files, just copy
