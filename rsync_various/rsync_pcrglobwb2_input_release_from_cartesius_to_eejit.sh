@@ -22,7 +22,7 @@ TARGET="eejit_hydrowld_via_speedy:/quanta1/home/hydrowld/data/hydroworld/pcrglob
 #~ OPTIONS="--recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress --copy-links"
 
 
-# go to the source folder - not necessary
+# go to the source folder
 cd ${SOURCE}
 
 # rsync command
