@@ -54,9 +54,13 @@ def main():
                 #~ shutil.copy(source_file_name, target_file_name)
 
                 # for netcdf files, compress them using cdo
-                # - edwin prefers cdo as it includes 'history'
-                # - compression is used, but it is only level 1
-                cmd_line = 'cdo -L -z zip1 -f nc4 -copy ' + source_file_name + " " + target_file_name
+
+                #~ # - edwin prefers cdo as it includes 'history'
+                #~ # - compression is used, but it is only level 1
+                #~ cmd_line = 'cdo -L -z zip_1 -f nc4 -copy ' + source_file_name + " " + target_file_name
+
+                # - turn off compression
+                cmd_line = 'cdo -L -z zip_0 -f nc4 -copy ' + source_file_name + " " + target_file_name
 
                 #~ # - alternative: using nco
                 #~ cmd_line = 'nccopy -k netCDF-4 -d1 -u ' + source_file_name + " " + target_file_name
