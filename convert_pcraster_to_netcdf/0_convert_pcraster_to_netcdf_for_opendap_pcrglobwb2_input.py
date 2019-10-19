@@ -84,12 +84,15 @@ def main():
             
             else:
                 
-                # for other files, just copy
+                # for other files
+                
+                # just copy
                 msg = "copying " + source_file_name + " to " + target_file_name
                 print(msg)
                 shutil.copy(source_file_name, target_file_name)
 
-            print(target_file_name)
+                # skip
+                pass
 
     print("\n Done! \n")                          
                                         
