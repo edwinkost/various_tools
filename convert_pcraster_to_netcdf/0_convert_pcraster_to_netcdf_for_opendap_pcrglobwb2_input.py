@@ -25,8 +25,6 @@ def main():
             os.makedirs(target_directory)
             print(target_directory)
 
-        print("\n START \n")
-
         for file_name in files:
             
             # get the full path of source
