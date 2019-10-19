@@ -47,11 +47,11 @@ def main():
                 #~ # for netcdf files, just copy
                 #~ shutil.copy(source_file_name, target_file_name)
 
-                # for netcdf files, compress them using nco
-                cmd_line = 'nccopy -k netCDF-4 -d1 -u ' + source_file_name + " " + target_file_name
+                # for netcdf files, compress them using cdo (I prefer cdo, as it includes the history)
+                cmd_line = 'cdo -L -z zip -f nc4 -copy ' + source_file_name + " " + target_file_name
 
                 #~ # - alternative: using cdo
-                #~ cmd_line = 'cdo -L -z zip -f nc4 -copy ' + source_file_name + " " + target_file_name
+                #~ cmd_line = 'nccopy -k netCDF-4 -d1 -u ' + source_file_name + " " + target_file_name
 
                 print(cmd_line)
                 os.system(cmd_line)
