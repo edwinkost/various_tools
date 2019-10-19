@@ -11,7 +11,7 @@ def main():
     
     source_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_10_beta_1/"
     
-    target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/develop_complete_set_for_opendap/"
+    target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/develop_complete_set_for_opendap_without_compression/"
     
     # about os.walk, see https://www.tutorialspoint.com/python/os_walk.htm
 
