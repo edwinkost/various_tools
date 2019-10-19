@@ -73,11 +73,16 @@ def main():
 
                 # then, convert them to netcdf
                 target_file_name = target_file_name[:-4] + ".nc"
+                msg = "converting " + source_file_name + " to " + target_file_name
+                print(msg)
                 pcr2nc.convert_pcraster_to_netcdf(input_pcr_map_file = source_file_name,\
                                                   output_netcdf_file = target_file_name)
             
             else:
+                
                 # for other files, just copy
+                msg = "copying " + source_file_name + " to " + target_file_name
+                print(msg)
                 shutil.copy(source_file_name, target_file_name)
 
             print(target_file_name)
