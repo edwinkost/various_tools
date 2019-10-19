@@ -25,7 +25,7 @@ def main():
             os.makedirs(target_directory)
             print(target_directory)
 
-        print(" ")
+        print("\n START \n")
 
         for file_name in files:
             
@@ -82,10 +82,7 @@ def main():
 
             print(target_file_name)
 
-
-            print(" ")
-
-    print("Done!")                          
+    print("\n Done! \n")                          
                                         
 
 if __name__ == '__main__':
