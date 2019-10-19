@@ -59,7 +59,7 @@ def main():
                 #~ # - compression is used, but it is only level 1
                 #~ cmd_line = 'cdo -L -z zip_1 -f nc4 -copy ' + source_file_name + " " + target_file_name
 
-                # - turn off compression
+                # - turn off compression, but we make sure that the format is nc4
                 cmd_line = 'cdo -L -z zip_0 -f nc4 -copy ' + source_file_name + " " + target_file_name
 
                 #~ # - alternative: using nco
@@ -72,10 +72,10 @@ def main():
 
                 # for pcraster map files
                 
-                # first copy them
-                shutil.copy(source_file_name, target_file_name)
+                #~ # shall we also copy them?
+                #~ shutil.copy(source_file_name, target_file_name)
 
-                # then, convert them to netcdf
+                # convert them to netcdf
                 target_file_name = target_file_name[:-4] + ".nc"
                 msg = "converting " + source_file_name + " to " + target_file_name
                 print(msg)
