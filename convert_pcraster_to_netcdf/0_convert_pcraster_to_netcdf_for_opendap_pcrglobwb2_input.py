@@ -27,6 +27,8 @@ def main():
 
         for file_name in files:
             
+            print("\n\n")
+
             # get the full path of source
             source_file_name = os.path.join(roots, file_name)
             print(source_file_name)
