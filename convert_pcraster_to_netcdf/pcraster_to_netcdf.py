@@ -18,7 +18,7 @@ def convert_pcraster_to_netcdf(\
                                netcdf_y_orientation_from_top_bottom = True,\
                                variable_unit = "unknown",\
                                netcdf_format = "NETCDF4",\
-                               netcdf_zlib_option = False,\
+                               netcdf_zlib_option = True,\
                                time_input = None,\
                                ):
     
