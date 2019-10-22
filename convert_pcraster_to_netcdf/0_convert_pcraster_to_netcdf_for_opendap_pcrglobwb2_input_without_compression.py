@@ -81,17 +81,14 @@ def main():
                 print(msg)
                 pcr2nc.convert_pcraster_to_netcdf(\
                                                   input_pcr_map_file = source_file_name,\
-                                                  output_netcdf_file,\
+                                                  output_netcdf_file = target_file_name,\
                                                   variable_name = None,\
                                                   netcdf_global_attributes = None,\
                                                   netcdf_y_orientation_from_top_bottom = True,\
                                                   variable_unit = "unknown",\
                                                   netcdf_format = "NETCDF4",\
                                                   netcdf_zlib_option = False,\
-                                                  time_input = None,\
-                                                  input_pcr_map_file = source_file_name,\
-                                                  output_netcdf_file = target_file_name
-                                                  )
+                                                  time_input = None)
             
             else:
                 
