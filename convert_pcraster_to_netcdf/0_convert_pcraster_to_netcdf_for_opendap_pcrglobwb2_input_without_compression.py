@@ -9,11 +9,9 @@ import pcraster_to_netcdf as pcr2nc
 
 def main():
     
-    with_compression = False
+    source_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_10_beta_1_extended/"
     
-    source_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_10_beta_2_extended/"
-    
-    target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/develop_complete_set_for_opendap_version_2019_10_beta_2/"
+    target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/develop_complete_set_for_opendap_version_2019_10_beta_2_without_compression/"
     
     # about os.walk, see https://www.tutorialspoint.com/python/os_walk.htm
 
