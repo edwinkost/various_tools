@@ -26,7 +26,10 @@ def convert_pcraster_to_netcdf(\
     pcr.setclone(input_pcr_map_file)
     input_pcr_map = pcr.readmap(input_pcr_map_file)
     
-    if variable_name is None: variable_name = os.path.basename(input_pcr_map_file)
+    if variable_name is None: 
+        variable_name = os.path.basename(input_pcr_map_file)
+        # - avoid dot by removing extension
+        variable_name = os.path.splitext(variable_name)[0]
     
     # converting it to a netcdf file
     # - initiate an object to write a netcdf file
