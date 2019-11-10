@@ -96,7 +96,8 @@ def main():
                                                   time_input = None)
             
                 # add/replace the 'comment' attribute to netcdf files
-                cmd = 'ncatted -O -m comment,global,o,c,"This file is part of a collection of the input files underlying the the publication "PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources model” (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018)." ' + target_file_name
+                comment_line = 'This file is part of a collection of the input files underlying the the publication "PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources model” (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018).'
+                cmd = "ncatted -O -m comment,global,o,c," comment_line + " " + target_file_name
                 print(cmd)
                 os.system(cmd)
             
