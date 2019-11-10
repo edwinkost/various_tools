@@ -17,6 +17,10 @@ def main():
     
     target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_without_compression/"
     
+    if os.path.exists(target_path): shutil.rmtree(target_path)
+    os.makedirs(target_path)
+    print(target_path)
+    
     # about os.walk, see https://www.tutorialspoint.com/python/os_walk.htm
 
     for roots, dirs, files in os.walk(source_path):
