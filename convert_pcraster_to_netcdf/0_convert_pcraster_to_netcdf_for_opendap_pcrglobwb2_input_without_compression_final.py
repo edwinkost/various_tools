@@ -13,9 +13,12 @@ def main():
     #~ 
     #~ target_path = "/scratch/depfg/sutan101/test_ldd/output_2/"
 
-    source_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_10_beta_1_extended/"
+    source_path = "/quanta1/home/hydrowld/data/hydroworld/pcrglobwb2_input_release/version_2019_10_beta_1_extended/"
     
-    target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_without_compression/"
+    target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta"
+
+    without_compression = True
+    if without_compression: target_path = target_path + "_without_compression"
     
     if os.path.exists(target_path): shutil.rmtree(target_path)
     os.makedirs(target_path)
@@ -64,11 +67,13 @@ def main():
                 # for netcdf files, compress them using cdo
 
                 #~ # - edwin prefers cdo as it includes 'history'
-                #~ # - compression is used, but it is only level 1
-                #~ cmd_line = 'cdo -L -z zip_1 -f nc4 -copy ' + source_file_name + " " + target_file_name
+                
+                # - compression is used, but it is only level 1
+                cmd_line = 'cdo -L -z zip_1 -f nc4 -copy ' + source_file_name + " " + target_file_name
 
                 # - turn off compression, but we make sure that the format is nc4
-                cmd_line = 'cdo -L -f nc4 -copy ' + source_file_name + " " + target_file_name
+                if without_compression:
+                    cmd_line = 'cdo -L -f nc4 -copy ' + source_file_name + " " + target_file_name
 
                 #~ # - alternative: using nco
                 #~ cmd_line = 'nccopy -k netCDF-4 -d1 -u ' + source_file_name + " " + target_file_name
@@ -87,6 +92,8 @@ def main():
                 target_file_name = target_file_name[:-4] + ".nc"
                 msg = "converting " + source_file_name + " to " + target_file_name
                 print(msg)
+                netcdf_zlib_option = True
+                if without_compression: netcdf_zlib_option = False
                 pcr2nc.convert_pcraster_to_netcdf(\
                                                   input_pcr_map_file = source_file_name,\
                                                   output_netcdf_file = target_file_name,\
@@ -99,7 +106,7 @@ def main():
                                                   time_input = None)
             
                 # add/replace the 'comment' attribute to netcdf files
-                comment_line = 'This file is part of a collection of the input files underlying the the publication "PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources model" (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018).'
+                comment_line = 'This file is part of the input files for the PCR-GLOBWB model runs underlying the the publication "PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources model" (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018).'
                 cmd = "ncatted -O -h -a comment,global,o,c,'" + comment_line + "' " + target_file_name
                 print(cmd)
                 os.system(cmd)
