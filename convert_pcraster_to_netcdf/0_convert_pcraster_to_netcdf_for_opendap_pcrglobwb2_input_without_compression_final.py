@@ -15,7 +15,7 @@ def main():
     
     source_path = "/scratch/depfg/sutan101/test_ldd/input/"
     
-    target_path = "/scratch/depfg/sutan101/test_ldd/output/"
+    target_path = "/scratch/depfg/sutan101/test_ldd/output_2/"
 
 
     # about os.walk, see https://www.tutorialspoint.com/python/os_walk.htm
@@ -95,7 +95,8 @@ def main():
                                                   netcdf_zlib_option = False,\
                                                   time_input = None)
             
-                ncatted -O -a history,global,a,c,"Data version 2.0\n" in.nc
+                # add/replace the 'comment' attribute to netcdf files
+                cmd = 'ncatted -O -m comment,global,o,c,"This file is part of a collection of the input files underlying the the publication "PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources model” (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018)." ' + output_netcdf_file
             
             else:
                 
