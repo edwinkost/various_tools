@@ -751,7 +751,7 @@ def getMapAttributesALL(cloneMap,arcDegree=True):
     cOut,err = subprocess.Popen(str('mapattr -p %s ' %(cloneMap)), stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
 
     if err !=None or cOut == []:
-        print "Something wrong with mattattr in virtualOS, maybe clone Map does not exist ? "
+        print("Something wrong with mattattr in virtualOS, maybe clone Map does not exist ? ")
         sys.exit()
     cellsize = float(cOut.split()[7])
     if arcDegree == True: cellsize = round(cellsize * 360000.)/360000.
@@ -769,7 +769,7 @@ def getMapAttributes(cloneMap,attribute,arcDegree=True):
     cOut,err = subprocess.Popen(str('mapattr -p %s ' %(cloneMap)), stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     #print cOut
     if err !=None or cOut == []:
-        print "Something wrong with mattattr in virtualOS, maybe clone Map does not exist ? "
+        print("Something wrong with mattattr in virtualOS, maybe clone Map does not exist ? ")
         sys.exit()
     #print cOut.split()
     co = None; err = None
