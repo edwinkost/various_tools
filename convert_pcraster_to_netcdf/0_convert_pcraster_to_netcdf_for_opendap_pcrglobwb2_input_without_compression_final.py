@@ -97,7 +97,7 @@ def main():
             
                 # add/replace the 'comment' attribute to netcdf files
                 comment_line = 'This file is part of a collection of the input files underlying the the publication "PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources mode;” (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018).'
-                cmd = "ncatted -O -a comment,global,o,c,'" + comment_line + "' " + target_file_name
+                cmd = "ncatted -O -h -a comment,global,o,c,'" + comment_line + "' " + target_file_name
                 print(cmd)
                 os.system(cmd)
             
