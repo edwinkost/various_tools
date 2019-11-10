@@ -54,7 +54,7 @@ class OutputNetcdf():
         
         # add a history
         current_time = str(datetime.datetime.now())
-        self.attributeDictionary['history']  = "This netcdf file was converted from a pcraster file '" + inputMapFileName + "' on " + current_time + "."
+        self.attributeDictionary['history']  = "This netcdf file was converted from a pcraster file " + inputMapFileName + " on " + current_time + "."
 
         # extra netcdf attribute ('description')
         if netcdf_attribute_description != None: self.attributeDictionary['description']  = netcdf_attribute_description
