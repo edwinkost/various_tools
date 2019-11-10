@@ -20,7 +20,7 @@ def main():
     without_compression = False
     if without_compression: target_path = target_path + "_without_compression"
     
-    target_path = target_path = "/"
+    target_path = target_path + "/"
     
     if os.path.exists(target_path): shutil.rmtree(target_path)
     os.makedirs(target_path)
