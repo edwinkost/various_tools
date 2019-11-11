@@ -17,7 +17,7 @@ def main():
     
     target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta"
 
-    without_compression = True
+    without_compression = False
     if without_compression:
         target_path = target_path + "_without_compression"
     else:
@@ -66,7 +66,7 @@ def main():
                 # - rename ".nc4" to "nc" (the standard extension of netcdf file is ".nc")
                 if target_file_name.endswith(".nc4"): target_file_name = target_file_name[:-1]
 
-                if without_compression == False: target_file_name = target_file_name.replace(".nc", "_zip.nc")
+                #~ if without_compression == False: target_file_name = target_file_name.replace(".nc", "_zip.nc")
                 
                 # - if compression is used, use only level 1
                 cmd_line = 'cdo -L -z zip_1 -f nc4 -copy ' + source_file_name + " " + target_file_name
@@ -96,7 +96,7 @@ def main():
 
                 # convert them to netcdf
                 target_file_name = target_file_name[:-4] + ".nc"
-                if without_compression == False: target_file_name = target_file_name.replace(".nc", "_zip.nc")
+                #~ if without_compression == False: target_file_name = target_file_name.replace(".nc", "_zip.nc")
                 
                 msg = "converting " + source_file_name + " to " + target_file_name
                 print(msg)
