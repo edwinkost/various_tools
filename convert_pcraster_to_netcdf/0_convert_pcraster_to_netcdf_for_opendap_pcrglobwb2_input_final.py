@@ -17,7 +17,7 @@ def main():
     
     target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta"
 
-    without_compression = True
+    without_compression = False
     if without_compression:
         target_path = target_path + "_without_compression"
     else:
@@ -87,7 +87,7 @@ def main():
                 os.system(cmd_line)
             
                 # add/replace the 'comment' attribute to netcdf files
-                comment_line = 'This file is part of the input files for the PCR-GLOBWB model runs underlying the the publication "PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources model" (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018).'
+                comment_line = 'This file is part of the input files for the PCR-GLOBWB model runs underlying the publication "PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources model" (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018).'
                 cmd = "ncatted -O -h -a comment,global,o,c,'" + comment_line + "' " + target_file_name
                 print(cmd)
                 os.system(cmd)
@@ -117,7 +117,7 @@ def main():
                                                   time_input = None)
             
                 # add/replace the 'comment' attribute to netcdf files
-                comment_line = 'This file is part of the input files for the PCR-GLOBWB model runs underlying the the publication "PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources model" (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018).'
+                comment_line = 'This file is part of the input files for the PCR-GLOBWB model runs underlying the publication "PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources model" (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018).'
                 cmd = "ncatted -O -h -a comment,global,o,c,'" + comment_line + "' " + target_file_name
                 print(cmd)
                 os.system(cmd)
