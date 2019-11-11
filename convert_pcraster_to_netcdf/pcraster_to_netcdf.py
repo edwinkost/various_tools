@@ -31,8 +31,8 @@ def convert_pcraster_to_netcdf(\
 
         # Note variable, dimension and attribute names should begin with a letter and be composed of letters, digits, and underscores (see e.g. https://www.unidata.ucar.edu/support/help/MailArchives/netcdf/msg10684.html)
 
-        # - avoid dot by removing extension
-        variable_name = os.path.splitext(variable_name)[0]
+        # - replace "." with "_"
+        variable_name = variable_name.replace(".", "_")
         
         # - replace "-" with "_"
         variable_name = variable_name.replace("-", "_")
