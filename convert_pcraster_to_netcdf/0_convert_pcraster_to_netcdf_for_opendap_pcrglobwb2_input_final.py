@@ -17,7 +17,7 @@ def main():
     
     target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta"
 
-    without_compression = True
+    without_compression = False
     if without_compression:
         target_path = target_path + "_without_compression"
     else:
