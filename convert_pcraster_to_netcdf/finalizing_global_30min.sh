@@ -3,17 +3,13 @@ MAINFOLDER="/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_1
 
 set -x
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/groundwater/aquifer_thickness_estimate/thickness_05min.nc
-VARNAME="thickness_05min_map"
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/groundwater/aquifer_thickness_estimate/thickness_30min.nc
+VARNAME="thickness_30min_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/groundwater/confining_layer_parameters/confining_layer_thickness_version_2016.nc
-VARNAME="confining_layer_thickness_version_2016_map"
-ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
-ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/groundwater/properties/groundwaterProperties5ArcMin.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/groundwater/properties/groundwaterProperties.nc
 VARNAME="specificYield"
 ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
 VARNAME="recessionCoeff"
@@ -22,6 +18,10 @@ VARNAME="kSatAquifer"
 ncatted -O -h -a units,${VARNAME},o,c,"m day-1" ${NCFILE}
 ncdump -h ${NCFILE}
 ncview ${NCFILE}
+
+
+# UNTIL THIS PART
+
 
 
 NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/irrNonPaddy/fractionNonPaddy.nc
