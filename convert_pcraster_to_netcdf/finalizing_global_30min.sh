@@ -20,84 +20,231 @@ ncdump -h ${NCFILE}
 ncview ${NCFILE}
 
 
-# UNTIL THIS PART
-
-
-
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/irrNonPaddy/fractionNonPaddy.nc
-VARNAME="fractionNonPaddy_map"
-ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrNonPaddy/fao_root_nonpaddy.nc
+VARNAME="fao_root_nonpaddy_map"
+ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/irrPaddy/fractionPaddy.nc
-VARNAME="fractionPaddy_map"
-ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
-ncdump -h ${NCFILE}
-
-
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalShort/coverFractionInputGrassland.nc
-VARNAME="coverFractionInput"
-ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
-ncdump -h ${NCFILE}
-
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalShort/cropCoefficientGrassland.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrNonPaddy/Global_CropCoefficientKc-IrrNonPaddy_30min.nc
 VARNAME="kc"
 ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalShort/interceptCapInputGrassland.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrNonPaddy/maxf_nonpaddy.nc
+VARNAME="maxf_nonpaddy_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrNonPaddy/minf_nonpaddy_permafrost.nc
+VARNAME="minf_nonpaddy_permafrost_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrNonPaddy/nonPaddyProperties.nc
+VARNAME="fracVegCover"
+ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
+VARNAME="rootFraction1"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="rootFraction2"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="maxRootDepth"
+ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
+VARNAME="minSoilDepthFrac"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="maxSoilDepthFrac"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrNonPaddy/rfrac1_nonpaddy.nc
+VARNAME="rfrac1_nonpaddy_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrNonPaddy/rfrac2_nonpaddy.nc
+VARNAME="rfrac2_nonpaddy_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrNonPaddy/vegf_nonpaddy.nc
+VARNAME="vegf_nonpaddy_map"
+ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
+ncdump -h ${NCFILE}
+
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrPaddy/fao_root_paddy.nc
+VARNAME="fao_root_paddy_map"
+ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrPaddy/Global_CropCoefficientKc-IrrPaddy_30min.nc
+VARNAME="kc"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrPaddy/maxf_paddy.nc
+VARNAME="maxf_paddy_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrPaddy/minf_paddy_permafrost.nc
+VARNAME="minf_paddy_permafrost_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrPaddy/paddyProperties.nc
+VARNAME="fracVegCover"
+ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
+VARNAME="rootFraction1"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="rootFraction2"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="maxRootDepth"
+ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
+VARNAME="minSoilDepthFrac"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="maxSoilDepthFrac"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrPaddy/rfrac1_paddy.nc
+VARNAME="rfrac1_paddy_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrPaddy/rfrac2_paddy.nc
+VARNAME="rfrac2_paddy_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/irrPaddy/vegf_paddy.nc
+VARNAME="vegf_paddy_map"
+ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
+ncdump -h ${NCFILE}
+
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalShort/coverFractionInputGrassland366days.nc
+VARNAME="coverFractionInput"
+ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalShort/Global_CropCoefficientKc-Grassland_30min.nc
+VARNAME="kc"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalShort/interceptCapInputGrassland366days.nc
 VARNAME="interceptCapInput"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalShort/rfrac1_short.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalShort/rfrac1_short.nc
 VARNAME="rfrac1_short_map"
 ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalShort/rfrac2_short.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalShort/rfrac2_short.nc
 VARNAME="rfrac2_short_map"
 ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalShort/vegf_short.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalShort/vegf_short.nc
 VARNAME="vegf_short_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
 ncdump -h ${NCFILE}
 
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalShort/fao_root_short.nc
+VARNAME="fao_root_short_map"
+ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
+ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalTall/coverFractionInputForest.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalShort/maxf_short.nc
+VARNAME="maxf_short_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalShort/minf_short_permafrost.nc
+VARNAME="minf_short_permafrost_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalShort/grasslandProperties.nc
+VARNAME="fracVegCover"
+ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
+VARNAME="rootFraction1"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="rootFraction2"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="maxRootDepth"
+ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
+VARNAME="minSoilDepthFrac"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="maxSoilDepthFrac"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalTall/coverFractionInputForest366days.nc
 VARNAME="coverFractionInput"
 ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalTall/cropCoefficientForest.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalTall/Global_CropCoefficientKc-Forest_30min.nc
 VARNAME="kc"
 ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalTall/interceptCapInputForest.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalTall/interceptCapInputForest366days.nc
 VARNAME="interceptCapInput"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalTall/rfrac1_tall.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalTall/rfrac1_tall.nc
 VARNAME="rfrac1_tall_map"
 ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalTall/rfrac2_tall.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalTall/rfrac2_tall.nc
 VARNAME="rfrac2_tall_map"
 ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/landCover/naturalTall/vegf_tall.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalTall/vegf_tall.nc
 VARNAME="vegf_tall_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
 ncdump -h ${NCFILE}
 
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalTall/fao_root_tall.nc
+VARNAME="fao_root_tall_map"
+ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
+ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/landSurface/soil/soilProperties5ArcMin.nc 
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalTall/maxf_tall.nc
+VARNAME="maxf_tall_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalTall/minf_tall_permafrost.nc
+VARNAME="minf_tall_permafrost_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/landCover/naturalTall/forestProperties.nc
+VARNAME="fracVegCover"
+ncatted -O -h -a units,${VARNAME},o,c,"m2 m-2" ${NCFILE}
+VARNAME="rootFraction1"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="rootFraction2"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="maxRootDepth"
+ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
+VARNAME="minSoilDepthFrac"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+VARNAME="maxSoilDepthFrac"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/landSurface/soil/soilProperties.nc 
 VARNAME="firstStorDepth"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 VARNAME="secondStorDepth"
@@ -132,189 +279,166 @@ ncdump -h ${NCFILE}
 ncview ${NCFILE}
 
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/meteo/downscaling_from_30min/gtopo05min.nc
-VARNAME="gtopo05min_map"
-ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
-ncdump -h ${NCFILE}
+cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_30min/meteo/forcing/daily_precipitation_cruts321_era-40_era-interim_1958-2010_cruts324_era-interim_2011_to_2015.nc  ${MAINFOLDER}/pcrglobwb2_input/global_30min/meteo/forcing/daily_precipitation_cru_era-interim_1979_to_2010.nc  &
+cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_30min/meteo/forcing/daily_referencePotET_cruts321_era-40_era-interim_1958-2010_cruts324_era-interim_2011_to_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/meteo/forcing/daily_referencePotET_cru_era-interim_1979_to_2010.nc &
+cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_30min/meteo/forcing/daily_temperature_cruts321_era-40_era-interim_1958-2010_cruts324_era-interim_2011_to_2015.nc    ${MAINFOLDER}/pcrglobwb2_input/global_30min/meteo/forcing/daily_temperature_cru_era-interim_1979_to_2010.nc    &
+wait
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/meteo/downscaling_from_30min/precipitation_correl.nc
-VARNAME="precipitation"
-ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
-ncdump -h ${NCFILE}
-
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/meteo/downscaling_from_30min/precipitation_slope.nc
-VARNAME="precipitation"
-ncatted -O -h -a units,${VARNAME},o,c,"mm m-1" ${NCFILE}
-ncdump -h ${NCFILE}
-
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/meteo/downscaling_from_30min/temperature_correl.nc
-VARNAME="temperature"
-ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
-ncdump -h ${NCFILE}
-
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/meteo/downscaling_from_30min/temperature_slope.nc
-VARNAME="temperature"
-ncatted -O -h -a units,${VARNAME},o,c,"degrees Celcius m-1" ${NCFILE}
-ncdump -h ${NCFILE}
-
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/meteo/downscaling_from_30min/uniqueIds_30min.nc
-VARNAME="uniqueIds_30min_map"
-ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
-ncdump -h ${NCFILE}
+UNTIL THIS PART
 
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/bankfull_depth.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/bankfull_depth.nc
 VARNAME="bankfull_depth_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/bankfull_width.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/bankfull_width.nc
 VARNAME="bankfull_width_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/channel_gradient.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/channel_gradient.nc
 VARNAME="channel_gradient_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m m-1" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0000.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0000.nc
 VARNAME="dzRel0000_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0010.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0010.nc
 VARNAME="dzRel0010_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
  
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0020.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0020.nc
 VARNAME="dzRel0020_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
  
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0030.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0030.nc
 VARNAME="dzRel0030_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0040.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0040.nc
 VARNAME="dzRel0040_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0050.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0050.nc
 VARNAME="dzRel0050_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0060.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0060.nc
 VARNAME="dzRel0060_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0070.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0070.nc
 VARNAME="dzRel0070_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0080.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0080.nc
 VARNAME="dzRel0080_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0090.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0090.nc
 VARNAME="dzRel0090_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0100.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/channel_properties/dzRel0100.nc
 VARNAME="dzRel0100_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
 
-cp ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/cellsize05min.correct.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/cellsize05min_correct.nc
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/cellsize05min.correct.nc
+cp ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/cellsize05min.correct.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/cellsize05min_correct.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/cellsize05min.correct.nc
 VARNAME="cellsize05min_correct_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m2" ${NCFILE}
 ncdump -h ${NCFILE}
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/cellsize05min_correct.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/cellsize05min_correct.nc
 VARNAME="cellsize05min_correct_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m2" ${NCFILE}
 ncdump -h ${NCFILE}
 
 
-cp ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/lddsound_05min.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/lddsound_05min_unmask.nc
-cdo setmissval,0 ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/lddsound_05min_unmask.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/lddsound_05min.nc
+cp ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/lddsound_05min.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/lddsound_05min_unmask.nc
+cdo setmissval,0 ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/lddsound_05min_unmask.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/lddsound_05min.nc
 VARNAME="lddsound_05min_map"
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/lddsound_05min.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/lddsound_05min.nc
 ncatted -O -h -a units,${VARNAME},o,c,"pcraster_ldd" ${NCFILE}
 ncdump -h ${NCFILE}
 ncview ${NCFILE}
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/lddsound_05min_unmask.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/lddsound_05min_unmask.nc
 ncatted -O -h -a units,${VARNAME},o,c,"pcraster_ldd" ${NCFILE}
 ncdump -h ${NCFILE}
 ncview ${NCFILE}
 
 
-cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/surface_water_bodies/waterBodies5ArcMin.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/surface_water_bodies/waterBodies5ArcMin_1979-2010.nc
-mkdir ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/surface_water_bodies/complete_uncompressed
-cp -r ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/surface_water_bodies/waterBodies5ArcMin.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/surface_water_bodies/complete_uncompressed/waterBodies5ArcMin.nc
+cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/surface_water_bodies/waterBodies5ArcMin.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/surface_water_bodies/waterBodies5ArcMin_1979-2010.nc
+mkdir ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/surface_water_bodies/complete_uncompressed
+cp -r ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/surface_water_bodies/waterBodies5ArcMin.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/routing/surface_water_bodies/complete_uncompressed/waterBodies5ArcMin.nc
 # YOU ALSO HAVE TO COPY THE COMPRESSED FILE.
 
 
 
-cp ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_30min_05min.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_30min_05min_unmask.nc
-cdo -L -setmissval,0 -setrtoc,-inf,0,0 ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_30min_05min_unmask.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_30min_05min.nc
+cp ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min_unmask.nc
+cdo -L -setmissval,0 -setrtoc,-inf,0,0 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min_unmask.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min.nc
 VARNAME="abstraction_zones_30min_05min_map"
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_30min_05min.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min.nc
 ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
 ncdump -h ${NCFILE}
 ncview ${NCFILE}
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_30min_05min_unmask.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min_unmask.nc
 ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
 ncdump -h ${NCFILE}
 ncview ${NCFILE}
 
 
-cp ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_60min_05min.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_60min_05min_unmask.nc
-cdo -L -setmissval,0 -setrtoc,-inf,0,0 ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_60min_05min_unmask.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_60min_05min.nc
+cp ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min_unmask.nc
+cdo -L -setmissval,0 -setrtoc,-inf,0,0 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min_unmask.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min.nc
 VARNAME="abstraction_zones_60min_05min_map"
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_60min_05min.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min.nc
 ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
 ncdump -h ${NCFILE}
 ncview ${NCFILE}
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/abstraction_zones/abstraction_zones_60min_05min_unmask.nc
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min_unmask.nc
 ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
 ncdump -h ${NCFILE}
 ncview ${NCFILE}
 
 
-cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/desalination/desalination_water_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/desalination/desalination_water_1979-2010_version_april_2015.nc
-mkdir ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/desalination/complete_uncompressed
-cp -r ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/desalination/desalination_water_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/desalination/complete_uncompressed/desalination_water_version_april_2015.nc
+cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/desalination/desalination_water_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/desalination/desalination_water_1979-2010_version_april_2015.nc
+mkdir ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/desalination/complete_uncompressed
+cp -r ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/desalination/desalination_water_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/desalination/complete_uncompressed/desalination_water_version_april_2015.nc
 # YOU ALSO HAVE TO COPY THE COMPRESSED FILE.
 
 
-# TODO: /scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_05min/waterUse/source_partitioning/surface_water_fraction_for_irrigation
+# TODO: /scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/waterUse/source_partitioning/surface_water_fraction_for_irrigation
 
 
-cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/domestic/domestic_water_demand_1979-2010_version_april_2015.nc
-mkdir ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/domestic/complete_uncompressed
-cp -r ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/domestic/complete_uncompressed/domestic_water_demand_version_april_2015.nc
+cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/domestic/domestic_water_demand_1979-2010_version_april_2015.nc
+mkdir ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/domestic/complete_uncompressed
+cp -r ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/domestic/complete_uncompressed/domestic_water_demand_version_april_2015.nc
 # YOU ALSO HAVE TO COPY THE COMPRESSED FILE.
 
 
-cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/industry/industry_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/industry/industry_water_demand_1979-2010_version_april_2015.nc
-mkdir ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/industry/complete_uncompressed
-cp -r ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/industry/industry_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/industry/complete_uncompressed/industry_water_demand_version_april_2015.nc
+cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/industry/industry_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/industry/industry_water_demand_1979-2010_version_april_2015.nc
+mkdir ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/industry/complete_uncompressed
+cp -r ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/industry/industry_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/industry/complete_uncompressed/industry_water_demand_version_april_2015.nc
 # YOU ALSO HAVE TO COPY THE COMPRESSED FILE.
 
 
-cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/livestock/livestock_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/livestock/livestock_water_demand_1979-2010_version_april_2015.nc
-mkdir ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/livestock/complete_uncompressed
-cp -r ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/livestock/livestock_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/livestock/complete_uncompressed/livestock_water_demand_version_april_2015.nc
+cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/livestock/livestock_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/livestock/livestock_water_demand_1979-2010_version_april_2015.nc
+mkdir ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/livestock/complete_uncompressed
+cp -r ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/livestock/livestock_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/livestock/complete_uncompressed/livestock_water_demand_version_april_2015.nc
 # YOU ALSO HAVE TO COPY THE COMPRESSED FILE.
 
 
