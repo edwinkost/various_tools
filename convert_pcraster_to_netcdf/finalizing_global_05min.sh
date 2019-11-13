@@ -183,6 +183,16 @@ VARNAME="dzRel0000_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
 ncdump -h ${NCFILE}
 
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0001.nc
+VARNAME="dzRel0001_map"
+ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
+ncdump -h ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0005.nc
+VARNAME="dzRel0005_map"
+ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
+ncdump -h ${NCFILE}
+
 NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_05min/routing/channel_properties/dzRel0010.nc
 VARNAME="dzRel0010_map"
 ncatted -O -h -a units,${VARNAME},o,c,"m" ${NCFILE}
