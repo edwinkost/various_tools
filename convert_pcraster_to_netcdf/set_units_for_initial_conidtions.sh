@@ -23,6 +23,7 @@ cd ${MAINFOLDER}
 
 mkdir nc_without_units
 cp -rv *.nc nc_without_units
+chmod -R a-w nc_without_units
 
 cdo setunit,"m3 s-1"    nc_without_units/avgBaseflowLong_*-12-31.nc                        avgBaseflowLong_*-12-31.nc
 cdo setunit,"m3 s-1"    nc_without_units/avgDischargeLong_*-12-31.nc                       avgDischargeLong_*-12-31.nc
