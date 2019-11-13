@@ -391,42 +391,55 @@ ncdump -h ${NCFILE}
 ncview ${NCFILE}
 
 
-UNTIL THIS PART
-
-
-cp ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min_unmask.nc
-cdo -L -setmissval,0 -setrtoc,-inf,0,0 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min_unmask.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min.nc
-VARNAME="abstraction_zones_30min_05min_map"
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min.nc
+cp ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_30min.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_30min_unmask.nc
+cdo -L -setmissval,0 -setrtoc,-inf,0,0 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_30min_unmask.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_30min.nc
+VARNAME="abstraction_zones_30min_30min_map"
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_30min.nc
 ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
 ncdump -h ${NCFILE}
 ncview ${NCFILE}
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_05min_unmask.nc
-ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
-ncdump -h ${NCFILE}
-ncview ${NCFILE}
-
-
-cp ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min_unmask.nc
-cdo -L -setmissval,0 -setrtoc,-inf,0,0 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min_unmask.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min.nc
-VARNAME="abstraction_zones_60min_05min_map"
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min.nc
-ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
-ncdump -h ${NCFILE}
-ncview ${NCFILE}
-NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_05min_unmask.nc
+cdo info ${NCFILE}
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_30min_30min_unmask.nc
 ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
 ncdump -h ${NCFILE}
 ncview ${NCFILE}
 
 
-cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/desalination/desalination_water_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/desalination/desalination_water_1979-2010_version_april_2015.nc
-mkdir ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/desalination/complete_uncompressed
-cp -r ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/desalination/desalination_water_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/desalination/complete_uncompressed/desalination_water_version_april_2015.nc
-# YOU ALSO HAVE TO COPY THE COMPRESSED FILE.
+cp ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_30min.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_30min_unmask.nc
+cdo -L -setmissval,0 -setrtoc,-inf,0,0 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_30min_unmask.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_30min.nc
+VARNAME="abstraction_zones_60min_30min_map"
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_30min.nc
+ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
+ncdump -h ${NCFILE}
+ncview ${NCFILE}
+cdo info ${NCFILE}
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/abstraction_zones/abstraction_zones_60min_30min_unmask.nc
+ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
+ncdump -h ${NCFILE}
+ncview ${NCFILE}
 
 
-# TODO: /scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/waterUse/source_partitioning/surface_water_fraction_for_irrigation
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/irrigation/irrigation_efficiency/efficiency.nc
+VARNAME="efficiency_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+ncview ${NCFILE}
+
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/source_partitioning/surface_water_fraction_for_irrigation/AEI_QUAL.nc
+VARNAME="AEI_QUAL_map"
+ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
+ncdump -h ${NCFILE}
+ncview ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/source_partitioning/surface_water_fraction_for_irrigation/AEI_SWFRAC.nc
+VARNAME="AEI_SWFRAC_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+ncview ${NCFILE}
+
+
+
 
 
 cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/waterDemand/domestic/domestic_water_demand_1979-2010_version_april_2015.nc

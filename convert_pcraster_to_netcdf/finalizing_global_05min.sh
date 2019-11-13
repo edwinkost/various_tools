@@ -307,25 +307,27 @@ cp -r ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/desalination/desalina
 # YOU ALSO HAVE TO COPY THE COMPRESSED FILE.
 
 
-# TODO: /scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_05min/waterUse/source_partitioning/surface_water_fraction_for_irrigation
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/source_partitioning/surface_water_fraction_for_irrigation/AEI_QUAL.nc
+VARNAME="AEI_QUAL_map"
+ncatted -O -h -a units,${VARNAME},o,c,"-" ${NCFILE}
+ncdump -h ${NCFILE}
+ncview ${NCFILE}
+cdo info ${NCFILE}
+
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/source_partitioning/surface_water_fraction_for_irrigation/AEI_SWFRAC.nc
+VARNAME="AEI_SWFRAC_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+ncview ${NCFILE}
+cdo info ${NCFILE}
 
 
-cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/domestic/domestic_water_demand_1979-2010_version_april_2015.nc
-mkdir ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/domestic/complete_uncompressed
-cp -r ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/domestic/complete_uncompressed/domestic_water_demand_version_april_2015.nc
-# YOU ALSO HAVE TO COPY THE COMPRESSED FILE.
-
-
-cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/industry/industry_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/industry/industry_water_demand_1979-2010_version_april_2015.nc
-mkdir ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/industry/complete_uncompressed
-cp -r ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/industry/industry_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/industry/complete_uncompressed/industry_water_demand_version_april_2015.nc
-# YOU ALSO HAVE TO COPY THE COMPRESSED FILE.
-
-
-cdo -L -f nc4 -selyear,1979/2010 ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/livestock/livestock_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/livestock/livestock_water_demand_1979-2010_version_april_2015.nc
-mkdir ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/livestock/complete_uncompressed
-cp -r ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/livestock/livestock_water_demand_version_april_2015.nc ${MAINFOLDER}/pcrglobwb2_input/global_05min/waterUse/waterDemand/livestock/complete_uncompressed/livestock_water_demand_version_april_2015.nc
-# YOU ALSO HAVE TO COPY THE COMPRESSED FILE.
+NCFILE=${MAINFOLDER}/pcrglobwb2_input/global_30min/waterUse/source_partitioning/surface_water_fraction_for_non_irrigation/max_city_sw_fraction.nc
+VARNAME="max_city_sw_fraction_map"
+ncatted -O -h -a units,${VARNAME},o,c,"1" ${NCFILE}
+ncdump -h ${NCFILE}
+ncview ${NCFILE}
+cdo info ${NCFILE}
 
 
 set +x
