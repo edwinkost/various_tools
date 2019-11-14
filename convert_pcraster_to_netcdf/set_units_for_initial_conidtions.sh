@@ -28,12 +28,11 @@
 #~ drwxr-xr-x  2 sutan101 depfg  98 Nov 11 12:20 1989
 #~ drwxr-xr-x  2 sutan101 depfg  98 Nov 11 12:20 1995
 #~ drwxr-xr-x  2 sutan101 depfg  98 Nov 11 12:20 1999
-#~ drwxr-xr-x  2 sutan101 depfg  99 Nov 11 12:19 1999_master
 #~ drwxr-xr-x  2 sutan101 depfg  98 Nov 11 12:20 2002
 #~ drwxr-xr-x  2 sutan101 depfg  98 Nov 11 12:19 2005
 #~ -rw-r--r--  1 sutan101 depfg 236 Nov 11 12:20 source.txt
 
-MAINFOLDER="/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/initialConditions/non-natural/consistent_run_201903XX/1999/"
+MAINFOLDER="/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/initialConditions/non-natural/consistent_run_201903XX/2002/"
 
 set -x
 
