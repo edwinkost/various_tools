@@ -32,7 +32,17 @@
 #~ drwxr-xr-x  2 sutan101 depfg  98 Nov 11 12:19 2005
 #~ -rw-r--r--  1 sutan101 depfg 236 Nov 11 12:20 source.txt
 
-MAINFOLDER="/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/initialConditions/non-natural/consistent_run_201903XX/2005/"
+#~ MAINFOLDER="/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/initialConditions/non-natural/consistent_run_201903XX/2005/"
+
+
+#~ sutan101@gpu002.cluster:/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/initialConditions/non-natural/original$ ls -lah
+#~ total 1.5K
+#~ drwxr-xr-x 3 sutan101 depfg  1 Nov 11 12:19 .
+#~ drwxr-xr-x 4 sutan101 depfg  2 Nov 11 12:19 ..
+#~ drwxr-xr-x 2 sutan101 depfg 99 Nov 11 12:19 1999
+
+#~ MAINFOLDER="/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/initialConditions/non-natural/original/1999/"
+
 
 set -x
 
