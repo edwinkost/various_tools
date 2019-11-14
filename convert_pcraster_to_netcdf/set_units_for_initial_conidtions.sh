@@ -41,7 +41,7 @@
 #~ drwxr-xr-x 4 sutan101 depfg  2 Nov 11 12:19 ..
 #~ drwxr-xr-x 2 sutan101 depfg 99 Nov 11 12:19 1999
 
-#~ MAINFOLDER="/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/initialConditions/non-natural/original/1999/"
+MAINFOLDER="/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/initialConditions/non-natural/original/1999/"
 
 
 set -x
