@@ -73,7 +73,7 @@ cdo setunit,"m"         nc_without_units/topWaterLayer_forest_*-12-31.nc        
 cdo setunit,"m"         nc_without_units/topWaterLayer_grassland_*-12-31.nc                topWaterLayer_grassland_*-12-31.nc
 cdo setunit,"m"         nc_without_units/topWaterLayer_irrNonPaddy_*-12-31.nc              topWaterLayer_irrNonPaddy_*-12-31.nc
 cdo setunit,"m"         nc_without_units/topWaterLayer_irrPaddy_*-12-31.nc                 topWaterLayer_irrPaddy_*-12-31.nc
-cdo setunit,"m"         nc_without_units/waterBodyStorage_*-12-31.nc                       waterBodyStorage_*-12-31.nc
+cdo setunit,"m3"        nc_without_units/waterBodyStorage_*-12-31.nc                       waterBodyStorage_*-12-31.nc
 
 ncview *.nc
 
