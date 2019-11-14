@@ -15,7 +15,7 @@
 #~ drwxr-xr-x  2 sutan101 depfg  98 Nov 11 12:09 2005
 #~ -rw-r--r--  1 sutan101 depfg 164 Nov 11 12:11 source.txt
 
-MAINFOLDER="/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_05min/initialConditions/non-natural/1999_master/"
+MAINFOLDER="/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_05min/initialConditions/non-natural/2002/"
 
 set -x
 
