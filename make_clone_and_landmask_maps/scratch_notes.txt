@@ -1,41 +1,42 @@
 
+pcrcalc zimbabwe_211_basin.map = "catchment(africa_hydrosheds_ldd.map, zimbabwe_211.map)"
+pcrcalc zimbabwe_211_basin.map = "if(scalar(zimbabwe_211_basin.map) gt 0, zimbabwe_211_basin.map)"
 
-pcrcalc xmin_ghana_68_basin.map = "mapminimum(xcoordinate(if(defined(ghana_68_basin.map), boolean(1.0))))"
-pcrcalc xmax_ghana_68_basin.map = "mapmaximum(xcoordinate(if(defined(ghana_68_basin.map), boolean(1.0))))"
-pcrcalc ymin_ghana_68_basin.map = "mapminimum(ycoordinate(if(defined(ghana_68_basin.map), boolean(1.0))))"
-pcrcalc ymax_ghana_68_basin.map = "mapmaximum(ycoordinate(if(defined(ghana_68_basin.map), boolean(1.0))))"
+pcrcalc xmin_zimbabwe_211_basin.map = "mapminimum(xcoordinate(defined(zimbabwe_211_basin.map)))"
+pcrcalc xmax_zimbabwe_211_basin.map = "mapmaximum(xcoordinate(defined(zimbabwe_211_basin.map)))"
+pcrcalc ymin_zimbabwe_211_basin.map = "mapminimum(ycoordinate(defined(zimbabwe_211_basin.map)))"
+pcrcalc ymax_zimbabwe_211_basin.map = "mapmaximum(ycoordinate(defined(zimbabwe_211_basin.map)))"
 
+sutan101@gpu002.cluster:/scratch/depfg/sutan101/clone_maps_africa_30sec/ghana_tanzania_uganda_zimbabwe$ mapattr -p *zimbabwe_211_basin.map
+mapattr version: 4.3.0-dev (linux/x86_64)
+attributes  xmax_zimbabwe_211_basin.map xmin_zimbabwe_211_basin.map ymax_zimbabwe_211_basin.map ymin_zimbabwe_211_basin.map zimbabwe_211_basin.map
+rows        9000                        9000                        9000                        9000                        9000                  
+columns     9600                        9600                        9600                        9600                        9600                  
+cell_length 0.00833333                  0.00833333                  0.00833333                  0.00833333                  0.00833333            
+data_type   scalar                      scalar                      scalar                      scalar                      nominal               
+cell_repr   single                      single                      single                      single                      large                 
+projection  yb2t                        yb2t                        yb2t                        yb2t                        yb2t                  
+angle(deg)  0                           0                           0                           0                           0                     
+xUL         -19                         -19                         -19                         -19                         -19                   
+yUL         39                          39                          39                          39                          39                    
+min_val     33.1875                     18.3875                     -10.8875                    -26.2042                    211                   
+max_val     33.1875                     18.3875                     -10.8875                    -26.2042                    211                   
+version     2                           2                           2                           2                           2                     
+file_id     0                           0                           0                           0                           0                     
+native      y                           y                           y                           y                           y                     
+attr_tab    n                           n                           n                           n                           n                     
 
-sutan101@gpu002.cluster:/scratch/depfg/sutan101/clone_maps_africa_30sec/ghana_tanzania_uganda_zimbabwe$ mapattr -p *ghana_68_basin.map
-mapattr version: Apr 14 2015 (linux/x86_64)
-attributes  ghana_68_basin.map xmax_ghana_68_basin.map xmin_ghana_68_basin.map ymax_ghana_68_basin.map ymin_ghana_68_basin.map
-rows        9000               9000                    9000                    9000                    9000                   
-columns     9600               9600                    9600                    9600                    9600                   
-cell_length 0.00833333         0.00833333              0.00833333              0.00833333              0.00833333             
-data_type   nominal            scalar                  scalar                  scalar                  scalar                 
-cell_repr   large              single                  single                  single                  single                 
-projection  yb2t               yb2t                    yb2t                    yb2t                    yb2t                   
-angle(deg)  0                  0                       0                       0                       0                      
-xUL         -19                -19                     -19                     -19                     -19                    
-yUL         39                 39                      39                      39                      39                     
-min_val     68                 2.2625                  -5.34583                14.8708                 4.7375                 
-max_val     68                 2.2625                  -5.34583                14.8708                 4.7375                 
-version     2                  2                       2                       2                       2                      
-file_id     0                  0                       0                       0                       0                      
-native      y                  y                       y                       y                       y                      
-attr_tab    n                  n                       n                       n                       n                     
+ymax = -10
+ymin = -27
+rows = 2040
 
+xmax = 34
+xmin = 18
+cols = 1920
 
-ymax = 15
-ymin = 4
-rows = 1320
+rm clone_zimbabwe_211_basin.map
+mapattr -s -R 2040 -C 1950 -P yb2t -B -x 18 -y -10 -l 0.008333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333 clone_zimbabwe_211_basin.map
+aguila clone_zimbabwe_211_basin.map + zimbabwe_211_basin.map
 
-xmax = 3
-xmin = -6
-cols = 1080
+resample --clone clone_zimbabwe_211_basin.map zimbabwe_211_basin.map mask_zimbabwe_211_basin.map &
 
-mapattr -x -R 1320 -C 1080 -P yb2t -B -x -6 -y 15 -l 0.008333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333 clone_ghana_68_basin.map
-
-
-command= 'mapattr -s -R %d -C %d -P "yb2t"  -B -x %f -y %f -l %f %s' %\
-    (nrRows,nrCols,lonMin,latMax,deltaLat,tempCloneMap)
