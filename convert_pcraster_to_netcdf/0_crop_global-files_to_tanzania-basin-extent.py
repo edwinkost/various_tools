@@ -23,7 +23,7 @@ def main():
     
     # about os.walk, see https://www.tutorialspoint.com/python/os_walk.htm
 
-    for roots, dirs, files in os.walk(source_path, followlinks = True):
+    for roots, dirs, files in os.walk(source_path, followlinks = False):
 
         # preparing directories
         for directory in dirs:
