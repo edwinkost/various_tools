@@ -66,15 +66,15 @@ def main():
                 # - rename ".nc4" to "nc" (the standard extension of netcdf file is ".nc")
                 if target_file_name.endswith(".nc4"): target_file_name = target_file_name[:-1]
 
-                # cropping
-                cmd_line = "ncea -d latitude,-16.0,0.0 -d longitude,28.0,41.0 " + source_file_name + " " + target_file_name
-                print(cmd_line)
-                os.system(cmd_line)
+                if os.path.exists(target_file_name) == False:
 
-                cmd_line = "ncea -d lat,-16.0,0.0 -d lon,28.0,41.0 " + source_file_name + " " + target_file_name
-                print(cmd_line)
-                os.system(cmd_line)
-
+                    # cropping
+                    cmd_line = "ncea -O -d latitude,-16.0,0.0 -d longitude,28.0,41.0 " + source_file_name + " " + target_file_name
+                    print(cmd_line)
+                    os.system(cmd_line)
+                    cmd_line = "ncea -O -d lat,-16.0,0.0 -d lon,28.0,41.0 " + source_file_name + " " + target_file_name
+                    print(cmd_line)
+                    os.system(cmd_line)
 
             elif target_file_name.endswith(".map"):  
 
