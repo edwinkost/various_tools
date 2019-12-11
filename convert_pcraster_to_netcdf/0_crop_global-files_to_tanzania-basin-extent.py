@@ -87,32 +87,34 @@ def main():
                 target_file_name = target_file_name[:-4] + ".nc"
                 print(target_file_name)
                 
-                msg = "converting " + source_file_name + " to " + target_file_name
-                print(msg)
-                netcdf_zlib_option = False
-                pcr2nc.convert_pcraster_to_netcdf(\
-                                                  input_pcr_map_file = source_file_name,\
-                                                  output_netcdf_file = target_file_name + ".tmp",\
-                                                  variable_name = None,\
-                                                  netcdf_global_attributes = None,\
-                                                  netcdf_y_orientation_from_top_bottom = True,\
-                                                  variable_unit = "unknown",\
-                                                  netcdf_format = "NETCDF4",\
-                                                  netcdf_zlib_option = False,\
-                                                  time_input = None)
+                if os.path.exists(target_file_name):
                 
-                
-                # cropping
-                source_file_name = target_file_name + ".tmp"
-                cmd_line = "ncea -O -d latitude,-16.0,0.0 -d longitude,28.0,41.0 " + source_file_name + " " + target_file_name
-                print(cmd_line)
-                os.system(cmd_line)
-                cmd_line = "ncea -O -d lat,-16.0,0.0 -d lon,28.0,41.0 " + source_file_name + " " + target_file_name
-                print(cmd_line)
-                os.system(cmd_line)
-                cmd_line = "rm " + source_file_name
-                print(cmd_line)
-                os.system(cmd_line)
+                    msg = "converting " + source_file_name + " to " + target_file_name
+                    print(msg)
+                    netcdf_zlib_option = False
+                    pcr2nc.convert_pcraster_to_netcdf(\
+                                                      input_pcr_map_file = source_file_name,\
+                                                      output_netcdf_file = target_file_name + ".tmp",\
+                                                      variable_name = None,\
+                                                      netcdf_global_attributes = None,\
+                                                      netcdf_y_orientation_from_top_bottom = True,\
+                                                      variable_unit = "unknown",\
+                                                      netcdf_format = "NETCDF4",\
+                                                      netcdf_zlib_option = False,\
+                                                      time_input = None)
+                    
+                    
+                    # cropping
+                    source_file_name = target_file_name + ".tmp"
+                    cmd_line = "ncea -O -d latitude,-16.0,0.0 -d longitude,28.0,41.0 " + source_file_name + " " + target_file_name
+                    print(cmd_line)
+                    os.system(cmd_line)
+                    cmd_line = "ncea -O -d lat,-16.0,0.0 -d lon,28.0,41.0 " + source_file_name + " " + target_file_name
+                    print(cmd_line)
+                    os.system(cmd_line)
+                    cmd_line = "rm " + source_file_name
+                    print(cmd_line)
+                    os.system(cmd_line)
 
             else:
                 
