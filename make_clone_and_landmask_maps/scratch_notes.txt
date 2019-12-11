@@ -35,8 +35,10 @@ xmin = 18
 cols = 1920
 
 rm clone_zimbabwe_211_basin.map
-mapattr -s -R 2040 -C 1950 -P yb2t -B -x 18 -y -10 -l 0.008333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333 clone_zimbabwe_211_basin.map
+mapattr -s -R 2040 -C 1920 -P yb2t -B -x 18 -y -10 -l 0.008333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333 clone_zimbabwe_211_basin.map
 aguila clone_zimbabwe_211_basin.map + zimbabwe_211_basin.map
 
-resample --clone clone_zimbabwe_211_basin.map zimbabwe_211_basin.map mask_zimbabwe_211_basin.map &
+resample --clone clone_zimbabwe_211_basin.map zimbabwe_211_basin.map mask_zimbabwe_211_basin.map
+mv mask_zimbabwe_211_basin.map mask_nominal_zimbabwe_211_basin.map
+pcrcalc mask_zimbabwe_211_basin.map = "boolean(mask_nominal_zimbabwe_211_basin.map)"
 
