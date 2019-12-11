@@ -75,8 +75,7 @@ def main():
                 
                 msg = "converting " + source_file_name + " to " + target_file_name
                 print(msg)
-                netcdf_zlib_option = True
-                if without_compression: netcdf_zlib_option = False
+                netcdf_zlib_option = False
                 pcr2nc.convert_pcraster_to_netcdf(\
                                                   input_pcr_map_file = source_file_name,\
                                                   output_netcdf_file = target_file_name,\
