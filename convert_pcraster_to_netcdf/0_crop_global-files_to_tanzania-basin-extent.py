@@ -80,9 +80,7 @@ def main():
 
                 # for pcraster map files
                 
-                # shall we also copy them?
-                shutil.copy(source_file_name, target_file_name)
-
+o
                 # convert them to netcdf
                 target_file_name = target_file_name[:-4] + ".nc"
                 print(target_file_name)
