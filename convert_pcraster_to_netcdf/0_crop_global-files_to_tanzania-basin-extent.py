@@ -65,6 +65,16 @@ def main():
                 # - rename ".nc4" to "nc" (the standard extension of netcdf file is ".nc")
                 if target_file_name.endswith(".nc4"): target_file_name = target_file_name[:-1]
 
+                # cropping
+                cmd_line = "ncea -O -d latitude,-16.0,0.0 -d longitude,28.0,41.0 " + source_file_name + " " + target_file_name
+                print(cmd_line)
+                os.system(cmd_line)
+
+                cmd_line = "ncea -O -d lat,-16.0,0.0 -d lon,28.0,41.0 " + source_file_name + " " + target_file_name
+                print(cmd_line)
+                os.system(cmd_line)
+
+
             elif target_file_name.endswith(".map"):  
 
                 # for pcraster map files
@@ -74,6 +84,7 @@ def main():
 
                 # convert them to netcdf
                 target_file_name = target_file_name[:-4] + ".nc"
+                print(target_file_name)
                 
                 msg = "converting " + source_file_name + " to " + target_file_name
                 print(msg)
@@ -88,19 +99,6 @@ def main():
                                                   netcdf_format = "NETCDF4",\
                                                   netcdf_zlib_option = False,\
                                                   time_input = None)
-            
-            else:
-                
-                # for other files
-                
-                # just copy
-                msg = "copying " + source_file_name + " to " + target_file_name
-                print(msg)
-                shutil.copy(source_file_name, target_file_name)
-
-            if target_file_name.endswith(".nc"):
-
-                print(target_file_name)
                 
                 # cropping
                 cmd_line = "ncea -O -d latitude,-16.0,0.0 -d longitude,28.0,41.0 " + (target_file_name)
@@ -110,6 +108,16 @@ def main():
                 cmd_line = "ncea -O -d lat,-16.0,0.0 -d lon,28.0,41.0 " + (target_file_name)
                 print(cmd_line)
                 os.system(cmd_line)
+
+            else:
+                
+                # for other files
+                
+                # just copy
+                msg = "copying " + source_file_name + " to " + target_file_name
+                print(msg)
+                shutil.copy(source_file_name, target_file_name)
+
 
     print("\n Done! \n")                          
                                         
