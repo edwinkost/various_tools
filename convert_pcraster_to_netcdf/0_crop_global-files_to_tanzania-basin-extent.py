@@ -92,7 +92,7 @@ def main():
                 netcdf_zlib_option = False
                 pcr2nc.convert_pcraster_to_netcdf(\
                                                   input_pcr_map_file = source_file_name,\
-                                                  output_netcdf_file = target_file_name,\
+                                                  output_netcdf_file = target_file_name + ".tmp",\
                                                   variable_name = None,\
                                                   netcdf_global_attributes = None,\
                                                   netcdf_y_orientation_from_top_bottom = True,\
@@ -101,12 +101,16 @@ def main():
                                                   netcdf_zlib_option = False,\
                                                   time_input = None)
                 
+                
                 # cropping
-                cmd_line = "ncea -O -d latitude,-16.0,0.0 -d longitude,28.0,41.0 " + (target_file_name)
+                source_file_name = target_file_name + ".tmp"
+                cmd_line = "ncea -d latitude,-16.0,0.0 -d longitude,28.0,41.0 " + source_file_name + " " + target_file_name
                 print(cmd_line)
                 os.system(cmd_line)
-
-                cmd_line = "ncea -O -d lat,-16.0,0.0 -d lon,28.0,41.0 " + (target_file_name)
+                cmd_line = "ncea -d lat,-16.0,0.0 -d lon,28.0,41.0 " + source_file_name + " " + target_file_name
+                print(cmd_line)
+                os.system(cmd_line)
+                cmd_line = "rm " + source_file_name
                 print(cmd_line)
                 os.system(cmd_line)
 
