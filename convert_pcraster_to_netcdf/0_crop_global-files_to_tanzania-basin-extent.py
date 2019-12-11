@@ -49,6 +49,8 @@ def main():
             # get target file_name
             target_file_name = source_file_name.replace(source_path, target_path)
 
+            target_file_name = target_file_name.replace("global", "tanzania")
+
             # make sure that the output directory is ready
             target_directory = os.path.dirname(source_file_name).replace(source_path, target_path)
             if os.path.exists(target_directory) == False: os.makedirs(target_directory)
