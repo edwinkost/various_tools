@@ -13,7 +13,7 @@ def main():
     #~ 
     #~ target_path = "/scratch/depfg/sutan101/test_ldd/output_2/"
 
-    source_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_arise/develop/pcrglobwb2_input/"
+    source_path = "/quanta1/home/hydrowld/data/hydroworld/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/"
     
     target_path = "/scratch/depfg/sutan101/data/pcrglobwb2_input_arise/develop_tanzania_version_2019_12_11/pcrglobwb2_input/"
 
@@ -23,7 +23,7 @@ def main():
     
     # about os.walk, see https://www.tutorialspoint.com/python/os_walk.htm
 
-    for roots, dirs, files in os.walk(source_path, followlinks = False):
+    for roots, dirs, files in os.walk(source_path):
 
         # preparing directories
         for directory in dirs:
