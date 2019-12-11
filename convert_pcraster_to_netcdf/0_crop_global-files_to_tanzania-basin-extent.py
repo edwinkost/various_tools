@@ -87,7 +87,7 @@ def main():
                 target_file_name = target_file_name[:-4] + ".nc"
                 print(target_file_name)
                 
-                if os.path.exists(target_file_name):
+                if os.path.exists(target_file_name) == False:
                 
                     msg = "converting " + source_file_name + " to " + target_file_name
                     print(msg)
