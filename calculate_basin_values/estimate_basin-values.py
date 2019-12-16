@@ -107,10 +107,11 @@ class DeterministicRunner(DynamicModel):
                                                      useDoy = None, \
                                                      cloneMapFileName = self.clonemap_file_name, \
                                                      LatitudeLongitude = True)
-            self.cell_value = pcr.cover(self.total_runoff, 0.0)
+            self.cell_value = pcr.cover(self.cell_value, 0.0)
+            self.cell_value = pcr.ifthen(self.landmask, self.cell_value)
             
             logger.info("Calculating basin value for time %s", self.modelTime.currTime)
-            self.basin_value = pcr.catchmenttotal(self.total_runoff * self.cell_area, self.ldd_network) / self.basin_area
+            self.basin_value = pcr.catchmenttotal(self.cell_value * self.cell_area, self.ldd_network) / self.basin_area
 
             # reporting 
             # - time stamp for reporting
