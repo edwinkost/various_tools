@@ -105,7 +105,7 @@ class DeterministicRunner(DynamicModel):
             logger.info("Reading runoff for time %s", self.modelTime.currTime)
             annual_input_file = self.input_file %(str(self.modelTime.currTime.year), \
                                                   str(self.modelTime.currTime.year))
-            self.cell_value = vos.netcdf2PCRobjClone(annual_input_file, "automatic", \
+            self.cell_value = vos.netcdf2PCRobjClone(annual_input_file, self.input_variable_name, \
                                                      str(self.modelTime.fulldate), \
                                                      useDoy = None, \
                                                      cloneMapFileName = self.clonemap_file_name, \
@@ -171,7 +171,7 @@ def main():
     
     # Running the deterministic_runner
     logger.info('Starting the calculation.')
-    deterministic_runner = DeterministicRunner(currTimeStep, input_file, output_file, variable_name, variable_unit)
+    deterministic_runner = DeterministicRunner(currTimeStep, input_file, input_variable_name, output_file, variable_name, variable_unit)
     dynamic_framework = DynamicFramework(deterministic_runner, currTimeStep.nrOfTimeSteps)
     dynamic_framework.setQuiet(True)
     dynamic_framework.run()
