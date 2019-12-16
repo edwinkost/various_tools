@@ -152,7 +152,6 @@ def main():
     os.makedirs(output_folder)
 
     # output file, variable name and unit
-    output_file   = "temperature_annuaAvg_output_1958-12-31_to_1958-12-31.nc"
     output_file   = output_folder + "/" + sys.argv[5]
     variable_name = sys.argv[6]
     vriable_unit  = sys.argv[7]
