@@ -50,8 +50,7 @@ class DeterministicRunner(DynamicModel):
         landmask_file_name      = "/projects/0/dfguu/users/edwinhs/data/mekong_etc_clone/version_2018-10-22/final/mask_mekong.map"
         self.landmask = vos.readPCRmapClone(landmask_file_name, \
                                             self.clonemap_file_name, \
-                                            self.temporary_directory, \
-                                            None, False, None, True)
+                                            self.temporary_directory)
         
         # pcraster input files
         # - river network map and sub-catchment map
