@@ -168,7 +168,7 @@ def main():
     
     # Running the deterministic_runner
     logger.info('Starting the calculation.')
-    deterministic_runner = DeterministicRunner(currTimeStep, output_file, variable_name, variable_unit)
+    deterministic_runner = DeterministicRunner(currTimeStep, input_file, output_file, variable_name, variable_unit)
     dynamic_framework = DynamicFramework(deterministic_runner, currTimeStep.nrOfTimeSteps)
     dynamic_framework.setQuiet(True)
     dynamic_framework.run()
