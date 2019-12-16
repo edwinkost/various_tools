@@ -156,7 +156,7 @@ def main():
     # output file, variable name and unit
     output_file   = output_folder + "/" + sys.argv[5]
     variable_name = sys.argv[6]
-    vriable_unit  = sys.argv[7]
+    variable_unit  = sys.argv[7]
 
     # logger
     # - making a log directory
