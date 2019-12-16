@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 class DeterministicRunner(DynamicModel):
 
-    def __init__(self, modelTime, input_file, output_file, variable_name, variable_unit):
+    def __init__(self, modelTime, input_file, input_variable_name, output_file, variable_name, variable_unit):
         DynamicModel.__init__(self)
 
         self.modelTime = modelTime
@@ -32,6 +32,9 @@ class DeterministicRunner(DynamicModel):
         self.input_file = "/projects/0/dfguu/users/edwin/pcr-globwb-aqueduct/historical/1951-2005/gfdl-esm2m/temperature_annuaAvg_output_%s-12-31_to_%s-12-31.nc"
         self.input_file = input_file
 
+        # netcdf variable name
+        self.input_variable_name = input_variable_name
+        
         # output file - in netcdf format
         self.output_file = output_file
         
@@ -132,20 +135,21 @@ def main():
     input_file = "/projects/0/dfguu/users/edwin/pcr-globwb-aqueduct/historical/1958-2001_watch/"
     input_file = sys.argv[1]
     
-    
+    # netcdf variable name
+    input_variable_name = sys.argv[2]
     
     # timeStep info: year, month, day, doy, hour, etc
     start_date = "2015-01-01"
     end_date   = "2015-12-31"
-    start_date = sys.argv[2]
-    end_date   = sys.argv[3]
+    start_date = sys.argv[3]
+    end_date   = sys.argv[4]
     #
     currTimeStep = ModelTime() 
     currTimeStep.getStartEndTimeSteps(start_date, end_date)
     
     # output folder from this calculation
     output_folder = "/scratch-shared/edwin/mekong_basin_temperature/test/"
-    output_folder = sys.argv[4]
+    output_folder = sys.argv[5]
 
     # - if exists, cleaning the previous output directory:
     if os.path.isdir(output_folder): shutil.rmtree(output_folder)
@@ -153,9 +157,9 @@ def main():
     os.makedirs(output_folder)
 
     # output file, variable name and unit
-    output_file   = output_folder + "/" + sys.argv[5]
-    variable_name = sys.argv[6]
-    variable_unit  = sys.argv[7]
+    output_file   = output_folder + "/" + sys.argv[6]
+    variable_name = sys.argv[7]
+    variable_unit  = sys.argv[8]
 
     # logger
     # - making a log directory
