@@ -23,47 +23,44 @@ logger = logging.getLogger(__name__)
 
 class DeterministicRunner(DynamicModel):
 
-    def __init__(self, modelTime, output_folder, totat_runoff_input_file):
+    def __init__(self, modelTime, input_file, output_file, variable_name, variable_unit):
         DynamicModel.__init__(self)
 
         self.modelTime = modelTime
         
-        # netcdf input files - based on PCR-GLOBWB output
-        # - total runoff (m/month)
-        self.totat_runoff_input_file = "/scratch-shared/edwin/05min_runs_for_gmd_paper_30_oct_2017/05min_runs_4LCs_accutraveltime_cru-forcing_1958-2015/non-natural_starting_from_1958/merged_1958_to_2015/totalRunoff_monthTot_output_1958-01-31_to_2015-12-31.nc"
-        self.totat_runoff_input_file = totat_runoff_input_file
-        #
-        #~ # - discharge (m3/s) - NOT USED anymore
-        #~ self.discharge_input_file    = "/scratch-shared/edwin/05min_runs_for_gmd_paper_30_oct_2017/05min_runs_4LCs_accutraveltime_cru-forcing_1958-2015/non-natural_starting_from_1958/merged_1958_to_2015/discharge_monthAvg_output_1958-01-31_to_2015-12-31.nc"
+        # netcdf input file - based on PCR-GLOBWB output
+        self.input_file = "/projects/0/dfguu/users/edwin/pcr-globwb-aqueduct/historical/1951-2005/gfdl-esm2m/temperature_annuaAvg_output_%s-12-31_to_%s-12-31.nc"
+        self.input_file = input_file
 
-        # output files - in netcdf format
-        self.total_flow_output_file    = output_folder + "/total_flow.nc"
-        self.internal_flow_output_file = output_folder + "/internal_flow.nc" 
-        # - all will have unit m3/s
+        # output file - in netcdf format
+        self.output_file = output_folder + "/mekong/basin_temperature_annuaAvg_output.nc"
+        self.output_file = output_file
+        
+        # output variable name and unit 
+        self.variable_name = variable_name
+        self.variable_unit = variable_unit
 
         # preparing temporary directory
         self.temporary_directory = output_folder + "/tmp/"
         os.makedirs(self.temporary_directory)
         
-        # clone map
-        logger.info("Set the clone map")
-        self.clonemap_file_name = "/home/edwinvua/github/edwinkost/estimate_discharge_from_local_runoff/making_subcatchment_map/version_20180202/clone_version_20180202.map"
+        # clone and landmask maps
+        logger.info("Set the clone and landmask maps.")
+        self.clonemap_file_name = "/projects/0/dfguu/users/edwinhs/data/mekong_etc_clone/version_2018-10-22/final/clone_mekong.map"
         pcr.setclone(self.clonemap_file_name)
+        landmask_file_name      = "/projects/0/dfguu/users/edwinhs/data/mekong_etc_clone/version_2018-10-22/final/mask_mekong.map"
+        self.landmask = vos.readPCRmapClone(landmask_file_name, \
+                                            self.clonemap_file_name, \
+                                            self.temporary_directory, \
+                                            None, False, None, True)
         
         # pcraster input files
-        landmask_file_name      = None
         # - river network map and sub-catchment map
-        ldd_file_name           = "/projects/0/dfguu/data/hydroworld/PCRGLOBWB20/input5min/routing/lddsound_05min.map"
-        sub_catchment_file_name = "/home/edwinvua/github/edwinkost/estimate_discharge_from_local_runoff/making_subcatchment_map/version_20180202/subcatchments_of_station_pcraster_ids.nom.bigger_than_zero.map"
+        ldd_file_name       = "/projects/0/dfguu/data/hydroworld/PCRGLOBWB20/input5min/routing/lddsound_05min.map"
         # - cell area (unit: m2)
-        cell_area_file_name     = "/projects/0/dfguu/data/hydroworld/PCRGLOBWB20/input5min/routing/cellsize05min.correct.map"
+        cell_area_file_name = "/projects/0/dfguu/data/hydroworld/PCRGLOBWB20/input5min/routing/cellsize05min.correct.map"
         
         # loading pcraster input maps
-        self.sub_catchment = vos.readPCRmapClone(sub_catchment_file_name, \
-                                                 self.clonemap_file_name, \
-                                                 self.temporary_directory, \
-                                                 None, False, None, \
-                                                 True)
         self.ldd_network   = vos.readPCRmapClone(ldd_file_name, \
                                                  self.clonemap_file_name, \
                                                  self.temporary_directory, \
@@ -76,32 +73,22 @@ class DeterministicRunner(DynamicModel):
                                                  self.temporary_directory, \
                                                  None)
 
-        # define the landmask
-        self.landmask = pcr.defined(self.ldd_network)
-        if landmask_file_name != None:
-            self.landmask  = vos.readPCRmapClone(landmask_file_name, \
-                                                 self.clonemap_file_name, \
-                                                 self.temporary_directory, \
-                                                 None)
-        self.landmask = pcr.ifthen(pcr.defined(self.ldd_network), self.landmask)
-        self.landmask = pcr.ifthen(self.landmask, self.landmask)
-        
         # set/limit all input maps to the defined landmask
-        self.sub_catchment = pcr.ifthen(self.landmask, self.sub_catchment)
-        self.ldd_network   = pcr.ifthen(self.landmask, self.ldd_network)
-        self.cell_area     = pcr.ifthen(self.landmask, self.cell_area)
+        self.ldd_network = pcr.ifthen(self.landmask, self.ldd_network)
+        self.cell_area   = pcr.ifthen(self.landmask, self.cell_area)
+        
+        # calculate basin/catchment area
+        self.basin_area  = pcr.catchmenttotal(self.cell_area, self.ldd_network)
+        self.basin_area  = pcr.ifthen(self.landmask, self.basin_area) 
         
         # preparing an object for reporting netcdf files:
         self.netcdf_report = netcdf_writer.PCR2netCDF(self.clonemap_file_name)
         
         # preparing netcdf output files:
-        # - for total inflow
-        self.netcdf_report.createNetCDF(self.total_flow_output_file,\
-                                        "total_flow",\
-                                        "m3/s")
-        self.netcdf_report.createNetCDF(self.internal_flow_output_file,\
-                                        "internal_flow",\
-                                        "m3/s")
+        self.netcdf_report.createNetCDF(self.output_file, \
+                                        self.variable_name, \
+                                        self.variable_unit)
+
 
     def initial(self): 
         pass
@@ -112,31 +99,20 @@ class DeterministicRunner(DynamicModel):
         self.modelTime.update(self.currentTimeStep())
 
         # processing done only at the last day of the month
-        if self.modelTime.isLastDayOfMonth():
+        if self.modelTime.isLastDayOfYear():
             
             logger.info("Reading runoff for time %s", self.modelTime.currTime)
-            self.total_runoff = vos.netcdf2PCRobjClone(self.totat_runoff_input_file, "total_runoff",\
-                                                       str(self.modelTime.fulldate), 
-                                                       useDoy = None,
-                                                       cloneMapFileName = self.clonemap_file_name,\
-                                                       LatitudeLongitude = True)
-            self.total_runoff = pcr.cover(self.total_runoff, 0.0)
+            annual_input_file = self.input_file %(str(self.modelTime.currTime.year), \
+                                                  str(self.modelTime.currTime.year))
+            self.cell_value = vos.netcdf2PCRobjClone(annual_input_file, "automatic", \
+                                                     str(self.modelTime.fulldate), \
+                                                     useDoy = None, \
+                                                     cloneMapFileName = self.clonemap_file_name, \
+                                                     LatitudeLongitude = True)
+            self.cell_value = pcr.cover(self.total_runoff, 0.0)
             
-            logger.info("Calculating total inflow and internal inflow for time %s", self.modelTime.currTime)
-            self.total_flow    = pcr.catchmenttotal(self.total_runoff * self.cell_area, self.ldd_network)
-            self.internal_flow = pcr.areatotal(self.total_runoff  * self.cell_area, self.sub_catchment)
-            # - convert values to m3/s
-            number_of_days_in_a_month = self.modelTime.day
-            self.total_flow         = self.total_flow    / (number_of_days_in_a_month * 24. * 3600.)
-            self.internal_flow      = self.internal_flow / (number_of_days_in_a_month * 24. * 3600.)
-            # - limit the values to the landmask only
-            self.total_flow         = pcr.ifthen(self.landmask, self.total_flow)
-            self.internal_flow      = pcr.ifthen(self.landmask, self.internal_flow)
-            
-            logger.info("Extrapolating or time %s", self.modelTime.currTime)
-            # Purpose: To avoid missing value data while being extracted by cdo command
-            self.total_flow         = pcr.cover(self.total_flow,    pcr.windowmaximum(self.total_flow,    0.125)) 
-            self.internal_flow      = pcr.cover(self.internal_flow, pcr.windowaverage(self.internal_flow, 0.125)) 
+            logger.info("Calculating basin value for time %s", self.modelTime.currTime)
+            self.basin_value = pcr.catchmenttotal(self.total_runoff * self.cell_area, self.ldd_network) / self.basin_area
 
             # reporting 
             # - time stamp for reporting
@@ -145,39 +121,42 @@ class DeterministicRunner(DynamicModel):
                                           self.modelTime.day,\
                                           0)
             logger.info("Reporting for time %s", self.modelTime.currTime)
-            self.netcdf_report.data2NetCDF(self.total_flow_output_file, \
+            self.netcdf_report.data2NetCDF(self.output_file, \
                                            "total_flow", \
                                            pcr.pcr2numpy(self.total_flow, vos.MV), \
-                                           timeStamp)
-            self.netcdf_report.data2NetCDF(self.internal_flow_output_file, \
-                                           "internal_flow", \
-                                           pcr.pcr2numpy(self.internal_flow, vos.MV), \
                                            timeStamp)
 
 
 def main():
 
-    # the output folder from this calculation
-    output_folder = "/scratch-shared/edwinvua/data_for_diede/netcdf_process/climatology_average/"
-    output_folder = sys.argv[1]
-
-    # totat_runoff_input_file
-    totat_runoff_input_file = "/scratch-shared/edwinvua/data_for_diede/flow_scenarios/climatology_average_totalRunoff_monthTot_output_1979-2015.nc"
-    totat_runoff_input_file = sys.argv[2]
+    # input_file
+    input_file = "/projects/0/dfguu/users/edwin/pcr-globwb-aqueduct/historical/1958-2001_watch/"
+    input_file = sys.argv[1]
+    
+    
     
     # timeStep info: year, month, day, doy, hour, etc
     start_date = "2015-01-01"
     end_date   = "2015-12-31"
-    start_date = sys.argv[3]
-    end_date   = sys.argv[4]
+    start_date = sys.argv[2]
+    end_date   = sys.argv[3]
     #
     currTimeStep = ModelTime() 
     currTimeStep.getStartEndTimeSteps(start_date, end_date)
     
+    # output folder from this calculation
+    output_folder = "/scratch-shared/edwin/mekong_basin_temperature/test/"
+    output_folder = sys.argv[4]
+
     # - if exists, cleaning the previous output directory:
     if os.path.isdir(output_folder): shutil.rmtree(output_folder)
     # - making the output folder
     os.makedirs(output_folder)
+
+    # output file, variable name and unit
+    output_file   = output_folder + "/" + sys.argv[5]
+    variable_name = sys.argv[6]
+    vriable_unit  = sys.argv[7]
 
     # logger
     # - making a log directory
@@ -189,8 +168,8 @@ def main():
     
     # Running the deterministic_runner
     logger.info('Starting the calculation.')
-    deterministic_runner = DeterministicRunner(currTimeStep, output_folder, totat_runoff_input_file)
-    dynamic_framework = DynamicFramework(deterministic_runner,currTimeStep.nrOfTimeSteps)
+    deterministic_runner = DeterministicRunner(currTimeStep, output_file, variable_name, variable_unit)
+    dynamic_framework = DynamicFramework(deterministic_runner, currTimeStep.nrOfTimeSteps)
     dynamic_framework.setQuiet(True)
     dynamic_framework.run()
 
