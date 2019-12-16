@@ -40,7 +40,7 @@ class DeterministicRunner(DynamicModel):
         self.variable_unit = variable_unit
 
         # preparing temporary directory
-        self.temporary_directory = output_folder + "/tmp/"
+        self.temporary_directory = os.path.dirname(self.output_file) + "/tmp/"
         os.makedirs(self.temporary_directory)
         
         # clone and landmask maps
