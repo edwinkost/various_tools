@@ -124,8 +124,8 @@ class DeterministicRunner(DynamicModel):
                                           0)
             logger.info("Reporting for time %s", self.modelTime.currTime)
             self.netcdf_report.data2NetCDF(self.output_file, \
-                                           "total_flow", \
-                                           pcr.pcr2numpy(self.total_flow, vos.MV), \
+                                           self.variable_name, \
+                                           pcr.pcr2numpy(self.basin_value, vos.MV), \
                                            timeStamp)
 
 
