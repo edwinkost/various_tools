@@ -33,7 +33,6 @@ class DeterministicRunner(DynamicModel):
         self.input_file = input_file
 
         # output file - in netcdf format
-        self.output_file = output_folder + "/mekong/basin_temperature_annuaAvg_output.nc"
         self.output_file = output_file
         
         # output variable name and unit 
