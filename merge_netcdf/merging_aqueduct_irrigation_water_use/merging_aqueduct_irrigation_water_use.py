@@ -57,7 +57,7 @@ for i_year in range(0, len(start_years)):
               outp_folder + " " + \
               "outAnnuaTotNC " + \
               str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
-              "irrGrossDemand,irrigationWaterWithdrawal_annuaTot NETCDF4 True 1 Global"
+              "irrGrossDemand,irrigationWaterWithdrawal NETCDF4 True 1 Global"
         print(cmd)
         os.system(cmd)
 
