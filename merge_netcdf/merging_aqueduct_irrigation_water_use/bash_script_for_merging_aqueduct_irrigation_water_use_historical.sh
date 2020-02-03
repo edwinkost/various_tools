@@ -22,7 +22,7 @@ python merging_aqueduct_irrigation_water_use.py "/projects/0/aqueduct/users/edwi
 
 # historical gcm
 GCM_CODE="noresm1-m"
-python merging_aqueduct_irrigation_water_use.py "/projects/0/aqueduct/users/edwinsut/pcrglobwb_runs_2016_oct_nov/pcrglobwb_4_land_covers_edwin_parameter_set_${GCM_CODE}/no_correction/non-natural/" 1951,1960,1990 2005 "/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_irrigation_water_use/echo $PAThistorical/1951-2005/${GCM_CODE}/" &
+python merging_aqueduct_irrigation_water_use.py "/projects/0/aqueduct/users/edwinsut/pcrglobwb_runs_2016_oct_nov/pcrglobwb_4_land_covers_edwin_parameter_set_${GCM_CODE}/no_correction/non-natural/" 1951,1960,1990 2005 "/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_irrigation_water_use/historical/1951-2005/${GCM_CODE}/" &
 
 wait
 
