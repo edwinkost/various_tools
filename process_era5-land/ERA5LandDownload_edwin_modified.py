@@ -319,6 +319,10 @@ def main():
             target = args.dir_download + "/ERA5-Land_%s_%04d%02d.nc" % (var2,year,month)
           params['year'] = [year,]
           params['month'] = [month,]
+
+          params['area'] = [0, 28, -16, 41]
+          params['grid'] = [150/(60*60), 150/(60*60)]
+
           print(database,params,target)
           print(" \n")
           c.retrieve(database,params,target)
