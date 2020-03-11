@@ -261,38 +261,46 @@ def main():
         print("error months")
         sys.exit()
 
-  if args.latmin is None:
-        print ("ERROR!: A latmin must be specified ")
-        parser.print_help()
-        sys.exit()
-  else:
-        print(args.latmin)
+  #~ if args.latmin is None:
+        #~ print ("ERROR!: A latmin must be specified ")
+        #~ parser.print_help()
+        #~ sys.exit()
+  #~ else:
+        #~ print(args.latmin)
 
-  if args.lonmin is None:
-        print ("ERROR!: A lonmin must be specified ")
-        parser.print_help()
-        sys.exit()
-  else:
-        print(args.lonmin)
+  #~ if args.lonmin is None:
+        #~ print ("ERROR!: A lonmin must be specified ")
+        #~ parser.print_help()
+        #~ sys.exit()
+  #~ else:
+        #~ print(args.lonmin)
+#~ 
+  #~ if args.latmax is None:
+        #~ print ("ERROR!: A latmax must be specified ")
+        #~ parser.print_help()
+        #~ sys.exit()
+  #~ else:
+        #~ print(args.latmax)
+#~ 
+  #~ if args.lonmax is None:
+        #~ print ("ERROR!: A lonmax must be specified ")
+        #~ parser.print_help()
+        #~ sys.exit()
+  #~ else:
+        #~ print(args.lonmax)
 
-  if args.latmax is None:
-        print ("ERROR!: A latmax must be specified ")
-        parser.print_help()
-        sys.exit()
-  else:
-        print(args.latmax)
+  #~ bb =  str(args.latmin) + '/' + str(args.lonmin) + '/' + str(args.latmax) + '/' + str(args.lonmax)
+  #~ print(bb)
+  #~ params['area'] = [bb,]
 
-  if args.lonmax is None:
-        print ("ERROR!: A lonmax must be specified ")
-        parser.print_help()
-        sys.exit()
-  else:
-        print(args.lonmax)
-
-  bb =  str(args.latmin) + '/' + str(args.lonmin) + '/' + str(args.latmax) + '/' + str(args.lonmax)
-  print(bb)
-  params['area'] = [bb,]
-#The switch alternative
+  # set the grid and area based on the following
+  # - 150 arcsec resolution 
+  resolution = 150./(60.*60.)
+  params['grid'] = [resolution, resolution]
+  
+  params['area'] = [0. - resolution/2., 28. - resolution/2., -16. + resolution/2., 41 + resolution/2.]
+  
+  
   Variable_Dict.get(args.variable,Default_case)()
 
   if args.update == 0:
@@ -319,9 +327,6 @@ def main():
             target = args.dir_download + "/ERA5-Land_%s_%04d%02d.nc" % (var2,year,month)
           params['year'] = [year,]
           params['month'] = [month,]
-
-          params['area'] = [0, 28, -16, 41]
-          params['grid'] = [150/(60*60), 150/(60*60)]
 
           print(database,params,target)
           print(" \n")
