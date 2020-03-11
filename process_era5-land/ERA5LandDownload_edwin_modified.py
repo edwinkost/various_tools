@@ -115,8 +115,8 @@ params['day'] = d[1]
 #~ params['grid'] = ['0.05/0.05',]
 #~ params['grid'] = ['0.04166666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666667/0.04166666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666667']
 
-params['area'] = [0, 28, -16, 41]
-params['grid'] = [150/(60*60), 150/(60*60)]
+#~ params['area'] = [0, 28, -16, 41]
+#~ params['grid'] = [150/(60*60), 150/(60*60)]
 
 #variable = ['10m_u_component_of_wind', '10m_v_component_of_wind', '2m_dewpoint_temperature',
 #            '2m_temperature', 'surface_net_solar_radiation', 'total_precipitation', 'surface_pressure', 'forecast_albedo', ]  # for Utrecht 13/02/2020
@@ -293,12 +293,12 @@ def main():
   #~ print(bb)
   #~ params['area'] = [bb,]
 
-  # set the grid and area based on the following
-  # - 150 arcsec resolution 
-  resolution = 150./(60.*60.)
-  params['grid'] = [resolution, resolution]
-  
-  params['area'] = [0. - resolution/2., 28. - resolution/2., -16. + resolution/2., 41 + resolution/2.]
+  #~ # set the grid and area based on the following
+  #~ # - 150 arcsec resolution 
+  #~ resolution = 150./(60.*60.)
+  #~ params['grid'] = [resolution, resolution]
+  #~ 
+  #~ params['area'] = [0. - resolution/2., 28. - resolution/2., -16. + resolution/2., 41 + resolution/2.]
   
   
   Variable_Dict.get(args.variable,Default_case)()
