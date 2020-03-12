@@ -18,14 +18,14 @@ DAILY_OUTPUT_FOLDER="/scratch-shared/edwinhs/test_arise_meteo/daily/"
 mkdir -p ${DAILY_OUTPUT_FOLDER}
 
 # tp, total precipitation
-HOURLY_SOURCE_DIR=${MAIN_HOURLY_SOURCE_DIR}/Variable_Falb
+HOURLY_SOURCE_DIR=${MAIN_HOURLY_SOURCE_DIR}/Variable_Tpre
 # - daily total precipitation, NOTE: using daymax (as hourly source data are accumulative on each day)
 cdo -L -b F64 -settime,00:00:00 -setunit,m.day-1 -daymax -selyear,2000/2000 -shifttime,-25min -selvar,tp -mergetime ${HOURLY_SOURCE_DIR}/*.nc ${DAILY_OUTPUT_FOLDER}/tanzania_era5-land_daily_total-preci_2000-2000.nc &
 
 # ssr, surface solar radiation
 HOURLY_SOURCE_DIR=${MAIN_HOURLY_SOURCE_DIR}/Variable_Snsr
 # - daily total, NOTE: using daymax (as hourly source data are accumulative on each day)
-cdo -L -b F64 -settime,00:00:00 -setunit,J.m-2.day-1 -daymax -selyear,2000/2000 -shifttime,-25min -selvar,sr -mergetime ${HOURLY_SOURCE_DIR}/*.nc ${DAILY_OUTPUT_FOLDER}/tanzania_era5-land_daily_total-ssrad_2000-2000.nc &
+cdo -L -b F64 -settime,00:00:00 -setunit,J.m-2.day-1 -daymax -selyear,2000/2000 -shifttime,-25min -selvar,ssr -mergetime ${HOURLY_SOURCE_DIR}/*.nc ${DAILY_OUTPUT_FOLDER}/tanzania_era5-land_daily_total-ssrad_2000-2000.nc &
 
 # d2m
 HOURLY_SOURCE_DIR=${MAIN_HOURLY_SOURCE_DIR}/Variable_Temp
