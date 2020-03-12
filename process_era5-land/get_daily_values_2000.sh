@@ -46,7 +46,7 @@ cdo -L -b F64 -settime,00:00:00 -setunit,K -daymean -selyear,2000/2000 -shifttim
 cdo -L -b F64 -settime,00:00:00 -setunit,K -daymin -selyear,2000/2000 -shifttime,-25min -selvar,t2m -mergetime ${HOURLY_SOURCE_DIR}/*.nc ${DAILY_OUTPUT_FOLDER}/tanzania_era5-land_daily_t2m-minimum_2000-2000.nc &
 
 # fal
-HOURLY_SOURCE_DIR=${MAIN_HOURLY_SOURCE_DIR}/Variable_Fal
+HOURLY_SOURCE_DIR=${MAIN_HOURLY_SOURCE_DIR}/Variable_Falb
 # - mean
 cdo -L -b F64 -settime,00:00:00 -setunit,dimensionless -daymean -selyear,2000/2000 -shifttime,-25min -selvar,fal -mergetime ${HOURLY_SOURCE_DIR}/*.nc ${DAILY_OUTPUT_FOLDER}/tanzania_era5-land_daily_fal-average_2000-2000.nc &
 
