@@ -58,12 +58,12 @@ cdo -L -b F64 -settime,00:00:00 -setunit,Pa -daymean -selyear,2000/2000 -shiftti
 # u10
 HOURLY_SOURCE_DIR=${MAIN_HOURLY_SOURCE_DIR}/Variable_Wind
 # - mean
-cdo -L -b F64 -settime,00:00:00 -setunit,Pa -daymean -selyear,2000/2000 -shifttime,-25min -selvar,u10 -mergetime ${HOURLY_SOURCE_DIR}/*.nc ${DAILY_OUTPUT_FOLDER}/tanzania_era5-land_daily_u10-average_2000-2000.nc &
+cdo -L -b F64 -settime,00:00:00 -setunit,m.s-1 -daymean -selyear,2000/2000 -shifttime,-25min -selvar,u10 -mergetime ${HOURLY_SOURCE_DIR}/*.nc ${DAILY_OUTPUT_FOLDER}/tanzania_era5-land_daily_u10-average_2000-2000.nc &
 
 # v10
 HOURLY_SOURCE_DIR=${MAIN_HOURLY_SOURCE_DIR}/Variable_Wind
 # - mean
-cdo -L -b F64 -settime,00:00:00 -setunit,Pa -daymean -selyear,2000/2000 -shifttime,-25min -selvar,v10 -mergetime ${HOURLY_SOURCE_DIR}/*.nc ${DAILY_OUTPUT_FOLDER}/tanzania_era5-land_daily_v10-average_2000-2000.nc &
+cdo -L -b F64 -settime,00:00:00 -setunit,m.s-1 -daymean -selyear,2000/2000 -shifttime,-25min -selvar,v10 -mergetime ${HOURLY_SOURCE_DIR}/*.nc ${DAILY_OUTPUT_FOLDER}/tanzania_era5-land_daily_v10-average_2000-2000.nc &
 
 wait
 
