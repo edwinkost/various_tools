@@ -18,7 +18,7 @@ DAILY_OUTPUT_FOLDER="/scratch-shared/edwinhs/test_arise_meteo/daily/"
 mkdir -p ${DAILY_OUTPUT_FOLDER}
 
 # tp, total precipitation
-HOURLY_SOURCE_DIR=${MAIN_HOURLY_SOURCE_DIR}/Variable_Fal
+HOURLY_SOURCE_DIR=${MAIN_HOURLY_SOURCE_DIR}/Variable_Falb
 # - daily total precipitation, NOTE: using daymax (as hourly source data are accumulative on each day)
 cdo -L -b F64 -settime,00:00:00 -setunit,m.day-1 -daymax -selyear,2000/2000 -shifttime,-25min -selvar,tp -mergetime ${HOURLY_SOURCE_DIR}/*.nc ${DAILY_OUTPUT_FOLDER}/tanzania_era5-land_daily_total-preci_2000-2000.nc &
 
