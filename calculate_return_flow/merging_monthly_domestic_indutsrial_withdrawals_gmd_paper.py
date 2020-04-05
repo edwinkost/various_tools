@@ -3,7 +3,7 @@
 import os
 import sys
 
-main_folder = "/scratch-shared/edwin/pcrglobwb2_output_gmd_paper_rerun_201903XX_05min_using_consistent_pcraster/05min/non-natural/begin_from_1958/global/netcdf/"
+main_folder = "/scratch-shared/edwin/pcrglobwb2_output_gmd_paper_rerun_201903XX_05min_using_consistent_pcraster/05min/non-natural/"
 start_years = [1958] 
 final_year = 2015
 
