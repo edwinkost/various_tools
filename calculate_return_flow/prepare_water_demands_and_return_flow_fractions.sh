@@ -17,7 +17,7 @@ OUTPUT_DIR="/scratch-shared/edwinhs/data_for_edward_jones/water_demands_and_retu
 cd ${OUTPUT_DIR}
 #~ rm *.nc
 
-SOURCE_FILE=${MAIN_SOURCE_DIR}/domestic/complete_uncompressed/domestic_water_demand_version_april_2015.nc
+#~ SOURCE_FILE=${MAIN_SOURCE_DIR}/domestic/complete_uncompressed/domestic_water_demand_version_april_2015.nc
 #~ cdo -L -setyear,2011 -selyear,2010 ${SOURCE_FILE} domestic_demand_2011.nc
 #~ cdo -L -setyear,2012 -selyear,2010 ${SOURCE_FILE} domestic_demand_2012.nc
 #~ cdo -L -setyear,2013 -selyear,2010 ${SOURCE_FILE} domestic_demand_2013.nc
@@ -35,7 +35,7 @@ OUTPUT_DIR="/scratch-shared/edwinhs/data_for_edward_jones/water_demands_and_retu
 cd ${OUTPUT_DIR}
 #~ rm *.nc
 
-SOURCE_FILE=${MAIN_SOURCE_DIR}/industry/complete_uncompressed/industry_water_demand_version_april_2015.nc
+#~ SOURCE_FILE=${MAIN_SOURCE_DIR}/industry/complete_uncompressed/industry_water_demand_version_april_2015.nc
 #~ cdo -L -setyear,2011 -selyear,2010 ${SOURCE_FILE} industry_demand_2011.nc
 #~ cdo -L -setyear,2012 -selyear,2010 ${SOURCE_FILE} industry_demand_2012.nc
 #~ cdo -L -setyear,2013 -selyear,2010 ${SOURCE_FILE} industry_demand_2013.nc
