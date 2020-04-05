@@ -14,7 +14,7 @@ final_year = 2015
 
 print(start_years)
 
-outp_folder = "/scratch-shared/edwinhs/data_for_edward_jones/water_demands_and_return_flow_fractions/domestic/domestic_industrial_withdrawals/"
+outp_folder = "/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals/"
 
 #~ outp_folder = str(sys.argv[4])
 
