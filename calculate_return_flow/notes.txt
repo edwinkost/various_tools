@@ -1,0 +1,12 @@
+
+1) water withdrawals from the domestic, industrial and irrigation sectors
+- totalAbstraction_annuaTot_output
+- domesticWaterWithdrawal_annuaTot_output
+- industryWaterWithdrawal_annuaTot_output
+- irrigation sector withdrawal (inclucing livestock): totalAbstraction - (domesticWaterWithdrawal + industryWaterWithdrawal)
+
+2) domestic and industrial return flows (needed to be calculated from monthly values as return flow fraction changes over time)
+- domestic return flow_annua = sum( monthly_domestic_fraction * domesticWaterWithdrawal_monthTot)
+- industry_retun_flow_annua = sum( monthly_industry_fraction * industryWaterWithdrawal_monthTot )
+
+pcrglobwb output folder: /scratch-shared/edwin/pcrglobwb2_output_gmd_paper_rerun_201903XX_05min_using_consistent_pcraster/05min/non-natural/
