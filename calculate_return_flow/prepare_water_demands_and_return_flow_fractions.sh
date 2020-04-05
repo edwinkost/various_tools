@@ -26,7 +26,7 @@ cdo -L -setyear,2015 -selyear,2010 ${SOURCE_FILE} domestic_demand_2015.nc
 cdo -L -mergetime ${SOURCE_FILE} domestic_*.nc domestic_water_demand_gmd_paper.nc
 
 cdo -L expr,"dom_ret_flow_frac = ( (domesticGrossDemand > 0.0)) ? 1-(domesticNettoDemand/domesticGrossDemand) : 0.0)" domestic_water_demand_gmd_paper.nc domestic_return_flow_fraction_gmd_paper.nc 
-
+ncview domestic_water_demand_gmd_paper.nc domestic_return_flow_fraction_gmd_paper.nc
 
 # for industry water demands
 
@@ -44,6 +44,7 @@ cdo -L -setyear,2015 -selyear,2010 ${SOURCE_FILE} industry_demand_2015.nc
 cdo -L -mergetime ${SOURCE_FILE} industry_*.nc industry_water_demand_gmd_paper.nc
 
 cdo -L expr,"in_ret_flow_frac = ( (industryGrossDemand > 0.0)) ? 1-(industryNettoDemand/industryGrossDemand) : 0.0)" industry_water_demand_gmd_paper.nc industry_return_flow_fraction_gmd_paper.nc 
+ncview industry_water_demand_gmd_paper.nc industry_return_flow_fraction_gmd_paper.nc 
 
 
 set +x
