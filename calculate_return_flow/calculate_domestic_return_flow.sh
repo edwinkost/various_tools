@@ -21,7 +21,7 @@ cdo -L -z zip -f nc4 -mergetime ${SOURCE_FILES} ${OUTPUT_WITHDRAWAL_FILE}
 
 # - calculate return flow
 
-MONTHLY_OUTPUT_RETURN_FLOW_FILE="return_flow_from_domestic_water_withdrawals_monthly_1958-2015.nc"
+MONTHLY_OUTPUT_RETURN_FLOW_FILE="return_flow_from_domestic_water_withdrawals_monthly_1990-2015.nc"
 RETURN_FLOW_FRACTION_FILE="/scratch-shared/edwinhs/data_for_edward_jones/water_demands_and_return_flow_fractions/domestic/domestic_return_flow_fraction_gmd_paper.nc"
 
 #~ edwinhs@tcn724.bullx:/scratch-shared/edwinhs/data_for_edward_jones/water_demands_and_return_flow_fractions$ ls -lah */*_return_flow_fraction_gmd_paper.nc 
@@ -29,7 +29,7 @@ RETURN_FLOW_FRACTION_FILE="/scratch-shared/edwinhs/data_for_edward_jones/water_d
 #~ -rw-r--r-- 1 edwinhs edwinhs 24G Apr  6 00:03 industry/industry_return_flow_fraction_gmd_paper.nc
 
 
-cdo -L -setunit,m.month-1 -setname,"domestic_return_flow" -mul -shifttime,-1day -shifttime,1month ${RETURN_FLOW_FRACTION_FILE} ${OUTPUT_WITHDRAWAL_FILE} ${MONTHLY_OUTPUT_RETURN_FLOW_FILE}
+cdo -L -selyear,1990/2015 -setunit,m.month-1 -setname,"domestic_return_flow" -mul -shifttime,-1day -shifttime,1month ${RETURN_FLOW_FRACTION_FILE} ${OUTPUT_WITHDRAWAL_FILE} ${MONTHLY_OUTPUT_RETURN_FLOW_FILE}
 
 
 ncdump -h ${MONTHLY_OUTPUT_RETURN_FLOW_FILE}
@@ -37,7 +37,7 @@ ncview ${MONTHLY_OUTPUT_RETURN_FLOW_FILE}
 
 # - calculate annual resolution
 
-ANNUAL_OUTPUT_RETURN_FLOW_FILE="return_flow_from_domestic_water_withdrawals_annual_1958-2015.nc"
+ANNUAL_OUTPUT_RETURN_FLOW_FILE="return_flow_from_domestic_water_withdrawals_annual_1990-2015.nc"
 
 CDO_TIMESTAT_DATE='last' cdo -L -settime,00:00:00 -setunit,m.year-1 -yearsum ${MONTHLY_OUTPUT_RETURN_FLOW_FILE} ${ANNUAL_OUTPUT_RETURN_FLOW_FILE}
  
