@@ -17,7 +17,7 @@ SOURCE_FILES="/scratch-shared/edwinhs/data_for_edward_jones/monthly_domestic_ind
 #~ -r--r--r-- 1 edwinhs edwinhs 24M Apr  6 01:14 domesticWaterWithdrawal_monthTot_output_2000-01-31_to_2000-12-31.nc
 #~ -r--r--r-- 1 edwinhs edwinhs 19M Apr  6 01:14 industryWaterWithdrawal_monthTot_output_2000-01-31_to_2000-12-31.nc
 
-#~ cdo -L -z zip -f nc4 -mergetime ${SOURCE_FILES} ${OUTPUT_WITHDRAWAL_FILE}
+cdo -L -z zip -f nc4 -mergetime ${SOURCE_FILES} ${OUTPUT_WITHDRAWAL_FILE}
 
 # - calculate return flow
 
