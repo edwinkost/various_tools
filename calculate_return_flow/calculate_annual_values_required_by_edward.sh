@@ -22,8 +22,8 @@ YEAR=$1
 # preparing output folder
 OUTPUT_FOLDER="/scratch-shared/edwinhs/data_for_edward_jones/uploaded_for_edward/05min/"
 OUTPUT_FOLDER=${OUTPUT_FOLDER}/${YEAR}
-mkdir -p ${OUTPUT_DIR}
-cd ${OUTPUT_DIR} 
+mkdir -p ${OUTPUT_FOLDER}
+cd ${OUTPUT_FOLDER} 
 rm *.nc
 
 # totalGrossDemand_annuaTot_output = totalSectoralWithdrawal
