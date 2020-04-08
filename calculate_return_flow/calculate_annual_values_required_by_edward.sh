@@ -26,11 +26,13 @@ mkdir -p ${OUTPUT_DIR}
 cd ${OUTPUT_DIR} 
 rm *.nc
 
-# totalAbstraction_annuaTot_output
-SOURCEFILE=/scratch-shared/edwin/pcrglobwb2_output_gmd_paper_rerun_201903XX_05min_using_consistent_pcraster/05min/non-natural/begin_from_1958/global/netcdf/totalAbstraction_monthTot_output_${YEAR}-01-31_to_${YEAR}-12-31.nc
-ABS_OUTPUT=totalAbstraction_annuaTot_output_${YEAR}.nc
-cdo -L -z zip -f nc4 -setunit,"m.year-1" -yearsum -selyear,${YEAR} ${SOURCEFILE} ${ABS_OUTPUT}
-ncview ${ABS_OUTPUT}
+# totalGrossDemand_annuaTot_output = totalSectoralWithdrawal
+SOURCEFILE=/scratch-shared/edwinhs/data_for_edward_jones/total_withdrawals_for_satisfying_demands/totalGrossDemand_annuaTot_output_${YEAR}-12-31_to_${YEAR}-12-31.nc
+TOT_OUTPUT=total_withdrawals_annuaTot_output_${YEAR}.nc
+cdo -L -z zip -f nc4 -setname,"total_sectoral_withdrawal" -selyear,${YEAR} ${SOURCEFILE} ${TOT_OUTPUT}
+ncatted -O -a standard_name,"total_sectoral_withdrawal",m,c,"total_sectoral_withdrawal" ${TOT_OUTPUT}
+ncatted -O -a long_name,"total_sectoral_withdrawal",m,c,"domestic_and_industry_water_withdrawal" ${TOT_OUTPUT}
+ncview ${TOT_OUTPUT}
 
 #~ edwinhs@tcn724.bullx:/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals_and_return_flows$ ls -lah */*
 #~ -r--r--r-- 1 edwinhs edwinhs 1.7G Apr  8 15:32 domestic/domesticWaterWithdrawal_monthTot_output_1958-01-31_to_2000-12-31.zip.nc
@@ -61,7 +63,7 @@ ncview ${DOMIND_OUT}
 
 # aggriculture water withdrawal (including livestock)
 AGGRIC_OUT=irr_and_liv_withdrawal_annuaTot_output_${YEAR}.nc
-cdo -L -z zip -f nc4 -selyear,${YEAR} -setname,"irr_and_liv_withdrawal" -setrtoc,-inf,0,0 -sub ${ABS_OUTPUT} ${DOMIND_OUT} ${AGGRIC_OUT}
+cdo -L -z zip -f nc4 -selyear,${YEAR} -setname,"irr_and_liv_withdrawal" -setrtoc,-inf,0,0 -sub ${TOT_OUTPUT} ${DOMIND_OUT} ${AGGRIC_OUT}
 ncatted -O -a standard_name,"irr_and_liv_withdrawal",m,c,"irr_and_liv_withdrawal" ${AGGRIC_OUT}
 ncatted -O -a long_name,"irr_and_liv_withdrawal",m,c,"irrigation_and_livestock_water_withdrawal" ${AGGRIC_OUT}
 ncview ${AGGRIC_OUT}
