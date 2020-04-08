@@ -77,7 +77,8 @@ ncdump -h ${AGGRIC_OUT}
 SOURCE_DOM_RETFLOW=/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals_and_return_flows/domestic/return_flow_from_domestic_water_withdrawals_annual_1990-2015.nc
 OUTPUT_DOM_RETFLOW=return_flow_from_domestic_water_withdrawals_annuaTot_output_${YEAR}.nc
 cdo -L -z zip -f nc4 -min -selyear,${YEAR} ${SOURCE_DOM_RETFLOW} -selyear,${YEAR} ${DOM_OUTPUT} ${OUTPUT_DOM_RETFLOW}
-cdo -L -O -z zip -f nc4 -expr,"domestic_return_flow = ( (domestic_water_withdrawal >= 0.0) ? domestic_return_flow : domestic_return_flow/0.0)" -merge ${OUTPUT_DOM_RETFLOW} ${DOM_OUTPUT} ${OUTPUT_DOM_RETFLOW} 
+cdo -L -O -merge ${DOM_OUTPUT} ${OUTPUT_DOM_RETFLOW} ${OUTPUT_DOM_RETFLOW}
+cdo -L -O -z zip -f nc4 -expr,"domestic_return_flow = ( (domestic_water_withdrawal >= 0.0) ? domestic_return_flow : domestic_return_flow/0.0)" ${OUTPUT_DOM_RETFLOW} ${OUTPUT_DOM_RETFLOW} 
 ncdump -h ${OUTPUT_DOM_RETFLOW}
 ncview ${OUTPUT_DOM_RETFLOW}
 
