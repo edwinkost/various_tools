@@ -30,8 +30,8 @@ rm *.nc
 SOURCEFILE=/scratch-shared/edwinhs/data_for_edward_jones/total_withdrawals_for_satisfying_demands/totalGrossDemand_annuaTot_output_${YEAR}-12-31_to_${YEAR}-12-31.nc
 TOT_OUTPUT=total_withdrawals_annuaTot_output_${YEAR}.nc
 cdo -L -z zip -f nc4 -setname,"total_sectoral_withdrawal" -selyear,${YEAR} ${SOURCEFILE} ${TOT_OUTPUT}
-ncatted -O -a standard_name,"total_sectoral_withdrawal",m,c,"total_sectoral_withdrawal" ${TOT_OUTPUT}
-ncatted -O -a long_name,"total_sectoral_withdrawal",m,c,"domestic_and_industry_water_withdrawal" ${TOT_OUTPUT}
+ncatted -O -a standard_name,"total_sectoral_withdrawal",c,c,"total_sectoral_withdrawal" ${TOT_OUTPUT}
+ncatted -O -a long_name,"total_sectoral_withdrawal",c,c,"domestic_and_industry_water_withdrawal" ${TOT_OUTPUT}
 ncview ${TOT_OUTPUT}
 
 #~ edwinhs@tcn724.bullx:/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals_and_return_flows$ ls -lah */*
@@ -57,15 +57,15 @@ ncview ${IND_OUTPUT}
 # domesticWaterWithdrawal_annuaTot_output + industryWaterWithdrawal_annuaTot_output
 DOMIND_OUT=dom_n_ind_withdrawal_annuaTot_output_${YEAR}.nc
 cdo -L -z zip -f nc4 -setname,"dom_n_ind_withdrawal" -add ${DOM_OUTPUT} ${IND_OUTPUT} ${DOMIND_OUT}
-ncatted -O -a standard_name,"dom_n_ind_withdrawal",m,c,"dom_n_ind_withdrawal" ${DOMIND_OUT}
-ncatted -O -a long_name,"dom_n_ind_withdrawal",m,c,"domestic_and_industry_water_withdrawal" ${DOMIND_OUT}
+ncatted -O -a standard_name,"dom_n_ind_withdrawal",c,c,"dom_n_ind_withdrawal" ${DOMIND_OUT}
+ncatted -O -a long_name,"dom_n_ind_withdrawal",c,c,"domestic_and_industry_water_withdrawal" ${DOMIND_OUT}
 ncview ${DOMIND_OUT}
 
 # aggriculture water withdrawal (including livestock)
 AGGRIC_OUT=irr_and_liv_withdrawal_annuaTot_output_${YEAR}.nc
 cdo -L -z zip -f nc4 -selyear,${YEAR} -setname,"irr_and_liv_withdrawal" -setrtoc,-inf,0,0 -sub ${TOT_OUTPUT} ${DOMIND_OUT} ${AGGRIC_OUT}
-ncatted -O -a standard_name,"irr_and_liv_withdrawal",m,c,"irr_and_liv_withdrawal" ${AGGRIC_OUT}
-ncatted -O -a long_name,"irr_and_liv_withdrawal",m,c,"irrigation_and_livestock_water_withdrawal" ${AGGRIC_OUT}
+ncatted -O -a standard_name,"irr_and_liv_withdrawal",c,c,"irr_and_liv_withdrawal" ${AGGRIC_OUT}
+ncatted -O -a long_name,"irr_and_liv_withdrawal",c,c,"irrigation_and_livestock_water_withdrawal" ${AGGRIC_OUT}
 ncview ${AGGRIC_OUT}
 
 # domestic return flow
