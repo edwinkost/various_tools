@@ -51,7 +51,7 @@ for i_year in range(0, len(start_years)):
               input_folder + " " + \
               outp_folder  + " " + \
               "outAnnuaTotNC "   + \
-              str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
+              str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
               "totalGrossDemand NETCDF4 True 8 Global"
         print(cmd)
         os.system(cmd)
