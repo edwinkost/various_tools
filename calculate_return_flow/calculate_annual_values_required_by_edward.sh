@@ -27,9 +27,9 @@ cd ${OUTPUT_DIR}
 rm *.nc
 
 # totalAbstraction_annuaTot_output
-SOURCEFILE=/scratch-shared/edwin/pcrglobwb2_output_gmd_paper_rerun_201903XX_05min_using_consistent_pcraster/05min/non-natural/begin_from_1958/global/netcdf/totalAbstraction_annuaTot_output_${YEAR}-12-31_to_${YEAR}-12-31.nc
+SOURCEFILE=/scratch-shared/edwin/pcrglobwb2_output_gmd_paper_rerun_201903XX_05min_using_consistent_pcraster/05min/non-natural/begin_from_1958/global/netcdf/totalAbstraction_monthTot_output_${YEAR}-01-31_to_${YEAR}-12-31.nc
 ABS_OUTPUT=totalAbstraction_annuaTot_output_${YEAR}.nc
-cdo -L -z zip -f nc4 -selyear,${YEAR} ${SOURCEFILE} ${ABS_OUTPUT}
+cdo -L -z zip -f nc4 -setunit,"m.year-1" -yearsum -selyear,${YEAR} ${SOURCEFILE} ${ABS_OUTPUT}
 ncview ${ABS_OUTPUT}
 
 #~ edwinhs@tcn724.bullx:/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals_and_return_flows$ ls -lah */*
