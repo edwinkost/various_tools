@@ -45,13 +45,13 @@ ncview ${TOT_OUTPUT}
 # domesticWaterWithdrawal_annuaTot_output
 SOURCEFILE="/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals_and_return_flows/domestic/domesticWaterWithdrawal_monthTot_output_1958-01-31_to_2000-12-31.zip.nc"
 DOM_OUTPUT=domesticWaterWithdrawal_annuaTot_output_${YEAR}.nc
-cdo -L -z zip -f nc4 -setunit,"m.year-1" -yearsum -selyear,${YEAR} ${SOURCEFILE} ${DOM_OUTPUT}
+CDO_TIMESTAT_DATE='last' cdo -L -z zip -f nc4 -settime,00:00:00 -setunit,"m.year-1" -yearsum -selyear,${YEAR} ${SOURCEFILE} ${DOM_OUTPUT}
 ncview ${DOM_OUTPUT}
 
 # industryWaterWithdrawal_annuaTot_output
 SOURCEFILE="/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals_and_return_flows/industry/industryWaterWithdrawal_monthTot_output_1958-01-31_to_2000-12-31.zip.nc"
 IND_OUTPUT=industryWaterWithdrawal_annuaTot_output_${YEAR}.nc
-cdo -L -z zip -f nc4 -setunit,"m.year-1" -yearsum -selyear,${YEAR} ${SOURCEFILE} ${IND_OUTPUT}
+CDO_TIMESTAT_DATE='last' cdo -L -z zip -f nc4 -settime,00:00:00 -setunit,"m.year-1" -yearsum -selyear,${YEAR} ${SOURCEFILE} ${IND_OUTPUT}
 ncview ${IND_OUTPUT}
 
 # domesticWaterWithdrawal_annuaTot_output + industryWaterWithdrawal_annuaTot_output
