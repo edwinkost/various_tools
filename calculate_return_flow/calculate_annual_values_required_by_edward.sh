@@ -32,7 +32,8 @@ TOT_OUTPUT=total_withdrawals_annuaTot_output_${YEAR}.nc
 cdo -L -z zip -f nc4 -setname,"total_sectoral_withdrawal" -selyear,${YEAR} ${SOURCEFILE} ${TOT_OUTPUT}
 ncatted -O -a standard_name,"total_sectoral_withdrawal",c,c,"total_sectoral_withdrawal" ${TOT_OUTPUT}
 ncatted -O -a long_name,"total_sectoral_withdrawal",c,c,"domestic_and_industry_water_withdrawal" ${TOT_OUTPUT}
-ncview ${TOT_OUTPUT}
+ncdump -h ${TOT_OUTPUT}
+#~ ncview ${TOT_OUTPUT}
 
 #~ edwinhs@tcn724.bullx:/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals_and_return_flows$ ls -lah */*
 #~ -r--r--r-- 1 edwinhs edwinhs 1.7G Apr  8 15:32 domestic/domesticWaterWithdrawal_monthTot_output_1958-01-31_to_2000-12-31.zip.nc
@@ -47,14 +48,14 @@ SOURCEFILE="/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_wi
 DOM_OUTPUT=domesticWaterWithdrawal_annuaTot_output_${YEAR}.nc
 CDO_TIMESTAT_DATE='last' cdo -L -z zip -f nc4 -settime,00:00:00 -setunit,"m.year-1" -yearsum -selyear,${YEAR} ${SOURCEFILE} ${DOM_OUTPUT}
 ncdump -h ${DOM_OUTPUT}
-ncview ${DOM_OUTPUT}
+#~ ncview ${DOM_OUTPUT}
 
 # industryWaterWithdrawal_annuaTot_output
 SOURCEFILE="/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals_and_return_flows/industry/industryWaterWithdrawal_monthTot_output_1958-01-31_to_2000-12-31.zip.nc"
 IND_OUTPUT=industryWaterWithdrawal_annuaTot_output_${YEAR}.nc
 CDO_TIMESTAT_DATE='last' cdo -L -z zip -f nc4 -settime,00:00:00 -setunit,"m.year-1" -yearsum -selyear,${YEAR} ${SOURCEFILE} ${IND_OUTPUT}
 ncdump -h ${IND_OUTPUT}
-ncview ${IND_OUTPUT}
+#~ ncview ${IND_OUTPUT}
 
 # domesticWaterWithdrawal_annuaTot_output + industryWaterWithdrawal_annuaTot_output
 DOMIND_OUT=dom_n_ind_withdrawal_annuaTot_output_${YEAR}.nc
@@ -62,7 +63,7 @@ cdo -L -z zip -f nc4 -setname,"dom_n_ind_withdrawal" -add ${DOM_OUTPUT} ${IND_OU
 ncatted -O -a standard_name,"dom_n_ind_withdrawal",c,c,"dom_n_ind_withdrawal" ${DOMIND_OUT}
 ncatted -O -a long_name,"dom_n_ind_withdrawal",c,c,"domestic_and_industry_water_withdrawal" ${DOMIND_OUT}
 ncdump -h ${DOMIND_OUT}
-ncview ${DOMIND_OUT}
+#~ ncview ${DOMIND_OUT}
 
 # aggriculture water withdrawal (including livestock)
 AGGRIC_OUT=irr_and_liv_withdrawal_annuaTot_output_${YEAR}.nc
@@ -70,21 +71,21 @@ cdo -L -z zip -f nc4 -selyear,${YEAR} -setname,"irr_and_liv_withdrawal" -setrtoc
 ncatted -O -a standard_name,"irr_and_liv_withdrawal",c,c,"irr_and_liv_withdrawal" ${AGGRIC_OUT}
 ncatted -O -a long_name,"irr_and_liv_withdrawal",c,c,"irrigation_and_livestock_water_withdrawal" ${AGGRIC_OUT}
 ncdump -h ${AGGRIC_OUT}
-ncview ${AGGRIC_OUT}
+#~ ncview ${AGGRIC_OUT}
 
 # domestic return flow
 SOURCE_DOM_RETFLOW=/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals_and_return_flows/domestic/return_flow_from_domestic_water_withdrawals_annual_1990-2015.nc
 OUTPUT_DOM_RETFLOW=return_flow_from_domestic_water_withdrawals_annuaTot_output_${YEAR}.nc
 cdo -L -z zip -f nc4 -min -selyear,${YEAR} ${SOURCE_DOM_RETFLOW} -selyear,${YEAR} ${DOM_OUTPUT} ${OUTPUT_DOM_RETFLOW}
 ncdump -h ${OUTPUT_DOM_RETFLOW}
-ncview ${OUTPUT_DOM_RETFLOW}
+#~ ncview ${OUTPUT_DOM_RETFLOW}
 
 # industrial return flow
 SOURCE_IND_RETFLOW=/scratch-shared/edwinhs/data_for_edward_jones/domestic_industrial_withdrawals_and_return_flows/industry/return_flow_from_industry_water_withdrawals_annual_1990-2015.nc
 OUTPUT_IND_RETFLOW=return_flow_from_industry_water_withdrawals_annuaTot_output_${YEAR}.nc
 cdo -L -z zip -f nc4 -min -selyear,${YEAR} ${SOURCE_IND_RETFLOW} -selyear,${YEAR} ${IND_OUTPUT} ${OUTPUT_IND_RETFLOW}
 ncdump -h ${OUTPUT_IND_RETFLOW}
-ncview ${OUTPUT_IND_RETFLOW}
+#~ ncview ${OUTPUT_IND_RETFLOW}
 
 set +x
 
