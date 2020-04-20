@@ -10,14 +10,11 @@ OPTIONS="--recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progr
 # the following options should make symlinks broken
 #~ OPTIONS="--recursive --verbose --no-p --no-g --chmod=ugo=rwX --size-only --progress"
 
-#~ # go to the source folder
-#~ cd ${SOURCE}
-
 # rsync command
-rsync ${OPTIONS} * ${TARGET}
+rsync ${OPTIONS} ${SOURCE} ${TARGET}
 
 # rsync command - for final checking
-rsync ${OPTIONS} * ${TARGET} 
+rsync ${OPTIONS} ${SOURCE} ${TARGET} 
 
 # go back to the original folder (where this script is excecuted)
 cd -
