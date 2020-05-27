@@ -62,6 +62,16 @@ for i_year in range(0, len(start_years)):
         #~ irrigationWaterWithdrawal_annuaTot_output.nc
         
         
+        # monthly total
+        cmd = "python merge_netcdf.py " + \
+              input_folder + " " + \
+              outp_folder + " " + \
+              "outMonthTotNC " + \
+              str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
+              "nonIrrGrossDemand,irrGrossDemand,domesticWaterWithdrawal,industryWaterWithdrawal,irrPaddyWaterWithdrawal NETCDF4 True 1 Global"
+        print(cmd)
+        os.system(cmd)
+
         # annual total
         # - evaporation_from_irrigation,precipitation_at_irrigation,irrigationWaterWithdrawal
         cmd = "python merge_netcdf.py " + \
@@ -70,15 +80,5 @@ for i_year in range(0, len(start_years)):
               "outAnnuaTotNC " + \
               str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
               "evaporation_from_irrigation,precipitation_at_irrigation,irrigationWaterWithdrawal NETCDF4 True 1 Global"
-        print(cmd)
-        os.system(cmd)
-
-        # monthly total
-        cmd = "python merge_netcdf.py " + \
-              input_folder + " " + \
-              outp_folder + " " + \
-              "outMonthTotNC " + \
-              str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
-              "nonIrrGrossDemand_monthTot,irrGrossDemand_monthTot,domesticWaterWithdrawal,industryWaterWithdrawal,irrPaddyWaterWithdrawal NETCDF4 True 1 Global"
         print(cmd)
         os.system(cmd)
