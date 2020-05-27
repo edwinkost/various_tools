@@ -36,6 +36,7 @@ input_files = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_irrigation_w
 
 
 output_file = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output_1951-2005.nc"
+output_file = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/test.nc"
 
 
 # prepare directories if not exist
