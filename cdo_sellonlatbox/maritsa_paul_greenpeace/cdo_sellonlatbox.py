@@ -33,7 +33,7 @@ lonlatbox   = sys.argv[1]
   #~ NoData Value=-2147483647
 
 
-input_files = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_water_use_all/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output_*.nc"
+input_files = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_water_use_all/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output"
 input_files = sys.argv[2]
 
 output_file = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output_1951-2005.nc"
@@ -51,7 +51,7 @@ if os.path.exists(output_file): os.remove(output_file)
 
 
 # perform cdo
-cmd = "CDO_TIMESTAT_DATE='last' cdo -L -settime,00:00:00 -monavg -sellonlatbox," + lonlatbox + " -mergetime " + input_files + " " + output_file
+cmd = "CDO_TIMESTAT_DATE='last' cdo -L -settime,00:00:00 -monavg -sellonlatbox," + lonlatbox + " -mergetime " + input_files + "*.nc " + output_file
 # - NOTE: Note that the -monvag is used in the combination with CDO_TIMESTAT_DATE='last' and -settime,00:00:00 in order to make all dates are always the last days of the months.   
 print(cmd)
 os.system(cmd)
