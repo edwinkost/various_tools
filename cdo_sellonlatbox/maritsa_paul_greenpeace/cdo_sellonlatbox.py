@@ -10,6 +10,7 @@ import sys
 
 
 lonlatbox   = "22.0,30.0,40.0,45.0"
+lonlatbox   = sys.argv[1]
 
 #~ sutanudjaja@cehs-hp:~/ownCloud/paper_in_progress/paul_maritsa_greenpeace$ gdalinfo catchment_lddsound_05min_around_maritsa_paul_request.tif 
 #~ Driver: GTiff/GeoTIFF
@@ -33,11 +34,11 @@ lonlatbox   = "22.0,30.0,40.0,45.0"
 
 
 input_files = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_water_use_all/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output_*.nc"
-
+input_files = sys.argv[2]
 
 output_file = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output_1951-2005.nc"
 output_file = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/test.nc"
-
+output_file = sys.argv[3]
 
 # prepare directories if not exist
 target_directory = os.path.dirname(output_file)

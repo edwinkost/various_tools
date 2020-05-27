@@ -7,9 +7,9 @@ set -x
 LONLATBOX="22.0,30.0,40.0,45.0"
 
 # - discharge
-INPUT_FILES=
-OUTPUT_FILE= 
-python cdo_sellonlatbox.py
+INPUT_FILES=/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_water_use_all/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output_*.nc
+OUTPUT_FILE=/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output_1951-2005.nc 
+python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE}
 
 # temperature
 
