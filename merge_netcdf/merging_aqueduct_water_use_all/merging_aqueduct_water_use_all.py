@@ -68,7 +68,7 @@ for i_year in range(0, len(start_years)):
               outp_folder + " " + \
               "outMonthTotNC " + \
               str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
-              "nonIrrGrossDemand,irrGrossDemand,domesticWaterWithdrawal,industryWaterWithdrawal,irrPaddyWaterWithdrawal NETCDF4 True 8 Global"
+              "nonIrrGrossDemand,irrGrossDemand,domesticWaterWithdrawal,industryWaterWithdrawal,irrPaddyWaterWithdrawal NETCDF4 True 1 Global"
         print(cmd)
         os.system(cmd)
 
@@ -79,6 +79,6 @@ for i_year in range(0, len(start_years)):
               outp_folder + " " + \
               "outAnnuaTotNC " + \
               str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
-              "evaporation_from_irrigation,precipitation_at_irrigation,irrigationWaterWithdrawal NETCDF4 True 8 Global"
+              "evaporation_from_irrigation,precipitation_at_irrigation,irrigationWaterWithdrawal NETCDF4 True 1 Global"
         print(cmd)
         os.system(cmd)
