@@ -32,10 +32,10 @@ lonlatbox   = "22.0,30.0,40.0,45.0"
   #~ NoData Value=-2147483647
 
 
-input_files = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_irrigation_water_use/historical/1951-2005/gfdl-esm2m/irrigationWaterWithdrawal_annuaTot_output_*.nc"
+input_files = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_irrigation_water_use/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output_*.nc"
 
 
-output_file = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test.nc"
+output_file = "/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output_1951-2005.nc"
 
 
 # prepare directories if not exist
