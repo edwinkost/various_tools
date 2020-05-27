@@ -69,6 +69,8 @@ for i_year in range(0, len(start_years)):
         #~ 
         #~ discharge_monthAvg_output.nc
         #~ channelStorage_monthAvg_output.nc
+        #~ 
+        #~ temperature_annuaAvg_output.nc
 
 
         # monthly total
@@ -82,7 +84,6 @@ for i_year in range(0, len(start_years)):
         os.system(cmd)
 
         # annual total
-        # - evaporation_from_irrigation,precipitation_at_irrigation,irrigationWaterWithdrawal
         cmd = "python merge_netcdf.py " + \
               input_folder + " " + \
               outp_folder + " " + \
@@ -99,5 +100,15 @@ for i_year in range(0, len(start_years)):
               "outMonthAvgNC " + \
               str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
               "discharge,channelStorage NETCDF4 True 5 Global"
+        print(cmd)
+        os.system(cmd)
+
+        # annual average
+        cmd = "python merge_netcdf.py " + \
+              input_folder + " " + \
+              outp_folder + " " + \
+              "outAnnuaAvgNC " + \
+              str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
+              "temperature NETCDF4 True 5 Global"
         print(cmd)
         os.system(cmd)
