@@ -5,7 +5,7 @@ import sys
 
 
 #~ # example of command line:
-#~ CDO_TIMESTAT_DATE='last' cdo -L -settime,00:00:00  -monavg -sellonlatbox,100,120,-10,10 -mergetime /scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_irrigation_water_use/historical/1951-2005/gfdl-esm2m/irrigationWaterWithdrawal_annuaTot_output_*.nc test.nc
+#~ CDO_TIMESTAT_DATE='last' cdo -L -settime,00:00:00 -monavg -sellonlatbox,100,120,-10,10 -mergetime /scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_irrigation_water_use/historical/1951-2005/gfdl-esm2m/irrigationWaterWithdrawal_annuaTot_output_*.nc test.nc
 
 
 
@@ -50,7 +50,7 @@ if os.path.exists(output_file): os.remove(output_file)
 
 
 # perform cdo
-cmd = "CDO_TIMESTAT_DATE='last' cdo -L -settime,00:00:00  -monavg -sellonlatbox," + lonlatbox + "-mergetime " + input_files + " " + output_file
+cmd = "CDO_TIMESTAT_DATE='last' cdo -L -settime,00:00:00 -monavg -sellonlatbox," + lonlatbox + " -mergetime " + input_files + " " + output_file
 # - NOTE: Note that the -monvag is used in the combination with CDO_TIMESTAT_DATE='last' and -settime,00:00:00 in order to make all dates are always the last days of the months.   
 print(cmd)
 os.system(cmd)
