@@ -4,19 +4,26 @@
 
 set -x
 
-MAIN_INP_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_water_use_all/"
-MAIN_INP_FOLDER_LIVESTOCK="/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_livestock/"
+MAIN_OUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test_with_bash/"
+MAIN_OUT_FOLDER=$1
 
 LONLATBOX="22.0,30.0,40.0,45.0"
+LONLATBOX=$2
 
 SCENARIO="historical"
+SCENARIO=$3
 
 PERIODYR="1951-2005"
+PERIODYR=$4
 
 GCM_CODE="gfdl-esm2m"
+GCM_CODE=$5
 
-MAIN_OUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test_with_bash/"
+MAIN_INP_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_water_use_all/"
+MAIN_INP_FOLDER=$6
 
+MAIN_INP_FOLDER_LIVESTOCK="/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_livestock/"
+MAIN_INP_FOLDER_LIVESTOCK=$7
 
 # - discharge
 FILE_VARIABLE_NAME=discharge_monthAvg
@@ -61,5 +68,7 @@ OUTPUT_FILE=${MAIN_OUT_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIAB
 python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
 
 wait
+
+# TODO: monthly temperature and water demand
 
 set +x
