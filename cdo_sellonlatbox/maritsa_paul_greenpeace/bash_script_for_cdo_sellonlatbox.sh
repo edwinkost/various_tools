@@ -5,6 +5,7 @@
 set -x
 
 MAIN_INP_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_water_use_all/"
+MAIN_INP_FOLDER_LIVESTOCK="/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_livestock/"
 
 LONLATBOX="22.0,30.0,40.0,45.0"
 
@@ -47,11 +48,11 @@ INPUT_FILES=${MAIN_INP_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIAB
 OUTPUT_FILE=${MAIN_OUT_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}_output_${PERIODYR}_${SCENARIO}_${GCM_CODE}.nc 
 python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
 
-#~ # - livestock withdrawal
-#~ FILE_VARIABLE_NAME=livestockWaterWithdrawal_monthTot
-#~ INPUT_FILES=${MAIN_INP_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}
-#~ OUTPUT_FILE=${MAIN_OUT_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}_output_${PERIODYR}_${SCENARIO}_${GCM_CODE}.nc 
-#~ python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
+# - livestock withdrawal
+FILE_VARIABLE_NAME=livestockWaterWithdrawal_monthTot
+INPUT_FILES=${MAIN_INP_FOLDER_LIVESTOCK}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}
+OUTPUT_FILE=${MAIN_OUT_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}_output_${PERIODYR}_${SCENARIO}_${GCM_CODE}.nc 
+python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
 
 # - irrigation withdrawal
 FILE_VARIABLE_NAME=irrGrossDemand_monthTot
