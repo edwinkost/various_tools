@@ -4,17 +4,45 @@
 
 set -x
 
+MAIN_INP_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_water_use_all/"
+MAIN_OUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/"
+
 LONLATBOX="22.0,30.0,40.0,45.0"
 
+SCENARIO="historical"
+
+PERIODYR="1951-2005"
+
+GCM_CODE="gfdl-esm2m"
+
+
+
 # - discharge
-INPUT_FILES=/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_water_use_all/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output
-OUTPUT_FILE=/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/historical/1951-2005/gfdl-esm2m/discharge_monthAvg_output_1951-2005.nc 
+FILE_VARIABLE_NAME=discharge_monthAvg_output
+INPUT_FILES=${MAIN_INP_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}
+OUTPUT_FILE=${MAIN_OUT_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}_output_${PERIODYR}_${SCENARIO}_${GCM_CODE}.nc 
 python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
 
-# - temperature
-INPUT_FILES=/scratch-shared/edwinhs/pcr-globwb-aqueduct/aqueduct_water_use_all/historical/1951-2005/gfdl-esm2m/temperature_annuaAvg_output
-OUTPUT_FILE=/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/historical/1951-2005/gfdl-esm2m/temperature_monthAvg_output_1951-2005.nc 
-python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
+# - temperature - annual resolution
+FILE_VARIABLE_NAME=temperature_annuaAvg_output
+
+# - precipitation
+FILE_VARIABLE_NAME=precipitation_monthTot
+
+
+# - domestic withdrawal
+FILE_VARIABLE_NAME=domesticWaterWithdrawal_monthTot
+
+
+# - industrial withdrawal
+FILE_VARIABLE_NAME=industryWaterWithdrawal_monthTot_output
+
+# - livestock withdrawal
+FILE_VARIABLE_NAME=industryWaterWithdrawal_monthTot_output
+
+# - irr
+irrGrossDemand_monthTot_outpu
+
 
 wait
 
