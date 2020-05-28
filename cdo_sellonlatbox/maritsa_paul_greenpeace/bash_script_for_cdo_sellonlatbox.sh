@@ -17,11 +17,11 @@ GCM_CODE="gfdl-esm2m"
 MAIN_OUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test_with_bash/"
 
 
-#~ # - discharge
-#~ FILE_VARIABLE_NAME=discharge_monthAvg
-#~ INPUT_FILES=${MAIN_INP_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}
-#~ OUTPUT_FILE=${MAIN_OUT_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}_output_${PERIODYR}_${SCENARIO}_${GCM_CODE}.nc 
-#~ python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
+# - discharge
+FILE_VARIABLE_NAME=discharge_monthAvg
+INPUT_FILES=${MAIN_INP_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}
+OUTPUT_FILE=${MAIN_OUT_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}_output_${PERIODYR}_${SCENARIO}_${GCM_CODE}.nc 
+python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
 
 # - temperature - annual resolution
 FILE_VARIABLE_NAME=temperature_annuaAvg
@@ -52,12 +52,12 @@ python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
 #~ INPUT_FILES=${MAIN_INP_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}
 #~ OUTPUT_FILE=${MAIN_OUT_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}_output_${PERIODYR}_${SCENARIO}_${GCM_CODE}.nc 
 #~ python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
-#~ 
-#~ # - irrigation withdrawal
-#~ FILE_VARIABLE_NAME=irrGrossDemand_monthTot_outpu
-#~ INPUT_FILES=${MAIN_INP_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}
-#~ OUTPUT_FILE=${MAIN_OUT_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}_output_${PERIODYR}_${SCENARIO}_${GCM_CODE}.nc 
-#~ python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
+
+# - irrigation withdrawal
+FILE_VARIABLE_NAME=irrGrossDemand_monthTot
+INPUT_FILES=${MAIN_INP_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}
+OUTPUT_FILE=${MAIN_OUT_FOLDER}/${SCENARIO}/${PERIODYR}/${GCM_CODE}/${FILE_VARIABLE_NAME}_output_${PERIODYR}_${SCENARIO}_${GCM_CODE}.nc 
+python cdo_sellonlatbox.py ${LONLATBOX} ${INPUT_FILES} ${OUTPUT_FILE} &
 
 wait
 
