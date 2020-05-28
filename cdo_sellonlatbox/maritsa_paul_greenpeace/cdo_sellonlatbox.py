@@ -59,7 +59,7 @@ if os.path.exists(output_file): os.remove(output_file)
 #~ cmd = "CDO_TIMESTAT_DATE='last' cdo -L -settime,00:00:00 -monavg -sellonlatbox," + lonlatbox + " -mergetime " + input_files + "*.nc " + output_file
 #~ # - NOTE: Note that the -monvag is used in the combination with CDO_TIMESTAT_DATE='last' and -settime,00:00:00 in order to make all dates are always the last days of the months.   
 # - with compression
-cmd = "CDO_TIMESTAT_DATE='last' cdo -L -zip -f nc4 -settime,00:00:00 -monavg -sellonlatbox," + lonlatbox + " -mergetime " + input_files + "*.nc " + output_file
+cmd = "CDO_TIMESTAT_DATE='last' cdo -L -z zip -f nc4 -settime,00:00:00 -monavg -sellonlatbox," + lonlatbox + " -mergetime " + input_files + "*.nc " + output_file
 # - NOTE: Note that the -monvag is used in the combination with CDO_TIMESTAT_DATE='last' and -settime,00:00:00 in order to make all dates are always the last days of the months.   
 print(cmd)
 os.system(cmd)
