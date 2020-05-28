@@ -14,7 +14,7 @@ PERIODYR="1951-2005"
 
 GCM_CODE="gfdl-esm2m"
 
-MAIN_OUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test/"
+MAIN_OUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct/maritsa/test_with_bash/"
 
 
 # - discharge
