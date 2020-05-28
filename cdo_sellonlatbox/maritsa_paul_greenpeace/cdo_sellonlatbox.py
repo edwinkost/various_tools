@@ -42,7 +42,11 @@ output_file = sys.argv[3]
 
 # prepare directories if not exist
 target_directory = os.path.dirname(output_file)
-if os.path.exists(target_directory) == False: os.makedirs(target_directory)
+if os.path.exists(target_directory) == False:
+	try:
+		os.makedirs(target_directory)
+	except:
+		pass
 os.chdir(target_directory)
 
 
