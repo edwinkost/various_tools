@@ -18,6 +18,4 @@ bash bash_script_for_cdo_sellonlatbox.sh ${MAIN_OUT_FOLDER} ${LONLATBOX} ${SCENA
 bash bash_script_for_cdo_sellonlatbox.sh ${MAIN_OUT_FOLDER} ${LONLATBOX} ${SCENARIO} 1951-2005 noresm1-m      ${MAIN_INP_FOLDER} ${MAIN_INP_FOLDER_LIVESTOCK}
 bash bash_script_for_cdo_sellonlatbox.sh ${MAIN_OUT_FOLDER} ${LONLATBOX} ${SCENARIO} 1958-2001 watch          ${MAIN_INP_FOLDER} ${MAIN_INP_FOLDER_LIVESTOCK}
 
-wait
-
 set +x
