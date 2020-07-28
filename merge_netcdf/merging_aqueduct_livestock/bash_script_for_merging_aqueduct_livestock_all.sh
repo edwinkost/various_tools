@@ -1,0 +1,14 @@
+
+set -x
+
+bash bash_script_for_merging_aqueduct_livestock_historical.sh 
+
+bash bash_script_for_merging_aqueduct_livestock_rcp2p6.sh 
+
+bash bash_script_for_merging_aqueduct_livestock_rcp6p0.sh 
+
+bash bash_script_for_merging_aqueduct_livestock_rcp4p5.sh 
+
+bash bash_script_for_merging_aqueduct_livestock_rcp8p5.sh
+
+set +x
