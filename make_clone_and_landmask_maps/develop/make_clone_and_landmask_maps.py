@@ -80,9 +80,12 @@ def main():
         
         # set the landmask 
         pcr.setclone(clonemap_mask_file)
-        landmask = vos.readPCRmapClone(v = subdomain_nc_file,\
-                                           cloneMapFileName = clonemap_mask_file,\
-                                           tmpDir = None)
+        landmask = vos.netcdf2PCRobjCloneWithoutTime(ncFile  = subdomain_nc_file, \
+                                                     varName = "automatic",\
+                                                     cloneMapFileName  = clonemap_mask_file,\
+                                                     LatitudeLongitude = True,\
+                                                     specificFillValue = "NaN",\
+                                                     absolutePath = None)
         landmask_boolean = pcr.defined(landmask)
         landmask_boolean = pcr.ifthen(landmask_boolean, landmask_booleab)
                                            
