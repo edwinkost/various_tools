@@ -64,9 +64,9 @@ def main():
     # - set to the global clone map
     pcr.setclone(global_clone_map)
     # - for land
-    landmask_land = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
+    landmask_land_all = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
     # - for river
-    landmask_river_and_land = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
+    landmask_river_and_land_all = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
     
     for nr in range(1, num_of_masks + 1, 1):
         
@@ -90,8 +90,8 @@ def main():
         
         # update global landmask for land
         mask_land_selected_nominal = pcr.ifthen(mask_land_selected_boolean, pcr.nominal(nr))
-        landmask_land = pcr.cover(landmask_land, mask_land_selected_nominal)
-        pcr.aguila(landmask_land)
+        landmask_land_all = pcr.cover(landmask_land_all, mask_land_selected_nominal)
+        pcr.aguila(landmask_land_all)
 
         # read river nc file (and convert it to pcraster)
         subdomain_river_nc_file = subdomain_river_nc %(str(nr))
@@ -114,8 +114,8 @@ def main():
         pcr.report(mask_selected_nominal, filename_for_land_river_mask_at_global_extent)
         
         # update global landmask for land and river
-        landmask_river_and_all = pcr.cover(landmask_river_and_land, mask_land_selected_nominal)
-        pcr.aguila(landmask_river_and_land)
+        landmask_river_and_land_all = pcr.cover(landmask_river_and_land_all, mask_land_selected_nominal)
+        pcr.aguila(landmask_river_and_land_all)
 
         # get the bounding box based on the landmask file
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
@@ -161,13 +161,13 @@ def main():
 
     # report a global nominal map for land
     filename_for_nominal_land_mask_at_global_extent = "global_landmask_land_mask_all.map"
-    pcr.report(landmask_land, filename_for_nominal_land_mask_at_global_extent)
+    pcr.report(landmask_land_all, filename_for_nominal_land_mask_at_global_extent)
     pcr.aguila(landmask_land)
 
     # report a global nominal map for river and and land
     filename_for_nominal_land_river_mask_at_global_extent = "global_landmask_river_and_land_mask_all.map"
-    pcr.report(landmask_river_and_land, filename_for_nominal_land_river_mask_at_global_extent)
-    pcr.aguila(landmask_river_and_land)
+    pcr.report(landmask_river_and_land_all, filename_for_nominal_land_river_mask_at_global_extent)
+    pcr.aguila(landmask_river_and_land_all)
     
     os.system('killall aguila')
     
