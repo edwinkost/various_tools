@@ -47,6 +47,7 @@ def main():
     else:
         os.makedirs(out_folder)
     os.chdir(out_folder)    
+    os.system("pwd")
     
     for nr in range(1, num_of_masks + 1, 1):
         
