@@ -10,6 +10,7 @@ import glob
 import subprocess
 import time
 import datetime
+mport shutil
 
 import numpy as np
 import math
@@ -57,7 +58,7 @@ def main():
         # read nc file (and convert it to pcraster)
         subdomain_nc_file = subdomain_nc %(str(nr))
         mask_selected = vos.netcdf2PCRobjCloneWithoutTime(ncFile  = subdomain_nc_file, \
-                                                          varName = "automatic",\
+                                                          varName = "mask",\
                                                           cloneMapFileName  = global_clone_map,\
                                                           LatitudeLongitude = True,\
                                                           specificFillValue = "NaN",\
@@ -84,7 +85,7 @@ def main():
         # set the landmask 
         pcr.setclone(clonemap_mask_file)
         landmask = vos.netcdf2PCRobjCloneWithoutTime(ncFile  = subdomain_nc_file, \
-                                                     varName = "automatic",\
+                                                     varName = "mask",\
                                                      cloneMapFileName  = clonemap_mask_file,\
                                                      LatitudeLongitude = True,\
                                                      specificFillValue = "NaN",\
