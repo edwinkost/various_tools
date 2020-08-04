@@ -1709,11 +1709,12 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
     # ~ test
 
 
-    try:
-        co = 'gdal_translate -of PCRaster '+ \
-                  str(tmpDir)+'tmp_out.tif '+str(output)
-        cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
-    except:
+    co = 'gdal_translate -of PCRaster '+ \
+              str(tmpDir)+'tmp_out.tif '+str(output)
+    cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
+    
+    print(str(output))
+    if os.path.exists(str(output)):
         logger.warning("cannot use gdal_translate, now try using pcrcalc")
         co = 'pcrcalc '+ \
                   str(output) + " = scalar(" +\
