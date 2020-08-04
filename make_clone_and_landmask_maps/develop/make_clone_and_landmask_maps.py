@@ -38,7 +38,7 @@ def main():
     num_of_masks = 54
 
     # list of subdomain mask files for land (all in nc files)
-    subdomain_nc       = "/scratch/mo/nest/ulysses/data/edwin/clone_maps/version_2020-08-04/source_from_stephan/subdomain_masks/subdomain_land_%s.nc"
+    subdomain_land_nc  = "/scratch/mo/nest/ulysses/data/edwin/clone_maps/version_2020-08-04/source_from_stephan/subdomain_masks/subdomain_land_%s.nc"
 
     # lisk of subdomain maks files for touring (all in nc files)
     subdomain_river_nc = "/scratch/mo/nest/ulysses/data/edwin/clone_maps/version_2020-08-04/subdomain_river_masks/subdomain_river_%s.nc"	
