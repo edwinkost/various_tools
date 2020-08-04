@@ -1705,7 +1705,7 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
            str(tmpDir)+'tmp_out.tif'
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     # 
-
+    print(co)
     test
 
 
