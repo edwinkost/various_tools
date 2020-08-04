@@ -97,7 +97,7 @@ def main():
                                                                 specificFillValue = "NaN",\
                                                                 absolutePath = None)
         mask_river_selected_boolean = pcr.ifthen(pcr.scalar(mask_river_selected) > 0.0, pcr.boolean(1.0))
-        mask_river_selected_boolean = pcr.ifthen(mask_river_selected_boolean, mask_selected_boolean)
+        mask_river_selected_boolean = pcr.ifthen(mask_river_selected_boolean, mask_river_selected_boolean)
         
         # merge land and river landmask
         mask_selected_boolean = pcr.cover(mask_land_selected_boolean, mask_river_selected_boolean)
