@@ -39,7 +39,7 @@ def main():
 
     # output folder (and tmp folder)
     out_folder   = "/scratch/mo/nest/ulysses/data/edwin/clone_maps/version_2020-08-03/pcraster_maps/"
-    clean_out_folder = False
+    clean_out_folder = True
     if os.path.exists(out_folder): 
         if clean_out_folder:
             shutil.rmtree(out_folder)
