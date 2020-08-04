@@ -27,8 +27,8 @@ def boundingBox(pcrmap):
     xmax  = pcr.cellvalue(pcr.mapmaximum(xcoor), 1, 1)[0]
     ymin  = pcr.cellvalue(pcr.mapminimum(ycoor), 1, 1)[0]
     ymax  = pcr.cellvalue(pcr.mapmaximum(ycoor), 1, 1)[0]
-    return [math.floor(xmin*2)/2, math.floor(ymin*2)/2, math.ceil(xmax*2)/2, math.ceil(ymax*2)/2]
-
+    return [math.floor(xmin), math.floor(ymin), math.ceil(xmax), math.ceil(ymax)]
+    
 def main():
 
     # global map of subdomain masks
