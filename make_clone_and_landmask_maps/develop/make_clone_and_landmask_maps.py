@@ -65,7 +65,7 @@ def main():
                                                           absolutePath = None)
         mask_selected_boolean = pcr.ifthen(pcr.scalar(mask_selected) > 0.0, pcr.boolean(1.0))
         mask_selected_boolean = pcr.ifthen(mask_selected_boolean, mask_selected_boolean)
-        pcr.aguila(mask_selected_boolean)
+        # ~ pcr.aguila(mask_selected_boolean)
         
         # get the bounding box
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
@@ -91,7 +91,7 @@ def main():
                                                      specificFillValue = "NaN",\
                                                      absolutePath = None)
         landmask_boolean = pcr.defined(landmask)
-        landmask_boolean = pcr.ifthen(landmask_boolean, landmask_booleab)
+        landmask_boolean = pcr.ifthen(landmask_boolean, landmask_boolean)
                                            
         # save the landmask
         landmask_file = "landmask_mask_%s.map" %(str(nr))
