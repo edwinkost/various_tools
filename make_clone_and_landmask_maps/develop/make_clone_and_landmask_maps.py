@@ -135,7 +135,8 @@ def main():
         
         # set the landmask for river and land
         landmask_river_and_land = vos.readPCRmapClone(v = filename_for_land_river_mask_at_global_extent, \
-                                                      cloneMapFileName = clonemap_mask_file, \
+                                                      cloneMapFileName = clonemap_mask_file, 
+                                                      tmpDir = tmp_folder)
         landmask_river_and_land_boolean = pcr.ifthen(pcr.scalar(landmask_river_and_land) > 0.0, pcr.boolean(1.0))
         landmask_river_and_land_boolean = pcr.ifthen(landmask_river_and_land_boolean, landmask_river_and_land_boolean)
         landmask_river_and_land_file = "landmask_river_and_land_mask_%s.map" %(str(nr))
