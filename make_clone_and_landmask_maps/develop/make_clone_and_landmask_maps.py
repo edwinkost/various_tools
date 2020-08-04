@@ -63,7 +63,7 @@ def main():
                                                useDoy = None,
                                                cloneMapFileName  = None,\
                                                LatitudeLongitude = True,\
-                                               specificFillValue = None):
+                                               specificFillValue = None)
         
         mask_selected_boolean = pcr.defined(mask_selected)
         mask_selected_boolean = pcr.ifthen(mask_selected, mask_selected)
