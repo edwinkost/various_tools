@@ -54,9 +54,17 @@ def main():
         
         # read nc file (and convert it to pcraster)
         subdomain_nc_file = subdomain_nc %(str(nr))
-        mask_selected = vos.readPCRmapClone(v = subdomain_nc_file,\
-                                            cloneMapFileName = global_clone_map,\
-                                            tmpDir = None)
+        # ~ mask_selected = vos.readPCRmapClone(v = subdomain_nc_file,\
+                                            # ~ cloneMapFileName = global_clone_map,\
+                                            # ~ tmpDir = None)
+        mask_selected = vos.netcdf2PCRobjClone(ncFile = subdomain_nc_file,\
+                                               varName = "automatic" ,
+                                               dateInput = None,\
+                                               useDoy = None,
+                                               cloneMapFileName  = None,\
+                                               LatitudeLongitude = True,\
+                                               specificFillValue = None):
+        
         mask_selected_boolean = pcr.defined(mask_selected)
         mask_selected_boolean = pcr.ifthen(mask_selected, mask_selected)
         
