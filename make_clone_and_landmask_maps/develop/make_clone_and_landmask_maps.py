@@ -102,6 +102,7 @@ def main():
         # merge land and river landmask
         mask_selected_boolean = pcr.cover(mask_land_selected_boolean, mask_river_selected_boolean)
         filename_for_land_river_mask_at_global_extent = "global_landmask_river_and_land_mask_%s.map" %(str(nr)) 
+        filename_for_land_river_mask_at_global_extent = os.path.join(out_folder, filename_for_land_river_mask_at_global_extent)
         pcr.report(mask_selected_boolean, filename_for_land_river_mask_at_global_extent)
         
         # get the bounding box based on the landmask file
