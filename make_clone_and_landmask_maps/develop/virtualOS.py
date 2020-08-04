@@ -1711,6 +1711,7 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
 
     co = 'gdal_translate -of PCRaster '+ \
               str(tmpDir)+'tmp_out.tif '+str(output)
+    print(co)
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     
     print(str(output))
@@ -1718,12 +1719,21 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
     test = True
     if test:
         logger.warning("cannot use gdal_translate, now try using pcrcalc")
+        
+        mycwd = os.getcwd()
+        
+        # change to tmp folder
+        os.chdir(tmpDir)
+        
+        pcraster_output_file_name = os.path.filename(output) 
+        
         co = 'pcrcalc '+ \
-                  str(output) + " = scalar(" +\
-                  str(tmpDir)+'tmp_out.tif)"'
+                  str(pcraster_output_file_name) + ' = "scalar(tmp_out.tif)"'
         print(co)
         cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
-    # 
+
+        os.chdir(mycwd)   
+
     co = 'mapattr -c '+str(cloneOut)+' '+str(output)
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     # 
