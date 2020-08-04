@@ -1725,11 +1725,12 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
         # change to tmp folder
         os.chdir(tmpDir)
         
-        pcraster_output_file_name = os.path.filename(output) 
+        pcraster_output_file_name = "temp.map" 
         print(pcraster_output_file_name)
         
-        co = 'pcrcalc '+ \
-                  str(pcraster_output_file_name) + ' = "scalar(tmp_out.tif)"'
+        # ~ co = 'pcrcalc '+ \
+                  # ~ str(pcraster_output_file_name) + ' = "scalar(tmp_out.tif)"'
+        co = 'pcrcalc temp.map = "scalar(tmp_out.tif)"'
         print(co)
         cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
         
