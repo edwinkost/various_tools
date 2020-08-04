@@ -1731,7 +1731,7 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
                   str(pcraster_output_file_name) + ' = "scalar(tmp_out.tif)"'
         print(co)
         cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
-
+        
         os.chdir(mycwd)   
 
     co = 'mapattr -c '+str(cloneOut)+' '+str(output)
