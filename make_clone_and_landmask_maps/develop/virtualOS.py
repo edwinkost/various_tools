@@ -112,7 +112,7 @@ def netcdf2PCRobjCloneWithoutTime(ncFile, varName,\
         return singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName,\
                                                       cloneMapFileName, LatitudeLongitude, specificFillValue)
 
-def singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName,\
+def singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName = "automatic",\
                                            cloneMapFileName  = None,\
                                            LatitudeLongitude = True,\
                                            specificFillValue = None,\
