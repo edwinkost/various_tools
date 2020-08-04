@@ -178,6 +178,8 @@ def singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName = "automatic",\
         if xULClone != xULInput: sameClone = False
         if yULClone != yULInput: sameClone = False
 
+    print(f.variables[varName])
+    
     cropData = f.variables[varName][:,:]       # still original data
     factor = 1                                 # needed in regridData2FinerGrid
     if sameClone == False:
