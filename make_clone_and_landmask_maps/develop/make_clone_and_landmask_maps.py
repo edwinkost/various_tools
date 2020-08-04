@@ -54,18 +54,14 @@ def main():
         
         # read nc file (and convert it to pcraster)
         subdomain_nc_file = subdomain_nc %(str(nr))
-        # ~ mask_selected = vos.readPCRmapClone(v = subdomain_nc_file,\
-                                            # ~ cloneMapFileName = global_clone_map,\
-                                            # ~ tmpDir = None)
         mask_selected = vos.netcdf2PCRobjCloneWithoutTime(ncFile  = subdomain_nc_file, \
                                                           varName = "automatic",\
-                                                          cloneMapFileName  = None,\
+                                                          cloneMapFileName  = global_clone_map,\
                                                           LatitudeLongitude = False,\
                                                           specificFillValue = "NaN",\
                                                           absolutePath = None)
-        
         mask_selected_boolean = pcr.defined(mask_selected)
-        mask_selected_boolean = pcr.ifthen(mask_selected, mask_selected)
+        mask_selected_boolean = pcr.ifthen(mask_selected_boolean, mask_selected_boolean)
         
         # get the bounding box
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
@@ -88,7 +84,7 @@ def main():
                                            cloneMapFileName = clonemap_mask_file,\
                                            tmpDir = None)
         landmask_boolean = pcr.defined(landmask)
-        landmask_boolean = pcr.ifthen(landmask, landmask)
+        landmask_boolean = pcr.ifthen(landmask_boolean, landmask_booleab)
                                            
         # save the landmask
         pcr.report(landmask_boolean, )
