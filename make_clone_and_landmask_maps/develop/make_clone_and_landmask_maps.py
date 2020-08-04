@@ -57,7 +57,7 @@ def main():
         mask_selected = vos.netcdf2PCRobjCloneWithoutTime(ncFile  = subdomain_nc_file, \
                                                           varName = "automatic",\
                                                           cloneMapFileName  = global_clone_map,\
-                                                          LatitudeLongitude = False,\
+                                                          LatitudeLongitude = True,\
                                                           specificFillValue = "NaN",\
                                                           absolutePath = None)
         mask_selected_boolean = pcr.defined(mask_selected)
