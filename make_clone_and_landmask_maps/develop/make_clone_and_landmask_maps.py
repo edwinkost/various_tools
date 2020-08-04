@@ -60,7 +60,7 @@ def main():
         mask_selected = vos.netcdf2PCRobjCloneWithoutTime(ncFile  = subdomain_nc_file, \
                                                           varName = "automatic",\
                                                           cloneMapFileName  = None,\
-                                                          LatitudeLongitude = True,\
+                                                          LatitudeLongitude = False,\
                                                           specificFillValue = None,\
                                                           absolutePath = None)
         
