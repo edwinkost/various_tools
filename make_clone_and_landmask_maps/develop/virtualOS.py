@@ -1706,7 +1706,7 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     # 
 
-    # ~ test
+    test
 
 
     co = 'gdal_translate -of PCRaster '+ \
