@@ -91,7 +91,7 @@ def main():
         # update global landmask for land
         mask_land_selected_nominal = pcr.ifthen(mask_land_selected_boolean, pcr.nominal(nr))
         landmask_land_all = pcr.cover(landmask_land_all, mask_land_selected_nominal)
-        pcr.aguila(landmask_land_all)
+        # ~ pcr.aguila(landmask_land_all)
 
         # read river nc file (and convert it to pcraster)
         subdomain_river_nc_file = subdomain_river_nc %(str(nr))
@@ -115,7 +115,7 @@ def main():
         
         # update global landmask for land and river
         landmask_river_and_land_all = pcr.cover(landmask_river_and_land_all, mask_selected_nominal)
-        pcr.aguila(landmask_river_and_land_all)
+        # ~ pcr.aguila(landmask_river_and_land_all)
 
         # get the bounding box based on the landmask file
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
@@ -157,6 +157,7 @@ def main():
         pcr.report(landmask_river_and_land_boolean, landmask_river_and_land_file) 
 
     
+    # kill all aguila processes if exist
     os.system('killall aguila')
 
     # report a global nominal map for land
@@ -168,8 +169,6 @@ def main():
     filename_for_nominal_land_river_mask_at_global_extent = "global_landmask_river_and_land_mask_all.map"
     pcr.report(landmask_river_and_land_all, filename_for_nominal_land_river_mask_at_global_extent)
     pcr.aguila(landmask_river_and_land_all)
-    
-    os.system('killall aguila')
     
     print("\n\n Done \n\n")
     
