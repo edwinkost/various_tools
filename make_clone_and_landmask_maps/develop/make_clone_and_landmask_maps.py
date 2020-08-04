@@ -60,11 +60,11 @@ def main():
     if os.path.exists(tmp_folder): shutil.rmtree(tmp_folder) 
     os.makedirs(tmp_folder)
     
-    # make initial landmask maps
+    # make initial landmask maps at the global extent
     # - set to the global clone map
     pcr.setclone(global_clone_map)
     # - for land
-    lanfmask_land = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
+    landmask_land = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
     # - for river
     landmask_river_and_land = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
     
@@ -88,6 +88,11 @@ def main():
         mask_land_selected_boolean = pcr.ifthen(pcr.scalar(mask_land_selected) > 0.0, pcr.boolean(1.0))
         mask_land_selected_boolean = pcr.ifthen(mask_land_selected_boolean, mask_land_selected_boolean)
         
+        # update global landmask for land
+        mask_land_selected_nominal = pcr.ifthen(mask_land_selected_boolean, pcr.nominal(nr))
+        landmask_land = pcr.cover(landmask_land, mask_land_selected_nominal)
+        pcr.aguila(landmask_land)
+
         # read river nc file (and convert it to pcraster)
         subdomain_river_nc_file = subdomain_river_nc %(str(nr))
         mask_river_selected = vos.netcdf2PCRobjCloneWithoutTime(ncFile  = subdomain_river_nc_file, \
@@ -99,14 +104,19 @@ def main():
         mask_river_selected_boolean = pcr.ifthen(pcr.scalar(mask_river_selected) > 0.0, pcr.boolean(1.0))
         mask_river_selected_boolean = pcr.ifthen(mask_river_selected_boolean, mask_river_selected_boolean)
         
+        
         # merge land and river landmask
         mask_selected_boolean = pcr.cover(mask_land_selected_boolean, mask_river_selected_boolean)
-        mask_selected_nominal = pcr.nominal(mask_selected_boolean) 
-        pcr.aguila(mask_selected_nominal)
+        mask_selected_nominal = pcr.ifthen(mask_selected_boolean, pcr.nominal(nr)) 
+        # ~ pcr.aguila(mask_selected_nominal)
         filename_for_land_river_mask_at_global_extent = "global_landmask_river_and_land_mask_%s.map" %(str(nr)) 
         filename_for_land_river_mask_at_global_extent = os.path.join(out_folder, filename_for_land_river_mask_at_global_extent)
         pcr.report(mask_selected_nominal, filename_for_land_river_mask_at_global_extent)
         
+        # update global landmask for land and river
+        landmask_river_and_all = pcr.cover(landmask_river_and_land, mask_land_selected_nominal)
+        pcr.aguila(landmask_river_and_land)
+
         # get the bounding box based on the landmask file
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
         
@@ -146,6 +156,21 @@ def main():
         landmask_river_and_land_file = "landmask_river_and_land_mask_%s.map" %(str(nr))
         pcr.report(landmask_river_and_land_boolean, landmask_river_and_land_file) 
 
+    
+    os.system('killall aguila')
+
+    # report a global nominal map for land
+    filename_for_nominal_land_mask_at_global_extent = "global_landmask_land_mask_all.map"
+    pcr.report(landmask_land, filename_for_nominal_land_mask_at_global_extent)
+    pcr.aguila(landmask_land)
+
+    # report a global nominal map for river and and land
+    filename_for_nominal_land_river_mask_at_global_extent = "global_landmask_river_and_land_mask_all.map"
+    pcr.report(landmask_river_and_land, filename_for_nominal_land_river_mask_at_global_extent)
+    pcr.aguila(landmask_river_and_land)
+    
+    os.system('killall aguila')
+    
     print("\n\n Done \n\n")
     
         
