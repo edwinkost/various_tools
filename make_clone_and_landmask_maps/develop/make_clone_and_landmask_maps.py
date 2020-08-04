@@ -90,7 +90,8 @@ def main():
         landmask_boolean = pcr.ifthen(landmask_boolean, landmask_booleab)
                                            
         # save the landmask
-        pcr.report(landmask_boolean, )
+        landmask_file = "landmask_mask_%s.map" %(str(nr))
+        pcr.report(landmask_boolean, landmask_file)
 
     
         
