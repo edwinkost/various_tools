@@ -22,11 +22,11 @@ def boundingBox(pcrmap):
     bb = []
     xcoor = pcr.xcoordinate(pcrmap)
     ycoor = pcr.ycoordinate(pcrmap)
-    xmin  = pcr.cellvalue(pcr.mapminimum(xcoor),1,1)[0]
-    xmax  = pcr.cellvalue(pcr.mapmaximum(xcoor),1,1)[0]
-    ymin  = pcr.cellvalue(pcr.mapminimum(ycoor),1,1)[0]
-    ymax  = pcr.cellvalue(pcr.mapmaximum(ycoor),1,1)[0]
-    return [floor(xmin),floor(ymin),ceil(xmax),ceil(ymax)]
+    xmin  = pcr.cellvalue(pcr.mapminimum(xcoor), 1, 1)[0]
+    xmax  = pcr.cellvalue(pcr.mapmaximum(xcoor), 1, 1)[0]
+    ymin  = pcr.cellvalue(pcr.mapminimum(ycoor), 1, 1)[0]
+    ymax  = pcr.cellvalue(pcr.mapmaximum(ycoor), 1, 1)[0]
+    return [math.floor(xmin), math.floor(ymin), math.ceil(xmax), math.ceil(ymax)]
 
 def main():
 
