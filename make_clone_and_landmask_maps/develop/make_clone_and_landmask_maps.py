@@ -67,7 +67,7 @@ def main():
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
         
         # cellsize 
-        cellsize = vos.getMapAttributes(global_clone_map, "cellsize)
+        cellsize = vos.getMapAttributes(global_clone_map, "cellsize")
         num_rows = int(round(ymax - ymin) / cellsize)
         num_cols = int(round(xmax - xmin) / cellsize)
         
