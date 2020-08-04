@@ -56,7 +56,7 @@ def main():
     os.system("pwd")
     
     # make tmp folder
-    tmp_folder = os.path.join(out_folder, "tmp_clone_uly")
+    tmp_folder = os.path.join(out_folder, "tmp_clone_uly") + "/"
     if os.path.exists(tmp_folder): shutil.rmtree(tmp_folder) 
     os.makedirs(tmp_folder)
     
