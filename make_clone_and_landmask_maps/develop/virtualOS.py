@@ -1714,7 +1714,9 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     
     print(str(output))
-    if os.path.exists(str(output)):
+    # ~ if os.path.exists(str(output)):
+    test = True
+    if test:
         logger.warning("cannot use gdal_translate, now try using pcrcalc")
         co = 'pcrcalc '+ \
                   str(output) + " = scalar(" +\
