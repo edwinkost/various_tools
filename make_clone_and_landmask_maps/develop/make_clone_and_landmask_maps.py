@@ -160,12 +160,15 @@ def main():
     # kill all aguila processes if exist
     os.system('killall aguila')
 
+
     # report a global nominal map for land
+    pcr.setclone(global_clone_map)
     filename_for_nominal_land_mask_at_global_extent = "global_landmask_land_mask_all.map"
     pcr.report(landmask_land_all, filename_for_nominal_land_mask_at_global_extent)
-    pcr.aguila(landmask_land)
+    pcr.aguila(landmask_land_all)
 
     # report a global nominal map for river and and land
+    pcr.setclone(global_clone_map)
     filename_for_nominal_land_river_mask_at_global_extent = "global_landmask_river_and_land_mask_all.map"
     pcr.report(landmask_river_and_land_all, filename_for_nominal_land_river_mask_at_global_extent)
     pcr.aguila(landmask_river_and_land_all)
