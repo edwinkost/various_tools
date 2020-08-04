@@ -46,7 +46,7 @@ def main():
             os.makedirs(out_folder)
     else:
         os.makedirs(out_folder)
-    os.chidr(out_folder)    
+    os.chdir(out_folder)    
     
     for nr in range(1, num_of_masks + 1, 1):
         
