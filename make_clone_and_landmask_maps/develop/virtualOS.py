@@ -1686,7 +1686,7 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
     if isNominalMap == True: co = 'gdal_translate -ot Int32 '+str(input)+' '+str(tmpDir)+'tmp_inp.tif'
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     
-    test
+    # ~ test
     
     # 
     # get the attributes of PCRaster map:
@@ -1705,6 +1705,10 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
            str(tmpDir)+'tmp_out.tif'
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     # 
+
+    # ~ test
+
+
     co = 'gdal_translate -of PCRaster '+ \
               str(tmpDir)+'tmp_out.tif '+str(output)
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
