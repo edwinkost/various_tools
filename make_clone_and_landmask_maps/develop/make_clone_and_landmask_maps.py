@@ -101,7 +101,7 @@ def main():
         landmask_file = "landmask_mask_%s.map" %(str(nr))
         pcr.report(landmask_boolean, landmask_file)
 
-    print("Done")
+    print("\n\n Done \n\n")
     
         
 if __name__ == '__main__':
