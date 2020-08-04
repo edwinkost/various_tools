@@ -1726,6 +1726,7 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
         os.chdir(tmpDir)
         
         pcraster_output_file_name = os.path.filename(output) 
+        print(pcraster_output_file_name)
         
         co = 'pcrcalc '+ \
                   str(pcraster_output_file_name) + ' = "scalar(tmp_out.tif)"'
