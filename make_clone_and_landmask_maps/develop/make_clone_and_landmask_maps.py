@@ -64,9 +64,9 @@ def main():
     # - set to the global clone map
     pcr.setclone(global_clone_map)
     # - for land
-    lanfmask_land  = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
+    lanfmask_land = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
     # - for river
-    landmask_river = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
+    landmask_river_and_land = pcr.ifthen(pcr.scalar(global_clone_map) > 10, pcr.nominal(0))
     
     for nr in range(1, num_of_masks + 1, 1):
         
@@ -101,10 +101,11 @@ def main():
         
         # merge land and river landmask
         mask_selected_boolean = pcr.cover(mask_land_selected_boolean, mask_river_selected_boolean)
-        mask_selected_scalar  = pcr.scalar(mask_selected_boolean) 
+        mask_selected_nominal = pcr.nominal(mask_selected_boolean) 
+        pcr.aguila(mask_selected_nominal)
         filename_for_land_river_mask_at_global_extent = "global_landmask_river_and_land_mask_%s.map" %(str(nr)) 
         filename_for_land_river_mask_at_global_extent = os.path.join(out_folder, filename_for_land_river_mask_at_global_extent)
-        pcr.report(mask_selected_boolean, filename_for_land_river_mask_at_global_extent)
+        pcr.report(mask_selected_nominal, filename_for_land_river_mask_at_global_extent)
         
         # get the bounding box based on the landmask file
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
@@ -138,7 +139,8 @@ def main():
         # set the landmask for river and land
         landmask_river_and_land = vos.readPCRmapClone(v = filename_for_land_river_mask_at_global_extent, \
                                                       cloneMapFileName = clonemap_mask_file, 
-                                                      tmpDir = tmp_folder)
+                                                      tmpDir = tmp_folder, \
+                                                      absolutePath = None, isLddMap = False, cover = None, isNomMap = True)
         landmask_river_and_land_boolean = pcr.ifthen(pcr.scalar(landmask_river_and_land) > 0.0, pcr.boolean(1.0))
         landmask_river_and_land_boolean = pcr.ifthen(landmask_river_and_land_boolean, landmask_river_and_land_boolean)
         landmask_river_and_land_file = "landmask_river_and_land_mask_%s.map" %(str(nr))
