@@ -10,7 +10,7 @@ import glob
 import subprocess
 import time
 import datetime
-mport shutil
+import shutil
 
 import numpy as np
 import math
