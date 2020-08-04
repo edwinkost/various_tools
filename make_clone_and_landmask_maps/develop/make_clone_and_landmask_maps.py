@@ -74,7 +74,7 @@ def main():
         # make the clone map using mapattr 
         clonemap_mask_file = "clonemap_mask_%s.map" %(str(nr))
         # - example: mapattr -s -R 19 -C 68 -B -P yb2t -x 12 -y -14.02 -l 0.8 mask2.map
-        cmd = "mapattr -s -R %s -C %s -B -P ybs2t -x %s -y %s -l %s %s" %(str(num_rows), str(num_cols), str(xmin), str(ymax), str(cellsize), clonemap_mask_file)
+        cmd = "mapattr -s -R %s -C %s -B -P yb2t -x %s -y %s -l %s %s" %(str(num_rows), str(num_cols), str(xmin), str(ymax), str(cellsize), clonemap_mask_file)
         print(cmd)
         os.system(cmd)
         
