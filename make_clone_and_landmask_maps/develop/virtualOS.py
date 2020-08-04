@@ -1716,7 +1716,7 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
     
     print(str(output))
     # ~ if os.path.exists(str(output)):
-    test = True
+    test = False
     if test:
         logger.warning("cannot use gdal_translate, now try using pcrcalc")
         
