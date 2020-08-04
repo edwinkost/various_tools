@@ -114,7 +114,7 @@ def main():
         pcr.report(mask_selected_nominal, filename_for_land_river_mask_at_global_extent)
         
         # update global landmask for land and river
-        landmask_river_and_land_all = pcr.cover(landmask_river_and_land_all, mask_land_selected_nominal)
+        landmask_river_and_land_all = pcr.cover(landmask_river_and_land_all, mask_selected_nominal)
         pcr.aguila(landmask_river_and_land_all)
 
         # get the bounding box based on the landmask file
