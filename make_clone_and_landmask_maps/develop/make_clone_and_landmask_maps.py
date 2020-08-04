@@ -63,6 +63,7 @@ def main():
                                                           absolutePath = None)
         mask_selected_boolean = pcr.defined(mask_selected)
         mask_selected_boolean = pcr.ifthen(mask_selected_boolean, mask_selected_boolean)
+        pcr.aguila(mask_selected_boolean)
         
         # get the bounding box
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
