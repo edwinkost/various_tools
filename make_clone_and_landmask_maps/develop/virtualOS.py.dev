@@ -112,7 +112,7 @@ def netcdf2PCRobjCloneWithoutTime(ncFile, varName,\
         return singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName,\
                                                       cloneMapFileName, LatitudeLongitude, specificFillValue)
 
-def singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName,\
+def singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName = "automatic",\
                                            cloneMapFileName  = None,\
                                            LatitudeLongitude = True,\
                                            specificFillValue = None,\
@@ -178,6 +178,8 @@ def singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName,\
         if xULClone != xULInput: sameClone = False
         if yULClone != yULInput: sameClone = False
 
+    print(f.variables[varName])
+    
     cropData = f.variables[varName][:,:]       # still original data
     factor = 1                                 # needed in regridData2FinerGrid
     if sameClone == False:
@@ -1683,6 +1685,9 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
     if isLddMap == True: co = 'gdal_translate -ot Int32 '+str(input)+' '+str(tmpDir)+'tmp_inp.tif'
     if isNominalMap == True: co = 'gdal_translate -ot Int32 '+str(input)+' '+str(tmpDir)+'tmp_inp.tif'
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
+    
+    # ~ test
+    
     # 
     # get the attributes of PCRaster map:
     cloneAtt = getMapAttributesALL(cloneOut)
@@ -1700,10 +1705,37 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
            str(tmpDir)+'tmp_out.tif'
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     # 
+    # ~ print(co)
+    # ~ test
+
+
     co = 'gdal_translate -of PCRaster '+ \
               str(tmpDir)+'tmp_out.tif '+str(output)
+    print(co)
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
-    # 
+    
+    print(str(output))
+    # ~ if os.path.exists(str(output)):
+    test = False
+    if test:
+        logger.warning("cannot use gdal_translate, now try using pcrcalc")
+        
+        mycwd = os.getcwd()
+        
+        # change to tmp folder
+        os.chdir(tmpDir)
+        
+        pcraster_output_file_name = "temp.map" 
+        print(pcraster_output_file_name)
+        
+        # ~ co = 'pcrcalc '+ \
+                  # ~ str(pcraster_output_file_name) + ' = "scalar(tmp_out.tif)"'
+        co = 'pcrcalc temp.map = "scalar(tmp_out.tif)"'
+        print(co)
+        cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
+        
+        os.chdir(mycwd)   
+
     co = 'mapattr -c '+str(cloneOut)+' '+str(output)
     cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     # 
