@@ -61,7 +61,7 @@ def main():
                                                           LatitudeLongitude = True,\
                                                           specificFillValue = "NaN",\
                                                           absolutePath = None)
-        mask_selected_boolean = pcr.ifthen(scalar(mask_selected) > 0.0, pcr.boolean(1.0))
+        mask_selected_boolean = pcr.ifthen(pcr.scalar(mask_selected) > 0.0, pcr.boolean(1.0))
         mask_selected_boolean = pcr.ifthen(mask_selected_boolean, mask_selected_boolean)
         pcr.aguila(mask_selected_boolean)
         
