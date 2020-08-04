@@ -1716,7 +1716,7 @@ def gdalwarpPCR(input,output,cloneOut,tmpDir,isLddMap=False,isNominalMap=False):
     except:
         logger.warning("cannot use gdal_translate, now try using pcrcalc")
         co = 'pcrcalc '+ \
-                  str(output) + "= scalar(" +\
+                  str(output) + " = scalar(" +\
                   str(tmpDir)+'tmp_out.tif)"'
         print(co)
         cOut,err = subprocess.Popen(co, stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
