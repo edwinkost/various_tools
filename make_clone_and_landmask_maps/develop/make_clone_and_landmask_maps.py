@@ -52,6 +52,10 @@ def main():
     
     for nr in range(1, num_of_masks + 1, 1):
         
+        msg = "Processing the landmask %s" %(str(nr))
+        msg = "\n\n" +str(msg) + "\n\n"
+        print(msg)
+        
         # set to the global clone map
         pcr.setclone(global_clone_map)
         
@@ -90,13 +94,14 @@ def main():
                                                      LatitudeLongitude = True,\
                                                      specificFillValue = "NaN",\
                                                      absolutePath = None)
-        landmask_boolean = pcr.defined(landmask)
+        landmask_boolean = pcr.ifthen(pcr.scalar(landmask) > 0.0, pcr.boolean(1.0))
         landmask_boolean = pcr.ifthen(landmask_boolean, landmask_boolean)
                                            
         # save the landmask
         landmask_file = "landmask_mask_%s.map" %(str(nr))
         pcr.report(landmask_boolean, landmask_file)
 
+    print("Done")
     
         
 if __name__ == '__main__':
