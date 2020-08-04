@@ -86,7 +86,7 @@ def main():
                                                                specificFillValue = "NaN",\
                                                                absolutePath = None)
         mask_land_selected_boolean = pcr.ifthen(pcr.scalar(mask_land_selected) > 0.0, pcr.boolean(1.0))
-        mask_land_selected_boolean = pcr.ifthen(mask_land_selected_boolean, mask_selected_boolean)
+        mask_land_selected_boolean = pcr.ifthen(mask_land_selected_boolean, mask_land_selected_boolean)
         
         # read river nc file (and convert it to pcraster)
         subdomain_river_nc_file = subdomain_river_nc %(str(nr))
