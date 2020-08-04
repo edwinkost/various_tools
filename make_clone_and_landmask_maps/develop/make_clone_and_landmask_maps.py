@@ -61,7 +61,7 @@ def main():
                                                           varName = "automatic",\
                                                           cloneMapFileName  = None,\
                                                           LatitudeLongitude = False,\
-                                                          specificFillValue = NaN,\
+                                                          specificFillValue = "NaN",\
                                                           absolutePath = None)
         
         mask_selected_boolean = pcr.defined(mask_selected)
