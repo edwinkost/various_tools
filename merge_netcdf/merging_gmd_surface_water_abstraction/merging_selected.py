@@ -3,7 +3,7 @@
 import os
 import sys
 
-main_folder = "/scratch-shared/edwinvua/pcrglobwb2_output_gmd_paper_rerun_201903XX_05min_using_consistent_pcraster/05min/non-natural/begin_from_1958/"
+main_folder = "/scratch-shared/edwinvua/pcrglobwb2_output_gmd_paper_rerun_201903XX_05min_using_consistent_pcraster/05min/non-natural/"
 start_years = [1958] 
 final_year = 2015
 
@@ -88,9 +88,9 @@ for i_year in range(0, len(start_years)):
               outp_folder + " " + \
               "outMonthTotNC " + \
               str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
-              "surfaceWaterAbstraction NETCDF4 True 5 Global"
-              # ~ "irrGrossDemand,domesticWaterWithdrawal,industryWaterWithdrawal,irrPaddyWaterWithdrawal,nonIrrGrossDemand,desalinationAbstraction,surfaceWaterAbstraction NETCDF4 True 5 Global"
+              "irrGrossDemand,domesticWaterWithdrawal,industryWaterWithdrawal,irrPaddyWaterWithdrawal,nonIrrGrossDemand,desalinationAbstraction,surfaceWaterAbstraction NETCDF4 True 5 Global"
               # ~ "irrGrossDemand,domesticWaterWithdrawal,industryWaterWithdrawal,irrPaddyWaterWithdrawal,gwRecharge,totalGroundwaterAbstraction,precipitation,totalRunoff,totalEvaporation,nonIrrGrossDemand NETCDF4 True 5 Global"
+              # ~ "surfaceWaterAbstraction NETCDF4 True 5 Global"
         print(cmd)
         os.system(cmd)
 
