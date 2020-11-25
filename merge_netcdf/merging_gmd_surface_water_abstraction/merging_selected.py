@@ -72,15 +72,15 @@ for i_year in range(0, len(start_years)):
         #~ 
         #~ temperature_annuaAvg_output.nc
 
-        # annual average
-        cmd = "python merge_netcdf.py " + \
-              input_folder + " " + \
-              outp_folder + " " + \
-              "outAnnuaAvgNC " + \
-              str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
-              "temperature NETCDF4 True 5 Global"
-        print(cmd)
-        os.system(cmd)
+        # ~ # annual average
+        # ~ cmd = "python merge_netcdf.py " + \
+              # ~ input_folder + " " + \
+              # ~ outp_folder + " " + \
+              # ~ "outAnnuaAvgNC " + \
+              # ~ str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
+              # ~ "temperature NETCDF4 True 5 Global"
+        # ~ print(cmd)
+        # ~ os.system(cmd)
 
         # monthly total
         cmd = "python merge_netcdf.py " + \
