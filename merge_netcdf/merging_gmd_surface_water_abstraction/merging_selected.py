@@ -88,8 +88,8 @@ for i_year in range(0, len(start_years)):
               outp_folder + " " + \
               "outMonthTotNC " + \
               str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
-              # ~ "irrGrossDemand,domesticWaterWithdrawal,industryWaterWithdrawal,irrPaddyWaterWithdrawal,gwRecharge,totalGroundwaterAbstraction,precipitation,totalRunoff,totalEvaporation,nonIrrGrossDemand NETCDF4 True 5 Global"
               "irrGrossDemand,domesticWaterWithdrawal,industryWaterWithdrawal,irrPaddyWaterWithdrawal,nonIrrGrossDemand,desalinationAbstraction,surfaceWaterAbstraction NETCDF4 True 5 Global"
+              # ~ "irrGrossDemand,domesticWaterWithdrawal,industryWaterWithdrawal,irrPaddyWaterWithdrawal,gwRecharge,totalGroundwaterAbstraction,precipitation,totalRunoff,totalEvaporation,nonIrrGrossDemand NETCDF4 True 5 Global"
         print(cmd)
         os.system(cmd)
 
