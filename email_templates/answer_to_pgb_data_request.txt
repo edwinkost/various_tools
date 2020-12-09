@@ -1,0 +1,15 @@
+Dear,
+
+I just provided you the access to our Yoda folder that contains PCR-GLOBWB output files from the 5 arcmin global run made for the GMD paper (Sutanudjaja et al., 2018, https://doi.org/10.5194/gmd-11-2429-2018).
+
+- Please activate your Yoda account by following the instructions given in an email automatically generated/sent by Yoda. 
+
+- After you activate your account, you should be able to access the folder https://geo.data.uu.nl/research-pcrglobwb/pcr-globwb_gmd_paper_sutanudjaja_et_al_2018/rerun_201903XX/output/05min/netcdf/monthly/ 
+
+- Please check the "README.TXT" file on the folder to get some information about the files, https://geo.data.uu.nl/research-pcrglobwb/pcr-globwb_gmd_paper_sutanudjaja_et_al_2018/rerun_201903XX/output/05min/netcdf/monthly/README.TXT.txt 
+
+I hope that the files are useful, and this information is clear.  
+
+Best, 
+
+Edwin
