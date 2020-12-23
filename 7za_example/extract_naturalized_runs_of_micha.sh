@@ -7,7 +7,9 @@ module load p7zip
 
 RUN_CODE=$1
 
-OUTPUT_DIR=/scratch/shared/edwinsu/aqueduct_naturalized_micha_test_complete/${RUN_CODE}_naturalized/
+#~ OUTPUT_DIR=/scratch/shared/edwinsu/aqueduct_naturalized_micha_test_complete/${RUN_CODE}_naturalized/
+
+OUTPUT_DIR=/projects/0/einf411/edwinsu/aqueduct_naturalized_micha/${RUN_CODE}_naturalized/
 
 INPUT_DIR="/projects/0/einf411/edwinsu/"
 
