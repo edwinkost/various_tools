@@ -31,18 +31,32 @@ bash extract_naturalized_runs_of_micha.sh IPSL-CM5A-LR_hist    1951-2005 &
 bash extract_naturalized_runs_of_micha.sh MIROC-ESM-CHEM_hist  1951-2005 & 
 bash extract_naturalized_runs_of_micha.sh NorESM1-M_hist       1951-2005 &
 
+wait
+
 bash extract_naturalized_runs_of_micha.sh GFDL-ESM2M_rcp26     2006-2099 & 
 bash extract_naturalized_runs_of_micha.sh GFDL-ESM2M_rcp45     2006-2099 & 
 bash extract_naturalized_runs_of_micha.sh GFDL-ESM2M_rcp85     2006-2099 & 
+
+wait
+
 bash extract_naturalized_runs_of_micha.sh HadGEM2-ES_rcp26     2006-2099 & 
 bash extract_naturalized_runs_of_micha.sh HadGEM2-ES_rcp45     2006-2099 & 
 bash extract_naturalized_runs_of_micha.sh HadGEM2-ES_rcp85     2006-2099 & 
+
+wait
+
 bash extract_naturalized_runs_of_micha.sh IPSL-CM5A-LR_rcp26   2006-2099 & 
 bash extract_naturalized_runs_of_micha.sh IPSL-CM5A-LR_rcp45   2006-2099 & 
 bash extract_naturalized_runs_of_micha.sh IPSL-CM5A-LR_rcp85   2006-2099 & 
+
+wait
+
 bash extract_naturalized_runs_of_micha.sh MIROC-ESM-CHEM_rcp26 2006-2099 & 
 bash extract_naturalized_runs_of_micha.sh MIROC-ESM-CHEM_rcp45 2006-2099 & 
 bash extract_naturalized_runs_of_micha.sh MIROC-ESM-CHEM_rcp85 2006-2099 & 
+
+wait
+
 bash extract_naturalized_runs_of_micha.sh NorESM1-M_rcp26      2006-2099 & 
 bash extract_naturalized_runs_of_micha.sh NorESM1-M_rcp45      2006-2099 & 
 bash extract_naturalized_runs_of_micha.sh NorESM1-M_rcp85      2006-2099 & 
