@@ -69,9 +69,7 @@ python cdo_mergetime.py ${INP_DIR}/rcp8p5/2006-2099/ipsl-cm5a-lr/   ${OUT_DIR}/I
 python cdo_mergetime.py ${INP_DIR}/rcp8p5/2006-2099/miroc-esm-chem/ ${OUT_DIR}/MIROC-ESM-CHEM_rcp8p5/merged_2006-2099/ 2006-2099 &
 python cdo_mergetime.py ${INP_DIR}/rcp8p5/2006-2099/noresm1-m       ${OUT_DIR}/NorESM1-M_rcp8p5/merged_2006-2099/      2006-2099 &
 
+wait
 
 set +x
-
-
-
 
