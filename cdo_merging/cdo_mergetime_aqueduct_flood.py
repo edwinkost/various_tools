@@ -47,11 +47,14 @@ variables = [
 
 ]
 
-
-
+try:
+    os.makedirs(out_directory)
+except:
+    pass
+    
 cmd = ""
 for variable in variables:
-    cmd += "cdo -L -z zip -f nc4 -mergetime " + str(inp_directory) + "/" + str(variable) + "_output_*.nc " + str(variable) + "_output_" + str(years) + ".nc "
+    cmd += "cdo -L -z zip -f nc4 -mergetime " + str(inp_directory) + "/" + str(variable) + "_output_*.nc " + str(out_directory) + "/" + str(variable) + "_output_" + str(years) + ".nc "
     print(cmd)
     os.system(cmd)
 
