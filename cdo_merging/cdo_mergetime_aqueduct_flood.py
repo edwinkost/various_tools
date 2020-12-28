@@ -51,10 +51,9 @@ variables = [
 
 cmd = ""
 for variable in variables:
-    cmd += "cdo -L -z zip -f nc4 -mergetime " + str(inp_directory) + "/" + str(variable) + "_output_*.nc " + str(variable) + "_output_" + str(years) + ".nc " + " & "
-cmd += "wait"
-print(cmd)
-os.system(cmd)
+    cmd += "cdo -L -z zip -f nc4 -mergetime " + str(inp_directory) + "/" + str(variable) + "_output_*.nc " + str(variable) + "_output_" + str(years) + ".nc "
+    print(cmd)
+    os.system(cmd)
 
 
 
