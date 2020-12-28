@@ -58,5 +58,5 @@ for variable in variables:
     print(cmd)
     # ~ os.system(cmd)
 
-
+sys.exit()
 

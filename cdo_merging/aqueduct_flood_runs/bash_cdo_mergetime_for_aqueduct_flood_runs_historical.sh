@@ -69,6 +69,8 @@ python cdo_mergetime.py ${INP_DIR}/historical/1951-2005/ipsl-cm5a-lr/   ${OUT_DI
 python cdo_mergetime.py ${INP_DIR}/historical/1951-2005/miroc-esm-chem/ ${OUT_DIR}/MIROC-ESM-CHEM_hist/merged_1951-2005/ 1951-2005 &
 python cdo_mergetime.py ${INP_DIR}/historical/1951-2005/noresm1-m       ${OUT_DIR}/NorESM1-M_hist/merged_1951-2005/      1951-2005 &
 
+wait
+
 set +x
 
 
