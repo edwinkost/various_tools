@@ -116,7 +116,7 @@ def main():
     # extend ldd
     print("extend/define the ldd") 
     ldd_map = pcr.readmap(global_ldd_30min_inp_file)
-    ldd_map = pcr.ifthen(landmask, pcr.cover(ldd_map, ldd(5)))
+    ldd_map = pcr.ifthen(landmask, pcr.cover(ldd_map, pcr.ldd(5)))
     pcr.aguila(ldd_map)
     
     
