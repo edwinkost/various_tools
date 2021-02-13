@@ -34,7 +34,7 @@ def boundingBox(pcrmap):
 def define_landmask(input_file, clone_map_file, output_map_file):
 
     # define the landmask based on the input     
-    cmd = "gdalwarp -tr 0.5 0.5 -te -180 -90 180 -90 -r max " + str(global_landmask_30min) + " " + output_map_file + ".tif"
+    cmd = "gdalwarp -tr 0.5 0.5 -te -180 -90 180 -90 -r max " + str(input_file) + " " + output_map_file + ".tif"
     print(cmd); os.system(cmd)
     cmd = "gdal_translate -of PCRaster " + output_map_file + ".tif " + output_map_file
     print(cmd); os.system(cmd)
