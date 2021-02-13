@@ -45,7 +45,7 @@ def define_landmask(input_file, clone_map_file, output_map_file):
     
     landmask = pcr.defined(pcr.readmap(output_map_file))
     landmask = pcr.ifthen(landmask, landmask)
-    pcr.aguila(landmask)
+    # ~ pcr.aguila(landmask)
     
     return landmask
 
