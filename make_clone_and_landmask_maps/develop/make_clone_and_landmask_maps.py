@@ -83,29 +83,32 @@ def main():
     os.system("pwd")
 
     # set the clone map
+    print("set the clone") 
     pcr.setclone(global_ldd_30min_input)
     
-    # define the landmask 
+    # define the landmask
+    print("define the landmask") 
     # - based on the 30min input     
     landmask_30min = define_landmask(input_file = global_landmask_30min_file,\
-                                      clone_map_file = global_ldd_30min_input,\ 
+                                      clone_map_file = global_ldd_30min_input,\
                                       output_map_file = "landmask_30min_only")
     # - based on the 05min input     
     landmask_05min = define_landmask(input_file = global_landmask_05min_file,\
-                                      clone_map_file = global_ldd_05min_input\, 
+                                      clone_map_file = global_ldd_05min_input,\
                                       output_map_file = "landmask_05min_only")
     # - based on the 30sec input     
     landmask_30sec = define_landmask(input_file = global_landmask_30sec_file,\
-                                      clone_map_file = global_ldd_30sec_input\, 
+                                      clone_map_file = global_ldd_30sec_input,\
                                       output_map_file = "landmask_30sec_only")
     # - based on the 30sec input     
     landmask_03sec = define_landmask(input_file = global_landmask_03sec_file,\
-                                      clone_map_file = global_ldd_03sec_input\, 
+                                      clone_map_file = global_ldd_03sec_input,\
                                       output_map_file = "landmask_03sec_only")
     #
     # - merge all landmasks
     landmask = cover(landmask_30min, landmask_05min, landmask_30sec, landmask_03sec)
     pcr.report(landmask, "global_landmask.map")
+    pcr.aguila(landmask)
     
         
 if __name__ == '__main__':
