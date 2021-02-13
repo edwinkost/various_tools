@@ -45,7 +45,7 @@ def define_landmask(input_file, clone_map_file, output_map_file):
     
     landmask = pcr.defined(pcr.readmap(output_map_file))
     landmask = pcr.ifthen(landmask, landmask)
-    # ~ pcr.aguila(landmask)
+    pcr.aguila(landmask)
     
     return landmask
 
@@ -106,7 +106,7 @@ def main():
                                       output_map_file = "landmask_03sec_only")
     #
     # - merge all landmasks
-    landmask = cover(landmask_30min, landmask_05min, landmask_30sec, landmask_03sec)
+    landmask = pcr.cover(landmask_30min, landmask_05min, landmask_30sec, landmask_03sec)
     pcr.report(landmask, "global_landmask.map")
     pcr.aguila(landmask)
     
