@@ -90,19 +90,19 @@ def main():
     print("define the landmask") 
     # - based on the 30min input     
     landmask_30min = define_landmask(input_file = global_landmask_30min_file,\
-                                      clone_map_file = global_ldd_30min_input,\
+                                      clone_map_file = global_ldd_30min_inp_file,\
                                       output_map_file = "landmask_30min_only")
     # - based on the 05min input     
     landmask_05min = define_landmask(input_file = global_landmask_05min_file,\
-                                      clone_map_file = global_ldd_05min_input,\
+                                      clone_map_file = global_ldd_30min_inp_file,\
                                       output_map_file = "landmask_05min_only")
     # - based on the 30sec input     
     landmask_30sec = define_landmask(input_file = global_landmask_30sec_file,\
-                                      clone_map_file = global_ldd_30sec_input,\
+                                      clone_map_file = global_ldd_30min_inp_file,\
                                       output_map_file = "landmask_30sec_only")
     # - based on the 30sec input     
     landmask_03sec = define_landmask(input_file = global_landmask_03sec_file,\
-                                      clone_map_file = global_ldd_03sec_input,\
+                                      clone_map_file = global_ldd_30min_inp_file,\
                                       output_map_file = "landmask_03sec_only")
     #
     # - merge all landmasks
@@ -113,4 +113,3 @@ def main():
         
 if __name__ == '__main__':
     sys.exit(main())
-
