@@ -84,7 +84,7 @@ def main():
 
     # set the clone map
     print("set the clone") 
-    pcr.setclone(global_ldd_30min_input)
+    pcr.setclone(global_ldd_30min_inp_file)
     
     # define the landmask
     print("define the landmask") 
