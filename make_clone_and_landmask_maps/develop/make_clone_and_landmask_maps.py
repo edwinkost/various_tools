@@ -82,10 +82,12 @@ def main():
     os.chdir(out_folder)    
     os.system("pwd")
 
+
     # set the clone map
     print("set the clone") 
     pcr.setclone(global_ldd_30min_inp_file)
     
+
     # define the landmask
     print("define the landmask") 
     # - based on the 30min input     
@@ -107,9 +109,41 @@ def main():
     #
     # - merge all landmasks
     landmask = pcr.cover(landmask_30min, landmask_05min, landmask_30sec, landmask_03sec)
-    pcr.report(landmask, "global_landmask.map")
+    pcr.report(landmask, "global_landmask_final.map")
     pcr.aguila(landmask)
     
+
+    # extend ldd
+    print("extend/define the ldd") 
+    ldd_map = pcr.readmap(global_ldd_30min_inp_file)
+    ldd_map = pcr.ifthen(landmask, pcr.cover(ldd_map, ldd(5)))
+    pcr.aguila(ldd_map)
+    
+    
+# ~ Define the landmask at 30 min based on
+# ~ - PCR-GLOBWB ldd at 5 arcmin and 30 arcmin
+# ~ - MERIT DEM
+# ~ - ldd hydrosheds at 30sec
+# ~ Define ldd at 30 arcmin
+# ~ Make catchment maps
+# ~ Identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
+# ~ Perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
+# ~ - NO CLUMP please. 
+# ~ Set some criterias:
+# ~ - Maximum size, e.g. 1.5 x the largest catchment
+# ~ - Avoid ‘wide’ subdomains, e.g. width = 10 x height
+# ~ For subdomains that satisfy criterias, loop from the largest subdomains
+# ~  - Make the clone map (start with number 1)
+# ~  - Make the landmask by identifying all catchments within the clone.
+# ~  - Masking out the landmask that has been identified for further processes.   
+# ~  For catchments that still have no subdomains, loop from the largest catchments
+# ~  - Identify the surrounding catchments with the window 10 x 10 cells. 
+# ~  - windowminimum using the current catchment number
+# ~  - check area
+# ~  - Make the clone map (continue the numbering)
+# ~ Masking out the landmask that has been identified for further processes. 
+
+
         
 if __name__ == '__main__':
     sys.exit(main())
