@@ -151,7 +151,7 @@ def main():
     print(cmd); os.system(cmd)
     cmd = "cdo fillmiss2 global_catchment_ge_50_cells.nc subdomains_ge_50_cells.nc"
     print(cmd); os.system(cmd)
-    subdomains_ge_50 = pcr.nominal(pcr.readmap(subdomains_ge_50_cells.nc))
+    subdomains_ge_50 = pcr.nominal(pcr.readmap("subdomains_ge_50_cells.nc"))
     pcr.aguila(subdomains_ge_50)
     
     
