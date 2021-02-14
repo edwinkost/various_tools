@@ -110,7 +110,7 @@ def main():
     # - merge all landmasks
     landmask = pcr.cover(landmask_30min, landmask_05min, landmask_30sec, landmask_03sec)
     pcr.report(landmask, "global_landmask_30min_final.map")
-    pcr.aguila(landmask)
+    # ~ pcr.aguila(landmask)
     
 
     # extend ldd
@@ -118,7 +118,7 @@ def main():
     ldd_map = pcr.readmap(global_ldd_30min_inp_file)
     ldd_map = pcr.ifthen(landmask, pcr.cover(ldd_map, pcr.ldd(5)))
     pcr.report(ldd_map, "global_ldd_final.map")
-    pcr.aguila(ldd_map)
+    # ~ pcr.aguila(ldd_map)
     
 
     # make catchment map
@@ -131,6 +131,7 @@ def main():
     # - sort from the largest catchment
     catchment_pits_boolean = pcr.defined(pcr.pit(ldd_map))
     catchment_pits_boolean = pcr.ifthen(catchment_pits_boolean, catchment_pits_boolean)
+    pcr.aguila(catchment_pits_boolean)
     catchment_map = pcr.nominal(pcr.areaorder(catchment_size * -1.0, pcr.nominal(catchment_pits_boolean)))
     catchment_map = pcr.catchment(ldd_map, catchment_map)
     pcr.report(catchment_map, "global_catchment_final.map")
