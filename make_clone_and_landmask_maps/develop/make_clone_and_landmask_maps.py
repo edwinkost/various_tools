@@ -145,6 +145,7 @@ def main():
     print("identify catchments with the minimum size of 50 cells")
     catchment_map_ge_50 = pcr.ifthen(catchment_size >= 50, catchment_map)
     pcr.report(catchment_map_ge_50, "global_catchment_ge_50_cells.map")
+
     
     # perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
     cmd = "gdal_translate -of NETCDF global_catchment_ge_50_cells.map global_catchment_ge_50_cells.nc"
@@ -152,6 +153,7 @@ def main():
     cmd = "cdo fillmiss2 global_catchment_ge_50_cells.nc subdomains_ge_50_cells.nc"
     print(cmd); os.system(cmd)
     subdomains_ge_50 = pcr.nominal(pcr.readmap("subdomains_ge_50_cells.nc"))
+    subdomains_ge_50 = pcr.ifthen(landmask, subdomains_ge_50)
     pcr.aguila(subdomains_ge_50)
     
     
