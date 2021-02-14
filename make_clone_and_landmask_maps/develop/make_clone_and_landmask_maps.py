@@ -143,7 +143,7 @@ def main():
     
     # identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
     print("identify catchments with the minimum size of 50 cells")
-    catchment_map_ge_50 = pcr.ifthen(catchment_size ge 50, catchment_map)
+    catchment_map_ge_50 = pcr.ifthen(catchment_size >= 50, catchment_map)
     pcr.report(catchment_map_ge_50, "global_catchment_ge_50_cells.map")
     
     # perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
