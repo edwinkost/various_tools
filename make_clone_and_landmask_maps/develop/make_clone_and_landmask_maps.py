@@ -131,7 +131,7 @@ def main():
     # - sort from the largest catchment
     catchment_pits_boolean = pcr.defined(pcr.pit(ldd_map))
     catchment_pits_boolean = pcr.ifthen(catchment_pits_boolean, catchment_pits_boolean)
-    catchment_map = pcr.areaorder(catchment_size * -1.0, pcr.nominal(catchment_pits_boolean))
+    catchment_map = pcr.nominal(pcr.areaorder(catchment_size * -1.0, pcr.nominal(catchment_pits_boolean)))
     catchment_map = pcr.catchment(ldd_map, catchment_map)
     pcr.report(catchment_map, "global_catchment_final.map")
     os.system("mapattr -p global_catchment_final.map")
