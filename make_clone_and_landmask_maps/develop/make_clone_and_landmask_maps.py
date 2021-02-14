@@ -129,7 +129,7 @@ def main():
     # - calculate the size
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
     # - sort from the largest catchment
-    catchment_pits_boolean = pcr.defined(pcr.pit(ldd_map))
+    catchment_pits_boolean = pcr.ifthen(pcr.scalar(pcr.pit(ldd_map)) > 0.0, pcr.boolean(1.0))
     catchment_pits_boolean = pcr.ifthen(catchment_pits_boolean, catchment_pits_boolean)
     pcr.aguila(catchment_pits_boolean)
     catchment_map = pcr.nominal(pcr.areaorder(catchment_size * -1.0, pcr.nominal(catchment_pits_boolean)))
