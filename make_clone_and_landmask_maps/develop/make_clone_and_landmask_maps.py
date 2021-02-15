@@ -169,6 +169,10 @@ def main():
     subdomains_initial = pcr.nominal(pcr.readmap("global_catchment_ge_50_cells_filled.map"))
     subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
     pcr.aguila(subdomains_initial)
+    # - initial subdomains clump
+    subdomains_initial_clump = pcr.clump(subdomains_initial_clump)
+    pcr.aguila(subdomains_initial_clump)
+    print(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))))
     # - remove temporay files (not used)
     cmd = "rm global_catchment_ge_50_cells_filled*"
     print(cmd); os.system(cmd)
