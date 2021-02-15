@@ -123,10 +123,10 @@ def main():
 
     # identify small islands
     print("identify small islands") 
-    # - maps of islands smaller than 10000 cells (at half arc degree resolution) 
+    # - maps of islands smaller than 100 cells (at half arc degree resolution) 
     island_map  = pcr.ifthen(landmask, pcr.clump(pcr.defined(ldd_map)))
     island_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), island_map)
-    island_map  = pcr.ifthen(island_size < 10000., island_map)
+    island_map  = pcr.ifthen(island_size < 100., island_map)
     # - sort from the largest island
     # -- take one cell per island as a representative
     island_map_rep_size = pcr.ifthen(pcr.areaorder(island_size, island_map) == 1.0, island_size)
