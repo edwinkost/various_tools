@@ -172,7 +172,7 @@ def main():
     # - initial subdomains clump
     subdomains_initial_clump = pcr.clump(subdomains_initial)
     pcr.aguila(subdomains_initial_clump)
-    print(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))))
+    print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump)))))
     # - remove temporay files (not used)
     cmd = "rm global_catchment_ge_50_cells_filled*"
     print(cmd); os.system(cmd)
