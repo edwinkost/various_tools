@@ -152,7 +152,7 @@ def main():
     catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
     # - identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
-    large_catchment_map = pcr.ifthen(catchment_size >= 25, catchment_map)
+    large_catchment_map = pcr.ifthen(catchment_size >= 50, catchment_map)
     # - give the codes that are different than islands
     large_catchment_map = pcr.nominal(pcr.scalar(large_catchment_map) + 10.*vos.getMinMaxMean(pcr.scalar(large_island_map))[1])
 
@@ -207,9 +207,12 @@ def main():
     # clone code that will be assigned
     assigned_number = 0
     
+    subdomains_final = pcr.ifthen(pcr.scalar(subdomains_initial) < -7777, pcr.nominal(0))
+    
     for nr in range(1, num_of_masks + 1, 1):
 
         msg = "Processing the landmask %s" %(str(nr))
+        print(msg)
 
         mask_selected_boolean = pcr.ifthen(subdomains_initial == nr, pcr.boolean(1.0))
         
@@ -218,12 +221,82 @@ def main():
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
         area_in_degree2 = (xmax - xmin) * (ymax - ymin)
         
-        print(str(area_in_degree2))
+        # ~ print(str(area_in_degree2))
         
-        # check whether the size of bounding box is the same as the one based on the 5 arcmin PCR-GLOBWB clone maps
+        # check whether the size of bounding box is ok
         # - initial check value
         check_ok = True
 
+        reference_area_in_degree2 = 2000.
+        if area_in_degree2 > 1.50 * reference_area_in_degree2: check_ok = False
+        if (xmax - xmin) > 10* (ymax - ymin): check_ok = False
+        
+        if check_ok == True:
+
+            msg = "Clump is not needed."
+            msg = "\n\n" +str(msg) + "\n\n"
+            print(msg)
+
+            # assign the clone code
+            assigned_number = assigned_number + 1
+
+            # update global landmask for river and land
+            mask_selected_nominal = pcr.ifthen(mask_selected_boolean, pcr.nominal(assigned_number))
+            subdomains_final = pcr.cover(landmask_river_and_land_all, mask_selected_nominal) 
+        
+        if check_ok == False:
+			
+            msg = "Clump is needed."
+            msg = "\n\n" +str(msg) + "\n\n"
+            print(msg)
+
+            # make clump
+            clump_ids = pcr.nominal(pcr.clump(mask_selected_boolean))
+            
+            # merge clumps that are close together 
+            clump_ids_window_majority = pcr.windowmajority(clump_ids, 25.0)
+            clump_ids = pcr.areamajority(clump_ids_window_majority, clump_ids) 
+            # ~ pcr.aguila(clump_ids)
+            
+            # minimimum and maximum values
+            min_clump_id = int(pcr.cellvalue(pcr.mapminimum(pcr.scalar(clump_ids)),1)[0])
+            max_clump_id = int(pcr.cellvalue(pcr.mapmaximum(pcr.scalar(clump_ids)),1)[0])
+
+            for clump_id in range(min_clump_id, max_clump_id + 1, 1):
+            
+                msg = "Processing the clump %s of %s from the landmask %s" %(str(clump_id), str(max_clump_id), str(nr))
+                msg = "\n\n" +str(msg) + "\n\n"
+                print(msg)
+
+                # identify mask based on the clump
+                mask_selected_boolean_from_clump = pcr.ifthen(clump_ids == pcr.nominal(clump_id), mask_selected_boolean)
+                mask_selected_boolean_from_clump = pcr.ifthen(mask_selected_boolean_from_clump, mask_selected_boolean_from_clump)
+
+                # check whether the clump is empty
+                check_mask_selected_boolean_from_clump = pcr.ifthen(mask_land_selected_boolean, mask_selected_boolean_from_clump)
+                check_if_empty = float(pcr.cellvalue(pcr.mapmaximum(pcr.scalar(pcr.defined(check_mask_selected_boolean_from_clump))),1)[0])
+                
+                if check_if_empty == 0.0: 
+                
+                    msg = "Map is empty !"
+                    msg = "\n\n" +str(msg) + "\n\n"
+                    print(msg)
+
+                else:
+                
+                    msg = "Map is NOT empty !"
+                    msg = "\n\n" +str(msg) + "\n\n"
+                    print(msg)
+
+                    # assign the clone code
+                    assigned_number = assigned_number + 1
+                    
+                    # update global landmask for river and land
+                    mask_selected_nominal = pcr.ifthen(mask_selected_boolean_from_clump, pcr.nominal(assigned_number))
+                    subdomains_final = pcr.cover(landmask_river_and_land_all, mask_selected_nominal)
+                    
+    num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_final))[1])
+    print(num_of_masks)
 
         
 if __name__ == '__main__':
