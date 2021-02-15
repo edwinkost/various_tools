@@ -314,8 +314,8 @@ def main():
                     mask_selected_nominal = pcr.ifthen(mask_selected_boolean_from_clump, pcr.nominal(assigned_number))
                     subdomains_final = pcr.cover(subdomains_final, mask_selected_nominal)
                     
-    # kill all aguila processes if exist
-    os.system('killall aguila')
+    # ~ # kill all aguila processes if exist
+    # ~ os.system('killall aguila')
     
     pcr.aguila(subdomains_final)
 
