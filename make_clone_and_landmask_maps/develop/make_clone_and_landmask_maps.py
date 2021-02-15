@@ -336,6 +336,12 @@ def main():
         
         print(str(area_in_degree2))
 
+    print("")
+    print("")
+    print("")
+
+    print(num_of_masks)
+
         
 if __name__ == '__main__':
     sys.exit(main())
