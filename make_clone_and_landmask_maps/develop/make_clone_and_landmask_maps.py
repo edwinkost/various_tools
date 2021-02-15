@@ -140,48 +140,32 @@ def main():
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
     pcr.report(catchment_size, "global_catchment_size_in_number_of_cells.map")
     
+    # number of catchments
+    num_of_catchments = int(vos.getMinMaxMean(catchment_size)[1])
     
     # identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
     print("identify catchments with the minimum size of 50 cells")
     catchment_map_ge_50 = pcr.ifthen(catchment_size >= 50, catchment_map)
     pcr.report(catchment_map_ge_50, "global_catchment_ge_50_cells.map")
-
     
+
     # perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
     cmd = "gdal_translate -of NETCDF global_catchment_ge_50_cells.map global_catchment_ge_50_cells.nc"
     print(cmd); os.system(cmd)
     cmd = "cdo fillmiss2 global_catchment_ge_50_cells.nc subdomains_ge_50_cells.nc"
     print(cmd); os.system(cmd)
+    cmd = "gdal_translate -of PCRaster subdomains_ge_50_cells.nc subdomains_ge_50_cells.map"
+    print(cmd); os.system(cmd)
+    cmd = "mapattr -c " + global_ldd_30min_inp_file + " " + "subdomains_ge_50_cells.map"
+    print(cmd); os.system(cmd)
     subdomains_ge_50 = pcr.nominal(pcr.readmap("subdomains_ge_50_cells.nc"))
     subdomains_ge_50 = pcr.ifthen(landmask, subdomains_ge_50)
     pcr.aguila(subdomains_ge_50)
+
+
+    # clone code that will be assigned
+    assigned_number = 0
     
-    
-    
-    
-    
-# ~ Define the landmask at 30 min based on
-# ~ - PCR-GLOBWB ldd at 5 arcmin and 30 arcmin
-# ~ - MERIT DEM
-# ~ - ldd hydrosheds at 30sec
-# ~ Define ldd at 30 arcmin
-# ~ Make catchment maps
-# ~ Identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
-# ~ Perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
-# ~ - NO CLUMP please. 
-# ~ Set some criterias:
-# ~ - Maximum size, e.g. 1.5 x the largest catchment
-# ~ - Avoid ‘wide’ subdomains, e.g. width = 10 x height
-# ~ For subdomains that satisfy criterias, loop from the largest subdomains
-# ~  - Make the clone map (start with number 1)
-# ~  - Make the landmask by identifying all catchments within the clone.
-# ~  - Masking out the landmask that has been identified for further processes.   
-# ~  For catchments that still have no subdomains, loop from the largest catchments
-# ~  - Identify the surrounding catchments with the window 10 x 10 cells. 
-# ~  - windowminimum using the current catchment number
-# ~  - check area
-# ~  - Make the clone map (continue the numbering)
-# ~ Masking out the landmask that has been identified for further processes. 
 
 
         
