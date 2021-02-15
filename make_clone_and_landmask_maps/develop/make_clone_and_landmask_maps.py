@@ -184,7 +184,8 @@ def main():
     print(cmd); os.system(cmd)
     # - initial subdomains
     subdomains_initial = pcr.nominal(pcr.readmap("large_catchments_and_islands_filled.map"))
-    subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
+    # ~ subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
+    subdomains_initial = pcr.nominal(pcr.areamaximum(pcr.scalar(subdomains_initial), catchment_map))
     pcr.aguila(subdomains_initial)
     
     pcr.report(subdomains_initial, "subdomains_initial.map")
