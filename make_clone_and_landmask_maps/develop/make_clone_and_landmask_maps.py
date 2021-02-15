@@ -143,8 +143,8 @@ def main():
     # -- map of smaller islands, sorted from the largest one
     island_map = pcr.areamajority(pcr.nominal(island_map_rep_ids), island_map)
     
-    # identify the biggest island for every group of small islands within the windows 5x5 arcdeg cells
-    large_island_map  = pcr.ifthen(pcr.scalar(island_map) == pcr.windowminimum(pcr.scalar(island_map), 5.), island_map)
+    # identify the biggest island for every group of small islands within a certain window (arcdeg cells)
+    large_island_map  = pcr.ifthen(pcr.scalar(island_map) == pcr.windowminimum(pcr.scalar(island_map), 25.), island_map)
     pcr.aguila(large_island_map)
     
 
