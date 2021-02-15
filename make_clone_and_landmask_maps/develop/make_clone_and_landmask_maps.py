@@ -30,6 +30,16 @@ def boundingBox(pcrmap):
     ymax  = pcr.cellvalue(pcr.mapmaximum(ycoor), 1, 1)[0]
     return [math.floor(xmin), math.floor(ymin), math.ceil(xmax), math.ceil(ymax)]
     
+def spatialInterpolation2PCR(fieldArray, pcrType, MV):
+	#-interpolates the field array to the full extent
+	field = pcr.numpy2pcr(pcrType, fieldArray, MV)
+	cellID = pcr.nominal(pcr.uniqueid(pcr.defined(field)))
+	zoneID = pcr.spreadzone(cellID,0,1)
+	if pcrType == pcr.Scalar:
+		field = pcr.areaaverage(field,zoneID)
+	else:
+		field = pcr.areamajority(field,zoneID)
+	return field
 
 def define_landmask(input_file, clone_map_file, output_map_file):
 
@@ -123,7 +133,7 @@ def main():
     # catchment map and size
     catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
-    pcr.aguila(catchment_size)
+    # ~ pcr.aguila(catchment_size)
 
     # identify small islands
     print("identify small islands") 
@@ -145,7 +155,7 @@ def main():
     
     # identify the biggest island for every group of small islands within a certain window (arcdeg cells)
     large_island_map  = pcr.ifthen(pcr.scalar(island_map) == pcr.windowminimum(pcr.scalar(island_map), 15.), island_map)
-    pcr.aguila(large_island_map)
+    # ~ pcr.aguila(large_island_map)
     
 
     # identify big catchments
@@ -173,21 +183,30 @@ def main():
     pcr.report(large_catchment_and_island_map, "large_catchments_and_islands.map")
 
 
-    # perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
-    cmd = "gdal_translate -of NETCDF large_catchments_and_islands.map large_catchments_and_islands.nc"
-    print(cmd); os.system(cmd)
-    cmd = "cdo fillmiss2 large_catchments_and_islands.nc large_catchments_and_islands_filled.nc"
-    print(cmd); os.system(cmd)
-    cmd = "gdal_translate -of PCRaster large_catchments_and_islands_filled.nc large_catchments_and_islands_filled.map"
-    print(cmd); os.system(cmd)
-    cmd = "mapattr -c " + global_ldd_30min_inp_file + " " + "large_catchments_and_islands_filled.map"
-    print(cmd); os.system(cmd)
-    # - initial subdomains
-    subdomains_initial = pcr.nominal(pcr.readmap("large_catchments_and_islands_filled.map"))
-    subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
-    # ~ subdomains_initial = pcr.nominal(pcr.areamaximum(pcr.scalar(subdomains_initial), catchment_map))
-    pcr.aguila(subdomains_initial)
+    # ~ # perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
+    # ~ cmd = "gdal_translate -of NETCDF large_catchments_and_islands.map large_catchments_and_islands.nc"
+    # ~ print(cmd); os.system(cmd)
+    # ~ cmd = "cdo fillmiss2 large_catchments_and_islands.nc large_catchments_and_islands_filled.nc"
+    # ~ print(cmd); os.system(cmd)
+    # ~ cmd = "gdal_translate -of PCRaster large_catchments_and_islands_filled.nc large_catchments_and_islands_filled.map"
+    # ~ print(cmd); os.system(cmd)
+    # ~ cmd = "mapattr -c " + global_ldd_30min_inp_file + " " + "large_catchments_and_islands_filled.map"
+    # ~ print(cmd); os.system(cmd)
+    # ~ # - initial subdomains
+    # ~ subdomains_initial = pcr.nominal(pcr.readmap("large_catchments_and_islands_filled.map"))
+    # ~ subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
+    # ~ pcr.aguila(subdomains_initial)
     
+
+    # spatial interpolation/extrapolation in order to merge the small catchments to the nearest large catchments
+	field  = large_catchment_and_island_map
+	cellID = pcr.nominal(pcr.uniqueid(pcr.defined(field)))
+	zoneID = pcr.spreadzone(cellID,0,1)
+    field  = pcr.areamajority(field,zoneID)
+	subdomains_initial = field
+	subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
+	pcr.aguila(subdomains_initial)
+
     pcr.report(subdomains_initial, "subdomains_initial.map")
 
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[0])))
@@ -216,7 +235,7 @@ def main():
 
         mask_selected_boolean = pcr.ifthen(subdomains_initial == nr, pcr.boolean(1.0))
         
-        if nr == 1: pcr.aguila(mask_selected_boolean)
+        # ~ if nr == 1: pcr.aguila(mask_selected_boolean)
         
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
         area_in_degree2 = (xmax - xmin) * (ymax - ymin)
@@ -256,7 +275,7 @@ def main():
             # merge clumps that are close together 
             clump_ids_window_majority = pcr.windowmajority(clump_ids, 10.0)
             clump_ids = pcr.areamajority(clump_ids_window_majority, clump_ids) 
-            pcr.aguila(clump_ids)
+            # ~ pcr.aguila(clump_ids)
             
             # minimimum and maximum values
             min_clump_id = int(pcr.cellvalue(pcr.mapminimum(pcr.scalar(clump_ids)),1)[0])
