@@ -188,6 +188,9 @@ def main():
     subdomains_initial_clump = pcr.clump(subdomains_initial)
     pcr.aguila(subdomains_initial_clump)
 
+    print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[0])))
+    print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])))
+
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))[0])))
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))[1])))
 
