@@ -132,7 +132,7 @@ def main():
     island_map  = pcr.ifthen(landmask, pcr.clump(pcr.defined(ldd_map)))
     island_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), island_map)
     island_map  = pcr.ifthen(island_size < 25., island_map)
-    island_map  = pcr.nominal(pcr.ifthen(landmask, pcr.clump(island_map)) + pcr.nominal(pcr.scalar(num_of_catchments)*100.))
+    island_map  = pcr.nominal(pcr.scalar(pcr.ifthen(landmask, pcr.clump(island_map))) + pcr.scalar(num_of_catchments)*100.)
     pcr.aguila(island_map)
     
     catchment_map = pcr.cover(island_map, catchment_map)
