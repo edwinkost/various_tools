@@ -227,7 +227,7 @@ def main():
         # - initial check value
         check_ok = True
 
-        reference_area_in_degree2 = 2000.
+        reference_area_in_degree2 = 2500.
         if area_in_degree2 > 1.50 * reference_area_in_degree2: check_ok = False
         if (xmax - xmin) > 10* (ymax - ymin): check_ok = False
         
