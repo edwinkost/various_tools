@@ -273,7 +273,7 @@ def main():
                 mask_selected_boolean_from_clump = pcr.ifthen(mask_selected_boolean_from_clump, mask_selected_boolean_from_clump)
 
                 # check whether the clump is empty
-                check_mask_selected_boolean_from_clump = pcr.ifthen(mask_land_selected_boolean, mask_selected_boolean_from_clump)
+                check_mask_selected_boolean_from_clump = pcr.ifthen(mask_selected_boolean, mask_selected_boolean_from_clump)
                 check_if_empty = float(pcr.cellvalue(pcr.mapmaximum(pcr.scalar(pcr.defined(check_mask_selected_boolean_from_clump))),1)[0])
                 
                 if check_if_empty == 0.0: 
