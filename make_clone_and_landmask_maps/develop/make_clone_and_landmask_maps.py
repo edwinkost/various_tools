@@ -137,10 +137,10 @@ def main():
 
     # identify small islands
     print("identify small islands") 
-    # - maps of islands smaller than 10000 cells (at half arc degree resolution) 
+    # - maps of islands smaller than 15000 cells (at half arc degree resolution) 
     island_map  = pcr.ifthen(landmask, pcr.clump(pcr.defined(ldd_map)))
     island_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), island_map)
-    island_map  = pcr.ifthen(island_size < 10000., island_map)
+    island_map  = pcr.ifthen(island_size < 15000., island_map)
     # ~ # - use catchments (instead of islands)
     # ~ island_map  = catchment_map
     # ~ island_size = catchment_size 
@@ -319,6 +319,7 @@ def main():
     
     pcr.aguila(subdomains_final)
 
+    pcr.report(subdomains_final, "subdomains_final.map")
 
     num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_final))[1])
     print(num_of_masks)
@@ -334,7 +335,7 @@ def main():
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
         area_in_degree2 = (xmax - xmin) * (ymax - ymin)
         
-        print(str(area_in_degree2))
+        print(str(nr) + " " + str(area_in_degree2) + " " + str((xmax - xmin)) + " " + str((ymax - ymin)))
 
     print("")
     print("")
