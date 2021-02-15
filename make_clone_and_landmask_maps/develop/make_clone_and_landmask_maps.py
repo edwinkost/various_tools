@@ -133,7 +133,7 @@ def main():
     # -- sort from the largest island
     island_map_rep_ids  = pcr.areaorder(island_map_rep_size*-1.00, pcr.ifthen(pcr.defined(island_map_rep_size), pcr.nominal(1.0)))
     # -- maps of smaller islands, sorted from the largest one
-    island_map = pcr.areamajority(island_map_rep_ids, island_map)
+    island_map = pcr.areamajority(pcr.nominal(island_map_rep_ids), island_map)
     
 
     # identify the biggest island for every group of small islands within the windows 10x10 arcdeg cells
