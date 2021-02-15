@@ -242,7 +242,7 @@ def main():
 
             # update global landmask for river and land
             mask_selected_nominal = pcr.ifthen(mask_selected_boolean, pcr.nominal(assigned_number))
-            subdomains_final = pcr.cover(landmask_river_and_land_all, mask_selected_nominal) 
+            subdomains_final = pcr.cover(subdomains_final, mask_selected_nominal) 
         
         if check_ok == False:
 			
@@ -293,7 +293,7 @@ def main():
                     
                     # update global landmask for river and land
                     mask_selected_nominal = pcr.ifthen(mask_selected_boolean_from_clump, pcr.nominal(assigned_number))
-                    subdomains_final = pcr.cover(landmask_river_and_land_all, mask_selected_nominal)
+                    subdomains_final = pcr.cover(subdomains_final, mask_selected_nominal)
                     
     num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_final))[1])
     print(num_of_masks)
