@@ -155,7 +155,11 @@ def main():
     num_of_catchments = int(vos.getMinMaxMean(pcr.scalar(catchment_map))[1])
     
     # size of the largest catchment
-    catchment_size_max = vos.getMinMaxMean(catchment_size)[1] 
+    catchment_size_max = vos.getMinMaxMean(catchment_size)[1]
+    print("")
+    print(str(float(vos.getMinMaxMean(pcr.scalar(catchment_size_max))[0])))
+    print("")
+     
     
     # identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
     print("identify catchments with the minimum size of 50 cells")
