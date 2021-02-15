@@ -141,26 +141,34 @@ def main():
     pcr.report(catchment_size, "global_catchment_size_in_number_of_cells.map")
     
     # number of catchments
-    num_of_catchments = int(vos.getMinMaxMean(catchment_size)[1])
+    num_of_catchments = int(vos.getMinMaxMean(catchment_map)[1])
+    
+    # size of the largest catchment
+    catchment_size_max = vos.getMinMaxMean(catchment_size)[1] 
     
     # identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
     print("identify catchments with the minimum size of 50 cells")
     catchment_map_ge_50 = pcr.ifthen(catchment_size >= 50, catchment_map)
     pcr.report(catchment_map_ge_50, "global_catchment_ge_50_cells.map")
-    
 
     # perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
     cmd = "gdal_translate -of NETCDF global_catchment_ge_50_cells.map global_catchment_ge_50_cells.nc"
     print(cmd); os.system(cmd)
-    cmd = "cdo fillmiss2 global_catchment_ge_50_cells.nc subdomains_ge_50_cells.nc"
+    cmd = "cdo fillmiss2 global_catchment_ge_50_cells.nc global_catchment_ge_50_cells_filled.nc"
     print(cmd); os.system(cmd)
-    cmd = "gdal_translate -of PCRaster subdomains_ge_50_cells.nc subdomains_ge_50_cells.map"
+    cmd = "cdo fillmiss2 global_catchment_ge_50_cells_filled.nc global_catchment_ge_50_cells_filled.nc"
     print(cmd); os.system(cmd)
-    cmd = "mapattr -c " + global_ldd_30min_inp_file + " " + "subdomains_ge_50_cells.map"
+    cmd = "gdal_translate -of PCRaster global_catchment_ge_50_cells_filled.nc global_catchment_ge_50_cells_filled.map"
     print(cmd); os.system(cmd)
-    subdomains_ge_50 = pcr.nominal(pcr.readmap("subdomains_ge_50_cells.map"))
-    subdomains_ge_50 = pcr.ifthen(landmask, subdomains_ge_50)
-    pcr.aguila(subdomains_ge_50)
+    cmd = "mapattr -c " + global_ldd_30min_inp_file + " " + "global_catchment_ge_50_cells_filled.map"
+    print(cmd); os.system(cmd)
+    # - initial subdomains
+    subdomains_initial = pcr.nominal(pcr.readmap("global_catchment_ge_50_cells_filled.map"))
+    subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
+    pcr.aguila(subdomains_initial)
+    # - remove temporay files (not used)
+    cmd = "rm global_catchment_ge_50_cells_filled"
+    print(cmd); os.system(cmd)
 
 
     # clone code that will be assigned
