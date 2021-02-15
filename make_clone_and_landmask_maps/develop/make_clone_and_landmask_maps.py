@@ -157,7 +157,7 @@ def main():
     # size of the largest catchment
     catchment_size_max = vos.getMinMaxMean(catchment_size)[1]
     print("")
-    print(str(float(vos.getMinMaxMean(pcr.scalar(catchment_size_max))[0])))
+    print(str(float(catchment_size_max)))
     print("")
      
     
