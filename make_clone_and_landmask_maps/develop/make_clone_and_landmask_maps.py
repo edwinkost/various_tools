@@ -211,6 +211,8 @@ def main():
 
         mask_selected_boolean = pcr.ifthen(subdomains_initial == nr, pcr.boolean(1.0))
         
+        if nr == 1: pcr.aguila(mask_selected_boolean)
+        
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
         area_in_degree2 = (xmax - xmin) * (ymax - ymin)
         
