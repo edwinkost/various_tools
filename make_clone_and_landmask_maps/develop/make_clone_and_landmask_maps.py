@@ -76,7 +76,7 @@ global_ldd_30min_inp_file = "/scratch/depfg/sutan101/data/pcrglobwb2_input_relea
 
 
 # output_folder
-out_folder = "/scratch/depfg/sutan101/make_clone_maps/30min_test/"
+out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-16/"
 
 
 def main():
@@ -103,23 +103,23 @@ def main():
     # - based on the 30min input     
     landmask_30min = define_landmask(input_file = global_landmask_30min_file,\
                                       clone_map_file = global_ldd_30min_inp_file,\
-                                      output_map_file = "landmask_30min_only")
+                                      output_map_file = "landmask_30min_only.map")
     # - based on the 05min input     
     landmask_05min = define_landmask(input_file = global_landmask_05min_file,\
                                       clone_map_file = global_ldd_30min_inp_file,\
-                                      output_map_file = "landmask_05min_only")
+                                      output_map_file = "landmask_05min_only.map")
     # - based on the 30sec input     
     landmask_30sec = define_landmask(input_file = global_landmask_30sec_file,\
                                       clone_map_file = global_ldd_30min_inp_file,\
-                                      output_map_file = "landmask_30sec_only")
+                                      output_map_file = "landmask_30sec_only.map")
     # - based on the 30sec input     
     landmask_03sec = define_landmask(input_file = global_landmask_03sec_file,\
                                       clone_map_file = global_ldd_30min_inp_file,\
-                                      output_map_file = "landmask_03sec_only")
+                                      output_map_file = "landmask_03sec_only.map")
     #
     # - merge all landmasks
     landmask = pcr.cover(landmask_30min, landmask_05min, landmask_30sec, landmask_03sec)
-    pcr.report(landmask, "global_landmask_30min_final.map")
+    pcr.report(landmask, "global_landmask_extended_30min.map")
     # ~ pcr.aguila(landmask)
     
 
@@ -127,7 +127,7 @@ def main():
     print("extend/define the ldd") 
     ldd_map = pcr.readmap(global_ldd_30min_inp_file)
     ldd_map = pcr.ifthen(landmask, pcr.cover(ldd_map, pcr.ldd(5)))
-    pcr.report(ldd_map, "global_ldd_final.map")
+    pcr.report(ldd_map, "global_ldd_extended_30min.map")
     # ~ pcr.aguila(ldd_map)
 
     # catchment map and size
@@ -154,11 +154,13 @@ def main():
     island_map = pcr.areamajority(pcr.nominal(island_map_rep_ids), island_map)
     
     # identify the biggest island for every group of small islands within a certain window (arcdeg cells)
+    print("the biggest island for every group of small islands") 
     large_island_map  = pcr.ifthen(pcr.scalar(island_map) == pcr.windowminimum(pcr.scalar(island_map), 15.), island_map)
     # ~ pcr.aguila(large_island_map)
     
 
     # identify big catchments
+    print("identify large catchments") 
     catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
     # - identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
@@ -168,6 +170,7 @@ def main():
 
 
     # merge biggest islands and big catchments
+    print("merge large catchments and islands") 
     large_catchment_and_island_map = pcr.cover(large_catchment_map, large_island_map)
     # ~ large_catchment_and_island_map = pcr.cover(large_island_map, large_catchment_map)
     large_catchment_and_island_map_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), large_catchment_and_island_map)
@@ -180,10 +183,11 @@ def main():
     large_catchment_and_island_map_rep_ids  = pcr.areaorder(large_catchment_and_island_map_rep_size*-1.00, pcr.ifthen(pcr.defined(large_catchment_and_island_map_rep_size), pcr.nominal(1.0)))
     # -- map of largest catchments and islands, sorted from the largest one
     large_catchment_and_island_map = pcr.areamajority(pcr.nominal(large_catchment_and_island_map_rep_ids), large_catchment_and_island_map)
-    pcr.report(large_catchment_and_island_map, "large_catchments_and_islands.map")
+    # ~ pcr.report(large_catchment_and_island_map, "large_catchments_and_islands.map")
 
 
     # ~ # perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
+    # ~ print("spatial interpolation/extrapolation using cdo fillmiss2 to get initial subdomains") 
     # ~ cmd = "gdal_translate -of NETCDF large_catchments_and_islands.map large_catchments_and_islands.nc"
     # ~ print(cmd); os.system(cmd)
     # ~ cmd = "cdo fillmiss2 large_catchments_and_islands.nc large_catchments_and_islands_filled.nc"
@@ -199,6 +203,7 @@ def main():
     
 
     # spatial interpolation/extrapolation in order to merge the small catchments to the nearest large catchments
+    print("spatial interpolation/extrapolation to get initial subdomains") 
     field  = large_catchment_and_island_map
     cellID = pcr.nominal(pcr.uniqueid(pcr.defined(field)))
     zoneID = pcr.spreadzone(cellID,0,1)
@@ -207,7 +212,7 @@ def main():
     subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
     pcr.aguila(subdomains_initial)
 
-    pcr.report(subdomains_initial, "subdomains_initial.map")
+    pcr.report(subdomains_initial, "global_subdomains_30min_initial.map")
 
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[0])))
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])))
@@ -215,13 +220,10 @@ def main():
     # ~ print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))[0])))
     # ~ print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))[1])))
 
-
-    # ~ # - remove temporay files (not used)
-    # ~ cmd = "rm global_catchment_ge_50_cells_filled*"
-    # ~ print(cmd); os.system(cmd)
     
-    num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])
+    print("Checking all subdomains, avoid too large subdomains") 
 
+    num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])
 
     # clone code that will be assigned
     assigned_number = 0
@@ -319,7 +321,13 @@ def main():
     
     pcr.aguila(subdomains_final)
 
-    pcr.report(subdomains_final, "subdomains_final.map")
+    print("")
+    print("")
+    print("")
+
+    print("The subdomain map is READY.") 
+
+    pcr.report(subdomains_final, "global_subdomains_30min_final.map")
 
     num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_final))[1])
     print(num_of_masks)
@@ -335,7 +343,7 @@ def main():
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
         area_in_degree2 = (xmax - xmin) * (ymax - ymin)
         
-        print(str(nr) + " " + str(area_in_degree2) + " " + str((xmax - xmin)) + " " + str((ymax - ymin)))
+        print(str(nr) + " ; " + str(area_in_degree2) + " ; " + str((xmax - xmin)) + " ; " + str((ymax - ymin)))
 
     print("")
     print("")
