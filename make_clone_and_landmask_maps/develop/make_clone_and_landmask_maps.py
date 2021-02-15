@@ -253,9 +253,9 @@ def main():
             # make clump
             clump_ids = pcr.nominal(pcr.clump(mask_selected_boolean))
             
-            # merge clumps that are close together 
-            clump_ids_window_majority = pcr.windowmajority(clump_ids, 25.0)
-            clump_ids = pcr.areamajority(clump_ids_window_majority, clump_ids) 
+            # ~ # merge clumps that are close together 
+            # ~ clump_ids_window_majority = pcr.windowmajority(clump_ids, 25.0)
+            # ~ clump_ids = pcr.areamajority(clump_ids_window_majority, clump_ids) 
             # ~ pcr.aguila(clump_ids)
             
             # minimimum and maximum values
@@ -303,6 +303,19 @@ def main():
 
     num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_final))[1])
     print(num_of_masks)
+
+    print("")
+    print("")
+    print("")
+
+    for nr in range(1, num_of_masks + 1, 1):
+
+        mask_selected_boolean = pcr.ifthen(subdomains_final == nr, pcr.boolean(1.0))
+        
+        xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
+        area_in_degree2 = (xmax - xmin) * (ymax - ymin)
+        
+        print(str(area_in_degree2))
 
         
 if __name__ == '__main__':
