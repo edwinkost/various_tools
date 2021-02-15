@@ -119,98 +119,125 @@ def main():
     ldd_map = pcr.ifthen(landmask, pcr.cover(ldd_map, pcr.ldd(5)))
     pcr.report(ldd_map, "global_ldd_final.map")
     # ~ pcr.aguila(ldd_map)
-    
 
-    # make catchment and island map
-    print("make catchment and island map")
 
-    # - catchment map
-    catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
-    pcr.report(catchment_map, "global_catchment_not_sorted.map")
-    os.system("mapattr -p global_catchment_not_sorted.map")
-    num_of_catchments = int(vos.getMinMaxMean(pcr.scalar(catchment_map))[1])
-
-    # - maps of islands smaller than 10000 cells 
+    # identify small islands
+    print("identify small islands") 
+    # - maps of islands smaller than 10000 cells (at half arc degree resolution) 
     island_map  = pcr.ifthen(landmask, pcr.clump(pcr.defined(ldd_map)))
     island_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), island_map)
     island_map  = pcr.ifthen(island_size < 10000., island_map)
-    island_map  = pcr.nominal(pcr.scalar(pcr.ifthen(landmask, pcr.clump(island_map))) + pcr.scalar(num_of_catchments)*100.)
+    # - sort from the largest island
+    # -- take one cell per island as a representative
+    island_map_rep_size = pcr.ifthen(pcr.areaorder(island_size, island_map) == 1.0, island_size))
+    # -- sort from the largest island
+    island_map_rep_ids  = pcr.areaorder(island_map_rep_size*-1.00, pcr.ifthen(pcr.defined(island_map_rep_size), pcr.nominal(1.0)))
+    # -- maps of smaller islands, sorted from the largest one
+    island_map = pcr.areamajority(island_map_rep_ids, island_map)
+    
+
+    # identify the biggest island for every group of small islands within the windows 10x10 arcdeg cells
+    island_map  = pcr.ifthen(pcr.scalar(island_map) == pcr.windowmaximum(pcr.scalar(island_map), 10.), island_map)
     pcr.aguila(island_map)
+
     
-    island_size = pcr.ifthen(pcr.defined(island_map), island_size)
+
+    # ~ # identify big catchments
     
-    island_map  = pcr.ifthen(island_size == pcr.windowmaximum(island_size, 10.), island_map)
-    pcr.aguila(island_map)
     
-    catchment_map = pcr.cover(island_map, catchment_map)
-    catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
+    # ~ # merge biggest islands and big catchments 
     
-    # - calculate the size
-    catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
-    # - sort from the largest catchment
-    catchment_pits_boolean = pcr.ifthen(pcr.scalar(pcr.pit(ldd_map)) > 0.0, pcr.boolean(1.0))
-    catchment_pits_boolean = pcr.ifthen(catchment_pits_boolean, catchment_pits_boolean)
-    pcr.aguila(catchment_pits_boolean)
-    catchment_map = pcr.nominal(pcr.areaorder(catchment_size * -1.0, pcr.nominal(catchment_pits_boolean)))
-    catchment_map = pcr.catchment(ldd_map, catchment_map)
-    pcr.report(catchment_map, "global_catchment_final.map")
-    os.system("mapattr -p global_catchment_final.map")
-    # - calculate the size
-    catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
-    pcr.report(catchment_size, "global_catchment_size_in_number_of_cells.map")
     
-    # number of catchments
-    num_of_catchments = int(vos.getMinMaxMean(pcr.scalar(catchment_map))[1])
+    # ~ # make catchment and island map
+    # ~ print("make catchment and island map")
+
+    # ~ # - catchment map
+    # ~ catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
+    # ~ pcr.report(catchment_map, "global_catchment_not_sorted.map")
+    # ~ os.system("mapattr -p global_catchment_not_sorted.map")
+    # ~ num_of_catchments = int(vos.getMinMaxMean(pcr.scalar(catchment_map))[1])
+
+    # ~ # - maps of islands smaller than 10000 cells 
+    # ~ island_map  = pcr.ifthen(landmask, pcr.clump(pcr.defined(ldd_map)))
+    # ~ island_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), island_map)
+    # ~ island_map  = pcr.ifthen(island_size < 10000., island_map)
+    # ~ island_map  = pcr.nominal(pcr.scalar(pcr.ifthen(landmask, pcr.clump(island_map))) + pcr.scalar(num_of_catchments)*100.)
+    # ~ pcr.aguila(island_map)
     
-    # size of the largest catchment
-    catchment_size_max = vos.getMinMaxMean(catchment_size)[1]
-    print("")
-    print(str(float(catchment_size_max)))
-    print("")
+    # ~ island_size = pcr.ifthen(pcr.defined(island_map), island_size)
+    
+    # ~ island_map  = pcr.ifthen(island_size == pcr.windowmaximum(island_size, 10.), island_map)
+    # ~ pcr.aguila(island_map)
+    
+    # ~ catchment_map = pcr.cover(island_map, catchment_map)
+    # ~ catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
+    
+    # ~ # - calculate the size
+    # ~ catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
+    # ~ # - sort from the largest catchment
+    # ~ catchment_pits_boolean = pcr.ifthen(pcr.scalar(pcr.pit(ldd_map)) > 0.0, pcr.boolean(1.0))
+    # ~ catchment_pits_boolean = pcr.ifthen(catchment_pits_boolean, catchment_pits_boolean)
+    # ~ pcr.aguila(catchment_pits_boolean)
+    # ~ catchment_map = pcr.nominal(pcr.areaorder(catchment_size * -1.0, pcr.nominal(catchment_pits_boolean)))
+    # ~ catchment_map = pcr.catchment(ldd_map, catchment_map)
+    # ~ pcr.report(catchment_map, "global_catchment_final.map")
+    # ~ os.system("mapattr -p global_catchment_final.map")
+    # ~ # - calculate the size
+    # ~ catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
+    # ~ pcr.report(catchment_size, "global_catchment_size_in_number_of_cells.map")
+    
+    # ~ # number of catchments
+    # ~ num_of_catchments = int(vos.getMinMaxMean(pcr.scalar(catchment_map))[1])
+    
+    # ~ # size of the largest catchment
+    # ~ catchment_size_max = vos.getMinMaxMean(catchment_size)[1]
+    # ~ print("")
+    # ~ print(str(float(catchment_size_max)))
+    # ~ print("")
      
     
-    # identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
-    print("identify catchments with the minimum size of 50 cells")
-    catchment_map_ge_50 = pcr.ifthen(catchment_size >= 50, catchment_map)
-    pcr.report(catchment_map_ge_50, "global_catchment_ge_50_cells.map")
+    # ~ # identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
+    # ~ print("identify catchments with the minimum size of 50 cells")
+    # ~ catchment_map_ge_50 = pcr.ifthen(catchment_size >= 50, catchment_map)
+    # ~ pcr.report(catchment_map_ge_50, "global_catchment_ge_50_cells.map")
     
-    # include the island
-    catchment_map_ge_50 = pcr.cover(island_map, catchment_map_ge_50)  
+    # ~ # include the island
+    # ~ catchment_map_ge_50 = pcr.cover(island_map, catchment_map_ge_50)  
      
 
-    # perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
-    cmd = "gdal_translate -of NETCDF global_catchment_ge_50_cells.map global_catchment_ge_50_cells.nc"
-    print(cmd); os.system(cmd)
-    cmd = "cdo fillmiss2 global_catchment_ge_50_cells.nc global_catchment_ge_50_cells_filled.nc"
-    print(cmd); os.system(cmd)
-    cmd = "cdo fillmiss2 global_catchment_ge_50_cells_filled.nc global_catchment_ge_50_cells_filled.nc"
-    print(cmd); os.system(cmd)
-    cmd = "gdal_translate -of PCRaster global_catchment_ge_50_cells_filled.nc global_catchment_ge_50_cells_filled.map"
-    print(cmd); os.system(cmd)
-    cmd = "mapattr -c " + global_ldd_30min_inp_file + " " + "global_catchment_ge_50_cells_filled.map"
-    print(cmd); os.system(cmd)
-    # - initial subdomains
-    subdomains_initial = pcr.nominal(pcr.readmap("global_catchment_ge_50_cells_filled.map"))
-    subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
-    pcr.aguila(subdomains_initial)
-    # - initial subdomains clump
-    subdomains_initial_clump = pcr.clump(subdomains_initial)
-    pcr.aguila(subdomains_initial_clump)
+    # ~ # perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
+    # ~ cmd = "gdal_translate -of NETCDF global_catchment_ge_50_cells.map global_catchment_ge_50_cells.nc"
+    # ~ print(cmd); os.system(cmd)
+    # ~ cmd = "cdo fillmiss2 global_catchment_ge_50_cells.nc global_catchment_ge_50_cells_filled.nc"
+    # ~ print(cmd); os.system(cmd)
+    # ~ cmd = "cdo fillmiss2 global_catchment_ge_50_cells_filled.nc global_catchment_ge_50_cells_filled.nc"
+    # ~ print(cmd); os.system(cmd)
+    # ~ cmd = "gdal_translate -of PCRaster global_catchment_ge_50_cells_filled.nc global_catchment_ge_50_cells_filled.map"
+    # ~ print(cmd); os.system(cmd)
+    # ~ cmd = "mapattr -c " + global_ldd_30min_inp_file + " " + "global_catchment_ge_50_cells_filled.map"
+    # ~ print(cmd); os.system(cmd)
+    # ~ # - initial subdomains
+    # ~ subdomains_initial = pcr.nominal(pcr.readmap("global_catchment_ge_50_cells_filled.map"))
+    # ~ subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
+    # ~ pcr.aguila(subdomains_initial)
+    # ~ # - initial subdomains clump
+    # ~ subdomains_initial_clump = pcr.clump(subdomains_initial)
+    # ~ pcr.aguila(subdomains_initial_clump)
 
-    print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[0])))
-    print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])))
+    # ~ print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[0])))
+    # ~ print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])))
 
-    print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))[0])))
-    print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))[1])))
-
-
-    # - remove temporay files (not used)
-    cmd = "rm global_catchment_ge_50_cells_filled*"
-    print(cmd); os.system(cmd)
+    # ~ print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))[0])))
+    # ~ print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))[1])))
 
 
-    # clone code that will be assigned
-    assigned_number = 0
+    # ~ # - remove temporay files (not used)
+    # ~ cmd = "rm global_catchment_ge_50_cells_filled*"
+    # ~ print(cmd); os.system(cmd)
+
+
+    # ~ # clone code that will be assigned
+    # ~ assigned_number = 0
     
     # ~ for nr in range(1, num_of_masks + 1, 1):
 
