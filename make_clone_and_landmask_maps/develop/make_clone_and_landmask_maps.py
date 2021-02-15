@@ -123,6 +123,7 @@ def main():
     # catchment map and size
     catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
+    pcr.aguila(catchment_size)
 
     # identify small islands
     print("identify small islands") 
@@ -218,6 +219,9 @@ def main():
         
         print(str(area_in_degree2))
         
+        # check whether the size of bounding box is the same as the one based on the 5 arcmin PCR-GLOBWB clone maps
+        # - initial check value
+        check_ok = True
 
 
         
