@@ -175,6 +175,8 @@ def main():
     subdomains_initial = pcr.nominal(pcr.readmap("large_catchments_and_islands_filled.map"))
     subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
     pcr.aguila(subdomains_initial)
+    
+    pcr.report(subdomains_initial, "subdomains_initial.map")
 
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[0])))
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])))
