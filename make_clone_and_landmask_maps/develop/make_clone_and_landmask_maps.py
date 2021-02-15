@@ -123,11 +123,13 @@ def main():
 
     # make catchment and island map
     print("make catchment and island map")
+
     # - catchment map
     catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
     pcr.report(catchment_map, "global_catchment_not_sorted.map")
     os.system("mapattr -p global_catchment_not_sorted.map")
     num_of_catchments = int(vos.getMinMaxMean(pcr.scalar(catchment_map))[1])
+
     # - maps of islands smaller than 10000 cells 
     island_map  = pcr.ifthen(landmask, pcr.clump(pcr.defined(ldd_map)))
     island_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), island_map)
@@ -141,6 +143,7 @@ def main():
     pcr.aguila(island_map)
     
     catchment_map = pcr.cover(island_map, catchment_map)
+    catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
     
     # - calculate the size
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
@@ -171,7 +174,8 @@ def main():
     catchment_map_ge_50 = pcr.ifthen(catchment_size >= 50, catchment_map)
     pcr.report(catchment_map_ge_50, "global_catchment_ge_50_cells.map")
     
-    # size range  
+    # include the island
+    catchment_map_ge_50 = pcr.cover(island_map, catchment_map_ge_50)  
      
 
     # perform cdo fillmiss2 in order to merge the small catchments to the nearest large catchments
