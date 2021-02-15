@@ -199,13 +199,13 @@ def main():
     
 
     # spatial interpolation/extrapolation in order to merge the small catchments to the nearest large catchments
-	field  = large_catchment_and_island_map
-	cellID = pcr.nominal(pcr.uniqueid(pcr.defined(field)))
-	zoneID = pcr.spreadzone(cellID,0,1)
+    field  = large_catchment_and_island_map
+    cellID = pcr.nominal(pcr.uniqueid(pcr.defined(field)))
+    zoneID = pcr.spreadzone(cellID,0,1)
     field  = pcr.areamajority(field,zoneID)
-	subdomains_initial = field
-	subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
-	pcr.aguila(subdomains_initial)
+    subdomains_initial = field
+    subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
+    pcr.aguila(subdomains_initial)
 
     pcr.report(subdomains_initial, "subdomains_initial.map")
 
