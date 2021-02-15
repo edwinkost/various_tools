@@ -154,7 +154,7 @@ def main():
     large_catchment_and_island_map_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), large_catchment_and_island_map)
 
     # identify the biggest one for every group within the windows 10x10 arcdeg cells
-    large_catchment_and_island_map = pcr.ifthen(pcr.scalar(large_catchment_and_island_map_size) == pcr.windowmaximum(pcr.scalar(large_catchment_and_island_map_size), 10.), large_catchment_and_island_map_size)
+    large_catchment_and_island_map = pcr.ifthen(pcr.scalar(large_catchment_and_island_map_size) == pcr.windowmaximum(pcr.scalar(large_catchment_and_island_map_size), 10.), large_catchment_and_island_map)
     large_catchment_and_island_map_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), large_catchment_and_island_map)
     
     
