@@ -157,7 +157,8 @@ def main():
 
 
     # merge biggest islands and big catchments
-    large_catchment_and_island_map = pcr.cover(large_catchment_map, large_island_map)
+    # ~ large_catchment_and_island_map = pcr.cover(large_catchment_map, large_island_map)
+    large_catchment_and_island_map = pcr.cover(large_island_map, large_catchment_map)
     large_catchment_and_island_map_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), large_catchment_and_island_map)
 
     
