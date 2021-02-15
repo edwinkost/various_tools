@@ -128,11 +128,16 @@ def main():
     pcr.report(catchment_map, "global_catchment_not_sorted.map")
     os.system("mapattr -p global_catchment_not_sorted.map")
     num_of_catchments = int(vos.getMinMaxMean(pcr.scalar(catchment_map))[1])
-    # - maps of islands smaller than 5000 cells 
+    # - maps of islands smaller than 10000 cells 
     island_map  = pcr.ifthen(landmask, pcr.clump(pcr.defined(ldd_map)))
     island_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), island_map)
-    island_map  = pcr.ifthen(island_size < 5000., island_map)
+    island_map  = pcr.ifthen(island_size < 10000., island_map)
     island_map  = pcr.nominal(pcr.scalar(pcr.ifthen(landmask, pcr.clump(island_map))) + pcr.scalar(num_of_catchments)*100.)
+    pcr.aguila(island_map)
+    
+    island_size = pcr.ifthen(pcr.defined(island_map), island_size)
+    
+    island_map  = pcr.ifthen(island_size == pcr.windowmaximum(island_size, 10.), island_map)
     pcr.aguila(island_map)
     
     catchment_map = pcr.cover(island_map, catchment_map)
