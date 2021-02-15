@@ -120,13 +120,19 @@ def main():
     pcr.report(ldd_map, "global_ldd_final.map")
     # ~ pcr.aguila(ldd_map)
 
+    catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
+    catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
 
     # identify small islands
     print("identify small islands") 
-    # - maps of islands smaller than 100000 cells (at half arc degree resolution) 
+    # - maps of islands smaller than 10000 cells (at half arc degree resolution) 
     island_map  = pcr.ifthen(landmask, pcr.clump(pcr.defined(ldd_map)))
     island_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), island_map)
-    island_map  = pcr.ifthen(island_size < 100000., island_map)
+    island_map  = pcr.ifthen(island_size < 10000., island_map)
+    # - use catchments (instead of islands)
+    island_map  = catchment_map
+    island_size = catchment_size 
+    island_map  = pcr.ifthen(island_size < 10000., island_map)
     # - sort from the largest island
     # -- take one cell per island as a representative
     island_map_rep_size = pcr.ifthen(pcr.areaorder(island_size, island_map) == 1.0, island_size)
