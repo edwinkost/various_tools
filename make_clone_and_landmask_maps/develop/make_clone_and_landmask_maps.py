@@ -123,10 +123,10 @@ def main():
 
     # identify small islands
     print("identify small islands") 
-    # - maps of islands smaller than 100 cells (at half arc degree resolution) 
+    # - maps of islands smaller than 10000 cells (at half arc degree resolution) 
     island_map  = pcr.ifthen(landmask, pcr.clump(pcr.defined(ldd_map)))
     island_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), island_map)
-    island_map  = pcr.ifthen(island_size < 100., island_map)
+    island_map  = pcr.ifthen(island_size < 10000., island_map)
     # - sort from the largest island
     # -- take one cell per island as a representative
     island_map_rep_size = pcr.ifthen(pcr.areaorder(island_size, island_map) == 1.0, island_size)
@@ -152,6 +152,12 @@ def main():
     # merge biggest islands and big catchments
     large_catchment_and_island_map = pcr.cover(large_catchment_map, large_island_map)
     large_catchment_and_island_map_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), large_catchment_and_island_map)
+
+    # identify the biggest one for every group within the windows 10x10 arcdeg cells
+    large_catchment_and_island_map = pcr.ifthen(pcr.scalar(large_catchment_and_island_map_size) == pcr.windowmaximum(pcr.scalar(large_catchment_and_island_map_size), 10.), large_catchment_and_island_map_size)
+    large_catchment_and_island_map_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), large_catchment_and_island_map)
+    
+    
     # - sort from the largest one
     # -- take one cell per island as a representative
     large_catchment_and_island_map_rep_size = pcr.ifthen(pcr.areaorder(large_catchment_and_island_map_size, large_catchment_and_island_map) == 1.0, large_catchment_and_island_map_size)
