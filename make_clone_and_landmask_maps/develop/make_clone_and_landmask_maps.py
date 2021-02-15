@@ -198,13 +198,24 @@ def main():
     # ~ # - remove temporay files (not used)
     # ~ cmd = "rm global_catchment_ge_50_cells_filled*"
     # ~ print(cmd); os.system(cmd)
-
-
-    # ~ # clone code that will be assigned
-    # ~ assigned_number = 0
     
-    # ~ for nr in range(1, num_of_masks + 1, 1):
+    num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])
 
+
+    # clone code that will be assigned
+    assigned_number = 0
+    
+    for nr in range(1, num_of_masks + 1, 1):
+
+        msg = "Processing the landmask %s" %(str(nr))
+
+        mask_selected_boolean = pcr.ifthen(subdomains_initial == nr, pcr.boolean(1.0))
+        
+        xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
+        area_in_degree2 = (xmax - xmin) * (ymax - ymin)
+        
+        print(str(area_in_degree2))
+        
 
 
         
