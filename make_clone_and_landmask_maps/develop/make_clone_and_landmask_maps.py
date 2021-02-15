@@ -152,7 +152,7 @@ def main():
     catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
     # - identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
-    large_catchment_map = pcr.ifthen(catchment_size >= 50, catchment_map)
+    large_catchment_map = pcr.ifthen(catchment_size >= 25, catchment_map)
     # - give the codes that are different than islands
     large_catchment_map = pcr.nominal(pcr.scalar(large_catchment_map) + 10.*vos.getMinMaxMean(pcr.scalar(large_island_map))[1])
 
@@ -184,8 +184,8 @@ def main():
     print(cmd); os.system(cmd)
     # - initial subdomains
     subdomains_initial = pcr.nominal(pcr.readmap("large_catchments_and_islands_filled.map"))
-    # ~ subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
-    subdomains_initial = pcr.nominal(pcr.areamaximum(pcr.scalar(subdomains_initial), catchment_map))
+    subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
+    # ~ subdomains_initial = pcr.nominal(pcr.areamaximum(pcr.scalar(subdomains_initial), catchment_map))
     pcr.aguila(subdomains_initial)
     
     pcr.report(subdomains_initial, "subdomains_initial.map")
