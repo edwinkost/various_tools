@@ -121,11 +121,22 @@ def main():
     # ~ pcr.aguila(ldd_map)
     
 
-    # make catchment map
-    print("make catchment map")
+    # make catchment and island map
+    print("make catchment and island map")
+    # - catchment map
     catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
     pcr.report(catchment_map, "global_catchment_not_sorted.map")
     os.system("mapattr -p global_catchment_not_sorted.map")
+    num_of_catchments = int(vos.getMinMaxMean(pcr.scalar(catchment_map))[1])
+    # - maps of islands smaller than 50 cells 
+    island_map  = pcr.ifthen(landmask, pcr.clump(pcr.defined(ldd_map)))
+    island_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), island_map)
+    island_map  = pcr.ifthen(island_size < 25., island_map)
+    island_map  = pcr.nominal(pcr.ifthen(landmask, pcr.clump(island_map)) + pcr.scalar(num_of_catchments)*100.)
+    pcr.aguila(island_map)
+    
+    catchment_map = pcr.cover(island_map, catchment_map)
+    
     # - calculate the size
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
     # - sort from the largest catchment
