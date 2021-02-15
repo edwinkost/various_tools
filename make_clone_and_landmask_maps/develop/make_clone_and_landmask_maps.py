@@ -170,7 +170,7 @@ def main():
     subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
     pcr.aguila(subdomains_initial)
     # - initial subdomains clump
-    subdomains_initial_clump = pcr.clump(subdomains_initial_clump)
+    subdomains_initial_clump = pcr.clump(subdomains_initial)
     pcr.aguila(subdomains_initial_clump)
     print(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))))
     # - remove temporay files (not used)
