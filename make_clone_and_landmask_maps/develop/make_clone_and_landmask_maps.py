@@ -158,7 +158,7 @@ def main():
     print(cmd); os.system(cmd)
     cmd = "mapattr -c " + global_ldd_30min_inp_file + " " + "subdomains_ge_50_cells.map"
     print(cmd); os.system(cmd)
-    subdomains_ge_50 = pcr.nominal(pcr.readmap("subdomains_ge_50_cells.nc"))
+    subdomains_ge_50 = pcr.nominal(pcr.readmap("subdomains_ge_50_cells.map"))
     subdomains_ge_50 = pcr.ifthen(landmask, subdomains_ge_50)
     pcr.aguila(subdomains_ge_50)
 
