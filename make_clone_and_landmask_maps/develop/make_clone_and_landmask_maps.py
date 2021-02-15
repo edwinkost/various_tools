@@ -141,7 +141,7 @@ def main():
     pcr.report(catchment_size, "global_catchment_size_in_number_of_cells.map")
     
     # number of catchments
-    num_of_catchments = int(vos.getMinMaxMean(catchment_map)[1])
+    num_of_catchments = int(vos.getMinMaxMean(pcr.scalar(catchment_map))[1])
     
     # size of the largest catchment
     catchment_size_max = vos.getMinMaxMean(catchment_size)[1] 
