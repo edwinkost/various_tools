@@ -129,7 +129,7 @@ def main():
     island_map  = pcr.ifthen(island_size < 10000., island_map)
     # - sort from the largest island
     # -- take one cell per island as a representative
-    island_map_rep_size = pcr.ifthen(pcr.areaorder(island_size, island_map) == 1.0, island_size))
+    island_map_rep_size = pcr.ifthen(pcr.areaorder(island_size, island_map) == 1.0, island_size)
     # -- sort from the largest island
     island_map_rep_ids  = pcr.areaorder(island_map_rep_size*-1.00, pcr.ifthen(pcr.defined(island_map_rep_size), pcr.nominal(1.0)))
     # -- maps of smaller islands, sorted from the largest one
