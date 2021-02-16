@@ -71,6 +71,7 @@ global_subdomain_file = "/scratch/depfg/sutan101/make_global_subdomains/version_
 out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/30sec/"
 
 # cell size in arcmin
+# - 0.5 arcmin = 30 arcsec
 cellsize_in_arcmin = 0.5
 
 
