@@ -306,15 +306,15 @@ def main():
         cmd = "mapattr -s -R %s -C %s -B -P yb2t -x %s -y %s -l %s %s" %(str(num_rows), str(num_cols), str(xmin), str(ymax), str(cellsize), clonemap_mask_file)
         print(cmd); os.system(cmd)
         
-         # set the local landmask for the clump
-         pcr.setclone(clonemap_mask_file)
-         local_mask = vos.readPCRmapClone(v = mask_file, \
-                                          cloneMapFileName = clonemap_mask_file, 
-                                          tmpDir = tmp_folder, \
-                                          absolutePath = None, isLddMap = False, cover = None, isNomMap = True)
-         local_mask_boolean = pcr.defined(local_mask)
-         local_mask_boolean = pcr.ifthen(local_mask_boolean, local_mask_boolean)
-         pcr.report(local_mask_boolean, mask_file)
+        # set the local landmask for the clump
+        pcr.setclone(clonemap_mask_file)
+        local_mask = vos.readPCRmapClone(v = mask_file, \
+                                         cloneMapFileName = clonemap_mask_file, 
+                                         tmpDir = tmp_folder, \
+                                         absolutePath = None, isLddMap = False, cover = None, isNomMap = True)
+        local_mask_boolean = pcr.defined(local_mask)
+        local_mask_boolean = pcr.ifthen(local_mask_boolean, local_mask_boolean)
+        pcr.report(local_mask_boolean, mask_file)
         
 
 
