@@ -157,18 +157,19 @@ def main():
         
         # ~ if nr == 1: pcr.aguila(mask_selected_boolean)
         
-        xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
-        area_in_degree2 = (xmax - xmin) * (ymax - ymin)
-        
-        # ~ print(str(area_in_degree2))
-        
-        # check whether the size of bounding box is ok
         # - initial check value
         check_ok = True
 
-        reference_area_in_degree2 = 2500.
-        if area_in_degree2 > 1.50 * reference_area_in_degree2: check_ok = False
-        if (xmax - xmin) > 10* (ymax - ymin): check_ok = False
+        if process_this_clone:
+            xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
+            area_in_degree2 = (xmax - xmin) * (ymax - ymin)
+            
+            # ~ print(str(area_in_degree2))
+            
+            # check whether the size of bounding box is ok
+            reference_area_in_degree2 = 2500.
+            if area_in_degree2 > 1.50 * reference_area_in_degree2: check_ok = False
+            if (xmax - xmin) > 10* (ymax - ymin): check_ok = False
         
         if check_ok == True and process_this_clone == True:
 
