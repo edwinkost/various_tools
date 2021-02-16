@@ -65,7 +65,7 @@ def define_landmask(input_file, clone_map_file, output_map_file):
 global_ldd_inp_file = "/scratch/depfg/sutan101/data/global_ldd_reservoirs_and_lakes_before_data_lost_on_eejit/lddsound_30sec_version_202005XX.map"
 
 # global subdomain file
-global_subdomain_file = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-16/general/global_subdomains_30min_final.map"
+global_subdomain_file = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-16/general_subdomains/global_subdomains_30min_final_filled.map"
 
 # output_folder
 out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-16/30sec/"
@@ -73,7 +73,7 @@ out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-16/
 
 def main():
 
-    # output folder (and tmp folder)
+    # output folder
     clean_out_folder = True
     if os.path.exists(out_folder): 
         if clean_out_folder:
@@ -84,49 +84,52 @@ def main():
     os.chdir(out_folder)    
     os.system("pwd")
 
+    # tmp folder
+    tmp_folder = out_folder + "/tmp/"
+    if os.path.exists(tmp_folder): shutil.rmtree(tmp_folder)
+    os.makedirs(tmp_folder)
+    
 
     # set the clone map
-    print("set the clone") 
+    print("set the clone based on the ldd inpu") 
     pcr.setclone(global_ldd_inp_file)
     
 
     # define the landmask
-    print("define the landmask") 
+    print("define the landmask based on the ldd inpup") 
     landmask = pcr.readmap(global_ldd_inp_file)
     
 
-    # ~ # extend ldd
-    # ~ print("extend/define the ldd") 
-    # ~ ldd_map = pcr.readmap(global_ldd_30min_inp_file)
+    # read ldd
+    print("define the ldd") 
+    ldd_map = pcr.readmap(global_ldd_inp_file)
+    # ~ # - extend ldd (not needed)
     # ~ ldd_map = pcr.ifthen(landmask, pcr.cover(ldd_map, pcr.ldd(5)))
-    # ~ pcr.report(ldd_map, "global_ldd_extended_30min.map")
-    # ~ pcr.aguila(ldd_map)
     
-    UNTIL_THIS
-    
-    # read global subdomains file
-    global_subdomain_map = vos.
+    # copy ldd file
+    cmd = "cp " + str(global_ldd_inp_file) + " ."
+    print(cmd); os.system(cmd)
 
 
-    
+    # make catchment map
+    catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
 
-    # spatial interpolation/extrapolation in order to merge the small catchments to the nearest large catchments
-    print("spatial interpolation/extrapolation to get initial subdomains") 
-    field  = large_catchment_and_island_map
-    cellID = pcr.nominal(pcr.uniqueid(pcr.defined(field)))
-    zoneID = pcr.spreadzone(cellID,0,1)
-    field  = pcr.areamajority(field,zoneID)
-    subdomains_initial = field
-    subdomains_initial = pcr.areamajority(subdomains_initial, catchment_map)
+
+    # read global subdomain file
+    global_subdomain_map = readPCRmapClone(v = global_subdomain_file, cloneMapFileName = global_ldd_inp_file, tmpDir = tmp_folder, absolutePath = None, isLddMap = False, cover = None, isNomMap = True)
+
+
+    # set initial subdomain
+    subdomains_initial = pcr.areamajority(global_subdomain_map, catchment_map)
+    subdomains_initial = pcr.ifthen(landmask, subdomains_initial)
+
     pcr.aguila(subdomains_initial)
 
-    pcr.report(subdomains_initial, "global_subdomains_30min_initial.map")
+    pcr.report(subdomains_initial, "global_subdomains_30sec_initial.map")
 
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[0])))
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])))
 
-    # ~ print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))[0])))
-    # ~ print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial_clump))[1])))
 
     
     print("Checking all subdomains, avoid too large subdomains") 
@@ -145,6 +148,9 @@ def main():
 
         mask_selected_boolean = pcr.ifthen(subdomains_initial == nr, pcr.boolean(1.0))
         
+        process_this_clone = False
+        if pcr.cellvalue(pcr.mapmaximum(pcr.scalar(mask_selected_boolean)), 1, 1)[0] > 0: process_this_clone = True
+        
         # ~ if nr == 1: pcr.aguila(mask_selected_boolean)
         
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
@@ -160,7 +166,7 @@ def main():
         if area_in_degree2 > 1.50 * reference_area_in_degree2: check_ok = False
         if (xmax - xmin) > 10* (ymax - ymin): check_ok = False
         
-        if check_ok == True:
+        if check_ok == True and process_this_clone == True:
 
             msg = "Clump is not needed."
             msg = "\n\n" +str(msg) + "\n\n"
@@ -173,7 +179,7 @@ def main():
             mask_selected_nominal = pcr.ifthen(mask_selected_boolean, pcr.nominal(assigned_number))
             subdomains_final = pcr.cover(subdomains_final, mask_selected_nominal) 
         
-        if check_ok == False:
+        if check_ok == False and process_this_clone == True:
 			
             msg = "Clump is needed."
             msg = "\n\n" +str(msg) + "\n\n"
