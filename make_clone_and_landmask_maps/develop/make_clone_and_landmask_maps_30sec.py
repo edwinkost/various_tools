@@ -68,10 +68,11 @@ global_ldd_inp_file = "/scratch/depfg/sutan101/data/global_ldd_reservoirs_and_la
 global_subdomain_file = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-16/general_subdomains/global_subdomains_30min_final_filled.map"
 
 # output_folder
-out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-16/30sec/"
+out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/30sec/"
 
 # cell size in arcmin
 cellsize_in_arcmin = 0.5
+
 
 def main():
 
@@ -260,7 +261,7 @@ def main():
 
     print("Making the clone and landmask maps for all subdomains") 
 
-    num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])
+    num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_final))[1])
 
     # clone and mask folders
     clone_folder = out_folder + "/clone/"
@@ -301,19 +302,19 @@ def main():
         num_cols = int(round(xmax - xmin) / cellsize)
         
         # make the clone map using mapattr 
-        clonemap_mask_file = "clone/clonemap_mask_%s.map" %(str(assigned_number))
+        clonemap_mask_file = "clone/clonemap_mask_%s.map" %(str(nr))
         cmd = "mapattr -s -R %s -C %s -B -P yb2t -x %s -y %s -l %s %s" %(str(num_rows), str(num_cols), str(xmin), str(ymax), str(cellsize), clonemap_mask_file)
         print(cmd); os.system(cmd)
         
-         # set the local landmask for the clump
-         pcr.setclone(clonemap_mask_file)
-         local_mask = vos.readPCRmapClone(v = mask_file, \
-                                          cloneMapFileName = clonemap_mask_file, 
-                                          tmpDir = tmp_folder, \
-                                          absolutePath = None, isLddMap = False, cover = None, isNomMap = True)
-         local_mask_boolean = pcr.defined(local_mask)
-         local_mask_boolean = pcr.ifthen(local_mask_boolean, local_mask_boolean)
-         pcr.report(local_mask_boolean, mask_file)
+        # set the local landmask for the clump
+        pcr.setclone(clonemap_mask_file)
+        local_mask = vos.readPCRmapClone(v = mask_file, \
+                                         cloneMapFileName = clonemap_mask_file, 
+                                         tmpDir = tmp_folder, \
+                                         absolutePath = None, isLddMap = False, cover = None, isNomMap = True)
+        local_mask_boolean = pcr.defined(local_mask)
+        local_mask_boolean = pcr.ifthen(local_mask_boolean, local_mask_boolean)
+        pcr.report(local_mask_boolean, mask_file)
         
 
 
