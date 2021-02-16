@@ -302,7 +302,7 @@ def main():
         num_cols = int(round(xmax - xmin) / cellsize)
         
         # make the clone map using mapattr 
-        clonemap_mask_file = "clone/clonemap_mask_%s.map" %(str(assigned_number))
+        clonemap_mask_file = "clone/clonemap_mask_%s.map" %(str(nr))
         cmd = "mapattr -s -R %s -C %s -B -P yb2t -x %s -y %s -l %s %s" %(str(num_rows), str(num_cols), str(xmin), str(ymax), str(cellsize), clonemap_mask_file)
         print(cmd); os.system(cmd)
         
