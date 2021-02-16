@@ -97,7 +97,8 @@ def main():
 
     # define the landmask
     print("define the landmask based on the ldd inpup") 
-    landmask = pcr.readmap(global_ldd_inp_file)
+    landmask = pcr.defined(pcr.readmap(global_ldd_inp_file))
+    landmask = pcr.ifthen(landmask, landmask)
     
 
     # read ldd
