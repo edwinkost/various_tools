@@ -262,7 +262,7 @@ def main():
 
     print("Making the clone and landmask maps for all subdomains") 
 
-    num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])
+    num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_final))[1])
 
     # clone and mask folders
     clone_folder = out_folder + "/clone/"
