@@ -65,6 +65,8 @@ def define_landmask(input_file, clone_map_file, output_map_file):
 # - PCR-GLOBWB ldd at 5 arcmin and 30 arcmin, from the runs made in Sutanudjaja et al., 2018
 global_landmask_30min_file = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_30min/routing/ldd_and_cell_area/lddsound_30min.map"
 global_landmask_05min_file = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/lddsound_05min.map"
+# - PCR-GLOBWB ldd at 6 arcmin, used in the Ulysses project
+global_landmask_06min_file = "/scratch/depfg/sutan101/data/pcrglobwb_input_ulysses/develop/global_06min/routing/ldd_and_waterbodies/version_2020-07-XX/lddsound_06min_version_202007XX_for_ulysses.map"
 # - ldd hydrosheds at 30sec
 global_landmask_30sec_file = "/scratch/depfg/sutan101/data/global_ldd_reservoirs_and_lakes_before_data_lost_on_eejit/lddsound_30sec_version_202005XX.map"
 # - merit DEM at 3 sec; yet to represent this and to avoid to big files, we can use its upscaled version 
@@ -108,6 +110,10 @@ def main():
     landmask_05min = define_landmask(input_file = global_landmask_05min_file,\
                                       clone_map_file = global_ldd_30min_inp_file,\
                                       output_map_file = "landmask_05min_only.map")
+    # - based on the 06min input     
+    landmask_06min = define_landmask(input_file = global_landmask_06min_file,\
+                                      clone_map_file = global_ldd_30min_inp_file,\
+                                      output_map_file = "landmask_06min_only.map")
     # - based on the 30sec input     
     landmask_30sec = define_landmask(input_file = global_landmask_30sec_file,\
                                       clone_map_file = global_ldd_30min_inp_file,\
@@ -118,7 +124,7 @@ def main():
                                       output_map_file = "landmask_03sec_only.map")
     #
     # - merge all landmasks
-    landmask = pcr.cover(landmask_30min, landmask_05min, landmask_30sec, landmask_03sec)
+    landmask = pcr.cover(landmask_30min, landmask_05min, landmask_06min, landmask_30sec, landmask_03sec)
     pcr.report(landmask, "global_landmask_extended_30min.map")
     # ~ pcr.aguila(landmask)
     
