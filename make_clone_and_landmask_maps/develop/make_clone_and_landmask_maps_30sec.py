@@ -70,6 +70,8 @@ global_subdomain_file = "/scratch/depfg/sutan101/make_global_subdomains/version_
 # output_folder
 out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-16/30sec/"
 
+# cell size in arcmin
+cellsize_in_arcmin = 0.5
 
 def main():
 
@@ -255,14 +257,65 @@ def main():
     print("")
     print("")
 
+
+    print("Making the clone and landmask maps for all subdomains") 
+
+    num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])
+
+    # clone and mask folders
+    clone_folder = out_folder + "/clone/"
+    if os.path.exists(clone_folder): shutil.rmtree(clone_folder)
+    os.makedirs(clone_folder)
+    mask_folder = out_folder + "/mask/"
+    if os.path.exists(mask_folder): shutil.rmtree(mask_folder)
+    os.makedirs(mask_folder)
+
+
+    print("")
+    print("")
+
     for nr in range(1, num_of_masks + 1, 1):
 
+        msg = "Processing the subdomain %s" %(str(nr))
+        print(msg)
+
+        # set the global clone
+        pcr.setclone(global_ldd_inp_file)
+        
         mask_selected_boolean = pcr.ifthen(subdomains_final == nr, pcr.boolean(1.0))
         
+        mask_selected_nominal = pcr.ifthen(subdomains_final == nr, pcr.nominal(nr))
+        mask_file = "mask/mask_%s.map" %(str(nr))
+        pcr.report(mask_selected_nominal, mask_file)
+
         xmin, ymin, xmax, ymax = boundingBox(mask_selected_boolean)
         area_in_degree2 = (xmax - xmin) * (ymax - ymin)
         
         print(str(nr) + " ; " + str(area_in_degree2) + " ; " + str((xmax - xmin)) + " ; " + str((ymax - ymin)))
+
+        # cellsize in arcdegree 
+        cellsize = cellsize_in_arcmin / 60.
+        
+        # number of rows and cols
+        num_rows = int(round(ymax - ymin) / cellsize)
+        num_cols = int(round(xmax - xmin) / cellsize)
+        
+        # make the clone map using mapattr 
+        clonemap_mask_file = "clone/clonemap_mask_%s.map" %(str(assigned_number))
+        cmd = "mapattr -s -R %s -C %s -B -P yb2t -x %s -y %s -l %s %s" %(str(num_rows), str(num_cols), str(xmin), str(ymax), str(cellsize), clonemap_mask_file)
+        print(cmd); os.system(cmd)
+        
+         # set the local landmask for the clump
+         pcr.setclone(clonemap_mask_file)
+         local_mask = vos.readPCRmapClone(v = mask_file, \
+                                          cloneMapFileName = clonemap_mask_file, 
+                                          tmpDir = tmp_folder, \
+                                          absolutePath = None, isLddMap = False, cover = None, isNomMap = True)
+         local_mask_boolean = pcr.defined(local_mask)
+         local_mask_boolean = pcr.ifthen(local_mask_boolean, local_mask_boolean)
+         pcr.report(local_mask_boolean, mask_file)
+        
+
 
     print("")
     print("")
