@@ -131,7 +131,7 @@ def main():
 
     pcr.aguila(subdomains_initial)
 
-    pcr.report(subdomains_initial, "global_subdomains_30sec_initial.map")
+    pcr.report(subdomains_initial, "global_subdomains_initial.map")
 
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[0])))
     print(str(int(vos.getMinMaxMean(pcr.scalar(subdomains_initial))[1])))
@@ -248,7 +248,7 @@ def main():
 
     print("The subdomain map is READY.") 
 
-    pcr.report(subdomains_final, "global_subdomains_30sec_final.map")
+    pcr.report(subdomains_final, "global_subdomains_final.map")
 
     num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_final))[1])
     print(num_of_masks)
