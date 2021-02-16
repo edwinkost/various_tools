@@ -112,14 +112,17 @@ def main():
 
 
     # make catchment map
+    print("make catchment map") 
     catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
 
 
     # read global subdomain file
+    print("read global subdomain file") 
     global_subdomain_map = readPCRmapClone(v = global_subdomain_file, cloneMapFileName = global_ldd_inp_file, tmpDir = tmp_folder, absolutePath = None, isLddMap = False, cover = None, isNomMap = True)
 
 
     # set initial subdomain
+    print("assign subdomains to all catchments") 
     subdomains_initial = pcr.areamajority(global_subdomain_map, catchment_map)
     subdomains_initial = pcr.ifthen(landmask, subdomains_initial)
 
@@ -241,7 +244,7 @@ def main():
 
     print("The subdomain map is READY.") 
 
-    pcr.report(subdomains_final, "global_subdomains_30min_final.map")
+    pcr.report(subdomains_final, "global_subdomains_30sec_final.map")
 
     num_of_masks = int(vos.getMinMaxMean(pcr.scalar(subdomains_final))[1])
     print(num_of_masks)
