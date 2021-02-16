@@ -78,7 +78,7 @@ global_ldd_30min_inp_file = "/scratch/depfg/sutan101/data/pcrglobwb2_input_relea
 
 
 # output_folder
-out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-16/general_subdomains/"
+out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/general_subdomains/"
 
 
 def main():
