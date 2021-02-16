@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 
@@ -118,7 +118,7 @@ def main():
 
     # read global subdomain file
     print("read global subdomain file") 
-    global_subdomain_map = readPCRmapClone(v = global_subdomain_file, cloneMapFileName = global_ldd_inp_file, tmpDir = tmp_folder, absolutePath = None, isLddMap = False, cover = None, isNomMap = True)
+    global_subdomain_map = vos.readPCRmapClone(v = global_subdomain_file, cloneMapFileName = global_ldd_inp_file, tmpDir = tmp_folder, absolutePath = None, isLddMap = False, cover = None, isNomMap = True)
 
 
     # set initial subdomain
