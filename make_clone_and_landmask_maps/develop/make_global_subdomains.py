@@ -172,8 +172,8 @@ def main():
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
     # ~ # - identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
     # ~ large_catchment_map = pcr.ifthen(catchment_size >= 50, catchment_map)
-    # - identify all large catchments with size >= 25 cells (at the resolution of 30 arcmin)
-    large_catchment_map = pcr.ifthen(catchment_size >= 25, catchment_map)
+    # - identify all large catchments with size >= 10 cells (at the resolution of 30 arcmin)
+    large_catchment_map = pcr.ifthen(catchment_size >= 10, catchment_map)
     # - give the codes that are different than islands
     large_catchment_map = pcr.nominal(pcr.scalar(large_catchment_map) + 10.*vos.getMinMaxMean(pcr.scalar(large_island_map))[1])
 
