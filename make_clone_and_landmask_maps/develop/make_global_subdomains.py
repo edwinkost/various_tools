@@ -78,7 +78,7 @@ global_ldd_30min_inp_file = "/scratch/depfg/sutan101/data/pcrglobwb2_input_relea
 
 
 # output_folder
-out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_15_cells/"
+out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_25_cells/"
 
 
 def main():
@@ -179,8 +179,8 @@ def main():
     # ~ # - identify all large catchments with size >= 20 cells (at the resolution of 30 arcmin)
     # ~ large_catchment_map = pcr.ifthen(catchment_size >= 20, catchment_map)
 
-    # - identify all large catchments with size >= 15 cells (at the resolution of 30 arcmin)
-    large_catchment_map = pcr.ifthen(catchment_size >= 15, catchment_map)
+    # - identify all large catchments with size >= 25 cells (at the resolution of 30 arcmin)
+    large_catchment_map = pcr.ifthen(catchment_size >= 25, catchment_map)
 
     # - give the codes that are different than islands
     large_catchment_map = pcr.nominal(pcr.scalar(large_catchment_map) + 10.*vos.getMinMaxMean(pcr.scalar(large_island_map))[1])
