@@ -78,8 +78,7 @@ global_ldd_30min_inp_file = "/scratch/depfg/sutan101/data/pcrglobwb2_input_relea
 
 
 # output_folder
-out_folder     = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/general_subdomains/"
-# ~ out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_10_cells/"
+out_folder = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_25_cells/"
 
 
 def main():
@@ -170,14 +169,19 @@ def main():
     print("identify large catchments") 
     catchment_map = pcr.catchment(ldd_map, pcr.pit(ldd_map))
     catchment_size = pcr.areatotal(pcr.spatial(pcr.scalar(1.0)), catchment_map)
-    # - identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
-    large_catchment_map = pcr.ifthen(catchment_size >= 50, catchment_map)
+
+    # ~ # - identify all large catchments with size >= 50 cells (at the resolution of 30 arcmin) = 50 x (50^2) km2 = 125000 km2
+    # ~ large_catchment_map = pcr.ifthen(catchment_size >= 50, catchment_map)
     # ~ # - identify all large catchments with size >= 10 cells (at the resolution of 30 arcmin)
     # ~ large_catchment_map = pcr.ifthen(catchment_size >= 10, catchment_map)
     # ~ # - identify all large catchments with size >= 5 cells (at the resolution of 30 arcmin)
     # ~ large_catchment_map = pcr.ifthen(catchment_size >= 5, catchment_map)
     # ~ # - identify all large catchments with size >= 20 cells (at the resolution of 30 arcmin)
     # ~ large_catchment_map = pcr.ifthen(catchment_size >= 20, catchment_map)
+
+    # - identify all large catchments with size >= 25 cells (at the resolution of 30 arcmin)
+    large_catchment_map = pcr.ifthen(catchment_size >= 25, catchment_map)
+
     # - give the codes that are different than islands
     large_catchment_map = pcr.nominal(pcr.scalar(large_catchment_map) + 10.*vos.getMinMaxMean(pcr.scalar(large_island_map))[1])
 
