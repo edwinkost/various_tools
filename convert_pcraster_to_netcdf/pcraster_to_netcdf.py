@@ -61,3 +61,43 @@ def convert_pcraster_to_netcdf(\
     
     print("\n Done! \n")                          
                                         
+
+def main():
+    
+    # input and output files
+    if "-inp" in system_argument:
+        input_pcr_map_file = system_argument[system_argument.index("-inp") + 1]
+    else:
+        print("Please define an input of input_pcr_map_file with the argument -inp <input_pcr_map_file>.")
+    if "-out" in system_argument:
+        output_netcdf_file = system_argument[system_argument.index("-out") + 1]
+    else:
+        print("Please define an input of output_netcdf_file with the argument -out <output_netcdf_file>.")
+    
+    # optional arguments for variable name and unit
+    variable_name = None
+    variable_unit = None
+    if "-var" in system_argument: variable_name = system_argument[system_argument.index("-var") + 1]
+    if "-unt" in system_argument: variable_unit = system_argument[system_argument.index("-unt") + 1]
+		
+    # up to now, the following items are fixes    
+    netcdf_global_attributes = None
+    netcdf_y_orientation_from_top_bottom = True
+    netcdf_format = "NETCDF4"
+    netcdf_zlib_option = False
+    time_input = None
+    
+    convert_pcraster_to_netcdf(\
+                               input_pcr_map_file,\
+                               output_netcdf_file,\
+                               variable_name = None,\
+                               netcdf_global_attributes = None,\
+                               netcdf_y_orientation_from_top_bottom = True,\
+                               variable_unit = "unknown",\
+                               netcdf_format = "NETCDF4",\
+                               netcdf_zlib_option = False,\
+                               time_input = None,\
+                               ):
+
+if __name__ == '__main__':
+    sys.exit(main())
