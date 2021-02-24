@@ -97,7 +97,7 @@ def main():
                                netcdf_format = "NETCDF4",\
                                netcdf_zlib_option = False,\
                                time_input = None,\
-                               ):
+                               )
 
 if __name__ == '__main__':
     sys.exit(main())
