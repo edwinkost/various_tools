@@ -64,6 +64,9 @@ def convert_pcraster_to_netcdf(\
 
 def main():
     
+    # get system arguments
+    system_argument = sys.argv
+    
     # input and output files
     if "-inp" in system_argument:
         input_pcr_map_file = system_argument[system_argument.index("-inp") + 1]
