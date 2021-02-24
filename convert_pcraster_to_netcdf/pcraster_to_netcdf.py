@@ -79,7 +79,7 @@ def main():
     
     # optional arguments for variable name and unit
     variable_name = None
-    variable_unit = None
+    variable_unit = "unknown"
     if "-var" in system_argument: variable_name = system_argument[system_argument.index("-var") + 1]
     if "-unt" in system_argument: variable_unit = system_argument[system_argument.index("-unt") + 1]
 		
@@ -93,13 +93,13 @@ def main():
     convert_pcraster_to_netcdf(\
                                input_pcr_map_file,\
                                output_netcdf_file,\
-                               variable_name = None,\
-                               netcdf_global_attributes = None,\
-                               netcdf_y_orientation_from_top_bottom = True,\
-                               variable_unit = "unknown",\
-                               netcdf_format = "NETCDF4",\
-                               netcdf_zlib_option = False,\
-                               time_input = None,\
+                               variable_name,\
+                               netcdf_global_attributes,\
+                               netcdf_y_orientation_from_top_bottom,\
+                               variable_unit,\
+                               netcdf_format,\
+                               netcdf_zlib_option,\
+                               time_input\
                                )
 
 if __name__ == '__main__':
