@@ -336,7 +336,7 @@ inputDir = os.path.join(inputDirRoot,areas[0], 'map')
 # - without date
 files = getFileList(inputDir, '.map')
 
-
+print(files)
 
 # get output file names and each of their corresponding input files
 for fileName in list(files.keys()):
