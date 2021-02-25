@@ -153,7 +153,8 @@ def joinMaps(inputTuple):
 
         # check whether both maps have the same attributes and process
         process, nd= checkResolution(cellLength,cellLengthClone)
-        # ~ process = True
+        
+        process = True
 
         if process:
             #-get coordinates and locations
