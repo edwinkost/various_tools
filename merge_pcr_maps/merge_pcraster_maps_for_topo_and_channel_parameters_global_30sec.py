@@ -146,6 +146,7 @@ def joinMaps(inputTuple):
         yULClone= attributeClone['yUL']
         # check whether both maps have the same attributes and process
         process, nd= checkResolution(cellLength,cellLengthClone)
+        process = True
         if process:
             #-get coordinates and locations
             sampleXMin= xULClone
