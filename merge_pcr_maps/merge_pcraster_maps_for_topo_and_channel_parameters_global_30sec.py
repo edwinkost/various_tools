@@ -95,8 +95,8 @@ def checkResolution(c1,c2):
     # ~ c2= round(c2,nd)
 
     # check in arcsec
-    c1= round(c1 * 3600.)
-    c2= round(c1 * 3600.)
+    c1= round(c1 * 3600., 0)
+    c2= round(c1 * 3600., 0)
 
     if c1 != c2: print('resolutions %s, %s differ' % (s1,s2))
     return c1 == c2, nd
