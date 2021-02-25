@@ -218,7 +218,7 @@ deltaLat= 0.5/60.0
 deltaLon= 0.5/60.0
 
 
-# input directory, example: /scratch/depfg/sutan101/floodplain_and_channel_30arcsec_version_2021-02-XX/global
+# input directory, example: /scratch/depfg/sutan101/floodplain_and_channel_30arcsec_version_2021-02-XX/global/
 inputDirRoot = ''  
 try:
     inputDirRoot = str(sys.argv[2])
