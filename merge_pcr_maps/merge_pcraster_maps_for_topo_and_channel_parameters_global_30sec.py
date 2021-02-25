@@ -276,9 +276,9 @@ areas = ['mask_%d'%i for i in range(1,number_of_clone_maps+1,1)]
 # ~ if sys.argv[5] == "Global_uly": areas = ['M%07d'%i for i in range(1,number_of_clone_maps+1,1)] 
 
 
-# ~ # for testing
-# ~ areas = ["mask_1","mask_2","mask_3"]
-#~ areas = ["M47","M48"]
+# for testing
+areas = ["mask_1","mask_2","mask_3"]
+# ~ #~ areas = ["M47","M48"]
 
 
 ###################################################################################################
