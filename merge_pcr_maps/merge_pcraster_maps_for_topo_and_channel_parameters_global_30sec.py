@@ -375,16 +375,17 @@ print()
 
 
 
-# this is for testing
-joinMaps(list(files.values()))
+# ~ # this is for testing
+# ~ joinMaps(files[fileName])
 
 
-# ~ print()
-# ~ print()
-# ~ pool = Pool(processes=ncores)       # start "ncores" of worker processes
-# ~ pool.map(joinMaps,list(files.values()))
-# ~ print()
-# ~ print()
+print()
+print()
+pool = Pool(processes=ncores)       # start "ncores" of worker processes
+pool.map(joinMaps,list(files.values()))
+print()
+print()
+
 
 #-remove temporary file
 os.remove(tempCloneMap)
