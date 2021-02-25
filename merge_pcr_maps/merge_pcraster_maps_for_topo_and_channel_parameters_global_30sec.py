@@ -376,7 +376,8 @@ print()
 
 
 # this is for testing
-joinMaps(files[fileName])
+joinMaps(list(files.values()))
+
 
 # ~ print()
 # ~ print()
