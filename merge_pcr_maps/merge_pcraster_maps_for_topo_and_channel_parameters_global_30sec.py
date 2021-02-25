@@ -90,8 +90,14 @@ def checkResolution(c1,c2):
         nd= len(s)-(p+1)
     else:
         nd= 0
-    c1= round(c1,nd)
-    c2= round(c2,nd)
+
+    # ~ c1= round(c1,nd)
+    # ~ c2= round(c2,nd)
+
+    # check in arcsec
+    c1= round(c1 * 3600.)
+    c2= round(c1 * 3600.)
+
     if c1 != c2: print('resolutions %s, %s differ' % (s1,s2))
     return c1 == c2, nd
     
@@ -144,9 +150,11 @@ def joinMaps(inputTuple):
         colsClone= attributeClone['cols']
         xULClone= attributeClone['xUL']
         yULClone= attributeClone['yUL']
+
         # check whether both maps have the same attributes and process
         process, nd= checkResolution(cellLength,cellLengthClone)
-        process = True
+        # ~ process = True
+
         if process:
             #-get coordinates and locations
             sampleXMin= xULClone
