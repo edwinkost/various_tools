@@ -260,7 +260,7 @@ except:
     pass
 
 # list of masks
-areas = ['mask%d'%i for i in range(1,number_of_clone_maps+1,1)]
+areas = ['mask_%d'%i for i in range(1,number_of_clone_maps+1,1)]
 # ~ areas = ['M%02d'%i for i in range(1,number_of_clone_maps+1,1)]
 
 # ~ if sys.argv[5] == "Global": areas = ['M%02d'%i for i in range(1,number_of_clone_maps+1,1)] 
@@ -290,7 +290,7 @@ setclone(tempCloneMap)
 
 
 # get an example of input directory where unmerged maps are saved, e.g. /scratch/depfg/sutan101/floodplain_and_channel_30arcsec_version_2021-02-XX/global/mask_1/map
-inputDir = os.path.join(inputDirRoot,areas[0], 'map')
+inputDir = os.path.join(inputDirRoot, areas[0], 'map')
 
 # ~ (pcrglobwb_python3) sutan101@node029.cluster:/scratch/depfg/sutan101/floodplain_and_channel_30arcsec_version_2021-02-XX/global/mask_1/map$ ls -lah
 # ~ total 2.5G
