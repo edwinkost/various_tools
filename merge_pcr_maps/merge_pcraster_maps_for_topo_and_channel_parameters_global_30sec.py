@@ -334,7 +334,7 @@ inputDir = os.path.join(inputDirRoot,areas[0], 'map')
 # get the list of pcraster maps within the input directory
 # ~ files = getFileList(inputDir, '*%s.map' % chosenDate)
 # - without date
-files = getFileList(inputDir, '.map')
+files = getFileList(inputDir, '*.map')
 
 print(inputDir)
 print(files)
