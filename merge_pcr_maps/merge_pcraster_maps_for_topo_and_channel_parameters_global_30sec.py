@@ -224,8 +224,8 @@ lonMax= 180.0
 # ~ deltaLat= 5.0/60.0
 # ~ deltaLon= 5.0/60.0
 # - 30 arcsec
-deltaLat= 30./3600.0
-deltaLon= 30./3600.0
+deltaLat= 0.00833333 # 30./3600.0
+deltaLon= 0.00833333 # 30./3600.0
 
 
 # input directory, example: /scratch/depfg/sutan101/floodplain_and_channel_30arcsec_version_2021-02-XX/global/
