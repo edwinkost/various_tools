@@ -278,7 +278,7 @@ areas = ['mask_%d'%i for i in range(1,number_of_clone_maps+1,1)]
 
 
 # for testing
-areas = ["mask_1","mask_2","mask_3"]
+areas = ["mask_1","mask_2"]
 # ~ #~ areas = ["M47","M48"]
 
 
