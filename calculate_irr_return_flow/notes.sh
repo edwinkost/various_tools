@@ -24,8 +24,18 @@ Formula B:
 - irrigation_return_flow = (1 - irrigation_efficiency) * irrigationWaterWithdrawal
 
 Steps:
-1. Calculate the return flow at the annual resolution. 
-2. Downscale step 1 to the monthly resolution with the formula B.
+
+1. Calculate the consumption at the annual resolution.
+2. Downscale the consumption to the monthly resolution:
+
+monthly_irrigation_water_consumption = monthly_irrigation_withdrawal / annual_irrigation_withdrawal x annual_irrigation_consumption
+ 
+3. Calculate the monthly return flow. 
+
+monthly_irrigation_return_flow = monthly_irrigation_withdrawal - monthly_irrigation_water_consumption
+
+
+
 
 FRACTION OF SURFACE RUNOFF
 
