@@ -29,6 +29,7 @@ set -x
 YEAR=$1
 
 OUT_DIR="/scratch-shared/edwinhs/monthly_irr_return_flow/"${YEAR}"/"
+mkdir -p ${OUT_DIR}
 cd ${OUT_DIR}
 rm *
 
