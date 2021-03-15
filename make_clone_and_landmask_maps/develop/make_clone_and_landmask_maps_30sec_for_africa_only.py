@@ -74,7 +74,7 @@ global_ldd_inp_file = "/scratch/depfg/sutan101/data/global_ldd_reservoirs_and_la
 global_subdomain_file = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_25_cells/global_subdomains_30min_final_filled.map"
 
 # output_folder
-out_folder            = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_25_cells/30sec/"
+out_folder            = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-03-15/africa/30sec/"
 
 # cell size in arcmin
 # - 0.5 arcmin = 30 arcsec
