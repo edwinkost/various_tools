@@ -79,7 +79,8 @@ global_ldd_inp_file     = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release
 
 
 # global subdomain file
-global_subdomain_file = "/scratch/depfg/sutan101/data/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_25_cells/global_subdomains_30min_final_filled.map"
+# ~ global_subdomain_file = "/scratch/depfg/sutan101/data/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_25_cells/global_subdomains_30min_final_filled.map"
+global_subdomain_file     = "/scratch/depfg/sutan101/data/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_50_cells/global_subdomains_30min_final_filled.map"
 
 # output_folder
 out_folder            = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-03-15/general_subdomains_using_threshold_of_25_cells/05min/"
