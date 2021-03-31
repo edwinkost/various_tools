@@ -90,10 +90,11 @@ landmask_map_file     = "/scratch/depfg/sutan101/make_landmask_africa/landmask_a
 global_ldd_inp_file = "/scratch/depfg/sutan101/data/global_ldd_reservoirs_and_lakes_before_data_lost_on_eejit/lddsound_30sec_version_202005XX.map"
 
 # global subdomain file
-global_subdomain_file = "/scratch/depfg/sutan101/data/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_50_cells/global_subdomains_30min_final_filled.map"
+global_subdomain_file = "/scratch/depfg/sutan101/data/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_25_cells/global_subdomains_30min_final_filled.map"
 
 # output_folder
-out_folder            = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-03-31/africa/30sec_50_cells/"
+# ~ out_folder        = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-03-31/africa/30sec_50_cells/"
+out_folder            = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-03-31/africa/30sec_25_cells/"
 
 # cell size in arcmin
 # - 0.5 arcmin = 30 arcsec
