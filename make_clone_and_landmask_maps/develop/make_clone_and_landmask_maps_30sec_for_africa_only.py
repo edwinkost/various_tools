@@ -217,6 +217,8 @@ def main():
             if area_in_degree2 > 1.50 * reference_area_in_degree2: check_ok = False
             if (xmax - xmin) > 10* (ymax - ymin): check_ok = False
         
+        check_ok = True
+
         if check_ok == True and process_this_clone == True:
 
             msg = "Clump is not needed."
@@ -230,8 +232,6 @@ def main():
             mask_selected_nominal = pcr.ifthen(mask_selected_boolean, pcr.nominal(assigned_number))
             subdomains_final = pcr.cover(subdomains_final, mask_selected_nominal) 
         
-        check_ok = True
-
         if check_ok == False and process_this_clone == True:
 			
             msg = "Clump is needed."
