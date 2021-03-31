@@ -60,12 +60,31 @@ def define_landmask(input_file, clone_map_file, output_map_file):
     return landmask
 
 
+# ~ (pcrglobwb_python3) sutan101@gpu038.cluster:/scratch/depfg/sutan101/make_landmask_africa$ ls -lah
+# ~ total 22G
+# ~ drwxr-xr-x  3 sutan101 depfg   16 Mar 31 15:37 .
+# ~ drwxr-xr-x 35 sutan101 depfg   34 Mar 31 11:27 ..
+# ~ -r--r--r--  1 sutan101 depfg 3.5G Mar 31 14:50 areamaximum_catchmenttotal_from_extent_forcing_30sec_lddsound_30sec_version_202005XX.map
+# ~ -r--r--r--  1 sutan101 depfg 3.5G Mar 31 14:14 areamaximum_catchmenttotal_lddsound_30sec_version_202005XX.map
+# ~ -r--r--r--  1 sutan101 depfg 3.5G Mar 31 13:55 catchment_lddsound_30sec_version_202005XX.map
+# ~ -r--r--r--  1 sutan101 depfg 3.5G Mar 31 14:18 catchmenttotal_from_extent_forcing_30sec_lddsound_30sec_version_202005XX.map
+# ~ -r--r--r--  1 sutan101 depfg 3.5G Mar 31 13:53 catchmenttotal_lddsound_30sec_version_202005XX.map
+# ~ -r--r--r--  1 sutan101 depfg 890M Mar 31 13:50 extent_forcing_30sec.map
+# ~ -r--r--r--  1 sutan101 depfg 891M Mar 31 13:49 extent_forcing_30sec.tif
+# ~ -r--r--r--  1 sutan101 depfg 3.0M Mar 31 13:39 extent_forcing.map
+# ~ -r--r--r--  1 sutan101 depfg  24M Mar 31 13:39 extent.nc
+# ~ -r--r--r--  1 sutan101 depfg  12M Mar 31 13:39 extent.nc.map
+# ~ -r--r--r--  1 sutan101 depfg 890M Mar 31 15:29 landmask_africa_arise_30sec_version_202103XX_global.map
+# ~ -r--r--r--  1 sutan101 depfg  74M Mar 31 15:31 landmask_africa_arise_30sec_version_202103XX.map
+# ~ -r--r--r--  1 sutan101 depfg  74M Mar 31 15:29 landmask_africa_arise_30sec_version_202103XX.tif
+# ~ -r--r--r--  1 sutan101 depfg 890M Jan 28 19:09 lddsound_30sec_version_202005XX.map
+# ~ -r--r--r--  1 sutan101 depfg  124 Mar 31 13:39 source.txt
 
 # clone map (the extent)
-global_clone_map_file = "/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/africa_30sec/cloneMaps/version_2020-XX-XX/africa_clone_30sec.map"
+global_clone_map_file = "/scratch/depfg/sutan101/make_landmask_africa/landmask_africa_arise_30sec_version_202103XX.map"
 
-# ~ (pcrglobwb_python3) sutan101@gpu038.cluster:/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/africa_30sec/cloneMaps/version_2020-XX-XX$ ls -lah *.map
-# ~ -rw-r--r-- 1 sutan101 depfg  83M Oct 31  2019 africa_clone_30sec.map
+# landmask
+landmask_map_file     = "/scratch/depfg/sutan101/make_landmask_africa/landmask_africa_arise_30sec_version_202103XX.map"
 
 # original ldd 
 global_ldd_inp_file = "/scratch/depfg/sutan101/data/global_ldd_reservoirs_and_lakes_before_data_lost_on_eejit/lddsound_30sec_version_202005XX.map"
@@ -74,7 +93,7 @@ global_ldd_inp_file = "/scratch/depfg/sutan101/data/global_ldd_reservoirs_and_la
 global_subdomain_file = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_50_cells/global_subdomains_30min_final_filled.map"
 
 # output_folder
-out_folder            = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-03-15/africa/30sec_50_cells/"
+out_folder            = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-03-31/africa/30sec_50_cells/"
 
 # cell size in arcmin
 # - 0.5 arcmin = 30 arcsec
@@ -116,15 +135,18 @@ def main():
                                                                           cover            = None, \
                                                                           isNomMap         = False))))
 
-    # ~ # - extend ldd (not needed)
-    # ~ ldd_map = pcr.ifthen(landmask, pcr.cover(ldd_map, pcr.ldd(5)))
-
     # define the landmask
-    print("define the landmask based on the ldd input") 
-    # ~ landmask = pcr.defined(pcr.readmap(global_ldd_inp_file))
-    landmask     = pcr.defined(ldd_map)
+    if landmask_map_file == None:
+        print("define the landmask based on the ldd input") 
+        # ~ landmask = pcr.defined(pcr.readmap(global_ldd_inp_file))
+        landmask     = pcr.defined(ldd_map)
+        landmask     = pcr.ifthen(landmask, landmask)
+    else:
+        print("define the landmask based on the input landmask_map_file") 
+        landmask     = pcr.readmap(landmask_map_file)
+        ldd_map      = pcr.ifthen(landmask, pcr.cover(ldd_map, pcr.ldd(5)))
+        landmask     = pcr.defined(ldd_map)
     landmask     = pcr.ifthen(landmask, landmask)
-
 
     
     # save ldd files used

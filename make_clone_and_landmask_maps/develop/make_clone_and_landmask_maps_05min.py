@@ -64,7 +64,7 @@ def define_landmask(input_file, clone_map_file, output_map_file):
 # original ldd and clone
 # ~ global_ldd_inp_file = "/scratch/depfg/sutan101/data/global_ldd_reservoirs_and_lakes_before_data_lost_on_eejit/lddsound_30sec_version_202005XX.map"
 # ~ global_ldd_inp_file = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/lddsound_05min.map"
-global_ldd_inp_file     = "/scratch/depfg/sutan101/updating_reservoirs_lakes/version_2020103XX/05min/global/maps/netcdf_and_ldd/lddsound_05min_version_20210328.map"
+# ~ global_ldd_inp_file = "/scratch/depfg/sutan101/updating_reservoirs_lakes/version_2020103XX/05min/global/maps/netcdf_and_ldd/lddsound_05min_version_20210328.map"
 
 
 # global subdomain file
