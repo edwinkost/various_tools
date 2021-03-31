@@ -145,6 +145,7 @@ def main():
         print("define the landmask based on the input landmask_map_file") 
         landmask     = pcr.readmap(landmask_map_file)
         ldd_map      = pcr.ifthen(landmask, pcr.cover(ldd_map, pcr.ldd(5)))
+        ldd_map      = pcr.lddrepair(pcr.lddrepair(pcr.ldd(ldd_map)))    
         landmask     = pcr.defined(ldd_map)
     landmask     = pcr.ifthen(landmask, landmask)
 
