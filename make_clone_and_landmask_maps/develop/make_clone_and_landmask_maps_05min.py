@@ -61,18 +61,21 @@ def define_landmask(input_file, clone_map_file, output_map_file):
 
 
 
-# original ldd and clone
-# ~ global_ldd_inp_file = "/scratch/depfg/sutan101/data/global_ldd_reservoirs_and_lakes_before_data_lost_on_eejit/lddsound_30sec_version_202005XX.map"
-# ~ global_ldd_inp_file = "/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_05min/routing/ldd_and_cell_area/lddsound_05min.map"
-# ~ global_ldd_inp_file = "/scratch/depfg/sutan101/updating_reservoirs_lakes/version_2020103XX/05min/global/maps/netcdf_and_ldd/lddsound_05min_version_20210328.map"
 
+# ~ sutan101@gpu038.cluster:/scratch/depfg/sutan101/data/updating_reservoirs_lakes/version_202010330/05min/global/maps/netcdf_and_ldd$ ls -lah *
+# ~ -r--r--r-- 1 sutan101 depfg  36G Apr  1 11:38 lakes_and_reservoirs_05min_global_version_20210330.nc
+# ~ -r--r--r-- 1 sutan101 depfg 8.9M Apr  1 11:33 lddsound_05min_version_20210330.map
+
+
+# original ldd and clone
+global_ldd_inp_file       = "/scratch/depfg/sutan101/data/updating_reservoirs_lakes/version_202010330/05min/global/maps/netcdf_and_ldd/lddsound_05min_version_20210330.map"
 
 # global subdomain file
 # ~ global_subdomain_file = "/scratch/depfg/sutan101/data/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_25_cells/global_subdomains_30min_final_filled.map"
 global_subdomain_file     = "/scratch/depfg/sutan101/data/make_global_subdomains/version_2021-02-17/general_subdomains_using_threshold_of_50_cells/global_subdomains_30min_final_filled.map"
 
 # output_folder
-out_folder                = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-03-28/general_subdomains_using_threshold_of_50_cells/05min/"
+out_folder                = "/scratch/depfg/sutan101/make_global_subdomains/version_2021-03-30/general_subdomains_using_threshold_of_50_cells/05min/"
 
 # cell size in arcmin
 # - 5 arcmin
