@@ -1,0 +1,10 @@
+
+set -x
+
+bash bash_script_for_merging_aqueduct_irrigation_water_use_historical.sh 
+bash bash_script_for_merging_aqueduct_irrigation_water_use_rcp2p6.sh 
+bash bash_script_for_merging_aqueduct_irrigation_water_use_rcp4p5.sh 
+bash bash_script_for_merging_aqueduct_irrigation_water_use_rcp6p0.sh 
+bash bash_script_for_merging_aqueduct_irrigation_water_use_rcp8p5.sh
+
+set +x
