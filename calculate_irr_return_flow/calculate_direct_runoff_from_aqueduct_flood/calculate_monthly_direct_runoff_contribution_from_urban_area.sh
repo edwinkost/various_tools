@@ -32,7 +32,9 @@ cdo selyear,${YEAR_FOR_URBAN} ${INP_ANNUAL_URBAN_AREA_FRACTION} urban_area_fract
 cdo selyear,${YEAR} ${INP_MONTHLY_DIRECT_RUNOFF} monthly_direct_runoff_${YEAR}.nc
 
 # get monthly direct runoff from urban area
-cdo -L -setname,"direct_runoff_from_urban" -setunit,"m.month-1" -mul urban_area_fraction_${YEAR}.nc monthly_direct_runoff_${YEAR}.nc monthly_urban_direct_runoff_${YEAR}.nc
+cdo -L -f nc4 -setrtoc,-inf,0,0 -setname,"direct_runoff_from_urban" -setunit,"m.month-1" -mul urban_area_fraction_${YEAR}.nc monthly_direct_runoff_${YEAR}.nc monthly_urban_direct_runoff_${YEAR}.nc
+
+rm urban_area_fraction_${YEAR}.nc
 
 set +x
 
