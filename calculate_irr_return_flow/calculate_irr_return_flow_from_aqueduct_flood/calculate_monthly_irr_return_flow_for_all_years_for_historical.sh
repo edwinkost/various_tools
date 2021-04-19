@@ -1,7 +1,9 @@
 
 OUTPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff_test_per_gcm/processed/historical/1951-2005/gfdl-esm2m/"
+OUTPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/1951-2005/"$1"/"
 
 INPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/historical/1951-2005/gfdl-esm2m/"
+INPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/historical/1951-2005/"$1"/"
 
 bash calculate_monthly_irr_return_flow.sh 1980 ${OUTPUT_FOLDER} ${INPUT_FOLDER} &
 bash calculate_monthly_irr_return_flow.sh 1981 ${OUTPUT_FOLDER} ${INPUT_FOLDER} &
