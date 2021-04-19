@@ -35,16 +35,18 @@
 set -x
 
 YEAR="2000"
-#~ YEAR=$1
+YEAR=$1
 
 # output directory
-OUT_DIR="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff_test/processed_irrigated/historical/1951-2005/gfdl-esm2m/"${YEAR}"/"
+#~ OUT_DIR="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff_test/processed_irrigated/historical/1951-2005/gfdl-esm2m/"${YEAR}"/"
+OUT_DIR=$2"/"${YEAR}"/"
 mkdir -p ${OUT_DIR}
 cd ${OUT_DIR}
 rm *
 
 # input folder
 INPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/historical/1951-2005/gfdl-esm2m/"
+INPUT_FOLDER=$3
 
 # input files
 IRR_NON_PADDY_ABS=${INPUT_FOLDER}"/irrNonPaddyWaterWithdrawal_monthTot_output_"${YEAR}"-01-31_to_"${YEAR}"-12-31.nc"
