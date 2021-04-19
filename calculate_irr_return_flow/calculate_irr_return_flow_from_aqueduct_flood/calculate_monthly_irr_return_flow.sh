@@ -65,7 +65,7 @@ cdo -L -f nc4 -setname,"precipitation_and_irrigation_supply" -setunit,m.year-1 -
 # - fraction of supply
 cdo -L -f nc4 -setname,"fraction_of_irr" -setunit,"1" -div total_irrigation_withdrawal_annuaTot_output_${YEAR}.nc annual_total_supply_from_p_and_irr.nc fraction_of_irrigation_supply.nc
 # - annual irrigation consumption
-cdo -L -f nc4 -setunit,m.year-1 -setname,"irrigation_consumption" -mul fraction_of_irrigation_supply.nc $ {ANNUAL_ET_IRR} annual_irrigation_consumption_${YEAR}.nc
+cdo -L -f nc4 -setunit,m.year-1 -setname,"irrigation_consumption" -mul fraction_of_irrigation_supply.nc $ ${ANNUAL_ET_IRR} annual_irrigation_consumption_${YEAR}.nc
 
 
 # get ratio of monthly to annual values of withdrawal
