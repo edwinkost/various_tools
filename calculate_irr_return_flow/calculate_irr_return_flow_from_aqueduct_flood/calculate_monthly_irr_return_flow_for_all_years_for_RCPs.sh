@@ -2,7 +2,7 @@
 RCP_CODE="rcp4p5"
 RCP_CODE=$1
 
-OUTPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/processed_irrigated/historical/1951-2005/"$1"/"
+OUTPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/processed_irrigated/"${RCP_CODE}"/2006-2099/"$2"/"
 
 INPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/rcp4p5/2006-2099/gfdl-esm2m/"
 INPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/"${RCP_CODE}"/2006-2099/"$2"/"
