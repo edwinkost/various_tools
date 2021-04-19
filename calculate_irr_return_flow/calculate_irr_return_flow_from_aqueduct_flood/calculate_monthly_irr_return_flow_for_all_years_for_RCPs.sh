@@ -1,6 +1,6 @@
 
 RCP_CODE="rcp4p5"
-RCP_CODE=$1
+#~ RCP_CODE=$1
 
 OUTPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/processed_irrigated/"${RCP_CODE}"/2006-2099/"$2"/"
 
