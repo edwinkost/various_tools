@@ -1,5 +1,5 @@
 
-OUTPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/processed_irrigated/historical/1951-2005/"$1"/"
+OUTPUT_FOLDER="/scratch-shared/edwinari/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/processed_irrigated/historical/1951-2005/"$1"/"
 
 INPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/historical/1951-2005/gfdl-esm2m/"
 INPUT_FOLDER="/scratch-shared/edwinhs/pcr-globwb-aqueduct_for_edward/irrigation_water_use_and_direct_runoff/historical/1951-2005/"$1"/"
