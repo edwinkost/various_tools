@@ -1,0 +1,50 @@
+#!/bin/bash
+
+echo "Arg 0: $0"
+echo "Arg 1: $1"
+
+
+set -x
+
+python download_all_cru_files_per_year.py 1979
+python download_all_cru_files_per_year.py 1980
+python download_all_cru_files_per_year.py 1981
+python download_all_cru_files_per_year.py 1982
+python download_all_cru_files_per_year.py 1983
+python download_all_cru_files_per_year.py 1984
+python download_all_cru_files_per_year.py 1985
+python download_all_cru_files_per_year.py 1986
+python download_all_cru_files_per_year.py 1987
+python download_all_cru_files_per_year.py 1988
+python download_all_cru_files_per_year.py 1989
+python download_all_cru_files_per_year.py 1990
+python download_all_cru_files_per_year.py 1991
+python download_all_cru_files_per_year.py 1992
+python download_all_cru_files_per_year.py 1993
+python download_all_cru_files_per_year.py 1994
+python download_all_cru_files_per_year.py 1995
+python download_all_cru_files_per_year.py 1996
+python download_all_cru_files_per_year.py 1997
+python download_all_cru_files_per_year.py 1998
+python download_all_cru_files_per_year.py 1999
+python download_all_cru_files_per_year.py 2000
+python download_all_cru_files_per_year.py 2001
+python download_all_cru_files_per_year.py 2002
+python download_all_cru_files_per_year.py 2003
+python download_all_cru_files_per_year.py 2004
+python download_all_cru_files_per_year.py 2005
+python download_all_cru_files_per_year.py 2006
+python download_all_cru_files_per_year.py 2007
+python download_all_cru_files_per_year.py 2008
+python download_all_cru_files_per_year.py 2009
+python download_all_cru_files_per_year.py 2010
+python download_all_cru_files_per_year.py 2011
+python download_all_cru_files_per_year.py 2012
+python download_all_cru_files_per_year.py 2013
+python download_all_cru_files_per_year.py 2014
+python download_all_cru_files_per_year.py 2015
+python download_all_cru_files_per_year.py 2016
+python download_all_cru_files_per_year.py 2017
+python download_all_cru_files_per_year.py 2018
+
+set +x
