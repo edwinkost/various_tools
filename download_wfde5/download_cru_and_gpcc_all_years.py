@@ -37,4 +37,4 @@ c.retrieve(
             '10', '11', '12',
         ],
     },
-    'download_cru_and_gpcc.tar.gz')
+    'download_wfde5_cru_and_gpcc.tar.gz')
