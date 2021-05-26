@@ -82,28 +82,18 @@ def define_landmask(input_file, clone_map_file, output_map_file):
 
 # clone map (the extent)
 global_clone_map_file = "/scratch/depfg/sutan101/make_landmask_africa/landmask_africa_arise_30sec_version_202103XX.map"
-global_clone_map_file = "/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/africa_30sec/cloneMaps/version_2021-03-31/africa/landmask_africa/landmask_africa_arise_30sec_version_202103XX.map"
+global_clone_map_file = "/scratch/depfg/sutan101/make_landmask_africa_30sec/landmask_africa_arise_30sec_version_20210526.map"
 
-# ~ sutan101@gpu038.cluster:/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/africa_30sec/cloneMaps/version_2021-03-31/africa/landmask_africa$ ls -lah
-# ~ total 22G
-# ~ drwxr-xr-x 2 sutan101 depfg   16 May 26 13:34 .
-# ~ drwxr-xr-x 5 sutan101 depfg    3 May 26 13:33 ..
-# ~ -r--r--r-- 1 sutan101 depfg 3.5G Mar 31 14:50 areamaximum_catchmenttotal_from_extent_forcing_30sec_lddsound_30sec_version_202005XX.map
-# ~ -r--r--r-- 1 sutan101 depfg 3.5G Mar 31 14:14 areamaximum_catchmenttotal_lddsound_30sec_version_202005XX.map
-# ~ -r--r--r-- 1 sutan101 depfg 3.5G Mar 31 13:55 catchment_lddsound_30sec_version_202005XX.map
-# ~ -r--r--r-- 1 sutan101 depfg 3.5G Mar 31 14:18 catchmenttotal_from_extent_forcing_30sec_lddsound_30sec_version_202005XX.map
-# ~ -r--r--r-- 1 sutan101 depfg 3.5G Mar 31 13:53 catchmenttotal_lddsound_30sec_version_202005XX.map
+# ~ (pcrglobwb_python3) sutan101@gpu038.cluster:/scratch/depfg/sutan101/make_landmask_africa_30sec$ aguila landmask_africa_arise_30sec_version_20210526.map
+# ~ (pcrglobwb_python3) sutan101@gpu038.cluster:/scratch/depfg/sutan101/make_landmask_africa_30sec$ ls -lah *
 # ~ -r--r--r-- 1 sutan101 depfg 890M Mar 31 13:50 extent_forcing_30sec.map
-# ~ -r--r--r-- 1 sutan101 depfg 891M Mar 31 13:49 extent_forcing_30sec.tif
-# ~ -r--r--r-- 1 sutan101 depfg 3.0M Mar 31 13:39 extent_forcing.map
-# ~ -r--r--r-- 1 sutan101 depfg  24M Mar 31 13:39 extent.nc
-# ~ -r--r--r-- 1 sutan101 depfg  12M Mar 31 13:39 extent.nc.map
 # ~ -r--r--r-- 1 sutan101 depfg 890M Mar 31 15:29 landmask_africa_arise_30sec_version_202103XX_global.map
 # ~ -rw-r--r-- 1 sutan101 depfg  74M Mar 31 16:26 landmask_africa_arise_30sec_version_202103XX.map
-# ~ -rw-r--r-- 1 sutan101 depfg  188 Mar 31 16:26 landmask_africa_arise_30sec_version_202103XX.map.aux.xml
-# ~ -rw-r--r-- 1 sutan101 depfg  74M Mar 31 16:26 landmask_africa_arise_30sec_version_202103XX.tif
+# ~ -rw-r--r-- 1 sutan101 depfg 890M May 26 16:13 landmask_africa_arise_30sec_version_20210526_global.map
+# ~ -rw-r--r-- 1 sutan101 depfg  74M May 26 16:17 landmask_africa_arise_30sec_version_20210526.map
+# ~ -rw-r--r-- 1 sutan101 depfg  188 May 26 16:17 landmask_africa_arise_30sec_version_20210526.map.aux.xml
+# ~ -rw-r--r-- 1 sutan101 depfg  74M May 26 16:16 landmask_africa_arise_30sec_version_20210526.tif
 # ~ -r--r--r-- 1 sutan101 depfg 890M Jan 28 19:09 lddsound_30sec_version_202005XX.map
-# ~ -r--r--r-- 1 sutan101 depfg  124 Mar 31 13:39 source.txt
 
 # landmask
 landmask_map_file     = "/scratch/depfg/sutan101/make_landmask_africa/landmask_africa_arise_30sec_version_202103XX.map"
