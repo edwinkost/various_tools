@@ -28,7 +28,7 @@ mkdir -p ${WORK_DIRECTORY}
 #~ rm ${WORK_DIRECTORY}/*
 
 # make the station map
-col2map --clone /scratch/depfg/sutan101/data/pcrglobwb_gmglob_input/develop/example_output/pcrglobwb/global_05min_naturalized/average_gwRecharge_m_per_day_1960_to_2010.map -S -x 3 -y 2 -v 1 -l station_location.txt station_location.map
+col2map --clone /scratch/depfg/sutan101/data/pcrglobwb_gmglob_input/develop/example_output/pcrglobwb/global_05min_naturalized/average_gwRecharge_m_per_day_1960_to_2010.map -S -x 3 -y 2 -v 1 -M station_location.txt station_location.map
 
 cd ${WORK_DIRECTORY}
 
