@@ -21,6 +21,8 @@
 # calculate the pore velocity
 #~ v = gwRecharge / effective_theta
 
+set -x
+
 WORK_DIRECTORY="/scratch/depfg/sutan101/calculate_pore_velocity_jaivime/gmd_paper_naturalized_version_2021-06-XX/"
 mkdir -p ${WORK_DIRECTORY}
 
@@ -28,7 +30,7 @@ mkdir -p ${WORK_DIRECTORY}
 #~ rm ${WORK_DIRECTORY}/*
 
 # make the station map
-col2map --clone /scratch/depfg/sutan101/data/pcrglobwb_gmglob_input/develop/example_output/pcrglobwb/global_05min_naturalized/average_gwRecharge_m_per_day_1960_to_2010.map -S -x 3 -y 2 -v 1 -M station_location.txt station_location.map
+col2map --clone /scratch/depfg/sutan101/data/pcrglobwb_gmglob_input/develop/example_output/pcrglobwb/global_05min_naturalized/average_gwRecharge_m_per_day_1960_to_2010.map -S -x 3 -y 2 -v 1 -M station_location.txt ${WORK_DIRECTORY}/station_location.map
 
 cd ${WORK_DIRECTORY}
 
@@ -83,5 +85,7 @@ aguila pore_velocity_m_per_day_on_gw_recharge.map
 
 
 # get the column file 
-map2col average_gwRecharge_m_per_day_1960_to_2010.map effective_theta_on_gw_recharge.map pore_velocity_m_per_day_on_gw_recharge.map output.txt
+map2col station_location.map average_gwRecharge_m_per_day_1960_to_2010.map effective_theta_on_gw_recharge.map pore_velocity_m_per_day_on_gw_recharge.map output.txt
+
   
+set +x
