@@ -21,15 +21,25 @@
 # calculate the pore velocity
 #~ v = gwRecharge / effective_theta
 
-WORK_DIRECTORY="/scratch/depfg/sutan101/calculate_pore_velocity_jaivime/gmd_paper_naturalized/"
+WORK_DIRECTORY="/scratch/depfg/sutan101/calculate_pore_velocity_jaivime/gmd_paper_naturalized_version_2021-06-XX/"
 mkdir -p ${WORK_DIRECTORY}
-cd ${WORK_DIRECTORY}
 
 #~ # cleaning working directory - DANGEROUS
-#~ rm *
+#~ rm ${WORK_DIRECTORY}/*
+
+# make the station map
+col2map --clone /scratch/depfg/sutan101/data/pcrglobwb_gmglob_input/develop/example_output/pcrglobwb/global_05min_naturalized/average_gwRecharge_m_per_day_1960_to_2010.map -S -x 3 -y 2 -v 1 -l station_location.txt station_location.map
+
+cd ${WORK_DIRECTORY}
+
 
 # get the groundwater recharge (naturalized condition of groundwater recharge)
 cp /scratch/depfg/sutan101/data/pcrglobwb_gmglob_input/develop/example_output/pcrglobwb/global_05min_naturalized/average_gwRecharge_m_per_day_1960_to_2010.map .
+
+
+# set minimum groundwater recharge to 5 mm.year-s
+pcrcalc average_gwRecharge_m_per_day_1960_to_2010.map = "max(0.005/365.25, average_gwRecharge_m_per_day_1960_to_2010.map)"
+
 
 #~ sutan101@gpu038.cluster:/scratch/depfg/sutan101/data/pcrglobwb2_input_release/version_2019_11_beta_extended/pcrglobwb2_input/global_05min/landSurface/soil$ cdo showvar soilProperties5ArcMin.nc
  #~ firstStorDepth secondStorDepth soilWaterStorageCap1 soilWaterStorageCap2 airEntryValue1 airEntryValue2 poreSizeBeta1 poreSizeBeta2 resVolWC1 resVolWC2 satVolWC1 satVolWC2 KSat1 KSat2 percolationImp
@@ -72,3 +82,6 @@ pcrcalc pore_velocity_m_per_day_on_gw_recharge.map = "if(average_gwRecharge_m_pe
 aguila pore_velocity_m_per_day_on_gw_recharge.map
 
 
+# get the column file 
+map2col average_gwRecharge_m_per_day_1960_to_2010.map effective_theta_on_gw_recharge.map pore_velocity_m_per_day_on_gw_recharge.map output.txt
+  
