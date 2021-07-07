@@ -85,7 +85,11 @@ aguila pore_velocity_m_per_day_on_gw_recharge.map
 
 
 # get the column file 
-map2col station_location.map average_gwRecharge_m_per_day_1960_to_2010.map effective_theta_on_gw_recharge.map pore_velocity_m_per_day_on_gw_recharge.map output.txt
+pcrcalc average_gwRecharge_m_per_day_1960_to_2010_sel.map = "if(defined(station_location.map), average_gwRecharge_m_per_day_1960_to_2010.map)"
+pcrcalc effective_theta_on_gw_recharge_sel.map            = "if(defined(station_location.map), effective_theta_on_gw_recharge.map)"
+pcrcalc pore_velocity_m_per_day_on_gw_recharge_sel.map    = "if(defined(station_location.map), pore_velocity_m_per_day_on_gw_recharge.map)"
+
+map2col station_location.map average_gwRecharge_m_per_day_1960_to_2010_sel.map effective_theta_on_gw_recharge_sel.map pore_velocity_m_per_day_on_gw_recharge_sel.map output.txt
 
   
 set +x
