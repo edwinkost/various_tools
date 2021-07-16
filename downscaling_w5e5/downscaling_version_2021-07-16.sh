@@ -10,6 +10,7 @@ set -x
 
 # working directory
 cd /scratch/depfg/sutan101/downscaling_w5e5v2/with_chirps/africa/final_all_years/
+rm /scratch/depfg/sutan101/downscaling_w5e5v2/with_chirps/africa/final_all_years/*
 
 #~ # sellonlatbox for w5e5 (crop to africa)
 #~ Upper Left  ( -19.0000000,  39.0000000)
