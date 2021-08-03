@@ -19,7 +19,8 @@ echo ${SSP_CODE}
 SOURCE_DIR="/scratch/depfg/sutan101/data/isimip_forcing/isimip3b_version_2021-05-XX/copied_on_2021-06-XX/source/"${SSP_CODE}"/"${GCM_CODE_CAPITAL}"/"
 
 OUTPUT_DIR="/scratch/depfg/sutan101/data/isimip_forcing/isimip3b_version_2021-05-XX/copied_on_2021-06-XX/merged/"${SSP_CODE}"/"${GCM_CODE_SMALL}"/"
-OUTPUT_DIR="/scratch/depfg/sutan101/data/isimip_forcing/isimip3b_version_2021-05-XX/copied_on_2021-06-XX/merged_test/"${SSP_CODE}"/"${GCM_CODE_SMALL}"/"
+
+#~ OUTPUT_DIR="/scratch/depfg/sutan101/data/isimip_forcing/isimip3b_version_2021-05-XX/copied_on_2021-06-XX/merged_test/"${SSP_CODE}"/"${GCM_CODE_SMALL}"/"
 
 mkdir -p ${OUTPUT_DIR}
 cd ${OUTPUT_DIR}
