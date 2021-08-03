@@ -24,12 +24,12 @@ OUTPUT_DIR="/scratch/depfg/sutan101/data/isimip_forcing/isimip3b_version_2021-05
 mkdir -p ${OUTPUT_DIR}
 cd ${OUTPUT_DIR}
 
-cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_hurs_global_daily_*.nc    ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_hurs_global_daily_1850_2014.nc    &
-cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_pr_global_daily_*.nc      ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_pr_global_daily_1850_2014.nc      &
-cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_ps_global_daily_*.nc      ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_ps_global_daily_1850_2014.nc      &
-cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_rsds_global_daily_*.nc    ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_rsds_global_daily_1850_2014.nc    &
-cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_sfcwind_global_daily_*.nc ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_sfcwind_global_daily_1850_2014.nc &
-cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_tas_global_daily_*.nc     ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_tas_global_daily_1850_2014.nc     &
+cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_hurs_global_daily_*.nc    ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_hurs_global_daily_2015_2100.nc    &
+cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_pr_global_daily_*.nc      ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_pr_global_daily_2015_2100.nc      &
+cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_ps_global_daily_*.nc      ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_ps_global_daily_2015_2100.nc      &
+cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_rsds_global_daily_*.nc    ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_rsds_global_daily_2015_2100.nc    &
+cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_sfcwind_global_daily_*.nc ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_sfcwind_global_daily_2015_2100.nc &
+cdo -L -f nc4 -mergetime ${SOURCE_DIR}/${GCM_CODE_SMALL}_*_w5e5_${SSP_CODE}_tas_global_daily_*.nc     ${GCM_CODE_SMALL}_w5e5_${SSP_CODE}_tas_global_daily_2015_2100.nc     &
 
 wait
 
