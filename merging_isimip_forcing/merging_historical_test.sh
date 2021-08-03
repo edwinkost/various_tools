@@ -8,6 +8,10 @@ GCM_CODE_SMALL="gfdl-esm4"
 GCM_CODE_CAPITAL=$1
 GCM_CODE_SMALL=$2
 
+echo ${GCM_CODE_CAPITAL}
+echo ${GCM_CODE_SMALL}
+
+
 SOURCE_DIR="/scratch/depfg/sutan101/data/isimip_forcing/isimip3b_version_2021-05-XX/copied_on_2021-06-XX/source/historical/"${GCM_CODE_CAPITAL}"/"
 OUTPUT_DIR="/scratch/depfg/sutan101/data/isimip_forcing/isimip3b_version_2021-05-XX/copied_on_2021-06-XX/merged/historical/"${GCM_CODE_SMALL}"/"
 
