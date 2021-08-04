@@ -3,7 +3,7 @@
 import os
 import sys
 
-main_folder = "/lustre1/0/dfguu/users/edwin/pcrglobwb_aqueduct_2021/version_2021-06-23_w5e5v2_updated_gmd_parameters/"
+main_folder = "/scratch-shared/edwin/pcrglobwb_aqueduct_2021/version_2021-06-23_w5e5v2_updated_gmd_parameters/"
 start_years = [1978] 
 final_year = 2019
 
