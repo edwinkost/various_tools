@@ -15,7 +15,8 @@ final_year = 2019
 print(start_years)
 
 outp_folder = "/scratch-shared/edwin/pcrglobwb_aqueduct_2021/version_2021-06-23_w5e5v2_updated_gmd_parameters/merged_irrigation_water_use_etc"
-outp_folder = str(sys.argv[4])
+
+# ~ outp_folder = str(sys.argv[4])
 
 #~ cmd = "rm -rf " + outp_folder
 #~ print(cmd)
@@ -23,7 +24,7 @@ outp_folder = str(sys.argv[4])
 cmd = "mkdir -p " + outp_folder
 print(cmd)
 os.system(cmd)
-cmd = "cp merge_netcdf.py " + outp_folder
+cmd = "cp merge_netcdf_general.py " + outp_folder
 print(cmd)
 os.system(cmd)
 os.chdir(outp_folder)
@@ -80,5 +81,6 @@ for i_year in range(0, len(start_years)):
                "referencePotET " + \
                "NETCDF4 True 8 53 all_lats default"
 
+        cmd += "wait"
         print(cmd)
         os.system(cmd)
