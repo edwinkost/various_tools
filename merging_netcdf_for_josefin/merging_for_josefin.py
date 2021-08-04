@@ -7,10 +7,10 @@ main_folder = "/lustre1/0/dfguu/users/edwin/pcrglobwb_aqueduct_2021/version_2021
 start_years = [1978] 
 final_year = 2019
 
-main_folder = sys.argv[1]
-start_years = map(int, list(set(sys.argv[2].split(","))))
-start_years.sort()
-final_year  = int(sys.argv[3])
+# ~ main_folder = sys.argv[1]
+# ~ start_years = map(int, list(set(sys.argv[2].split(","))))
+# ~ start_years.sort()
+# ~ final_year  = int(sys.argv[3])
 
 print(start_years)
 
