@@ -54,32 +54,32 @@ for i_year in range(0, len(start_years)):
     
         cmd = ""
                 
-        # ~ # annual total
-        # ~ cmd += "python merge_netcdf_general.py " + \
-               # ~ input_folder + " " + \
-               # ~ outp_folder + " " + \
-               # ~ "outAnnuaTotNC " + \
-               # ~ str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
-               # ~ "evaporation_from_irrigation,precipitation_at_irrigation " + \
-               # ~ "NETCDF4 True 8 53 all_lats default & "
-
-        # ~ # monthly total
-        # ~ cmd += "python merge_netcdf_general.py " + \
-               # ~ input_folder + " " + \
-               # ~ outp_folder + " " + \
-               # ~ "outMonthTotNC " + \
-               # ~ str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
-               # ~ "irrGrossDemand " + \
-               # ~ "NETCDF4 True 8 53 all_lats default"
-       
-        # daily total
+        # annual total
         cmd += "python merge_netcdf_general.py " + \
                input_folder + " " + \
                outp_folder + " " + \
-               "outDailyTotNC " + \
-               str(year)+"-01-01" + " " + str(year)+"-12-31" + " " + \
-               "referencePotET " + \
+               "outAnnuaTotNC " + \
+               str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
+               "evaporation_from_irrigation,precipitation_at_irrigation " + \
+               "NETCDF4 True 8 53 all_lats default & "
+
+        # monthly total
+        cmd += "python merge_netcdf_general.py " + \
+               input_folder + " " + \
+               outp_folder + " " + \
+               "outMonthTotNC " + \
+               str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
+               "irrGrossDemand " + \
                "NETCDF4 True 8 53 all_lats default"
+       
+        # ~ # daily total
+        # ~ cmd += "python merge_netcdf_general.py " + \
+               # ~ input_folder + " " + \
+               # ~ outp_folder + " " + \
+               # ~ "outDailyTotNC " + \
+               # ~ str(year)+"-01-01" + " " + str(year)+"-12-31" + " " + \
+               # ~ "referencePotET " + \
+               # ~ "NETCDF4 True 8 53 all_lats default"
 
         cmd += "wait"
         print(cmd)
