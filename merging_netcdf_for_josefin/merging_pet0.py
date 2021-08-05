@@ -14,7 +14,7 @@ final_year = 2019
 
 print(start_years)
 
-outp_folder = "/scratch-shared/edwin/pcrglobwb_aqueduct_2021/version_2021-06-23_w5e5v2_updated_gmd_parameters/merged_irrigation_water_use_etc"
+outp_folder = "/scratch-shared/edwin/pcrglobwb_aqueduct_2021/version_2021-06-23_w5e5v2_updated_gmd_parameters/merged_ref_pot_et/"
 
 # ~ outp_folder = str(sys.argv[4])
 
