@@ -70,7 +70,7 @@ for i_year in range(0, len(start_years)):
                "outMonthTotNC " + \
                str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
                "irrGrossDemand " + \
-               "NETCDF4 True 8 53 all_lats default"
+               "NETCDF4 True 8 53 all_lats default & "
        
         # ~ # daily total
         # ~ cmd += "python merge_netcdf_general.py " + \
@@ -79,7 +79,7 @@ for i_year in range(0, len(start_years)):
                # ~ "outDailyTotNC " + \
                # ~ str(year)+"-01-01" + " " + str(year)+"-12-31" + " " + \
                # ~ "referencePotET " + \
-               # ~ "NETCDF4 True 8 53 all_lats default"
+               # ~ "NETCDF4 True 8 53 all_lats default & "
 
         cmd += "wait"
         print(cmd)
