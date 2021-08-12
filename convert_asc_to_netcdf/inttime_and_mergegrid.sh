@@ -86,8 +86,8 @@ ncatted -O -a     long_name,"vegetation_fraction",m,c,"vegetation_fraction" tot_
 
 # - calculate irrigation no rice
 
-cdo -L -f -nc4 -setattribute,description="Fraction of non-rice irrigation areas. Based on the HYDE 3.2 dataset. Processed by Edwin H. Sutanudjaja on 12 August 2021." \
-          -setrtoc,-inf,0,0 -sub tot_irri_fraction_1800-2017_annual.nc ir_rice_fraction_1800-2017_annual.nc ir_norice_fraction_1800-2017_annual.nc
+cdo -L -f nc4 -setattribute,description="Fraction of non-rice irrigation areas. Based on the HYDE 3.2 dataset. Processed by Edwin H. Sutanudjaja on 12 August 2021." \
+              -setrtoc,-inf,0,0 -sub tot_irri_fraction_1800-2017_annual.nc ir_rice_fraction_1800-2017_annual.nc ir_norice_fraction_1800-2017_annual.nc
 
 
 # check total
