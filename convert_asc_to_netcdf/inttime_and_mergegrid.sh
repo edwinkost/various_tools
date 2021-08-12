@@ -39,8 +39,8 @@ cdo griddes ${GRID_FILE_SOURCE} > griddes_global_05min.txt
 
 # mergetime, interpolate and setgrid and etc ...
 
-cdo -L -f nc4 -setattribute,description="Fraction of rice irrigation areas. Based on the HYDE 3.2 dataset, processed by Edwin H. Sutanudjaja on 12 August 2021." \
-              -setattribute,references="Klein Goldewijk et al. (2017), Earth Syst. Sci. Data, 9, 927-953" \
+cdo -L -f nc4 -setattribute,description="'Fraction of rice irrigation areas. Based on the HYDE 3.2 dataset, processed by Edwin H. Sutanudjaja on 12 August 2021.'" \
+              -setattribute,references="'Klein Goldewijk et al. (2017), Earth Syst. Sci. Data, 9, 927-953'" \
               -setattribute,source=${INP_FOLDER} \
               -setname,"vegetation_fraction" -setunit,1 -mulc,0.01 -setgrid,griddes_global_05min.txt -inttime,1800-01-01,00:00:00,1year -setmisstoc,0.0 -mergetime \
               ../ir_rice*.nc ir_rice_fraction_1800-2017_annual.nc 
@@ -48,5 +48,16 @@ cdo -L -f nc4 -setattribute,description="Fraction of rice irrigation areas. Base
 # fixing standard_name and long_name
 ncatted -O -a standard_name,"vegetation_fraction",m,c,"vegetation_fraction" ir_rice_fraction_1800-2017_annual.nc 
 ncatted -O -a     long_name,"vegetation_fraction",m,c,"vegetation_fraction" ir_rice_fraction_1800-2017_annual.nc 
+
+cdo -L -f nc4 -setattribute,description="'Fraction of non-rice irrigation areas. Based on the HYDE 3.2 dataset, processed by Edwin H. Sutanudjaja on 12 August 2021.6'" \
+              -setattribute,references="'Klein Goldewijk et al. (2017), Earth Syst. Sci. Data, 9, 927-953'" \
+              -setattribute,source=${INP_FOLDER} \
+              -setname,"vegetation_fraction" -setunit,1 -mulc,0.01 -setgrid,griddes_global_05min.txt -inttime,1800-01-01,00:00:00,1year -setmisstoc,0.0 -mergetime \
+              ../ir_norice*.nc ir_norice_fraction_1800-2017_annual.nc 
+
+# fixing standard_name and long_name
+ncatted -O -a standard_name,"vegetation_fraction",m,c,"vegetation_fraction" ir_norice_fraction_1800-2017_annual.nc 
+ncatted -O -a     long_name,"vegetation_fraction",m,c,"vegetation_fraction" ir_norice_fraction_1800-2017_annual.nc 
+
 
 set +x
