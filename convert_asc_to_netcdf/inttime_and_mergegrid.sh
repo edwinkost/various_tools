@@ -46,9 +46,9 @@ ncatted -O -a standard_name,"vegetation_fraction",m,c,"vegetation_fraction" ir_r
 ncatted -O -a     long_name,"vegetation_fraction",m,c,"vegetation_fraction" ir_rice_fraction_1800-2017_annual.nc 
 
 # add global attributes
-ncra -O -a      source,global,m,c,${INP_FOLDER}                                                                                                            ir_rice_fraction_1800-2017_annual.nc 
-ncra -O -a description,global,m,c,"Fraction of rice irrigation areas. Based on the HYDE 3.2 dataset, processed by Edwin H. Sutanudjaja on 12 August 2021." ir_rice_fraction_1800-2017_annual.nc
-ncra -O -a  references,global,m,c,"Klein Goldewijk et al. (2017), Earth Syst. Sci. Data, 9, 927-953"                                                       ir_rice_fraction_1800-2017_annual.nc
+ncra -O -glb      source,global,m,c,${INP_FOLDER}                                                                                                            ir_rice_fraction_1800-2017_annual.nc 
+ncra -O -glb description,global,m,c,"Fraction of rice irrigation areas. Based on the HYDE 3.2 dataset, processed by Edwin H. Sutanudjaja on 12 August 2021." ir_rice_fraction_1800-2017_annual.nc
+ncra -O -glb  references,global,m,c,"Klein Goldewijk et al. (2017), Earth Syst. Sci. Data, 9, 927-953"                                                       ir_rice_fraction_1800-2017_annual.nc
 
 
 set +x
