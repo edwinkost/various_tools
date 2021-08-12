@@ -1,5 +1,7 @@
 
-INP_FOLDER=
+set -x
+
+INP_FOLDER="/scratch/depfg/sutan101/data/hyde3.2/downloaded_on_2021-08-11_baseline_only/baseline/zip_extracted_1800-2017/netcdf_irr/"
 
 OUTPUT_FOLDER="/scratch/depfg/sutan101/data/hyde3.2/downloaded_on_2021-08-11_baseline_only/baseline/zip_extracted_1800-2017/netcdf_irr/merged_annual/"
 mkdir -p ${OUTPUT_FOLDER}
@@ -31,8 +33,8 @@ cdo griddes ${GRID_FILE_SOURCE} > griddes_global_05min.txt
 
 
 #~ (pcrglobwb_python3) sutan101@gpu038.cluster:/scratch/depfg/sutan101/data/hyde3.2/downloaded_on_2021-08-11_baseline_only/baseline/zip_extracted_1800-2017/netcdf_irr/merged_annual$ ls -lah ../*2017*.nc
-#~ -r--r--r-- 1 sutan101 depfg 36M Aug 12 11:45 ../ir_norice2017AD.nc
 #~ -r--r--r-- 1 sutan101 depfg 36M Aug 12 11:44 ../ir_rice2017AD.nc
+#~ -r--r--r-- 1 sutan101 depfg 36M Aug 12 11:45 ../ir_norice2017AD.nc
 #~ -r--r--r-- 1 sutan101 depfg 36M Aug 12 11:45 ../tot_irri2017AD.nc
 
 # mergetime, interpolate and setgrid and etc ...
@@ -43,7 +45,10 @@ cdo -L -f nc4 -setname,"vegetation_fraction" -setunit,1 -mulc,0.01 -setgrid,grid
 ncatted -O -a standard_name,"vegetation_fraction",m,c,"vegetation_fraction" ir_rice_fraction_1800-2017_annual.nc 
 ncatted -O -a     long_name,"vegetation_fraction",m,c,"vegetation_fraction" ir_rice_fraction_1800-2017_annual.nc 
 
-# modifying some global attributes
-ncatted -O -a      source,global,m,c,${INP_FOLDER}                                                                                                 ir_rice_fraction_1800-2017_annual.nc 
-ncatted -O -a description,global,m,c,"Fraction of rice irrigation areas. Based on the HYDE 3.2 dataset, processed by Edwin H. Sutanudjaja on 2021" ir_rice_fraction_1800-2017_annual.nc
-ncatted -O -a  references,global,m,c,"Klein Goldewijk et al. (2017), Earth Syst. Sci. Data, 9, 927-953"                                            ir_rice_fraction_1800-2017_annual.nc
+# add global attributes
+ncra -O -a      source,global,m,c,${INP_FOLDER}                                                                                                            ir_rice_fraction_1800-2017_annual.nc 
+ncra -O -a description,global,m,c,"Fraction of rice irrigation areas. Based on the HYDE 3.2 dataset, processed by Edwin H. Sutanudjaja on 12 August 2021." ir_rice_fraction_1800-2017_annual.nc
+ncra -O -a  references,global,m,c,"Klein Goldewijk et al. (2017), Earth Syst. Sci. Data, 9, 927-953"                                                       ir_rice_fraction_1800-2017_annual.nc
+
+
+set +x
