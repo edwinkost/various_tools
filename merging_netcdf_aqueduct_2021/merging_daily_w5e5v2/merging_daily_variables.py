@@ -3,7 +3,7 @@
 import os
 import sys
 
-main_folder = "/datadrive/pcrglobwb/pcrglobwb_output/pcrglobwb_aqueduct_2021/version_2021-09-16/gswp3-w5e5/historical-reference/begin_from_1960/"
+main_folder = "/datadrive/pcrglobwb/pcrglobwb_output/pcrglobwb_aqueduct_2021/version_2021-09-16/gswp3-w5e5/historical-reference/"
 start_years = [1960] 
 final_year = 2019
 
@@ -14,7 +14,7 @@ final_year = 2019
 
 print(start_years)
 
-outp_folder = "/datadrive/edwin/pcrglobwb_output/pcrglobwb_aqueduct_2021/version_2021-09-16/gswp3-w5e5/historical-reference/begin_from_1960/global/netcdf/"
+outp_folder = "/datadrive/edwin/pcrglobwb_output/pcrglobwb_aqueduct_2021/version_2021-09-16/gswp3-w5e5/historical-reference/merged_daily_variables"
 
 # ~ outp_folder = str(sys.argv[4])
 
