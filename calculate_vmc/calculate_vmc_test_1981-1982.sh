@@ -17,9 +17,6 @@ cd /rds/general/user/esutanud/home/
 cd -
 
 # merge soil moisture files 
-
-ls -lah ../*/netcdf/
-
 cdo -L -selyear,1981/1982 -mergetime ../*/netcdf/satDegUpp_dailyTot_output.nc satDegUpp_dailyTot_output_1981-1982.nc &
 cdo -L -selyear,1981/1982 -mergetime ../*/netcdf/satDegLow_dailyTot_output.nc satDegLow_dailyTot_output_1981-1982.nc &
 wait
