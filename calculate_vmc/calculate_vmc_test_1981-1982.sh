@@ -5,7 +5,7 @@ CLONE_DIR="clone_01_30sec"
 CLONE_DIR=$1
 
 # go to the folder
-cd /rds/general/user/esutanud/projects/arise/live/HydroModelling/edwin/pcrglobwb_output_africa_agmip/version_2021-10-XX/${CLONEDIR}
+cd /rds/general/user/esutanud/projects/arise/live/HydroModelling/edwin/pcrglobwb_output_africa_agmip/version_2021-10-XX/${CLONE_DIR}
 
 # prepare the output folder and go to it
 mkdir vmc_1981-1982
