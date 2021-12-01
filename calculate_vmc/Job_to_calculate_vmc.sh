@@ -17,6 +17,7 @@
 
 #PBS -N vmc_calc
 
+cd /rds/general/user/esutanud/home/github/edwinkost/various_tools/calculate_vmc
 
 bash calculate_vmc.sh "clone_01_30sec" &
 bash calculate_vmc.sh "clone_02_30sec" &
