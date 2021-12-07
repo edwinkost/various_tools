@@ -7,14 +7,13 @@ unset STARTING_YEAR
 unset LOCAL_FOLDER
 unset DATALAKE_FOLDER
 
-GCM_NAME="gfdl-esm4"
-SCENARIO_TYPE="ssp585"
-STARTING_YEAR="2015"
+#~ GCM_NAME="gfdl-esm4"
+#~ SCENARIO_TYPE="ssp585"
+#~ STARTING_YEAR="2015"
 
-GCM_NAME="gfdl-esm4"
-SCENARIO_TYPE="historical"
-STARTING_YEAR="1960"
-
+#~ GCM_NAME="gfdl-esm4"
+#~ SCENARIO_TYPE="historical"
+#~ STARTING_YEAR="1960"
 
 # please provide the following variables
 GCM_NAME=$1
