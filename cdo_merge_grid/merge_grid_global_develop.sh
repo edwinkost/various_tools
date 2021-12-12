@@ -27,16 +27,11 @@ cdo setctomiss,1 ${CLONE_FILE} ${TMP_OUT_FILENAME}
 
 #~ for i in {1..16}
 
-for i in {1..3}
+for i in {1..2}
 
 do
 
 SOURCE_FOLDER=${MAIN_SOURCE_FOLDER}/${i}
-
-#~ # remapcon 
-#~ TMP_INP_FILENAME="tmp_inp_"${FILENAME}
-#~ rm ${TMP_INP_FILENAME}
-#~ cdo remapnn,${GRIDDES_FILE} SOURCE_FOLDER/${FILENAME} ${MAIN_OUTPUT_FOLDER}/${TMP_INP_FILENAME}
 
 # using directly input file 
 TMP_INP_FILENAME=${SOURCE_FOLDER}/${FILENAME}
@@ -50,8 +45,8 @@ done
 
 mv ${MAIN_OUTPUT_FOLDER}/${TMP_OUT_FILENAME} ${MAIN_OUTPUT_FOLDER}/merged_${FILENAME}
 
-rm ${TMP_OUT_FILENAME} 
-rm ${TMP_INP_FILENAME} 
-rm ${TMP_PRE_FILENAME} 
+#~ rm ${TMP_OUT_FILENAME} 
+#~ rm ${TMP_INP_FILENAME} 
+#~ rm ${TMP_PRE_FILENAME} 
 
 set +x
