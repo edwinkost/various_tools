@@ -14,23 +14,20 @@ FILENAME="rfrac1_all.nc"
 FILENAME=$1
 
 
-GRIDDES_FILE="/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/global_30sec/cloneMaps/griddes_global_30sec_clone_correct_lat.nc.txt"
+CLONE_FILE="/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/global_30sec/cloneMaps/global_30sec_clone_correct_lat.nc"
 
 
-# cdo remapcon to the first file
-
-SOURCE_FOLDER=${MAIN_SOURCE_FOLDER}/1
-
+# make an initial map
 TMP_OUT_FILENAME="tmp_out_"${FILENAME}
 rm ${TMP_OUT_FILENAME}
-cdo remapnn,${GRIDDES_FILE} ${SOURCE_FOLDER}/${FILENAME} ${MAIN_OUTPUT_FOLDER}/${TMP_OUT_FILENAME}
+cdo setctomiss,1 ${CLONE_FILE} ${TMP_OUT_FILENAME}
 
 
-# remapcon and mergegrid to the files 2 to 16
+# loop for mergegrid
 
-#~ for i in {2..16}
+#~ for i in {1..16}
 
-for i in {2..3}
+for i in {1..3}
 
 do
 
