@@ -27,7 +27,9 @@ cdo setctomiss,1 ${CLONE_FILE} ${MAIN_OUTPUT_FOLDER}/${TMP_OUT_FILENAME}
 
 #~ for i in {1..16}
 
-for i in {1..2}
+#~ for i in {1..2}
+
+for i in {9..10}
 
 do
 
@@ -45,7 +47,7 @@ done
 
 mv ${MAIN_OUTPUT_FOLDER}/${TMP_OUT_FILENAME} ${MAIN_OUTPUT_FOLDER}/merged_${FILENAME}
 
-#~ rm ${MAIN_OUTPUT_FOLDER}/${TMP_OUT_FILENAME} 
-#~ rm ${MAIN_OUTPUT_FOLDER}/${TMP_PRE_FILENAME} 
+rm ${MAIN_OUTPUT_FOLDER}/${TMP_OUT_FILENAME} 
+rm ${MAIN_OUTPUT_FOLDER}/${TMP_PRE_FILENAME} 
 
 set +x
