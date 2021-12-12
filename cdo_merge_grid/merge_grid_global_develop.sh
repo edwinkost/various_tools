@@ -7,7 +7,7 @@ MAIN_OUTPUT_FOLDER="/scratch/depfg/sutan101/land_covers_global/version_2021-02-X
 
 # clean output folder
 mkdir -p ${MAIN_OUTPUT_FOLDER}
-rm ${MAIN_OUTPUT_FOLDER}
+rm ${MAIN_OUTPUT_FOLDER}/*
 
 
 FILENAME="rfrac1_all.nc"
@@ -20,7 +20,7 @@ CLONE_FILE="/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/global_30
 # make an initial map
 TMP_OUT_FILENAME="tmp_out_"${FILENAME}
 rm ${TMP_OUT_FILENAME}
-cdo setctomiss,1 ${CLONE_FILE} ${TMP_OUT_FILENAME}
+cdo setctomiss,1 ${CLONE_FILE} ${MAIN_OUTPUT_FOLDER}/${TMP_OUT_FILENAME}
 
 
 # loop for mergegrid
