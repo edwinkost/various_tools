@@ -10,7 +10,7 @@
 # please provide the following variables
 GCM_NAME=$1
 SCENARIO_TYPE=$2
-STARTING_YEAR=S3
+STARTING_YEAR=$3
 
 
 # source and target folders
