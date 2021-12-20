@@ -1,0 +1,5 @@
+
+bash download_all_historical_monthly_and_annual_files.sh
+bash download_all_ssp126_monthly_and_annual_files.sh
+bash download_all_ssp370_monthly_and_annual_files.sh
+bash download_all_ssp585_monthly_and_annual_files.sh

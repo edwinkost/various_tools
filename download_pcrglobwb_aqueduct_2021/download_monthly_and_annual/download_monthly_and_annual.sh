@@ -19,6 +19,7 @@ TARGET_FOLDER="/projects/0/dfguu2/users/edwin/pcrglobwb_aqueduct_2021/version_20
 
 
 # go to the TARGET_FOLDER and create a "netcdf" directory and go there
+mkdir -p ${TARGET_FOLDER}
 cd ${TARGET_FOLDER}
 mkdir netcdf
 cd netcdf
