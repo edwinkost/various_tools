@@ -45,6 +45,7 @@ for i_year in range(0, len(start_years)):
     else:
         end_year = int(start_years[i_year+1]) - 1
     
+    cmd = ""
     for year in range(sta_year, end_year + 1):
     
         #~ example: python merge_netcdf.py /projects/0/aqueduct/users/edwinsut/pcrglobwb_runs_2016_oct_nov/pcrglobwb_4_land_covers_edwin_parameter_set_watch_kinematicwave/no_correction/non-natural/begin_from_1958/ /scratch-shared/edwin/test_merging/ outAnnuaTotNC 1958-12-31 1958-12-31 desalinationAbstraction NETCDF4 True 1 Global
@@ -57,16 +58,16 @@ for i_year in range(0, len(start_years)):
               # ~ "baseflow NETCDF4 True 5 Global"
 
         # daily discharge
-        cmd = "python merge_netcdf.py " + \
-              input_folder + " " + \
-              outp_folder + " " + \
-              "outDailyTotNC " + \
-              str(year)+"-01-01" + " " + str(year)+"-12-31" + " " + \
-              "discharge NETCDF4 True 1 53 all_lats & "
+        cmd += "python merge_netcdf.py " + \
+               input_folder + " " + \
+               outp_folder + " " + \
+               "outDailyTotNC " + \
+               str(year)+"-01-01" + " " + str(year)+"-12-31" + " " + \
+               "discharge NETCDF4 True 1 53 all_lats & "
 
         # ~ if year == end_year or str(year)[3] == "9" or str(year)[3] == "7" or str(year)[3] == "5" or str(year)[3] == "3" or str(year)[3] == "1":
         if year == end_year or str(year)[3] == "9" or str(year)[3] == "5":
-            cmd += "wait"
+            cmd += "wait "
             print(cmd)
             os.system(cmd)
             cmd = ""
