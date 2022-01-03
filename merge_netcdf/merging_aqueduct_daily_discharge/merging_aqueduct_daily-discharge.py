@@ -57,7 +57,7 @@ for i_year in range(0, len(start_years)):
               # ~ "baseflow NETCDF4 True 5 Global"
 
         # daily discharge
-        cmd = "python merge_netcdf_general.py " + \
+        cmd = "python merge_netcdf.py " + \
               input_folder + " " + \
               outp_folder + " " + \
               "outDailyTotNC " + \
