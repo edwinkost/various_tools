@@ -540,6 +540,9 @@ ncores = min(len(netcdfList), max_number_of_cores)
 number_of_clones = int(sys.argv[10])
 areas = ['M%07d'%i for i in range(1, number_of_clones + 1, 1)]
 
+# old clone
+areas = ['M%02d'%i for i in range(1, number_of_clones + 1, 1)]
+
 
 # extent of the clone map
 if sys.argv[11] == "all_lats":
