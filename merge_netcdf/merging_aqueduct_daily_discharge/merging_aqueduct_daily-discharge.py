@@ -62,7 +62,10 @@ for i_year in range(0, len(start_years)):
               outp_folder + " " + \
               "outDailyTotNC " + \
               str(year)+"-01-01" + " " + str(year)+"-12-31" + " " + \
-              "discharge NETCDF4 True 1 53 all_lats"
+              "discharge NETCDF4 True 1 53 all_lats & "
 
-        print(cmd)
-        os.system(cmd)
+        if year == end_year or str(year)[3] == "9" or str(year)[3] == "7" or str(year)[3] == "5" or str(year)[3] == "3" or str(year)[3] == "1":
+            cmd += "wait"
+            print(cmd)
+            os.system(cmd)
+            cmd = ""
