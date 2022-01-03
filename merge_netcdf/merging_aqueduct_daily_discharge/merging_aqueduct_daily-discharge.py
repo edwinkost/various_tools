@@ -13,10 +13,9 @@ main_folder = sys.argv[1]
 # ~ start_years.sort()
 
 start_years = sorted(map(int, list(set(sys.argv[2].split(",")))))
+print(start_years)
 
 final_year  = int(sys.argv[3])
-
-print(start_years)
 
 outp_folder = "/scratch-shared/edwinhs/aqueduct_daily-discharge/historical/1958-2001_watch/"
 outp_folder = str(sys.argv[4])
@@ -49,7 +48,6 @@ for i_year in range(0, len(start_years)):
     for year in range(sta_year, end_year + 1):
     
         #~ example: python merge_netcdf.py /projects/0/aqueduct/users/edwinsut/pcrglobwb_runs_2016_oct_nov/pcrglobwb_4_land_covers_edwin_parameter_set_watch_kinematicwave/no_correction/non-natural/begin_from_1958/ /scratch-shared/edwin/test_merging/ outAnnuaTotNC 1958-12-31 1958-12-31 desalinationAbstraction NETCDF4 True 1 Global
-
         # ~ # monthly total
         # ~ cmd = "python merge_netcdf.py " + \
               # ~ input_folder + " " + \
@@ -57,15 +55,14 @@ for i_year in range(0, len(start_years)):
               # ~ "outMonthTotNC " + \
               # ~ str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
               # ~ "baseflow NETCDF4 True 5 Global"
-        # ~ print(cmd)
-        # ~ os.system(cmd)
 
         # daily discharge
-        cmd = "python merge_netcdf.py " + \
+        cmd = "python merge_netcdf_general.py " + \
               input_folder + " " + \
               outp_folder + " " + \
               "outDailyTotNC " + \
               str(year)+"-01-01" + " " + str(year)+"-12-31" + " " + \
-              "discharge NETCDF4 True 1 Global"
+              "discharge NETCDF4 True 1 53 all_lats"
+
         print(cmd)
         os.system(cmd)
