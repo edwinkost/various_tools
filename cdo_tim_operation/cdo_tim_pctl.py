@@ -19,7 +19,7 @@ os.system(cmd)
 cmd = "cp cdo_tim_pctl.py " + out_folder
 print(cmd)
 os.system(cmd)
-os.chdir(outp_folder)
+os.chdir(out_folder)
 
 # cdo timmin, timmax, timmean, and timstd, as well as timpctl99, timpctl95, timpctl90, timpctl50, timpctl10, and timpctl05
 for year in range(sta_year, end_year + 1):
