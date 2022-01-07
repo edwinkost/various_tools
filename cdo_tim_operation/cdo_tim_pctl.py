@@ -47,7 +47,7 @@ for year in range(sta_year, end_year + 1):
     cmd += "cdo timstd " + input_file + " " + timstd_file + " & "
     
     # execute cdo timmin, timmax, timmean and timstd
-    cmd += "ẅait"
+    cmd += "wait"
     print(cmd)
     os.system(cmd)
     
@@ -80,7 +80,7 @@ for year in range(sta_year, end_year + 1):
     cmd += "cdo timpctl,5 " + timmin_file + " " + timmax_file + " " + input_file + " " + timpctl05_file + " & "
 
     # execute cdo timpctl99, timpctl95, timpctl90, timpctl50, timpctl10, and timpctl05
-    cmd += "ẅait"
+    cmd += "wait"
     print(cmd)
     os.system(cmd)
 
