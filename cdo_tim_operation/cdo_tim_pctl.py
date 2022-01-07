@@ -57,27 +57,27 @@ for year in range(sta_year, end_year + 1):
     
     # cdo timpctl99
     timpctl99_file = "timpctl99" + "_" + rcp_code + "_" + gcm_code + "discharge_daily_" + str(year) + ".nc" 
-    cmd += "cdo timpctl,99 " + timmin_file + " " + timmax_file + " " + input_file + " " + timpctl99_file + " & "
+    cmd += "cdo timpctl,99 " + input_file + " " + timmin_file + " " + timmax_file + " " + timpctl99_file + " & "
     
     # cdo timpctl95
     timpctl95_file = "timpctl95" + "_" + rcp_code + "_" + gcm_code + "discharge_daily_" + str(year) + ".nc" 
-    cmd += "cdo timpctl,95 " + timmin_file + " " + timmax_file + " " + input_file + " " + timpctl95_file + " & "
+    cmd += "cdo timpctl,95 " + input_file + " " + timmin_file + " " + timmax_file + " " + timpctl95_file + " & "
     
     # cdo timpctl90
     timpctl90_file = "timpctl90" + "_" + rcp_code + "_" + gcm_code + "discharge_daily_" + str(year) + ".nc" 
-    cmd += "cdo timpctl,90 " + timmin_file + " " + timmax_file + " " + input_file + " " + timpctl90_file + " & "
+    cmd += "cdo timpctl,90 " + input_file + " " + timmin_file + " " + timmax_file + " " + timpctl90_file + " & "
     
     # cdo timpctl50
     timpctl50_file = "timpctl50" + "_" + rcp_code + "_" + gcm_code + "discharge_daily_" + str(year) + ".nc" 
-    cmd += "cdo timpctl,50 " + timmin_file + " " + timmax_file + " " + input_file + " " + timpctl50_file + " & "
+    cmd += "cdo timpctl,50 " + input_file + " " + timmin_file + " " + timmax_file + " " + timpctl50_file + " & "
 
     # cdo timpctl10
     timpctl10_file = "timpctl10" + "_" + rcp_code + "_" + gcm_code + "discharge_daily_" + str(year) + ".nc" 
-    cmd += "cdo timpctl,10 " + timmin_file + " " + timmax_file + " " + input_file + " " + timpctl10_file + " & "
+    cmd += "cdo timpctl,10 " + input_file + " " + timmin_file + " " + timmax_file + " " + timpctl10_file + " & "
 
     # cdo timpctl05
     timpctl05_file = "timpctl05" + "_" + rcp_code + "_" + gcm_code + "discharge_daily_" + str(year) + ".nc" 
-    cmd += "cdo timpctl,5 " + timmin_file + " " + timmax_file + " " + input_file + " " + timpctl05_file + " & "
+    cmd += "cdo timpctl,5 " + input_file + " " + timmin_file + " " + timmax_file + " " + timpctl05_file + " & "
 
     # execute cdo timpctl99, timpctl95, timpctl90, timpctl50, timpctl10, and timpctl05
     cmd += "wait"
