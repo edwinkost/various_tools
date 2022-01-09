@@ -14,7 +14,7 @@ do
 
 JOB_NAME=${MAIN_JOB_NAME}${i}
 
-sbatch a_single_job_cdo_tim_pctl.sh -J ${JOB_NAME} --export INP_FOLDER=${INP_FOLDER},OUT_FOLDER=${OUT_FOLDER},RCP_CODE=${RCP_CODE},GCM_CODE=${GCM_CODE},YEAR=${i}
+sbatch -J ${JOB_NAME} --export INP_FOLDER=${INP_FOLDER},OUT_FOLDER=${OUT_FOLDER},RCP_CODE=${RCP_CODE},GCM_CODE=${GCM_CODE},YEAR=${i} a_single_job_cdo_tim_pctl.sh 
  
 done
 
