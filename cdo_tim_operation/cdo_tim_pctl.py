@@ -16,8 +16,10 @@ end_year = int(sys.argv[6])
 cmd = "mkdir -p " + out_folder
 print(cmd)
 os.system(cmd)
-cmd = "cp cdo_tim_pctl.py " + out_folder
-print(cmd)
+
+# ~ cmd = "cp cdo_tim_pctl.py " + out_folder
+# ~ print(cmd)
+
 os.system(cmd)
 os.chdir(out_folder)
 
