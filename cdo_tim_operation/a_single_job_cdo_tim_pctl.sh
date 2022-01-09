@@ -30,6 +30,6 @@ GCM_CODE=${GCM_CODE}
 STA_YEAR=${YEAR}
 END_YEAR=${YEAR}
 
-python cdo_tim_pctl.py ${INPUT_FOLDER} ${OUT_FOLDER} ${RCP_CODE} ${GCM_CODE} ${STA_YEAR} ${END_YEAR}
+python cdo_tim_pctl.py ${INP_FOLDER} ${OUT_FOLDER} ${RCP_CODE} ${GCM_CODE} ${STA_YEAR} ${END_YEAR}
 
 set +x
