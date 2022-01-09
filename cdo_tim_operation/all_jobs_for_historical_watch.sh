@@ -8,7 +8,8 @@ MAIN_JOB_NAME="hisw"
 INP_FOLDER="/scratch-shared/edwinhs/pcrglobwb_aqueduct_version_2016-2018/aqueduct_daily_discharge/historical/1958-2001_watch/watch/"
 OUT_FOLDER="/scratch-shared/edwinhs/pcrglobwb_aqueduct_version_2016-2018/aqueduct_daily_discharge_statistics/historical/1958-2001_watch/watch/"
 
-for i in {1958..2001}
+#~ for i in {1958..2001}
+for i in {2000..2001}
 
 do
 
