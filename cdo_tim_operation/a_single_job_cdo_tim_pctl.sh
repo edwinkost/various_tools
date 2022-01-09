@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 #SBATCH -N 1
-#SBATCH -t 1:29:00
+#SBATCH -t 3:29:00
 
 #SBATCH -p thin
 
