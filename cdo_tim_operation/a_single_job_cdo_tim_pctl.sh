@@ -5,6 +5,10 @@
 
 #SBATCH -p thin
 
+#SBATCH --mincpus 32
+
+#SBATCH --exclusive=user
+
 # mail alert at start, end and abortion of execution
 #SBATCH --mail-type=ALL
 
