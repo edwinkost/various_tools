@@ -26,8 +26,11 @@ OUT_FOLDER=$5
 
 #~ for i in {1950..2100}
 
-# for historical
-for i in {1950..2010}
+#~ # for historical
+#~ for i in {1950..2010}
+
+# for RCPs
+for i in {2005..2099}
 
 do
 
