@@ -9,8 +9,8 @@ GCM_CODE="watch"
 INP_FOLDER="/scratch-shared/edwinhs/pcrglobwb_aqueduct_version_2016-2018/aqueduct_daily_discharge/historical/1958-2001_watch/watch/"
 OUT_FOLDER="/scratch-shared/edwinhs/pcrglobwb_aqueduct_version_2016-2018/aqueduct_daily_discharge_statistics/historical/1958-2001_watch/watch/"
 
-STA_YEAR=2000
-END_YEAR=2000
+#~ STA_YEAR=2000
+#~ END_YEAR=2000
 
 MAIN_JOB_NAME=$1 
 RCP_CODE=$2
@@ -19,10 +19,12 @@ GCM_CODE=$3
 INP_FOLDER=$4
 OUT_FOLDER=$5
 
-STA_YEAR=$(($6))
-END_YEAR=$(($7))
+#~ STA_YEAR=$(($6))
+#~ END_YEAR=$(($7))
 
-for i in {${STA_YEAR}..${END_YEAR}}
+#~ for i in {${STA_YEAR}..${END_YEAR}}
+
+for i in {1950..2100}
 
 do
 
