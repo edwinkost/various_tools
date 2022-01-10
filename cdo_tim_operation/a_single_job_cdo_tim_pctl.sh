@@ -9,11 +9,11 @@
 
 #SBATCH --exclusive=user
 
-# mail alert at start, end and abortion of execution
-#SBATCH --mail-type=ALL
+#~ # mail alert at start, end and abortion of execution
+#~ #SBATCH --mail-type=ALL
 
-# send mail to this address
-#SBATCH --mail-user=edwinkost@gmail.com
+#~ # send mail to this address
+#~ #SBATCH --mail-user=edwinkost@gmail.com
 
 #SBATCH -J hisw2000
 
