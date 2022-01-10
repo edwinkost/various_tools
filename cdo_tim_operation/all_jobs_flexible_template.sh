@@ -24,7 +24,8 @@ OUT_FOLDER=$5
 
 #~ for i in {${STA_YEAR}..${END_YEAR}}
 
-for i in {1950..2100}
+#~ for i in {1950..2100}
+for i in {1950..2010}
 
 do
 
