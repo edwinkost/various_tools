@@ -31,6 +31,8 @@ do
 JOB_NAME=${MAIN_JOB_NAME}${i}
 
 sbatch -J ${JOB_NAME} --export INP_FOLDER=${INP_FOLDER},OUT_FOLDER=${OUT_FOLDER},RCP_CODE=${RCP_CODE},GCM_CODE=${GCM_CODE},YEAR=${i} a_single_job_cdo_tim_pctl.sh 
+
+sleep 0.1s
  
 done
 
