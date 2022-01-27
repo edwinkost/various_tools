@@ -22,8 +22,8 @@ set -x
 # go to the TARGET_FOLDER and create a "netcdf" directory and go there
 mkdir -p ${TARGET_FOLDER}
 cd ${TARGET_FOLDER}
-mkdir netcdf
-cd netcdf
+mkdir netcdf_daily
+cd netcdf_daily
 
 set +x
 
