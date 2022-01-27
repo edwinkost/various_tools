@@ -15,7 +15,7 @@ STARTING_YEAR=$3
 
 # source and target folders
 SOURCE_FOLDER="https://uuwridata.dfs.core.windows.net/pgb-data-lake/pcrglobwb_output/pcrglobwb_aqueduct_2021/version_2021-09-16/"${GCM_NAME}"/"${SCENARIO_TYPE}"/begin_from_"${STARTING_YEAR}"/global/netcdf_daily"
-TARGET_FOLDER="/gpfs/work4/0/dynql/pcrglobwb_aqueduct_2021_daily_files/version_2021-09-16/"${GCM_NAME}"/"${SCENARIO_TYPE}"/begin_from_"${STARTING_YEAR}"/global/"
+TARGET_FOLDER="/gpfs/work4/0/dynql/edwindql/pcrglobwb_aqueduct_2021_daily_files/version_2021-09-16/"${GCM_NAME}"/"${SCENARIO_TYPE}"/begin_from_"${STARTING_YEAR}"/global/"
 
 set -x
 
