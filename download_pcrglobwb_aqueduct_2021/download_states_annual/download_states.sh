@@ -33,4 +33,5 @@ set +x
 #~ azcopy sync ${SOURCE_FOLDER} "."
 
 # download using azcopy for some years only
+echo azcopy sync ${SOURCE_FOLDER} "." --include-pattern '*1960*;*1969*;*1978*;*1979*;*1989*;*1999*;*2004*;*2009*;*2014*;*2019*;*2029*;*2039*;*2049*;*2059*;*2069*;*2079*;*2089*'
 azcopy sync ${SOURCE_FOLDER} "." --include-pattern '*1960*;*1969*;*1978*;*1979*;*1989*;*1999*;*2004*;*2009*;*2014*;*2019*;*2029*;*2039*;*2049*;*2059*;*2069*;*2079*;*2089*'
