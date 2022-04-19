@@ -51,7 +51,7 @@ for i_year in range(0, len(start_years)):
                input_folder + " " + \
                outp_folder + " " + \
                "outMonthTotNC " + \
-               str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \ "baseflow,gwRecharge,totalRunoff,runoff,precipitation,totalEvaporation,domesticWaterWithdrawal,industryWaterWithdrawal,irrNonPaddyWaterWithdrawal,irrPaddyWaterWithdrawal,livestockWaterWithdrawal,irrGrossDemand,nonIrrGrossDemand,desalinationAbstraction,surfaceWaterAbstraction,totalGroundwaterAbstraction,fossilGroundwaterAbstraction NETCDF4 True 32 53 all_lats & "
+               str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + "baseflow,gwRecharge,totalRunoff,runoff,precipitation,totalEvaporation,domesticWaterWithdrawal,industryWaterWithdrawal,irrNonPaddyWaterWithdrawal,irrPaddyWaterWithdrawal,livestockWaterWithdrawal,irrGrossDemand,nonIrrGrossDemand,desalinationAbstraction,surfaceWaterAbstraction,totalGroundwaterAbstraction,fossilGroundwaterAbstraction NETCDF4 True 32 53 all_lats & "
 
         # monthly average
         cmd += "python merge_netcdf.py " + \
