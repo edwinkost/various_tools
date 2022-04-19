@@ -46,48 +46,19 @@ for i_year in range(0, len(start_years)):
     
     for year in range(sta_year, end_year + 1):
     
-        #~ example: python merge_netcdf.py /projects/0/aqueduct/users/edwinsut/pcrglobwb_runs_2016_oct_nov/pcrglobwb_4_land_covers_edwin_parameter_set_watch_kinematicwave/no_correction/non-natural/begin_from_1958/ /scratch-shared/edwin/test_merging/ outAnnuaTotNC 1958-12-31 1958-12-31 desalinationAbstraction NETCDF4 True 1 Global
-
-
-        # ~ # annual average
-        # ~ cmd = "python merge_netcdf.py " + \
-              # ~ input_folder + " " + \
-              # ~ outp_folder + " " + \
-              # ~ "outAnnuaAvgNC " + \
-              # ~ str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
-              # ~ "temperature NETCDF4 True 5 Global"
-        # ~ print(cmd)
-        # ~ os.system(cmd)
-
-
         # monthly total
-        cmd = "python merge_netcdf.py " + \
-              input_folder + " " + \
-              outp_folder + " " + \
-              "outMonthTotNC " + \
-              str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
-              "baseflow,gwRecharge,totalRunoff,runoff,precipitation,totalEvaporation,domesticWaterWithdrawal,industryWaterWithdrawal,irrNonPaddyWaterWithdrawal,irrPaddyWaterWithdrawal,livestockWaterWithdrawal,irrGrossDemand,nonIrrGrossDemand,desalinationAbstraction,surfaceWaterAbstraction,totalGroundwaterAbstraction,fossilGroundwaterAbstraction NETCDF4 True 5 Global"
-        print(cmd)
-        os.system(cmd)
-
-
-        # ~ # annual total
-        # ~ cmd = "python merge_netcdf.py " + \
-              # ~ input_folder + " " + \
-              # ~ outp_folder + " " + \
-              # ~ "outAnnuaTotNC " + \
-              # ~ str(year)+"-12-31" + " " + str(year)+"-12-31" + " " + \
-              # ~ "evaporation_from_irrigation,precipitation_at_irrigation,irrigationWaterWithdrawal NETCDF4 True 5 Global"
-        # ~ print(cmd)
-        # ~ os.system(cmd)
-
+        cmd  = "python merge_netcdf.py " + \
+               input_folder + " " + \
+               outp_folder + " " + \
+               "outMonthTotNC " + \
+               str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \ "baseflow,gwRecharge,totalRunoff,runoff,precipitation,totalEvaporation,domesticWaterWithdrawal,industryWaterWithdrawal,irrNonPaddyWaterWithdrawal,irrPaddyWaterWithdrawal,livestockWaterWithdrawal,irrGrossDemand,nonIrrGrossDemand,desalinationAbstraction,surfaceWaterAbstraction,totalGroundwaterAbstraction,fossilGroundwaterAbstraction NETCDF4 True 32 53 all_lats & "
 
         # monthly average
-        cmd = "python merge_netcdf.py " + \
-              input_folder + " " + \
-              outp_folder + " " + \
-              "outMonthAvgNC " + \
-              str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
-              "discharge,channelStorage,storUppTotal,storLowTotal,storGroundwater,totalActiveStorageThickness,totalWaterStorageThickness NETCDF4 True 5 Global"
+        cmd += "python merge_netcdf.py " + \
+               input_folder + " " + \
+               outp_folder + " " + \
+               "outMonthAvgNC " + \
+               str(year)+"-01-31" + " " + str(year)+"-12-31" + " " + \
+               "discharge,channelStorage,storUppTotal,storLowTotal,storGroundwater,totalActiveStorageThickness,totalWaterStorageThickness NETCDF4 True 32 53 all_lats & wait"
         print(cmd)
         os.system(cmd)
