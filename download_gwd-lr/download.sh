@@ -1,7 +1,7 @@
 
 #~ source: http://hydro.iis.u-tokyo.ac.jp/~yamadai/GWD-LR/list_3sec.html
 
-mkdir /scratch/depfg/sutan101/gwd-lr/downloaded_on_2023-01-17/
+mkdir -p /scratch/depfg/sutan101/gwd-lr/downloaded_on_2023-01-17/
 cd /scratch/depfg/sutan101/gwd-lr/downloaded_on_2023-01-17/
 
 #~ Effective River Width
