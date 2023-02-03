@@ -18,7 +18,7 @@ import shutil
 
 gcm_name       = sys.argv[1]
 scenario_type  = sys.argv[2]
-first_year     = sys.argv[3]
+start_year     = sys.argv[3]
 final_year     = sys.argv[4]
 source_folder  = sys.argv[5]
 output_folder  = sys.argv[6]
