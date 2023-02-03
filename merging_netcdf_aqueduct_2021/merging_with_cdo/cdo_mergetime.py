@@ -5,23 +5,23 @@ import sys
 import shutil
 
 
-gcm_name           = "gfdl-esm4"
-scenario_type      = "historical"
+# ~ gcm_name           = "gfdl-esm4"
+# ~ scenario_type      = "historical"
 
-# ~ gcm_name       = sys.argv[1]
-# ~ scenario_type  = sys.argv[2]
+# ~ start_year = str(1960)
+# ~ final_year = str(2014)
 
-source_folder      = "/scratch/depfg/sutan101/pcrglobwb_wri_aqueduct_2021/pcrglobwb_aqueduct_2021_monthly_annual_files/version_2021-09-16/gfdl-esm4/historical/begin_from_1960/global/netcdf"
-# ~ source_folder  = sys.argv[3]
+# ~ source_folder      = "/scratch/depfg/sutan101/pcrglobwb_wri_aqueduct_2021/pcrglobwb_aqueduct_2021_monthly_annual_files/version_2021-09-16/gfdl-esm4/historical/begin_from_1960/global/netcdf"
 
-output_folder      = "/scratch/depfg/sutan101/pcrglobwb_wri_aqueduct_2021/pcrglobwb_aqueduct_2021_monthly_annual_files/version_2021-09-16_merged/gfdl-esm4/historical/"
-# ~ output_folder  = sys.argv[4]
+# ~ output_folder      = "/scratch/depfg/sutan101/pcrglobwb_wri_aqueduct_2021/pcrglobwb_aqueduct_2021_monthly_annual_files/version_2021-09-16_merged/gfdl-esm4/historical/"
 
-start_year = str(1960)
-final_year = str(2014)
 
-# ~ first_year = sys.argv[5]
-# ~ final_year = sys.argv[6]
+gcm_name       = sys.argv[1]
+scenario_type  = sys.argv[2]
+first_year     = sys.argv[3]
+final_year     = sys.argv[4]
+source_folder  = sys.argv[5]
+output_folder  = sys.argv[6]
 
 
 # create output folder
