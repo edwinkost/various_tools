@@ -35,4 +35,4 @@ SRC_FOLD="/scratch/depfg/sutan101/pcrglobwb_wri_aqueduct_2021/pcrglobwb_aqueduct
 OUT_FOLD="/scratch/depfg/sutan101/pcrglobwb_wri_aqueduct_2021/pcrglobwb_aqueduct_2021_monthly_annual_files/version_2021-09-16_merged/"${GCM_NAME}"/"${SCN_TYPE}"/"
 
 # call the script
-python cdo_merge_type.py ${GCM_NAME} ${SCN_TYPE} ${START_YR} ${FINAL_YR} ${SRC_FOLD} ${OUT_FOLD} 
+python cdo_mergetime.py ${GCM_NAME} ${SCN_TYPE} ${START_YR} ${FINAL_YR} ${SRC_FOLD} ${OUT_FOLD} 
