@@ -31,7 +31,7 @@ GCM_NAME=${GCM_NAME}
 SCN_TYPE=${SCN_TYPE}
 START_YR=${START_YR}
 FINAL_YR=${FINAL_YR}
-SRC_FOLD="/scratch/depfg/sutan101/pcrglobwb_wri_aqueduct_2021/pcrglobwb_aqueduct_2021_monthly_annual_files/version_2021-09-16/"${GCM_NAME}"/"${SCN_TYPE}"/begin_from_/"${START_YR}"/global/netcdf/"
+SRC_FOLD="/scratch/depfg/sutan101/pcrglobwb_wri_aqueduct_2021/pcrglobwb_aqueduct_2021_monthly_annual_files/version_2021-09-16/"${GCM_NAME}"/"${SCN_TYPE}"/begin_from_"${START_YR}"/global/netcdf/"
 OUT_FOLD="/scratch/depfg/sutan101/pcrglobwb_wri_aqueduct_2021/pcrglobwb_aqueduct_2021_monthly_annual_files/version_2021-09-16_merged/"${GCM_NAME}"/"${SCN_TYPE}"/"
 
 # call the script
