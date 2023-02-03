@@ -57,7 +57,7 @@ outAnnuaAvgNC = "temperature,discharge,gwRecharge"
 
 # - annual resolution - average
 variables = outAnnuaAvgNC.split(",")
-print(variables)
+# ~ print(variables)
 cmd = ""
 for variable in variables:
     cmd += "cdo -L -f nc4 -z zip -setgrid,griddes_clone_global_05min.txt -mergetime " + str(source_folder) + "/" + str(variable) + "_annuaAvg*.nc " +\
@@ -66,5 +66,5 @@ for variable in variables:
            " & "
 cmd += "wait"
 print(cmd)
-# ~ os.system(cmd)
+os.system(cmd)
 
