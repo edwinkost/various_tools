@@ -60,10 +60,10 @@ variables = outAnnuaAvgNC.split(",")
 print(variables)
 cmd = ""
 for variable in variables:
-    "cdo -L -f nc4 -z zip -setgrid,griddes_clone_global_05min.txt -mergetime " + str(source_folder) + "/" + str(variable) + "_annuaAvg*.nc " +\
-    "pcrglobwb_cmip6-isimip3-" + str(gcm_name) + "_image-aqueduct_" + str(scenario_type) + "_" + str(variable) + "_global_yearly-average_" +str(start_year) + "_" + str(final_year) +\
-    "_basetier1.nc" +\
-    " & "
+    cmd += "cdo -L -f nc4 -z zip -setgrid,griddes_clone_global_05min.txt -mergetime " + str(source_folder) + "/" + str(variable) + "_annuaAvg*.nc " +\
+           "pcrglobwb_cmip6-isimip3-" + str(gcm_name) + "_image-aqueduct_" + str(scenario_type) + "_" + str(variable) + "_global_yearly-average_" +str(start_year) + "_" + str(final_year) +\
+           "_basetier1.nc" +\
+           " & "
 cmd += "wait"
 print(cmd)
 # ~ os.system(cmd)
