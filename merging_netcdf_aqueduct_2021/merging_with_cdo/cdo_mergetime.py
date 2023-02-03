@@ -55,6 +55,52 @@ outAnnuaTotNC = "totalEvaporation,precipitation,gwRecharge,totalRunoff,baseflow,
 # - annual resolution - annual values
 outAnnuaAvgNC = "temperature,discharge,gwRecharge"
 
+
+
+# - monthly resolution - total values
+variables = outMonthTotNC.split(",")
+# ~ print(variables)
+cmd = ""
+for variable in variables:
+    cmd += "cdo -L -f nc4 -z zip -setgrid,griddes_clone_global_05min.txt -mergetime " + str(source_folder) + "/" + str(variable) + "_monthTotal*.nc " +\
+           "pcrglobwb_cmip6-isimip3-" + str(gcm_name) + "_image-aqueduct_" + str(scenario_type) + "_" + str(variable) + "_global_monthly-total_" +str(start_year) + "_" + str(final_year) +\
+           "_basetier1.nc" +\
+           " & "
+cmd += "wait"
+print(cmd)
+os.system(cmd)
+
+
+# - monthly resolution - average
+variables = outMonthAvgNC.split(",")
+# ~ print(variables)
+cmd = ""
+for variable in variables:
+    cmd += "cdo -L -f nc4 -z zip -setgrid,griddes_clone_global_05min.txt -mergetime " + str(source_folder) + "/" + str(variable) + "_monthAvg*.nc " +\
+           "pcrglobwb_cmip6-isimip3-" + str(gcm_name) + "_image-aqueduct_" + str(scenario_type) + "_" + str(variable) + "_global_monthly-average_" +str(start_year) + "_" + str(final_year) +\
+           "_basetier1.nc" +\
+           " & "
+cmd += "wait"
+print(cmd)
+os.system(cmd)
+
+
+
+
+# - annual resolution - total values
+variables = outAnnuaTotNC.split(",")
+# ~ print(variables)
+cmd = ""
+for variable in variables:
+    cmd += "cdo -L -f nc4 -z zip -setgrid,griddes_clone_global_05min.txt -mergetime " + str(source_folder) + "/" + str(variable) + "_annuaTotal*.nc " +\
+           "pcrglobwb_cmip6-isimip3-" + str(gcm_name) + "_image-aqueduct_" + str(scenario_type) + "_" + str(variable) + "_global_yearly-total_" +str(start_year) + "_" + str(final_year) +\
+           "_basetier1.nc" +\
+           " & "
+cmd += "wait"
+print(cmd)
+os.system(cmd)
+
+
 # - annual resolution - average
 variables = outAnnuaAvgNC.split(",")
 # ~ print(variables)
