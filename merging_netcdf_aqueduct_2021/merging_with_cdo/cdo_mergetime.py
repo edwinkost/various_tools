@@ -4,10 +4,6 @@ import os
 import sys
 import shutil
 
-directory = sys.argv[1]
-os.chdir(directory)
-print(directory)
-
 
 gcm_name           = "gfdl-esm4"
 scenario_type      = "historical"
@@ -45,6 +41,9 @@ except:
 cmd = "cp griddes_clone_global_05min.txt " + str(output_folder)
 print(cmd)
 os.system(cmd)
+
+# go to the output folder
+os.chdir(output_folder)
 
 # list of variables
 # - monthly resolution - total values
