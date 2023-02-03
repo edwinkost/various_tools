@@ -15,7 +15,7 @@
 # send mail to this address
 #SBATCH --mail-user=edwinkost@gmail.com
 
-#SBATCH --export GCM_NAME="test",SCN_TYPE="test","START_YR"test",FINAL_YR="test"
+#SBATCH --export GCM_NAME="test",SCN_TYPE="test",START_YR="test",FINAL_YR="test"
 
 
 
