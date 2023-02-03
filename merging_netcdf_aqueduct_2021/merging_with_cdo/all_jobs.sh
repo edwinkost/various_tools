@@ -12,26 +12,34 @@
 #~ dr-xr-xr-x 6 sutan101 depfg 6 Jan 17 05:27 ukesm1-0-ll
 
 GCM_NAME="gfdl-esm4"
-sbatch -J gfdlhist --export GCM_NAME=${GCM_NAME},SCN_TYPE="historical",START_YR="1960",FINAL_YR="2014"
-sbatch -J gfdlssp1 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp126",START_YR="2015",FINAL_YR="2100"
-sbatch -J gfdlssp3 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp370",START_YR="2015",FINAL_YR="2100"
-sbatch -J gfdlssp5 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp585",START_YR="2015",FINAL_YR="2100"
+sbatch -J gfd-hist --export GCM_NAME=${GCM_NAME},SCN_TYPE="historical",START_YR="1960",FINAL_YR="2014"
+sbatch -J gfd-ssp1 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp126",START_YR="2015",FINAL_YR="2100"
+sbatch -J gfd-ssp3 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp370",START_YR="2015",FINAL_YR="2100"
+sbatch -J gfd-ssp5 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp585",START_YR="2015",FINAL_YR="2100"
   
 #~ GCM_NAME="ipsl-cm6a-lr"
-#~ sbatch -J ipslhist --export GCM_NAME=${GCM_NAME},SCN_TYPE="historical",START_YR="1960",FINAL_YR="2014"
-#~ sbatch -J ipslssp1 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp126",START_YR="2015",FINAL_YR="2100"
-#~ sbatch -J ipslssp3 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp370",START_YR="2015",FINAL_YR="2100"
-#~ sbatch -J ipslssp5 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp585",START_YR="2015",FINAL_YR="2100"
+#~ sbatch -J ips-hist --export GCM_NAME=${GCM_NAME},SCN_TYPE="historical",START_YR="1960",FINAL_YR="2014"
+#~ sbatch -J ips-ssp1 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp126",START_YR="2015",FINAL_YR="2100"
+#~ sbatch -J ips-ssp3 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp370",START_YR="2015",FINAL_YR="2100"
+#~ sbatch -J ips-ssp5 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp585",START_YR="2015",FINAL_YR="2100"
 
 #~ GCM_NAME="mpi-esm1-2-hr"
-#~ sbatch -J ipslhist --export GCM_NAME=${GCM_NAME},SCN_TYPE="historical",START_YR="1960",FINAL_YR="2014"
-#~ sbatch -J ipslssp1 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp126",START_YR="2015",FINAL_YR="2100"
-#~ sbatch -J ipslssp3 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp370",START_YR="2015",FINAL_YR="2100"
-#~ sbatch -J ipslssp5 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp585",START_YR="2015",FINAL_YR="2100"
+#~ sbatch -J mpi-hist --export GCM_NAME=${GCM_NAME},SCN_TYPE="historical",START_YR="1960",FINAL_YR="2014"
+#~ sbatch -J mpi-ssp1 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp126",START_YR="2015",FINAL_YR="2100"
+#~ sbatch -J mpi-ssp3 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp370",START_YR="2015",FINAL_YR="2100"
+#~ sbatch -J mpi-ssp5 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp585",START_YR="2015",FINAL_YR="2100"
 
-#~ mri-esm2-0
+#~ GCM_NAME="mri-esm2-0"
+#~ sbatch -J mri-hist --export GCM_NAME=${GCM_NAME},SCN_TYPE="historical",START_YR="1960",FINAL_YR="2014"
+#~ sbatch -J mri-ssp1 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp126",START_YR="2015",FINAL_YR="2100"
+#~ sbatch -J mri-ssp3 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp370",START_YR="2015",FINAL_YR="2100"
+#~ sbatch -J mri-ssp5 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp585",START_YR="2015",FINAL_YR="2100"
 
-#~ ukesm1-0-ll
+#~ GCM_NAME="ukesm1-0-ll"
+#~ sbatch -J uke-hist --export GCM_NAME=${GCM_NAME},SCN_TYPE="historical",START_YR="1960",FINAL_YR="2014"
+#~ sbatch -J uke-ssp1 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp126",START_YR="2015",FINAL_YR="2100"
+#~ sbatch -J uke-ssp3 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp370",START_YR="2015",FINAL_YR="2100"
+#~ sbatch -J uke-ssp5 --export GCM_NAME=${GCM_NAME},SCN_TYPE="ssp585",START_YR="2015",FINAL_YR="2100"
 
 
 #~ sutan101@node032.cluster:/scratch/depfg/sutan101/pcrglobwb_wri_aqueduct_2021/pcrglobwb_aqueduct_2021_monthly_annual_files/version_2021-09-16$ ls -lah gfdl-esm4/
